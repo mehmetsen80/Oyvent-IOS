@@ -404,6 +404,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
     {
+        
         var whiteRoundedCornerView:UIView!
         whiteRoundedCornerView=UIView(frame: CGRectMake(0,cell.frame.height-20,cell.frame.width,20))
         //whiteRoundedCornerView.backgroundColor=UIColor(red: 0.0784314, green: 0.278431, blue: 0.443137, alpha: 0.8) // 0.0784314 0.278431 0.443137 0.8
