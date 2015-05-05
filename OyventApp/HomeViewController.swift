@@ -123,7 +123,7 @@ class HomeViewController: UIViewController,  UITableViewDataSource, UITableViewD
 //        let date1 = NSDate().dateFromString("2015-03-29 18:16:16")
 //        let date2:NSDate = NSDate()
 //        
-//        let years = date2.yearsFrom(date1)     // 0
+//        let years = date2.yearsFrom(date1)     // 0 
 //        let months = date2.monthsFrom(date1)   // 9
 //        let weeks = date2.weeksFrom(date1)     // 39
 //        let days = date2.daysFrom(date1)       // 273

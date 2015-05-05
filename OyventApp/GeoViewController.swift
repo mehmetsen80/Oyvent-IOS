@@ -95,6 +95,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         
         // Actually do the resizing to the rect using the ImageContext stuff
         UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        
         image.drawInRect(rect)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
