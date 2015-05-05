@@ -402,6 +402,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     }
     
     
+    
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
     {
         

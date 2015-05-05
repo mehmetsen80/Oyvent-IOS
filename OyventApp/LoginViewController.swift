@@ -95,17 +95,10 @@ class LoginViewController: UIViewController {
                         
                         
                         
-//                        let homeController:HomeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
-                        
-                        //let tabController:UITabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBar") as UITabBarController
-                        var nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
-                        //let geoController:GeoViewController =  nvg.topViewController as GeoViewController
-                        //let geoController:GeoViewController = self.storyboard!.instantiateViewControllerWithIdentifier("geoView") as GeoViewController
-                        
+                        let homeController:HomeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
+                        //let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
                         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-                        //appDelegate.window?.rootViewController = homeController
-                        //appDelegate.window?.rootViewController = tabController
-                        appDelegate.window?.rootViewController = nvg
+                        appDelegate.window?.rootViewController = homeController
                         appDelegate.window?.makeKeyAndVisible()
                         
                     }

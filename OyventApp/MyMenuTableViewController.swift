@@ -119,7 +119,7 @@ class MyMenuTableViewController: UITableViewController {
                     break
                 case 1:
                     //tabBarController.selectedIndex = 1
-                    var nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
+                    let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
                     let geoController:GeoViewController =  nvg.topViewController as GeoViewController
                     sideMenuController()?.setContentViewController(geoController)
                     break

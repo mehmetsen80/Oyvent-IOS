@@ -40,19 +40,13 @@ class RegisterViewController: UIViewController {
             return
         }
         
-        
-        
-        
         //generate url, call json and display the result
         let myUrl = NSURL(string:"http://oyvent.com/ajax/Register.php")
         let request = NSMutableURLRequest(URL: myUrl!)
         request.HTTPMethod = "POST";
-        
         let postString = "email=\(email)&password=\(password)&fullname=\(fullname)&processType=SIGNUPUSER"
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-        
         self.myActivityIndicator.startAnimating()
-        
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request){
             data, response, error in
@@ -74,7 +68,6 @@ class RegisterViewController: UIViewController {
                 var username:String? = parseJSON["username"] as? String
                 var lastlogindate:String = parseJSON["lastlogindate"] as String!
                 var signupdate:String = parseJSON["signupdate"] as String!
-                
                 
                 
                 dispatch_async(dispatch_get_main_queue(),{
@@ -113,16 +106,10 @@ class RegisterViewController: UIViewController {
                         myAlert.addAction(okAction)
                         self.presentViewController(myAlert, animated: true, completion: nil)
                         
-//                        let mainController:HomeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("mainView") as HomeViewController
-                        
-                        //let tabController:UITabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBar") as UITabBarController
-                        var nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
-                        //let geoController:GeoViewController =  nvg.topViewController as GeoViewController
-                        //let geoController:GeoViewController = self.storyboard!.instantiateViewControllerWithIdentifier("geoView") as GeoViewController
+                        let homeController:HomeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
+                        //let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
                         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-                        //appDelegate.window?.rootViewController = mainController
-                        //appDelegate.window?.rootViewController = tabController
-                        appDelegate.window?.rootViewController = nvg
+                        appDelegate.window?.rootViewController = homeController
                         appDelegate.window?.makeKeyAndVisible()
                     }
                 })

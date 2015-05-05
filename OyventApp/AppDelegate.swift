@@ -32,21 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window!.makeKeyAndVisible()
         }else{
             
-            //var homeController:MainViewController = mainStoryboard.instantiateViewControllerWithIdentifier("homeView") as MainViewController
-            var nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
-            //let geoController:GeoViewController =  nvg.topViewController as GeoViewController
-           
-             //let tabController:CustomTabBarController = mainStoryboard.instantiateViewControllerWithIdentifier("customTabBar") as CustomTabBarController
             
-            
-            
-            //window!.rootViewController = homeController
+            let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
+            //let homeController:HomeViewController = mainStoryboard.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
             window!.rootViewController = nvg
-            //window!.rootViewController = tabController
             window!.makeKeyAndVisible()
-//            if let tabBarController = self.window!.rootViewController as? CustomTabBarController {
-//                tabBarController.selectedIndex = 0
-//            }
+
         }
 
         
