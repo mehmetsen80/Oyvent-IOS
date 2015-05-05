@@ -1,0 +1,162 @@
+//
+//  RegisterViewController.swift
+//  OyventApp
+//
+//  Created by Mehmet Sen on 3/15/15.
+//  Copyright (c) 2015 Oyvent. All rights reserved.
+//
+
+import UIKit
+
+class RegisterViewController: UIViewController {
+
+    @IBOutlet weak var txtFullName: UITextField!
+    @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func doSignup(sender: AnyObject) {
+        
+        let fullname = txtFullName.text
+        let email = txtEmail.text
+        let password = txtPassword.text
+        
+        //check for empty fields
+        if(fullname.isEmpty || email.isEmpty || password.isEmpty){
+            //display alert message
+            displayAlertMessage("All fields are required!")
+            return
+        }
+        
+        
+        
+        
+        //generate url, call json and display the result
+        let myUrl = NSURL(string:"http://oyvent.com/ajax/Register.php")
+        let request = NSMutableURLRequest(URL: myUrl!)
+        request.HTTPMethod = "POST";
+        
+        let postString = "email=\(email)&password=\(password)&fullname=\(fullname)&processType=SIGNUPUSER"
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        self.myActivityIndicator.startAnimating()
+        
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request){
+            data, response, error in
+            
+            if(error != nil){
+                println("error=\(error)")
+                return
+            }
+            
+            var err: NSError?
+            var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
+            
+            if let parseJSON = json {
+                var resultValue = parseJSON["success"] as Bool
+                println("resultValue=\(resultValue)")
+                
+                var message:String = parseJSON["message"] as String!
+                var userID:Double = parseJSON["userID"] as Double!
+                var username:String? = parseJSON["username"] as? String
+                var lastlogindate:String = parseJSON["lastlogindate"] as String!
+                var signupdate:String = parseJSON["signupdate"] as String!
+                
+                
+                
+                dispatch_async(dispatch_get_main_queue(),{
+                    
+                    self.myActivityIndicator.stopAnimating()
+                    
+                    if(!resultValue){
+                        //display alert message with confirmation
+                        var myAlert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                        myAlert.addAction(okAction)
+                        self.presentViewController(myAlert, animated: true, completion: nil)
+                        
+                    }else{
+                        
+                        //store data
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedIn")
+                        NSUserDefaults.standardUserDefaults().setObject(userID, forKey:"userID")
+                        NSUserDefaults.standardUserDefaults().setObject(fullname, forKey:"fullname")
+                        NSUserDefaults.standardUserDefaults().setObject(username, forKey:"username")
+                        NSUserDefaults.standardUserDefaults().setObject(email, forKey:"email")
+                        NSUserDefaults.standardUserDefaults().setObject(password, forKey:"password")
+                        NSUserDefaults.standardUserDefaults().setObject(lastlogindate, forKey:"lastlogindate")
+                        NSUserDefaults.standardUserDefaults().setObject(signupdate, forKey:"signupdate")
+                        NSUserDefaults.standardUserDefaults().synchronize()
+                        
+                        
+                        //display alert message with confirmation
+                        var myAlert = UIAlertController(title: "Alert", message: "Welcome to Oyvent!", preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        let okAction = UIAlertAction(title: "Let's Start!", style: UIAlertActionStyle.Default){ action in
+                            self.dismissViewControllerAnimated(true, completion:nil)
+                        }
+                        
+                        myAlert.addAction(okAction)
+                        self.presentViewController(myAlert, animated: true, completion: nil)
+                        
+//                        let mainController:HomeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("mainView") as HomeViewController
+                        
+                        //let tabController:UITabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBar") as UITabBarController
+                        var nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
+                        //let geoController:GeoViewController =  nvg.topViewController as GeoViewController
+                        //let geoController:GeoViewController = self.storyboard!.instantiateViewControllerWithIdentifier("geoView") as GeoViewController
+                        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+                        //appDelegate.window?.rootViewController = mainController
+                        //appDelegate.window?.rootViewController = tabController
+                        appDelegate.window?.rootViewController = nvg
+                        appDelegate.window?.makeKeyAndVisible()
+                    }
+                })
+                
+            }
+        }
+        
+        task.resume()
+        
+        
+    }
+    
+    func displayAlertMessage(alertMessage:String){
+        var myAlert = UIAlertController(title: "Alert", message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+        
+        myAlert.addAction(okAction)
+        
+        self.presentViewController(myAlert, animated:true, completion:nil)
+        
+    }
+
+    
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

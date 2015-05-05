@@ -7,12 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		590EBBCD1AE494B500420384 /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBCC1AE494B500420384 /* MyMenuTableViewController.swift */; };
+		590EBBCF1AE497E400420384 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBCE1AE497E400420384 /* MyNavigationController.swift */; };
+		590EBBD11AEFF96900420384 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 590EBBD01AEFF96900420384 /* CoreLocation.framework */; };
+		590EBBD31AF5852C00420384 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBD21AF5852C00420384 /* DetailsTableViewCell.swift */; };
+		590EBBD51AF5E55A00420384 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBD41AF5E55A00420384 /* Comment.swift */; };
+		590EBBD71AF5F29D00420384 /* CommentAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBD61AF5F29D00420384 /* CommentAPIController.swift */; };
+		590EBBD91AF68B6900420384 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBD81AF68B6900420384 /* RoundButton.swift */; };
 		59DFCEE31AB2A41C009DE7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */; };
-		59DFCEE51AB2A41C009DE7AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEE41AB2A41C009DE7AF /* ViewController.swift */; };
+		59DFCEE51AB2A41C009DE7AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEE41AB2A41C009DE7AF /* LoginViewController.swift */; };
 		59DFCEE81AB2A41C009DE7AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DFCEE61AB2A41C009DE7AF /* Main.storyboard */; };
-		59DFCEEA1AB2A41C009DE7AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59DFCEE91AB2A41C009DE7AF /* Images.xcassets */; };
 		59DFCEED1AB2A41D009DE7AF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59DFCEEB1AB2A41D009DE7AF /* LaunchScreen.xib */; };
-		59DFCEF91AB2A41D009DE7AF /* OyventAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEF81AB2A41D009DE7AF /* OyventAppTests.swift */; };
+		59DFCEF91AB2A41D009DE7AF /* OyventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEF81AB2A41D009DE7AF /* OyventTests.swift */; };
+		59DFCF031AB2A58D009DE7AF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCF021AB2A58D009DE7AF /* CustomButton.swift */; };
+		59DFCF091AB64303009DE7AF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCF081AB64303009DE7AF /* HomeViewController.swift */; };
+		59DFCF0B1AB64326009DE7AF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCF0A1AB64326009DE7AF /* RegisterViewController.swift */; };
+		59DFCF0D1AB67F9A009DE7AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59DFCF0C1AB67F9A009DE7AF /* Images.xcassets */; };
+		59DFCF131AB9398F009DE7AF /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCF121AB9398F009DE7AF /* MeViewController.swift */; };
+		59DFCF151ABBA84B009DE7AF /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCF141ABBA84B009DE7AF /* Photo.swift */; };
+		59DFCF171ABBE995009DE7AF /* PhotoAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCF161ABBE995009DE7AF /* PhotoAPIController.swift */; };
+		59EFA7E71AC8FE5A00CA3C84 /* UIVerticalAlignLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7E61AC8FE5A00CA3C84 /* UIVerticalAlignLabel.swift */; };
+		59EFA7E91ACCFA7C00CA3C84 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7E81ACCFA7C00CA3C84 /* ZoomViewController.swift */; };
+		59EFA7EB1AD2231F00CA3C84 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7EA1AD2231F00CA3C84 /* DateExtension.swift */; };
+		59EFA7EF1AD4F7B500CA3C84 /* GeoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7EE1AD4F7B500CA3C84 /* GeoTableViewCell.swift */; };
+		59EFA7F11AD4F89200CA3C84 /* GeoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7F01AD4F89200CA3C84 /* GeoViewController.swift */; };
+		59EFA7F31AD61F1A00CA3C84 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7F21AD61F1A00CA3C84 /* DetailsViewController.swift */; };
+		59EFA7F71ADB128D00CA3C84 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7F61ADB128D00CA3C84 /* CustomTabBarController.swift */; };
+		59EFA7F91AE4915100CA3C84 /* ESideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7F81AE4915100CA3C84 /* ESideMenu.swift */; };
+		59EFA7FB1AE491CE00CA3C84 /* ESideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7FA1AE491CE00CA3C84 /* ESideMenuNavigationController.swift */; };
+		59F175DF1AF87D0F005E7950 /* gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 59F175DE1AF87D0F005E7950 /* gitignore */; };
+		59F232661ABF24BA0085CA07 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F232651ABF24BA0085CA07 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +50,40 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		590EBBCC1AE494B500420384 /* MyMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuTableViewController.swift; sourceTree = "<group>"; };
+		590EBBCE1AE497E400420384 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
+		590EBBD01AEFF96900420384 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		590EBBD21AF5852C00420384 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
+		590EBBD41AF5E55A00420384 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		590EBBD61AF5F29D00420384 /* CommentAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentAPIController.swift; sourceTree = "<group>"; };
+		590EBBD81AF68B6900420384 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		59DFCEDD1AB2A41C009DE7AF /* OyventApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OyventApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59DFCEE11AB2A41C009DE7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		59DFCEE41AB2A41C009DE7AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		59DFCEE41AB2A41C009DE7AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		59DFCEE71AB2A41C009DE7AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		59DFCEE91AB2A41C009DE7AF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		59DFCEEC1AB2A41D009DE7AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		59DFCEF21AB2A41D009DE7AF /* OyventAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OyventAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59DFCEF71AB2A41D009DE7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		59DFCEF81AB2A41D009DE7AF /* OyventAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OyventAppTests.swift; sourceTree = "<group>"; };
+		59DFCEF81AB2A41D009DE7AF /* OyventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OyventTests.swift; sourceTree = "<group>"; };
+		59DFCF021AB2A58D009DE7AF /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomButton.swift; path = ../CustomButton.swift; sourceTree = "<group>"; };
+		59DFCF081AB64303009DE7AF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		59DFCF0A1AB64326009DE7AF /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		59DFCF0C1AB67F9A009DE7AF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		59DFCF121AB9398F009DE7AF /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		59DFCF141ABBA84B009DE7AF /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		59DFCF161ABBE995009DE7AF /* PhotoAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoAPIController.swift; sourceTree = "<group>"; };
+		59EFA7E61AC8FE5A00CA3C84 /* UIVerticalAlignLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIVerticalAlignLabel.swift; sourceTree = "<group>"; };
+		59EFA7E81ACCFA7C00CA3C84 /* ZoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
+		59EFA7EA1AD2231F00CA3C84 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		59EFA7EE1AD4F7B500CA3C84 /* GeoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTableViewCell.swift; sourceTree = "<group>"; };
+		59EFA7F01AD4F89200CA3C84 /* GeoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoViewController.swift; sourceTree = "<group>"; };
+		59EFA7F21AD61F1A00CA3C84 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		59EFA7F61ADB128D00CA3C84 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		59EFA7F81AE4915100CA3C84 /* ESideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESideMenu.swift; sourceTree = "<group>"; };
+		59EFA7FA1AE491CE00CA3C84 /* ESideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESideMenuNavigationController.swift; sourceTree = "<group>"; };
+		59F175DE1AF87D0F005E7950 /* gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gitignore; sourceTree = "<group>"; };
+		59F232651ABF24BA0085CA07 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				590EBBD11AEFF96900420384 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +108,7 @@
 		59DFCED41AB2A41C009DE7AF = {
 			isa = PBXGroup;
 			children = (
+				590EBBD01AEFF96900420384 /* CoreLocation.framework */,
 				59DFCEDF1AB2A41C009DE7AF /* OyventApp */,
 				59DFCEF51AB2A41D009DE7AF /* OyventAppTests */,
 				59DFCEDE1AB2A41C009DE7AF /* Products */,
@@ -77,10 +127,25 @@
 		59DFCEDF1AB2A41C009DE7AF /* OyventApp */ = {
 			isa = PBXGroup;
 			children = (
+				59F175DE1AF87D0F005E7950 /* gitignore */,
 				59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */,
-				59DFCEE41AB2A41C009DE7AF /* ViewController.swift */,
+				59F175DA1AF878CE005E7950 /* api */,
+				59F175D71AF877F6005E7950 /* button */,
+				59F175D91AF8789A005E7950 /* cell */,
+				59F175D81AF87836005E7950 /* menu */,
+				59F175D61AF877A6005E7950 /* model */,
+				59F175DB1AF879ED005E7950 /* util */,
+				59DFCEE41AB2A41C009DE7AF /* LoginViewController.swift */,
+				59F232651ABF24BA0085CA07 /* CustomTableViewCell.swift */,
+				59DFCF0A1AB64326009DE7AF /* RegisterViewController.swift */,
+				59DFCF081AB64303009DE7AF /* HomeViewController.swift */,
+				59EFA7F01AD4F89200CA3C84 /* GeoViewController.swift */,
+				59EFA7F21AD61F1A00CA3C84 /* DetailsViewController.swift */,
+				59DFCF121AB9398F009DE7AF /* MeViewController.swift */,
+				59EFA7E81ACCFA7C00CA3C84 /* ZoomViewController.swift */,
+				59EFA7F61ADB128D00CA3C84 /* CustomTabBarController.swift */,
 				59DFCEE61AB2A41C009DE7AF /* Main.storyboard */,
-				59DFCEE91AB2A41C009DE7AF /* Images.xcassets */,
+				59DFCF0C1AB67F9A009DE7AF /* Images.xcassets */,
 				59DFCEEB1AB2A41D009DE7AF /* LaunchScreen.xib */,
 				59DFCEE01AB2A41C009DE7AF /* Supporting Files */,
 			);
@@ -98,7 +163,7 @@
 		59DFCEF51AB2A41D009DE7AF /* OyventAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				59DFCEF81AB2A41D009DE7AF /* OyventAppTests.swift */,
+				59DFCEF81AB2A41D009DE7AF /* OyventTests.swift */,
 				59DFCEF61AB2A41D009DE7AF /* Supporting Files */,
 			);
 			path = OyventAppTests;
@@ -110,6 +175,62 @@
 				59DFCEF71AB2A41D009DE7AF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		59F175D61AF877A6005E7950 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				59DFCF141ABBA84B009DE7AF /* Photo.swift */,
+				590EBBD41AF5E55A00420384 /* Comment.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		59F175D71AF877F6005E7950 /* button */ = {
+			isa = PBXGroup;
+			children = (
+				59DFCF021AB2A58D009DE7AF /* CustomButton.swift */,
+				590EBBD81AF68B6900420384 /* RoundButton.swift */,
+			);
+			name = button;
+			sourceTree = "<group>";
+		};
+		59F175D81AF87836005E7950 /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				59EFA7F81AE4915100CA3C84 /* ESideMenu.swift */,
+				59EFA7FA1AE491CE00CA3C84 /* ESideMenuNavigationController.swift */,
+				590EBBCC1AE494B500420384 /* MyMenuTableViewController.swift */,
+				590EBBCE1AE497E400420384 /* MyNavigationController.swift */,
+			);
+			name = menu;
+			sourceTree = "<group>";
+		};
+		59F175D91AF8789A005E7950 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				59EFA7EE1AD4F7B500CA3C84 /* GeoTableViewCell.swift */,
+				590EBBD21AF5852C00420384 /* DetailsTableViewCell.swift */,
+			);
+			name = cell;
+			sourceTree = "<group>";
+		};
+		59F175DA1AF878CE005E7950 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				59DFCF161ABBE995009DE7AF /* PhotoAPIController.swift */,
+				590EBBD61AF5F29D00420384 /* CommentAPIController.swift */,
+			);
+			name = api;
+			sourceTree = "<group>";
+		};
+		59F175DB1AF879ED005E7950 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				59EFA7E61AC8FE5A00CA3C84 /* UIVerticalAlignLabel.swift */,
+				59EFA7EA1AD2231F00CA3C84 /* DateExtension.swift */,
+			);
+			name = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +282,7 @@
 				TargetAttributes = {
 					59DFCEDC1AB2A41C009DE7AF = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = RLAHF6FL89;
 					};
 					59DFCEF11AB2A41D009DE7AF = {
 						CreatedOnToolsVersion = 6.2;
@@ -193,8 +315,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				59DFCEE81AB2A41C009DE7AF /* Main.storyboard in Resources */,
+				59F175DF1AF87D0F005E7950 /* gitignore in Resources */,
+				59DFCF0D1AB67F9A009DE7AF /* Images.xcassets in Resources */,
 				59DFCEED1AB2A41D009DE7AF /* LaunchScreen.xib in Resources */,
-				59DFCEEA1AB2A41C009DE7AF /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,8 +335,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59DFCEE51AB2A41C009DE7AF /* ViewController.swift in Sources */,
+				590EBBD91AF68B6900420384 /* RoundButton.swift in Sources */,
+				59EFA7F11AD4F89200CA3C84 /* GeoViewController.swift in Sources */,
+				59EFA7E71AC8FE5A00CA3C84 /* UIVerticalAlignLabel.swift in Sources */,
+				59EFA7F71ADB128D00CA3C84 /* CustomTabBarController.swift in Sources */,
+				59EFA7FB1AE491CE00CA3C84 /* ESideMenuNavigationController.swift in Sources */,
+				59EFA7EB1AD2231F00CA3C84 /* DateExtension.swift in Sources */,
+				59F232661ABF24BA0085CA07 /* CustomTableViewCell.swift in Sources */,
+				590EBBD31AF5852C00420384 /* DetailsTableViewCell.swift in Sources */,
+				59DFCF151ABBA84B009DE7AF /* Photo.swift in Sources */,
+				59DFCEE51AB2A41C009DE7AF /* LoginViewController.swift in Sources */,
+				590EBBD51AF5E55A00420384 /* Comment.swift in Sources */,
+				59DFCF131AB9398F009DE7AF /* MeViewController.swift in Sources */,
+				59EFA7E91ACCFA7C00CA3C84 /* ZoomViewController.swift in Sources */,
+				59EFA7F91AE4915100CA3C84 /* ESideMenu.swift in Sources */,
+				59DFCF0B1AB64326009DE7AF /* RegisterViewController.swift in Sources */,
+				59DFCF171ABBE995009DE7AF /* PhotoAPIController.swift in Sources */,
+				590EBBCF1AE497E400420384 /* MyNavigationController.swift in Sources */,
 				59DFCEE31AB2A41C009DE7AF /* AppDelegate.swift in Sources */,
+				590EBBCD1AE494B500420384 /* MyMenuTableViewController.swift in Sources */,
+				590EBBD71AF5F29D00420384 /* CommentAPIController.swift in Sources */,
+				59EFA7EF1AD4F7B500CA3C84 /* GeoTableViewCell.swift in Sources */,
+				59DFCF031AB2A58D009DE7AF /* CustomButton.swift in Sources */,
+				59DFCF091AB64303009DE7AF /* HomeViewController.swift in Sources */,
+				59EFA7F31AD61F1A00CA3C84 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59DFCEF91AB2A41D009DE7AF /* OyventAppTests.swift in Sources */,
+				59DFCEF91AB2A41D009DE7AF /* OyventTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,9 +481,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = OyventApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = OyventApp;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -346,9 +494,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = OyventApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = OyventApp;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -366,7 +517,7 @@
 				);
 				INFOPLIST_FILE = OyventAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = OyventAppTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OyventApp.app/OyventApp";
 			};
 			name = Debug;
@@ -381,7 +532,7 @@
 				);
 				INFOPLIST_FILE = OyventAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = OyventAppTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OyventApp.app/OyventApp";
 			};
 			name = Release;
@@ -405,6 +556,7 @@
 				59DFCEFE1AB2A41D009DE7AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		59DFCEFF1AB2A41D009DE7AF /* Build configuration list for PBXNativeTarget "OyventAppTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +565,7 @@
 				59DFCF011AB2A41D009DE7AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,15 +7,49 @@
 //
 
 import UIKit
+import CoreLocation 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var zoomedPhoto:Photo?
+    var locManager: CLLocationManager?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        locManager = CLLocationManager()
+        locManager!.requestWhenInUseAuthorization()
+        
+        var rootViewController = self.window!.rootViewController
+        let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        var isUserLoggedIn:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
+        if(!isUserLoggedIn){
+            var loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("loginView") as LoginViewController
+            
+            window!.rootViewController = loginViewController
+            window!.makeKeyAndVisible()
+        }else{
+            
+            //var homeController:MainViewController = mainStoryboard.instantiateViewControllerWithIdentifier("homeView") as MainViewController
+            var nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
+            //let geoController:GeoViewController =  nvg.topViewController as GeoViewController
+           
+             //let tabController:CustomTabBarController = mainStoryboard.instantiateViewControllerWithIdentifier("customTabBar") as CustomTabBarController
+            
+            
+            
+            //window!.rootViewController = homeController
+            window!.rootViewController = nvg
+            //window!.rootViewController = tabController
+            window!.makeKeyAndVisible()
+//            if let tabBarController = self.window!.rootViewController as? CustomTabBarController {
+//                tabBarController.selectedIndex = 0
+//            }
+        }
+
+        
         return true
     }
 
