@@ -21,12 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         locManager = CLLocationManager()
         locManager!.requestWhenInUseAuthorization()
         
-        var rootViewController = self.window!.rootViewController
+        //let rootViewController = self.window!.rootViewController
         let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
-        var isUserLoggedIn:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
+        let isUserLoggedIn:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
         if(!isUserLoggedIn){
-            var loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("loginView") as LoginViewController
+            let loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("loginView") as LoginViewController
             
             window!.rootViewController = loginViewController
             window!.makeKeyAndVisible()
@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             
             let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
+            let geoController:GeoViewController =  nvg.topViewController as GeoViewController
             //let homeController:HomeViewController = mainStoryboard.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
             window!.rootViewController = nvg
             window!.makeKeyAndVisible()

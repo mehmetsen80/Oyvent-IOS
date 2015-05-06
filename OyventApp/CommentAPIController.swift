@@ -20,7 +20,7 @@ class CommentAPIController{
         self.delegate = delegate
     }
     
-    func searchPhotos(photoID: Double) {
+    func searchComments(photoID: Double) {
         let urlPath = "http://oyvent.com/ajax/Feeds.php?"
         post(urlPath, photoID: photoID)
     }

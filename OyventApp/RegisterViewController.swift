@@ -68,6 +68,7 @@ class RegisterViewController: UIViewController {
                 var username:String? = parseJSON["username"] as? String
                 var lastlogindate:String = parseJSON["lastlogindate"] as String!
                 var signupdate:String = parseJSON["signupdate"] as String!
+                let isadmin:Bool = parseJSON["isadmin"] as Bool!
                 
                 
                 dispatch_async(dispatch_get_main_queue(),{
@@ -93,6 +94,7 @@ class RegisterViewController: UIViewController {
                         NSUserDefaults.standardUserDefaults().setObject(password, forKey:"password")
                         NSUserDefaults.standardUserDefaults().setObject(lastlogindate, forKey:"lastlogindate")
                         NSUserDefaults.standardUserDefaults().setObject(signupdate, forKey:"signupdate")
+                        NSUserDefaults.standardUserDefaults().setBool(isadmin, forKey: "isadmin")
                         NSUserDefaults.standardUserDefaults().synchronize()
                         
                         

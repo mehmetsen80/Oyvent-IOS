@@ -277,6 +277,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     }
    
     
+    /********************* get a transparent background image *******************/
     func onePixelImageWithColor(color : UIColor) -> UIImage {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
@@ -285,7 +286,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         CGContextFillRect(context, CGRectMake(0, 0, 1, 1))
         let image = UIImage(CGImage: CGBitmapContextCreateImage(context))
         return image!
-    }
+    }/***************** end of get a transparent background image ***************/
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -332,8 +333,6 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         
         
         
-        
-        
         /************************ album Name should less than 37 chars ***********************/
         let albumName = photo.albumName
         if(countElements(albumName)>37){
@@ -355,8 +354,6 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         }
         /**************************** End of Comment Box with Size ***************************/
         
-        
-
         
         /**************** user has already voted, then disable vote buttons **************/
         cell.btnVoteUp.enabled = !photo.hasVoted
@@ -448,44 +445,40 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-        
         //println("maximumOffset \(maximumOffset)  currentOffset: \(currentOffset)")
-
-        
         if (maximumOffset - currentOffset) <= 144  &&  maximumOffset > 0{
             println("let's search: maximumOffset - currentOffset:\(maximumOffset - currentOffset)")
             api!.searchPhotos(++pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID)
         }
     }
     
-    
+    /*************************************** vote positive **********************************/
     @IBAction func doVoteUp(sender: UIButton) {
-        
-        var buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mTableView)
-        var indexPath: NSIndexPath = self.mTableView.indexPathForRowAtPoint(buttonPosition)!
+        let buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mTableView)
+        let indexPath: NSIndexPath = self.mTableView.indexPathForRowAtPoint(buttonPosition)!
         vote(indexPath, voteType: "VOTEUP")
-    }
+    }/************************************* end of vote positive ****************************/
     
     
+    /**************************************** vote negative *********************************/
     @IBAction func doVoteDown(sender: UIButton) {
-        
-        var buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mTableView)
-        var indexPath: NSIndexPath = self.mTableView.indexPathForRowAtPoint(buttonPosition)!
+        let buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mTableView)
+        let indexPath: NSIndexPath = self.mTableView.indexPathForRowAtPoint(buttonPosition)!
         vote(indexPath, voteType: "VOTEDOWN")
-    }
+    }/************************************* end of vote negative ****************************/
     
+    
+    /************************************** vote up or down *******************************/
     func vote(indexPath: NSIndexPath, voteType: String){
         let cell = self.mTableView.cellForRowAtIndexPath(indexPath) as GeoTableViewCell
         let photo:Photo = self.photos[indexPath.row]
         let pkPhotoID:String = NSString(format: "%.0f", photo.pkPhotoID)
-        var userID:String = NSUserDefaults.standardUserDefaults().stringForKey("userID")!
+        let userID:String = NSUserDefaults.standardUserDefaults().stringForKey("userID")!
         let url = NSURL(string:"http://oyvent.com/ajax/Album.php")
         let request = NSMutableURLRequest(URL: url!)
         let postString = "processType=\(voteType)&pkPhotoID=\(pkPhotoID)&userID=\(userID)"
-        //println("postString=\(postString)")
         request.HTTPMethod = "POST"
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-        
         
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request){
@@ -496,20 +489,18 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
                 return
             }
             
-            
             var err: NSError?
             var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
             
             if let parseJSON = json {
-                var resultValue:Bool = parseJSON["success"] as Bool!
-                var message:String? = parseJSON	["message"] as String?
-                var already:Bool = parseJSON["already"] as Bool!
-                
+                let resultValue:Bool = parseJSON["success"] as Bool!
+                let message:String? = parseJSON	["message"] as String?
+                let already:Bool = parseJSON["already"] as Bool!
+            
                 dispatch_async(dispatch_get_main_queue(),{
-                    
                     if(!resultValue){
-                        //display alert message with confirmation
-                        var myAlert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                        //display alert message with error
+                        var myAlert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
                         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                         myAlert.addAction(okAction)
                         self.presentViewController(myAlert, animated: true, completion: nil)
@@ -521,28 +512,25 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
                             cell.lblOys.text = message
                         }
                     }
-                    
                 })
-                
             }
+            
             
         }
         
         task.resume()
     }
-
+    /*********************************** end of vote up or down ****************************/
     
     
     @IBAction func doVisitSocial(sender: AnyObject) {
         var buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mTableView)
         var indexPath: NSIndexPath = self.mTableView.indexPathForRowAtPoint(buttonPosition)!
         let photo:Photo = self.photos[indexPath.row]
-        
         self.openUrl(photo.contentLink)
     }
     
     func openUrl(url:String!) {
-        
         if let url = NSURL(string: url) {
             UIApplication.sharedApplication().openURL(url)
         }
@@ -559,11 +547,6 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
                 self.photos.append(resultsArr[i])
             }
             
-//            if(self.pageNo == 0){
-//                self.photos = Photo.photosWithJSON(resultsArr)
-//            }else{
-//               
-//            }
             self.mTableView!.reloadData()
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             self.loadSpinner.stopAnimating()
@@ -574,8 +557,8 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
 
    
     @IBAction func filterByAlbumID(sender: UIButton) {
-        var buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mTableView)
-        var indexPath: NSIndexPath = self.mTableView.indexPathForRowAtPoint(buttonPosition)!
+        let buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mTableView)
+        let indexPath: NSIndexPath = self.mTableView.indexPathForRowAtPoint(buttonPosition)!
         let photo:Photo = self.photos[indexPath.row]
         println("fkAlbumID: \(photo.fkAlbumID)")
         println("albumName: \(photo.albumName)")

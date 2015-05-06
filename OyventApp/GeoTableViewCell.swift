@@ -22,11 +22,6 @@ class GeoTableViewCell: UITableViewCell {
     @IBOutlet weak var btnVoteDown: UIButton!
     @IBOutlet weak var lblOys: UILabel!
    
-  
-    
-   
-    
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -35,7 +30,6 @@ class GeoTableViewCell: UITableViewCell {
     required init(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
-       
     }
     
     override func awakeFromNib() {
@@ -45,7 +39,6 @@ class GeoTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 

@@ -15,6 +15,7 @@ class DetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var lblComment: UILabel!
     @IBOutlet weak var lblPostDate: UILabel!
     @IBOutlet weak var lblMilesUser: UILabel!
+    @IBOutlet weak var btnDelete: UIButton!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -31,6 +31,8 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
     @IBOutlet weak var lblFullName: UILabel!
     @IBOutlet weak var lblPostDate: UILabel!
     @IBOutlet weak var txtMessage: UITextField!
+    @IBOutlet weak var btnDeletePost: UIButton!
+   
     
     var geoCoder: CLGeocoder!
     var locationManager: CLLocationManager!
@@ -46,7 +48,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         self.mTableView.estimatedRowHeight = 57
         self.api = CommentAPIController(delegate: self)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        self.api?.searchPhotos(photo.pkPhotoID)
+        self.api?.searchComments(photo.pkPhotoID)
         
         
         
@@ -93,6 +95,11 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         /************************************ end of votes ********************************/
         
         
+        /*************************** if user is admin or same user  *******************/
+        let isadmin:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isadmin")
+        let userID:Double = NSUserDefaults.standardUserDefaults().doubleForKey("userID")
+        btnDeletePost.hidden = !(isadmin || (photo.fkUserID == userID))
+        /************************** End of user is admin or same user *****************/
         
         
         /**************************** pick up the right social button ************************/
@@ -119,8 +126,6 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         /********************* End of pick up the right social button ************************/
 
         
-        
-        
         /************************ other inputs  ******************************/
         self.lblMiles?.text = NSString(format: "%.2f", photo.milesUser)+" mi" //miles of user
         self.lblFullName?.text = photo.fullName //fullname of the user
@@ -128,11 +133,18 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         /********************* End of other inputs  ***************************/
     }
     
+    
+    /************************ setup location manager along with use authorization *****************/
     func setupLocationManager(){
         
-        geoCoder = CLGeocoder()
+        //display alert message with warning
+        var myAlert = UIAlertController(title: "Warning", message: "Location services are not enabled", preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+        myAlert.addAction(okAction)
+        
+        geoCoder = CLGeocoder() //first time initialization of geoCoder for later purposes
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        if appDelegate.locManager != nil {
+        if appDelegate.locManager != nil {//initialize location manager
             self.locationManager = appDelegate.locManager!
             self.locationManager.delegate = self
             self.locationManager.requestWhenInUseAuthorization()
@@ -141,14 +153,20 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
             self.locationManager.startMonitoringSignificantLocationChanges()
         }
         
-        
+        //ask for location authorization and get latitude and longitude coordinates
         if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
             CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
                 
                 if self.locationManager.location != nil {
                     currentLocation = self.locationManager.location
-                    latitude = currentLocation.coordinate.latitude
-                    longitude = currentLocation.coordinate.longitude
+                    if currentLocation == nil{
+                        latitude = 0
+                        longitude = 0
+                        self.presentViewController(myAlert, animated: true, completion: nil)
+                    }else{
+                        latitude = currentLocation.coordinate.latitude
+                        longitude = currentLocation.coordinate.longitude
+                    }
                 }
                 else{
                     latitude = 0
@@ -156,10 +174,15 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                 }
                 
         }else {
-            println("Location services are not enabled");
+           
+            self.presentViewController(myAlert, animated: true, completion: nil)
         }
     }
+    /******************* end of setup location manager along with use authorization ***************/
     
+    
+    
+    /******************************** if location manager fails to load *************************/
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         println("error to get location : \(error)")
         
@@ -177,16 +200,19 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         }
         
     }
+    /******************************** end of location manager fails to load *************************/
     
     
+    
+    /**** update current location coords and lookup location periodically until city name caught ****/
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         
         currentLocation = newLocation
         self.latitude = currentLocation.coordinate.latitude
         self.longitude = currentLocation.coordinate.longitude
         
-        println("didUpdateToLocation longitude \(self.latitude)")
-        println("didUpdateToLocation latitude \(self.longitude)")
+        //println("didUpdateToLocation longitude \(self.latitude)")
+        //println("didUpdateToLocation latitude \(self.longitude)")
         
         geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: {
             placemarks, error in
@@ -199,53 +225,56 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                 placeMark = placeArray[0]
                 
                 // Address dictionary
-                println(placeMark.addressDictionary)
+                //println(placeMark.addressDictionary)
                 
                 // Location name
                 if let locationName = placeMark.addressDictionary["Name"] as? NSString {
-                    println(locationName)
+                    //println(locationName)
                 }
                 
                 // Street address
                 if let street = placeMark.addressDictionary["Thoroughfare"] as? NSString {
-                    println(street)
+                    //println(street)
                 }
                 
                 // City
                 if let city = placeMark.addressDictionary["City"] as? NSString {
-                    println(city)
+                    //println(city)
                     self.locationManager.stopUpdatingLocation()
                 }
                 
                 // Zip code
                 if let zip = placeMark.addressDictionary["ZIP"] as? NSString {
-                    println(zip)
+                    //println(zip)
                 }
                 
                 // Country
                 if let country = placeMark.addressDictionary["Country"] as? NSString {
-                    println(country)
+                    //println(country)
                 }
                 
             }
         })
-        
-        
     }
+    /*** end of update current location coords&lookup location periodically until city name caught **/
+
     
-    
-    
+    /************** vote positive *************/
     @IBAction func doVoteUp(sender: UIButton) {
         vote("VOTEUP")
-    }
+    }/********** end of vote positive *********/
     
+    
+    /************** vote negative *************/
     @IBAction func doVoteDown(sender: UIButton) {
         vote("VOTEDOWN")
-    }
+    }/********** end of vote negative **********/
     
+    
+    /************************************** vote up or down *******************************/
     func vote(voteType: String){
         let pkPhotoID:String = NSString(format: "%.0f", photo.pkPhotoID)
-        var userID:String = NSUserDefaults.standardUserDefaults().stringForKey("userID")!
+        let userID:String = NSUserDefaults.standardUserDefaults().stringForKey("userID")!
         let url = NSURL(string:"http://oyvent.com/ajax/Album.php")
         let request = NSMutableURLRequest(URL: url!)
         let postString = "processType=\(voteType)&pkPhotoID=\(pkPhotoID)&userID=\(userID)"
@@ -265,15 +294,14 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
             var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
             
             if let parseJSON = json {
-                var resultValue:Bool = parseJSON["success"] as Bool!
-                var message:String? = parseJSON	["message"] as String?
-                var already:Bool = parseJSON["already"] as Bool!
+                let resultValue:Bool = parseJSON["success"] as Bool!
+                let message:String? = parseJSON	["message"] as String?
+                let already:Bool = parseJSON["already"] as Bool!
                 
-                dispatch_async(dispatch_get_main_queue(),{
-                    
+                 dispatch_async(dispatch_get_main_queue(),{
                     if(!resultValue){
-                        //display alert message with confirmation
-                        var myAlert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                        //display alert message with error
+                        var myAlert = UIAlertController(title: "Error", message: message, preferredStyle:UIAlertControllerStyle.Alert)
                         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                         myAlert.addAction(okAction)
                         self.presentViewController(myAlert, animated: true, completion: nil)
@@ -285,16 +313,14 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                             self.lblOys.text = message
                         }
                     }
-                    
                 })
-                
             }
             
         }
         
         task.resume()
     }
-    
+    /*********************************** end of vote up or down ****************************/
     
 
 
@@ -304,12 +330,12 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
     }
     
     func openUrl(url:String!) {
-        
         if let url = NSURL(string: url) {
             UIApplication.sharedApplication().openURL(url)
         }
     }
     
+    /********************* get a transparent background image *******************/
     func onePixelImageWithColor(color : UIColor) -> UIImage {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
@@ -318,7 +344,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         CGContextFillRect(context, CGRectMake(0, 0, 1, 1))
         let image = UIImage(CGImage: CGBitmapContextCreateImage(context))
         return image!
-    }
+    }/***************** end of get a transparent background image ***************/
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count
@@ -330,6 +356,13 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         let comment:Comment = self.comments[indexPath.row]
         cell.btnUser.setTitle(comment.fullName, forState: UIControlState.Normal)
         cell.lblComment.text = comment.message
+        
+        /******* if user is admin or same user or first row with caption or no comment *************/
+        let isadmin:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isadmin")
+        let userID:Double = NSUserDefaults.standardUserDefaults().doubleForKey("userID")
+        cell.btnDelete.hidden = !(isadmin || (photo.fkUserID == userID)) || ((indexPath.row == 0 && self.photo.caption != "" ) || (indexPath.row == 0 && comment.message == "no comment yet"))
+        /******* End of user is admin or same user or first row with caption or no comment *********/
+        
         cell.lblPostDate?.text = (comment.postDate != "" && comment.postDate != nil) ? NSDate().offsetFrom(NSDate().dateFromString(comment.postDate!)) : "" //get the post date in days,minutes,month,year
         if self.latitude != nil && self.longitude != nil && comment.latitude != nil && comment.longitude != nil {
             let loc1: CLLocation = CLLocation(latitude: self.latitude!, longitude: self.longitude!)
@@ -341,6 +374,149 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         return cell
     }
     
+    /*********************** when post delete button clicked, delete the post ****************/
+    @IBAction func doDeletePost(sender: UIButton) {
+        
+        let url = NSURL(string:"http://oyvent.com/ajax/Feeds.php")
+        let request = NSMutableURLRequest(URL: url!)
+        let postString = "processType=DELETEPOST&pkPhotoID=\(photo.pkPhotoID)"
+        println("postString: \(postString)")
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        
+        var deleteAlert = UIAlertController(title: "Delete this Post", message: "Do you want to delete this post?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        //delete refused, don't delete this post
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
+            //don't do anything here, the dialog simply closes itself
+        }))
+        
+        //delete this post now
+        deleteAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) in
+            
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request){
+                data, response, error  in
+                
+                if(error != nil){
+                    return
+                }
+                
+                var err: NSError?
+                var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
+                
+                if let parseJSON = json {
+                    let resultValue:Bool = parseJSON["success"] as Bool!
+                    let message:String? = parseJSON	["error"] as String?
+                    
+                    dispatch_async(dispatch_get_main_queue(),{
+                        
+                        if(!resultValue){
+                            //display alert message with confirmation
+                            var myAlert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                            let okAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil)
+                            myAlert.addAction(okAction)
+                            self.presentViewController(myAlert, animated: true, completion: nil)
+                        }else{
+                            //display alert message with confirmation
+                            var myAlert = UIAlertController(title: "Confirmation", message: "Post deleted successfully!", preferredStyle: UIAlertControllerStyle.Alert)
+                            myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                                let nvg : MyNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController;
+                                self.presentViewController(nvg, animated: true, completion: nil)
+                            }))
+                            self.presentViewController(myAlert, animated: true, completion: nil)
+                        }
+                    })//dispatch
+                }//parse json
+                
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            }//task
+            
+            task.resume()
+        }))
+        
+        
+        
+        presentViewController(deleteAlert, animated: true, completion: nil)
+    }
+
+        
+    
+    /*********************** end of when post delete button clicked, delete the post ****************/
+    
+    
+    /*********************** when comment delete button clicked, delete the comment ****************/
+    @IBAction func doDeleteComment(sender: UIButton) {
+        
+        let buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mTableView)
+        let indexPath: NSIndexPath = self.mTableView.indexPathForRowAtPoint(buttonPosition)!
+        let comment:Comment = self.comments[indexPath.row]
+        let url = NSURL(string:"http://oyvent.com/ajax/Feeds.php")
+        let request = NSMutableURLRequest(URL: url!)
+        let postString = "processType=DELETECOMMENT&pkCommentID=\(comment.pkCommentID!)"
+        println("postString: \(postString)")
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        var deleteAlert = UIAlertController(title: "Delete Comment", message: "Do you want to delete this comment?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        
+        //delete refused, don't delete this comment
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
+            //don't do anything here, the dialog simply closes itself
+        }))
+        
+        //delete the comment now
+        deleteAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) in
+        
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request){
+                data, response, error  in
+                
+                if(error != nil){
+                    return
+                }
+            
+                var err: NSError?
+                var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
+                
+                if let parseJSON = json {
+                    let resultValue:Bool = parseJSON["success"] as Bool!
+                    let message:String? = parseJSON	["error"] as String?
+                    
+                    dispatch_async(dispatch_get_main_queue(),{
+                        
+                        if(!resultValue){
+                            //display alert message with confirmation
+                            var myAlert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                            let okAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil)
+                            myAlert.addAction(okAction)
+                            self.presentViewController(myAlert, animated: true, completion: nil)
+                        }else{
+                            
+                            //display alert message with confirmation
+                            var myAlert = UIAlertController(title: "Confirmation", message: "Comment deleted successfully!", preferredStyle: UIAlertControllerStyle.Alert)
+                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                            myAlert.addAction(okAction)
+                            self.presentViewController(myAlert, animated: true, completion: nil)
+                            self.api?.searchComments(self.photo.pkPhotoID)//reload comment
+                        }
+                    })//dispatch
+                }//parse json
+            
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            }//task
+            
+            task.resume()
+        }))
+        
+        presentViewController(deleteAlert, animated: true, completion: nil)
+    }
+    /********************* end of comment delete button clicked, delete the comment ****************/
+    
+    
+    /*********************************** scroll to top of comment tableview ***********************/
     func scrollToTop() {
         var top = NSIndexPath(forRow: Foundation.NSNotFound, inSection: 0);
         if(self.mTableView != nil){
@@ -348,22 +524,27 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
             self.mTableView!.reloadData()
         }
     }
+    /****************************** end of scroll to top of comment tableview *********************/
+
     
     
+    
+    
+    
+    /**************** move add comment textbox up **************/
     @IBAction func textFieldDidBeginEditing(sender: AnyObject) {
         animateViewMoving(true, moveValue: 225)
-        println("textFieldDidBeginEditing")
-    }
+    }/************ end of move add comment textbox up **********/
     
+    //keep this here for enabling Did End Editing of add comment textbos
+    @IBAction func textFieldDidEndOnExit(sender: AnyObject) {}
     
-    @IBAction func textFieldDidEndOnExit(sender: AnyObject) {
-    }
-    
+    /********* move add comment textbox back down ***********/
     @IBAction func textFieldDidEndEditing(sender: AnyObject) {
         animateViewMoving(false, moveValue: 225)
-        println("textFieldDidEndEditing")
-    }
+    }/****** end of move add comment textbox back down ******/
    
+    /********* animate add comment textbox either up or down *********/
     func animateViewMoving (up:Bool, moveValue :CGFloat){
         let movementDuration:NSTimeInterval = 0.3
         let movement:CGFloat = ( up ? -moveValue : moveValue)
@@ -372,16 +553,16 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         UIView.setAnimationDuration(movementDuration )
         self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
         UIView.commitAnimations()
-    }
-    
+    }/******* end of animate add comment textbox either up or down *****/
+    //when the user touches out of textbox view, end the viewing, move back down
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.view.endEditing(true);
     }
     
-
+    /*********************************** add comment for this photo *********************************/
     @IBAction func doAddComment(sender: RoundButton) {
         
-        var userID:String = NSUserDefaults.standardUserDefaults().stringForKey("userID")!
+        var userID: Double = NSUserDefaults.standardUserDefaults().doubleForKey("userID")
         let url = NSURL(string:"http://oyvent.com/ajax/Feeds.php")
         let request = NSMutableURLRequest(URL: url!)
         let comment = self.txtMessage.text
@@ -420,45 +601,38 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                         myAlert.addAction(okAction)
                         self.presentViewController(myAlert, animated: true, completion: nil)
                     }else{
-                        self.api?.searchPhotos(self.photo.pkPhotoID)
+                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                        self.api?.searchComments(self.photo.pkPhotoID)
                         self.txtMessage.text = ""
                         self.view.endEditing(true);
                         self.scrollToTop()
                     }
-                    
                 })
-                
             }
-            
         }
         
         task.resume()
     }
+    /********************************** end of add comment for this photo ***************************/
     
     
     
-    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
-        println("Returned from detail screen")
-    }
-
+    //returned from the zoom screen
+    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {}
+    /*********************** go to the zoom photo screen *************************/
     @IBAction func doZoom(sender: UIButton) {
-        
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         appDelegate.zoomedPhoto = photo
             appDelegate.window?.makeKeyAndVisible()
         performSegueWithIdentifier("zoomPoster", sender: self)
-        
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    }/*********************** end of go to the zoom photo screen *****************/
+    
     
     func didReceiveCommentAPIResults(results: NSDictionary) {
         
         dispatch_barrier_async(concurrentCommentQueue) {
-           // var resultsArr: [Comment] = []
-            var resultsArr: [Comment]  = results["results"] as [Comment]
+            var resultsArr: [Comment] = []
+            resultsArr  = results["results"] as [Comment]
             self.comments = []
             dispatch_async(dispatch_get_main_queue(), {
                 
@@ -467,7 +641,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                 resultsArr = Comment.commentsWithJSON(resultsArr)
                 //before comment manipulation, first add the caption as the first comment
                 if(self.photo.caption != ""){
-                    self.comments.append(Comment(fullName: "Caption by " + self.photo.fullName,message: self.photo.caption))
+                    self.comments.append(Comment(fullName: self.photo.fullName,message: self.photo.caption))
                     self.lblComments.text = "Comments (\(self.comments.count))"
                 }
                 

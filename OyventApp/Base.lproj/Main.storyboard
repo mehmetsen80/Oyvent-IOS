@@ -168,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKJ-vD-hHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1516" y="1907"/>
+            <point key="canvasLocation" x="1082" y="1957"/>
         </scene>
         <!--Liked-->
         <scene sceneID="pCl-OK-AYu">
@@ -188,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qp7-K0-tQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2332" y="1720"/>
+            <point key="canvasLocation" x="1524" y="1957"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="4dA-OP-315">
@@ -293,6 +293,20 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ie8-3b-y4r">
+                                                    <rect key="frame" x="8" y="41" width="46" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="DwL-48-Y6z"/>
+                                                        <constraint firstAttribute="width" constant="46" id="cCr-3r-H0H"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <state key="normal" title="delete">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="doDeleteComment:" destination="Snl-hX-GUY" eventType="touchUpInside" id="I3R-3c-NQg"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="cB6-zw-dh8" secondAttribute="bottom" constant="-3" id="2B6-eY-znr"/>
@@ -304,6 +318,8 @@
                                                 <constraint firstItem="cB6-zw-dh8" firstAttribute="top" secondItem="4d3-Mr-IIc" secondAttribute="bottom" constant="-9" id="CJj-Oj-oWs"/>
                                                 <constraint firstItem="cB6-zw-dh8" firstAttribute="trailing" secondItem="R0u-Ot-C6N" secondAttribute="trailingMargin" id="F1s-fe-DwE"/>
                                                 <constraint firstItem="fFn-3H-rfS" firstAttribute="leading" secondItem="R0u-Ot-C6N" secondAttribute="leadingMargin" constant="209" id="Hiz-vK-jcO"/>
+                                                <constraint firstItem="Ie8-3b-y4r" firstAttribute="top" secondItem="4d3-Mr-IIc" secondAttribute="bottom" constant="-5" id="I4z-LR-mux"/>
+                                                <constraint firstItem="Ie8-3b-y4r" firstAttribute="leading" secondItem="R0u-Ot-C6N" secondAttribute="leadingMargin" id="V2E-uh-Nec"/>
                                                 <constraint firstItem="fFn-3H-rfS" firstAttribute="leading" secondItem="qIr-BC-ojR" secondAttribute="trailing" constant="21" id="VN9-hP-tAJ"/>
                                                 <constraint firstItem="cB6-zw-dh8" firstAttribute="top" secondItem="fFn-3H-rfS" secondAttribute="bottom" constant="7" id="ghP-JI-QLS"/>
                                                 <constraint firstItem="qIr-BC-ojR" firstAttribute="top" secondItem="R0u-Ot-C6N" secondAttribute="topMargin" constant="-7" id="r8Y-Gr-hd0"/>
@@ -318,6 +334,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="btnDelete" destination="Ie8-3b-y4r" id="pon-60-fLp"/>
                                             <outlet property="btnUser" destination="qIr-BC-ojR" id="DAt-ir-mnh"/>
                                             <outlet property="lblComment" destination="4d3-Mr-IIc" id="5Ta-pI-qwy"/>
                                             <outlet property="lblMilesUser" destination="cB6-zw-dh8" id="0j6-eP-wkQ"/>
@@ -426,10 +443,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUC-Ef-jND">
-                                <rect key="frame" x="5" y="222" width="24" height="24"/>
+                                <rect key="frame" x="5" y="142" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="141-EY-ceI"/>
-                                    <constraint firstAttribute="height" constant="24" id="Nvg-PR-voQ"/>
+                                    <constraint firstAttribute="height" constant="24" id="cNf-af-DOO"/>
+                                    <constraint firstAttribute="width" constant="24" id="gfp-py-LEB"/>
                                 </constraints>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -439,9 +456,24 @@
                                     <action selector="doVisitSocial:" destination="Snl-hX-GUY" eventType="touchUpInside" id="TSb-mB-WNW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Fh-Zc-Huf">
+                                <rect key="frame" x="5" y="227" width="76" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="76" id="gPw-Rb-1Hh"/>
+                                    <constraint firstAttribute="height" constant="24" id="qCi-mB-q33"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="delete this post">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doDeletePost:" destination="Snl-hX-GUY" eventType="touchUpInside" id="vbG-5t-VBY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="DB0-fF-XoZ" firstAttribute="top" secondItem="dUC-Ef-jND" secondAttribute="bottom" constant="8" id="13v-LL-cvq"/>
                             <constraint firstItem="JdB-66-TBd" firstAttribute="top" secondItem="gEf-ZM-NSA" secondAttribute="bottom" constant="2" id="2Bv-pe-9pZ"/>
                             <constraint firstItem="bCv-34-25l" firstAttribute="top" secondItem="pKy-e9-i7s" secondAttribute="bottom" constant="13" id="4ea-iH-Bhc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pKy-e9-i7s" secondAttribute="trailing" constant="-6" id="4r3-MT-QeH"/>
@@ -459,15 +491,16 @@
                             <constraint firstItem="04I-Jz-bE7" firstAttribute="top" secondItem="IKB-xv-llv" secondAttribute="bottom" id="Oxp-Pq-PJq"/>
                             <constraint firstItem="04I-Jz-bE7" firstAttribute="trailing" secondItem="2rk-ez-tbz" secondAttribute="trailing" constant="-2" id="QDv-3w-UGa"/>
                             <constraint firstItem="a7R-SD-dRP" firstAttribute="baseline" secondItem="jff-MK-STa" secondAttribute="baseline" constant="2" id="RkE-uH-9MP"/>
+                            <constraint firstItem="6Fh-Zc-Huf" firstAttribute="top" secondItem="DB0-fF-XoZ" secondAttribute="bottom" constant="13" id="SnL-K6-zIx"/>
                             <constraint firstItem="IKB-xv-llv" firstAttribute="top" secondItem="2rk-ez-tbz" secondAttribute="bottom" constant="50" id="T72-rY-gZa"/>
-                            <constraint firstItem="dUC-Ef-jND" firstAttribute="top" secondItem="DB0-fF-XoZ" secondAttribute="bottom" constant="8" id="TBB-jT-U5u"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zSd-jM-Shr" secondAttribute="trailing" constant="-10" id="Tn0-Et-7Bi"/>
                             <constraint firstItem="3jx-Uo-KTY" firstAttribute="top" secondItem="DB0-fF-XoZ" secondAttribute="bottom" constant="8" id="VUL-BA-1yn"/>
+                            <constraint firstItem="6Fh-Zc-Huf" firstAttribute="leading" secondItem="Xfx-du-CXI" secondAttribute="leadingMargin" constant="-11" id="Zr3-c7-oUL"/>
+                            <constraint firstItem="2rk-ez-tbz" firstAttribute="leading" secondItem="dUC-Ef-jND" secondAttribute="trailing" constant="-29" id="aJG-6x-g7j"/>
                             <constraint firstItem="a7R-SD-dRP" firstAttribute="trailing" secondItem="SYM-7A-1NN" secondAttribute="trailing" id="cBg-nH-311"/>
                             <constraint firstItem="bCv-34-25l" firstAttribute="bottom" secondItem="3jx-Uo-KTY" secondAttribute="bottom" id="cFN-Ed-Rji"/>
                             <constraint firstItem="zSd-jM-Shr" firstAttribute="leading" secondItem="3jx-Uo-KTY" secondAttribute="trailing" constant="59" id="eOo-Q0-Nmr"/>
                             <constraint firstItem="DB0-fF-XoZ" firstAttribute="leading" secondItem="2rk-ez-tbz" secondAttribute="leading" id="fb6-U2-bwg"/>
-                            <constraint firstItem="dUC-Ef-jND" firstAttribute="leading" secondItem="Xfx-du-CXI" secondAttribute="leadingMargin" constant="-11" id="gYu-X7-FVO"/>
                             <constraint firstItem="zSd-jM-Shr" firstAttribute="bottom" secondItem="3jx-Uo-KTY" secondAttribute="bottom" id="ge3-rb-P2T"/>
                             <constraint firstItem="IKB-xv-llv" firstAttribute="leading" secondItem="Xfx-du-CXI" secondAttribute="leadingMargin" constant="-14" id="hAp-kM-i5S"/>
                             <constraint firstItem="jff-MK-STa" firstAttribute="leading" secondItem="Xfx-du-CXI" secondAttribute="leadingMargin" constant="-11" id="i3A-Uk-yMl"/>
@@ -496,6 +529,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="btnBigPoster" destination="2rk-ez-tbz" id="ad7-nI-F2u"/>
+                        <outlet property="btnDeletePost" destination="6Fh-Zc-Huf" id="lxa-e8-zID"/>
                         <outlet property="btnGeoAlbum" destination="DB0-fF-XoZ" id="ESt-tS-4V6"/>
                         <outlet property="btnSocial" destination="dUC-Ef-jND" id="W46-wf-Pan"/>
                         <outlet property="btnVoteDown" destination="zSd-jM-Shr" id="KrF-nW-kzb"/>
@@ -512,7 +546,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Zc-SP-03x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1524" y="1262"/>
+            <point key="canvasLocation" x="1524" y="1268"/>
         </scene>
         <!--Capture-->
         <scene sceneID="Ils-hf-a3G">
@@ -532,7 +566,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6nV-Ar-TSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="341" y="1980"/>
+            <point key="canvasLocation" x="627" y="1957"/>
         </scene>
         <!--Me-->
         <scene sceneID="x6J-kA-9eG">
@@ -563,7 +597,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GzW-2n-HoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2594" y="1871"/>
+            <point key="canvasLocation" x="1946" y="1957"/>
         </scene>
         <!--Geo View Controller-->
         <scene sceneID="aDA-8H-bfP">

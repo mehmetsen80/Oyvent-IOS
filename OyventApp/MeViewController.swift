@@ -103,13 +103,14 @@ class MeViewController: UIViewController, ENSideMenuDelegate {
     @IBAction func doLogout(sender: AnyObject) {
         
         NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
-        /*NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"userID")
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"userID")
         NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"fullname")
         NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"username")
         NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"email")
         NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"password")
         NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"lastlogindate")
-        NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"signupdate")*/
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"signupdate")
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isadmin")
         NSUserDefaults.standardUserDefaults().synchronize()
         
         let loginViewController:LoginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("loginView") as LoginViewController

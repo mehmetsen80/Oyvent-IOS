@@ -59,12 +59,13 @@ class LoginViewController: UIViewController {
                 var resultValue = parseJSON["success"] as Bool!
                 println("resultValue=\(resultValue)")
                 
-                var message:String? = parseJSON	["message"] as String?
-                var userID:Double? = parseJSON["userID"] as Double?
-                var fullname:String? = parseJSON["fullname"] as String?
-                var username:String? = parseJSON["username"] as String?
-                var lastlogindate:String? = parseJSON["lastlogindate"] as String?
-                var signupdate:String? = parseJSON["signupdate"] as String?
+                let message:String? = parseJSON	["message"] as String?
+                let userID:Double? = parseJSON["userID"] as Double?
+                let fullname:String? = parseJSON["fullname"] as String?
+                let username:String? = parseJSON["username"] as String?
+                let lastlogindate:String? = parseJSON["lastlogindate"] as String?
+                let signupdate:String? = parseJSON["signupdate"] as String?
+                let isadmin:Bool = parseJSON["isadmin"] as Bool!
                 
                 
                 
@@ -91,14 +92,15 @@ class LoginViewController: UIViewController {
                         NSUserDefaults.standardUserDefaults().setObject(password, forKey:"password")
                         NSUserDefaults.standardUserDefaults().setObject(lastlogindate, forKey:"lastlogindate")
                         NSUserDefaults.standardUserDefaults().setObject(signupdate, forKey:"signupdate")
+                        NSUserDefaults.standardUserDefaults().setBool(isadmin, forKey: "isadmin")
                         NSUserDefaults.standardUserDefaults().synchronize()
                         
                         
                         
-                        let homeController:HomeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
-                        //let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
+                        //let homeController:HomeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
+                        let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
                         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-                        appDelegate.window?.rootViewController = homeController
+                        appDelegate.window?.rootViewController = nvg
                         appDelegate.window?.makeKeyAndVisible()
                         
                     }
