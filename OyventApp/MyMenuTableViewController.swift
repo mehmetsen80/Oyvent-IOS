@@ -60,7 +60,7 @@ class MyMenuTableViewController: UITableViewController {
                 cell!.textLabel?.text = "Home"
                 break
             case 1:
-                cell!.textLabel?.text = "Geo Album"
+                cell!.textLabel?.text = "Near By"
                 break
             case 2:
                 cell!.textLabel?.text = "Me"

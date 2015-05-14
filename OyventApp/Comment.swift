@@ -10,15 +10,15 @@ import Foundation
 
 class Comment{
     
-    var pkCommentID: Double?
-    var fkPhotoID: Double?
-    var fkUserID: Double?
-    var fullName: String?
-    var message: String?
-    var latitude: Double?
-    var longitude: Double?
-    var postDate: String?
-    var email: String?
+    let pkCommentID: Double?
+    let fkPhotoID: Double?
+    let fkUserID: Double?
+    let fullName: String?
+    let message: String?
+    let latitude: Double?
+    let longitude: Double?
+    let postDate: String?
+    let email: String?
     
     
     init(fullName: String, message: String){
@@ -49,7 +49,7 @@ class Comment{
         // Store the results in our table data array
         if allResults.count>0 {
             
-            // Sometimes iTunes returns a collection, not a track, so we check both for the 'name'
+            // get the all comment list
             for result in allResults {
                 
                 var pkCommentID =  result["PKCOMMENTID"] as? Double

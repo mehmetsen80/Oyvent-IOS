@@ -21,12 +21,11 @@ class CommentAPIController{
     }
     
     func searchComments(photoID: Double) {
-        let urlPath = "http://oyvent.com/ajax/Feeds.php?"
-        post(urlPath, photoID: photoID)
+        post(photoID)
     }
     
     
-    func post(path: String, photoID: Double) {
+    func post(photoID: Double) {
         
         let url = NSURL(string:"http://oyvent.com/ajax/Feeds.php")
         var request = NSMutableURLRequest(URL: url!)

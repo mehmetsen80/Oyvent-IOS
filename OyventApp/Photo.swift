@@ -34,14 +34,14 @@ class Photo{
     let mediumImageURL: String
     let smallImageURL: String
     let albumName: String
-    let fkAlbumID:Int
+    let fkAlbumID:Double
     let fullName: String
     let email: String
     let totalComments: Int
     let hasVoted: Bool
     
   
-    init(pkPhotoID: Double, fkUserID: Double, oy:Int, lat1:Double, long1:Double, lat2:Double, long2:Double, milesGeo:Double, milesUser:Double, fkTwitterID:String, fkInstagramID:String, fkFacebookID:String, contentLink:String, ownedBy:String, caption:String, createdDate:String, postDate: String, thumbImageURL: String, largeImageURL: String, mediumImageURL: String, smallImageURL: String, albumName: String, fkAlbumID: Int, fullName: String, email: String, totalComments:Int, hasVoted:Bool){
+    init(pkPhotoID: Double, fkUserID: Double, oy:Int, lat1:Double, long1:Double, lat2:Double, long2:Double, milesGeo:Double, milesUser:Double, fkTwitterID:String, fkInstagramID:String, fkFacebookID:String, contentLink:String, ownedBy:String, caption:String, createdDate:String, postDate: String, thumbImageURL: String, largeImageURL: String, mediumImageURL: String, smallImageURL: String, albumName: String, fkAlbumID: Double, fullName: String, email: String, totalComments:Int, hasVoted:Bool){
         self.pkPhotoID = pkPhotoID
         self.fkUserID = fkUserID
         self.oy = oy
@@ -82,7 +82,7 @@ class Photo{
         // Store the results in our table data array
         if allResults.count>0 {
             
-            // Sometimes iTunes returns a collection, not a track, so we check both for the 'name'
+            // get the all photo list
             for result in allResults {
                 
                 let pkPhotoID =  result["PKPHOTOID"] as? Double
@@ -129,7 +129,7 @@ class Photo{
                 let fullName:String? = result["FULLNAME"] as? String ?? ""
                 let email:String? = result["EMAIL"] as? String ?? ""
                 let albumName:String? = result["ALBUMNAME"] as? String ?? ""
-                let fkAlbumID:Int? =  result["FKALBUMID"] as? Int
+                let fkAlbumID:Double? =  result["FKALBUMID"] as? Double
                 let thumbImageURL:String? = result["URLTHUMB"] as? String ?? ""
                 let largeImageURL:String? = result["URLLARGE"] as? String ?? ""
                 let mediumImageURL:String? = result["URLMEDIUM"] as? String ?? ""

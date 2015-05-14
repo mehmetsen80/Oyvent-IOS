@@ -301,7 +301,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                  dispatch_async(dispatch_get_main_queue(),{
                     if(!resultValue){
                         //display alert message with error
-                        var myAlert = UIAlertController(title: "Error", message: message, preferredStyle:UIAlertControllerStyle.Alert)
+                        var myAlert = UIAlertController(title: "Warning", message: message, preferredStyle:UIAlertControllerStyle.Alert)
                         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                         myAlert.addAction(okAction)
                         self.presentViewController(myAlert, animated: true, completion: nil)

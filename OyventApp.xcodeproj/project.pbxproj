@@ -16,6 +16,11 @@
 		590EBBD91AF68B6900420384 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBD81AF68B6900420384 /* RoundButton.swift */; };
 		5976B8ED1AF9097D00D8D2F4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8EC1AF9097D00D8D2F4 /* CustomButton.swift */; };
 		5976B8EF1AF90A3F00D8D2F4 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8EE1AF90A3F00D8D2F4 /* CustomView.swift */; };
+		5976B8F11AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F01AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift */; };
+		5976B8F31B038CDF00D8D2F4 /* MyCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F21B038CDF00D8D2F4 /* MyCollectionReusableView.swift */; };
+		5976B8F51B0396D400D8D2F4 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F41B0396D400D8D2F4 /* Album.swift */; };
+		5976B8F71B03AF7C00D8D2F4 /* AlbumAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F61B03AF7C00D8D2F4 /* AlbumAPIController.swift */; };
+		5976B8F91B03CC8B00D8D2F4 /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F81B03CC8B00D8D2F4 /* DefaultButton.swift */; };
 		59DFCEE31AB2A41C009DE7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */; };
 		59DFCEE51AB2A41C009DE7AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEE41AB2A41C009DE7AF /* LoginViewController.swift */; };
 		59DFCEE81AB2A41C009DE7AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DFCEE61AB2A41C009DE7AF /* Main.storyboard */; };
@@ -58,6 +63,11 @@
 		590EBBD81AF68B6900420384 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		5976B8EC1AF9097D00D8D2F4 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		5976B8EE1AF90A3F00D8D2F4 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		5976B8F01AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		5976B8F21B038CDF00D8D2F4 /* MyCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionReusableView.swift; sourceTree = "<group>"; };
+		5976B8F41B0396D400D8D2F4 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		5976B8F61B03AF7C00D8D2F4 /* AlbumAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumAPIController.swift; sourceTree = "<group>"; };
+		5976B8F81B03CC8B00D8D2F4 /* DefaultButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
 		59DFCEDD1AB2A41C009DE7AF /* OyventApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OyventApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59DFCEE11AB2A41C009DE7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +188,7 @@
 			children = (
 				59DFCF141ABBA84B009DE7AF /* Photo.swift */,
 				590EBBD41AF5E55A00420384 /* Comment.swift */,
+				5976B8F41B0396D400D8D2F4 /* Album.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -187,6 +198,7 @@
 			children = (
 				590EBBD81AF68B6900420384 /* RoundButton.swift */,
 				5976B8EC1AF9097D00D8D2F4 /* CustomButton.swift */,
+				5976B8F81B03CC8B00D8D2F4 /* DefaultButton.swift */,
 			);
 			name = button;
 			sourceTree = "<group>";
@@ -207,6 +219,8 @@
 			children = (
 				59EFA7EE1AD4F7B500CA3C84 /* GeoTableViewCell.swift */,
 				590EBBD21AF5852C00420384 /* DetailsTableViewCell.swift */,
+				5976B8F01AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift */,
+				5976B8F21B038CDF00D8D2F4 /* MyCollectionReusableView.swift */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -216,6 +230,7 @@
 			children = (
 				59DFCF161ABBE995009DE7AF /* PhotoAPIController.swift */,
 				590EBBD61AF5F29D00420384 /* CommentAPIController.swift */,
+				5976B8F61B03AF7C00D8D2F4 /* AlbumAPIController.swift */,
 			);
 			name = api;
 			sourceTree = "<group>";
@@ -332,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5976B8F71B03AF7C00D8D2F4 /* AlbumAPIController.swift in Sources */,
 				590EBBD91AF68B6900420384 /* RoundButton.swift in Sources */,
 				59EFA7F11AD4F89200CA3C84 /* GeoViewController.swift in Sources */,
 				59EFA7E71AC8FE5A00CA3C84 /* UIVerticalAlignLabel.swift in Sources */,
@@ -345,6 +361,7 @@
 				59DFCF131AB9398F009DE7AF /* MeViewController.swift in Sources */,
 				59EFA7E91ACCFA7C00CA3C84 /* ZoomViewController.swift in Sources */,
 				59EFA7F91AE4915100CA3C84 /* ESideMenu.swift in Sources */,
+				5976B8F51B0396D400D8D2F4 /* Album.swift in Sources */,
 				59DFCF0B1AB64326009DE7AF /* RegisterViewController.swift in Sources */,
 				59DFCF171ABBE995009DE7AF /* PhotoAPIController.swift in Sources */,
 				590EBBCF1AE497E400420384 /* MyNavigationController.swift in Sources */,
@@ -355,6 +372,9 @@
 				59EFA7EF1AD4F7B500CA3C84 /* GeoTableViewCell.swift in Sources */,
 				59DFCF091AB64303009DE7AF /* HomeViewController.swift in Sources */,
 				59EFA7F31AD61F1A00CA3C84 /* DetailsViewController.swift in Sources */,
+				5976B8F31B038CDF00D8D2F4 /* MyCollectionReusableView.swift in Sources */,
+				5976B8F11AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift in Sources */,
+				5976B8F91B03CC8B00D8D2F4 /* DefaultButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
