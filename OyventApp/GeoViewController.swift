@@ -108,7 +108,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     func setupNavigationBar(){
     
         /***************************** navigation general style  ********************/
-        //self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        //self.navigationController?.navigationBar.barStyle = UIBarStyle.Default
         //self.navigationController?.navigationBar.backgroundColor = bgImageColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
         //self.navigationController?.navigationBar.tintColor = bgImageColor
@@ -134,7 +134,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         
         /***************** right navigation button -> camera image ***********************/
         var cameraImage:UIImage = UIImage(named: "camera")!
-        cameraImage = resizeImage(cameraImage, targetSize: CGSize(width:40, height:40))
+        cameraImage = resizeImage(cameraImage, targetSize: CGSize(width:35, height:35))
         cameraImage = cameraImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         var rightButton = UIBarButtonItem(image: cameraImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "cameraClicked")
         self.navigationItem.rightBarButtonItem = rightButton
@@ -168,7 +168,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     
     override func viewDidAppear(animated: Bool) {
         println("viewDidAppear()  pageNo: \(pageNo)")
-        setupNavigationBar()
+        
         setupLocationManager();
         
         self.sideMenuController()?.sideMenu?.delegate = self
@@ -180,17 +180,20 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         self.loadSpinner.frame = CGRectMake((self.mTableView.frame.width-10)/2 , -10, 10, 10);
         self.loadSpinner.hidesWhenStopped = true
         self.mTableView.addSubview(self.loadSpinner)
-        self.btnGeoAlbum?.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
+        //self.btnGeoAlbum?.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //println("viewDidLoad()")
+        setupNavigationBar()
     }
     
     required init(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
+       
     }
     
     @IBAction func doResetPosts(sender: UIButton) {

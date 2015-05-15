@@ -35,7 +35,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupNavigationBar()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -43,7 +43,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         api = AlbumAPIController(delegate: self)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         self.sideMenuController()?.sideMenu?.delegate = self
-        setupNavigationBar()
+        
         setupLocationManager();
         
         //load more spinner
@@ -62,7 +62,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: 0) as HomeCollectionViewCell
 //        cell.btnGeoAlbum.setTitle(self.city, forState: UIControlState.Normal)
 //        cell.imgPoster?.image = UIImage(named: "location-icon")
-       
+       setupNavigationBar()
         
     }
     
@@ -249,11 +249,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         
         /***************** right navigation button -> camera image ***********************/
-        var cameraImage:UIImage = UIImage(named: "camera")!
-        cameraImage = resizeImage(cameraImage, targetSize: CGSize(width:40, height:40))
-        cameraImage = cameraImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        var rightButton = UIBarButtonItem(image: cameraImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "cameraClicked")
-        self.navigationItem.rightBarButtonItem = rightButton
+//        var cameraImage:UIImage = UIImage(named: "camera")!
+//        cameraImage = resizeImage(cameraImage, targetSize: CGSize(width:40, height:40))
+//        cameraImage = cameraImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+//        var rightButton = UIBarButtonItem(image: cameraImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "cameraClicked")
+//        self.navigationItem.rightBarButtonItem = rightButton
         /************** end of navigation right button -> camera image ********************/
         
     }
@@ -265,15 +265,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: - ENSideMenu Delegate
     func sideMenuWillOpen() {
-        println("sideMenuWillOpen")
+        //println("sideMenuWillOpen")
     }
     
     func sideMenuWillClose() {
-        println("sideMenuWillClose")
+        //println("sideMenuWillClose")
     }
     
     func sideMenuShouldOpenSideMenu() -> Bool {
-        println("sideMenuShouldOpenSideMenu")
+        //println("sideMenuShouldOpenSideMenu")
         return true
     }
     
@@ -298,8 +298,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         withReuseIdentifier: "MyHeader", forIndexPath: indexPath)
                     as? MyCollectionReusableView
                 
-                header?.btnHeader.setTitle("Places Near By", forState: UIControlState.Normal)
-                header?.btnHeader.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
+                header?.btnHeader.setTitle("Places & Events Near By", forState: UIControlState.Normal)
+                //header?.btnHeader.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
             }
             return header!
     }
@@ -315,7 +315,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         cell.btnGeoAlbum.setTitle(album.albumName, forState: UIControlState.Normal)
         //cell.btnGeoAlbum?.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
         cell.imgPoster?.image = (indexPath.row==0) ? UIImage(named: "city") : UIImage(named: "location-icon")
-        cell.lblMiles?.text = (indexPath.row==0) ? "" : "\(album.milesUser) miles"
+        cell.lblMiles?.text = (indexPath.row==0) ? "" : "\(album.milesUser) mi"
         
         return cell
     }
@@ -332,21 +332,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
             
             let album:Album = self.albums[indexPath.row]
-            println("albumName: \(album.albumName!) albumpkID: \(album.pkAlbumID!)")
+            //println("albumName: \(album.albumName!) albumpkID: \(album.pkAlbumID!)")
             
             self.performSegueWithIdentifier("gotoMyNav", sender: indexPath)
             
-            println("shouldSelectItemAtIndexPath: \(indexPath.row)")
+            //println("shouldSelectItemAtIndexPath: \(indexPath.row)")
             return false
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        if indexPath.row == 0
-        {
-            return CGSize(width: screenWidth, height: 95)
-        }
-        
-        return CGSize(width: 140, height: 120);
+       
+        return (indexPath.row == 0) ? CGSize(width: screenWidth, height: 140) : CGSize(width: (screenWidth-40)/2, height: screenWidth/3)
         
     }
     
@@ -373,8 +369,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         //println("maximumOffset \(maximumOffset)  currentOffset: \(currentOffset)")
         if (maximumOffset - currentOffset) <= 144  &&  maximumOffset > 0{
-            println("let's search: maximumOffset - currentOffset:\(maximumOffset - currentOffset)")
-            api!.searchAlbums(++pageNo, latitude: self.latitude, longitude: self.longitude)
+            //println("let's search: maximumOffset - currentOffset:\(maximumOffset - currentOffset)")
+            //api!.searchAlbums(++pageNo, latitude: self.latitude, longitude: self.longitude)
         }
     }
     
