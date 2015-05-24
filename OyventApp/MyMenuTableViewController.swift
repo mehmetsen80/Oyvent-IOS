@@ -23,6 +23,9 @@ class MyMenuTableViewController: UITableViewController {
         self.clearsSelectionOnViewWillAppear = false
         
         tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedMenuItem, inSection: 0), animated: false, scrollPosition: .Middle)
+        
+       
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,7 +63,7 @@ class MyMenuTableViewController: UITableViewController {
                 cell!.textLabel?.text = "Home"
                 break
             case 1:
-                cell!.textLabel?.text = "Near By"
+                cell!.textLabel?.text = "Near Me"
                 break
             case 2:
                 cell!.textLabel?.text = "Me"

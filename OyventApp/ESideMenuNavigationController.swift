@@ -13,10 +13,16 @@ public class ENSideMenuNavigationController: UINavigationController, ENSideMenuP
     public var sideMenu : ENSideMenu?
     public var sideMenuAnimationType : ENSideMenuAnimation = .Default
     
+    public override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        //self.navigationController?.hidesBarsOnSwipe = true
+        //self.navigationController?.hidesBarsOnTap = true // setting hidesBarsOnTap to true
+    }
     
     // MARK: - Life cycle
     public override func viewDidLoad() {
         super.viewDidLoad()
+        //self.navigationController?.hidesBarsOnSwipe = true
     }
     
     public init( menuTableViewController: UITableViewController, contentViewController: UIViewController?) {
@@ -28,6 +34,7 @@ public class ENSideMenuNavigationController: UINavigationController, ENSideMenuP
         
         sideMenu = ENSideMenu(sourceView: self.view, menuTableViewController: menuTableViewController, menuPosition:.Left)
         view.bringSubviewToFront(navigationBar)
+        
     }
     
     required public init(coder aDecoder: NSCoder) {

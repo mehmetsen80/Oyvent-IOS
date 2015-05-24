@@ -25,6 +25,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var latitude : String!
     var longitude : String!
     var city:String = ""
+    var imageCache = [String : UIImage]()
     
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
@@ -216,6 +217,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func setupNavigationBar(){
         
+        //self.navigationController?.hidesBarsOnTap = true
+        self.navigationController?.hidesBarsOnSwipe = true
+        
         /***************************** navigation general style  ********************/
         //self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         //self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
@@ -226,11 +230,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         /***************************** navigation general style  ********************/
         //self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         //self.navigationController?.navigationBar.backgroundColor = bgImageColor
+        
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
         //self.navigationController?.navigationBar.tintColor = bgImageColor
-        UINavigationBar.appearance().barTintColor =  bgImageColor
-        self.navigationController?.navigationBar.setBackgroundImage(onePixelImageWithColor(bgImageColor),
-            forBarMetrics: .Default)
+        //UINavigationBar.appearance().barTintColor =  bgImageColor
+        /* self.navigationController?.navigationBar.setBackgroundImage(onePixelImageWithColor(bgImageColor),
+            forBarMetrics: .Default) */
+        
         /***************************** navigation general style  ********************/
         
         
@@ -298,7 +304,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         withReuseIdentifier: "MyHeader", forIndexPath: indexPath)
                     as? MyCollectionReusableView
                 
-                header?.btnHeader.setTitle("Places & Events Near By", forState: UIControlState.Normal)
+                header?.btnHeader.setTitle("Talk with Communities", forState: UIControlState.Normal)
                 //header?.btnHeader.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
             }
             return header!
@@ -314,7 +320,45 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         //cell.backgroundColor = UIColor.blackColor()
         cell.btnGeoAlbum.setTitle(album.albumName, forState: UIControlState.Normal)
         //cell.btnGeoAlbum?.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
-        cell.imgPoster?.image = (indexPath.row==0) ? UIImage(named: "city") : UIImage(named: "location-icon")
+        //cell.imgPoster?.image = (indexPath.row==0) ? UIImage(named: "city") : UIImage(named: "location-icon")
+        
+        
+
+        /********************************** Big Poster *********************************/
+        cell.imgPoster?.image = UIImage(named:"blank")
+        //get the image
+        let urlString = "https://s3-oy-vent-images-14.s3.amazonaws.com/58/04674bd29a28422c-medium.jpg"
+        var image = self.imageCache[urlString]
+        if(image == nil) {
+            
+            // If the image does not exist, we need to download it
+            var imgURL: NSURL! = NSURL(string: urlString)
+            
+            // Download an NSData representation of the image at the URL
+            let request: NSURLRequest = NSURLRequest(URL: imgURL)
+            let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
+                if !(error? != nil) {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        
+                        image = UIImage(data: data)
+                        // Store the image in to our cache
+                        self.imageCache[urlString] = image
+                        cell.imgPoster?.image = image
+                    }
+                }
+                else {
+                    println("Error: \(error.localizedDescription)")
+                }
+            })
+            
+        } else {
+            cell.imgPoster?.image = image
+        }
+        /********************************** End of Big Poster ***************************/
+        
+        
+        
         cell.lblMiles?.text = (indexPath.row==0) ? "" : "\(album.milesUser) mi"
         
         return cell
@@ -342,8 +386,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
        
-        return (indexPath.row == 0) ? CGSize(width: screenWidth, height: 140) : CGSize(width: (screenWidth-40)/2, height: screenWidth/3)
+//        return (indexPath.row == 0) ? CGSize(width: screenWidth, height: 140) : CGSize(width: (screenWidth-40)/2, height: screenWidth/3)
         
+        return  CGSize(width: screenWidth, height: 140)
     }
     
     @IBAction func doVisitCity(sender: UIButton) {
@@ -411,7 +456,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
      
     
       
-         println(indexPath)
+         //println(indexPath)
         var selectedAlbum = self.albums[indexPath.row]
          println("albumName: \(selectedAlbum.albumName!) pkAlbumID: \(selectedAlbum.pkAlbumID!)")
         geoViewController.albumID = selectedAlbum.pkAlbumID!

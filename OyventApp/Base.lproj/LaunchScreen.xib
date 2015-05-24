@@ -17,18 +17,29 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
                     <rect key="frame" x="20" y="169" width="281" height="43"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="oyvent" translatesAutoresizingMaskIntoConstraints="NO" id="VgZ-r7-frI">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="oyvent" translatesAutoresizingMaskIntoConstraints="NO" id="VgZ-r7-frI">
                     <rect key="frame" x="40" y="209" width="240" height="128"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="connect insanely local" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0k-t6-ZHB">
+                    <rect key="frame" x="31" y="165" width="260" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="260" id="3Xx-4C-bOe"/>
+                        <constraint firstAttribute="height" constant="30" id="caY-hC-Gfw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.084777385079488052" green="0.3154799748675739" blue="0.50355113636363635" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstAttribute="centerY" secondItem="Z0k-t6-ZHB" secondAttribute="centerY" constant="104.5" id="1pr-Wk-byd"/>
                 <constraint firstItem="VgZ-r7-frI" firstAttribute="top" secondItem="kId-c2-rCX" secondAttribute="bottom" constant="-3" id="4VK-MP-5Ze"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="1/3" constant="1" id="5cJ-9S-tgC"/>
                 <constraint firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" id="Koa-jz-hwk"/>
@@ -38,12 +49,13 @@
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
                 <constraint firstAttribute="centerX" secondItem="VgZ-r7-frI" secondAttribute="centerX" id="eYJ-EU-Z0m"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="fvb-Df-36g"/>
+                <constraint firstAttribute="centerX" secondItem="Z0k-t6-ZHB" secondAttribute="centerX" constant="-1" id="hCI-HW-0Rr"/>
                 <constraint firstItem="VgZ-r7-frI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="ttZ-QW-Cqz"/>
                 <constraint firstAttribute="trailing" secondItem="VgZ-r7-frI" secondAttribute="trailing" constant="40" id="x6A-sL-hwm"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="571" y="457"/>
+            <point key="canvasLocation" x="362" y="457"/>
         </view>
     </objects>
     <resources>

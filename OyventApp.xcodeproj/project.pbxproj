@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5901439F1B0E74C3001C05AE /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5901439E1B0E74C3001C05AE /* CaptureViewController.swift */; };
 		590EBBCD1AE494B500420384 /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBCC1AE494B500420384 /* MyMenuTableViewController.swift */; };
 		590EBBCF1AE497E400420384 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBCE1AE497E400420384 /* MyNavigationController.swift */; };
 		590EBBD11AEFF96900420384 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 590EBBD01AEFF96900420384 /* CoreLocation.framework */; };
@@ -21,6 +22,7 @@
 		5976B8F51B0396D400D8D2F4 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F41B0396D400D8D2F4 /* Album.swift */; };
 		5976B8F71B03AF7C00D8D2F4 /* AlbumAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F61B03AF7C00D8D2F4 /* AlbumAPIController.swift */; };
 		5976B8F91B03CC8B00D8D2F4 /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F81B03CC8B00D8D2F4 /* DefaultButton.swift */; };
+		59BC7A121B118179000BD75E /* GeoTableHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC7A111B118179000BD75E /* GeoTableHeaderCell.swift */; };
 		59DFCEE31AB2A41C009DE7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */; };
 		59DFCEE51AB2A41C009DE7AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEE41AB2A41C009DE7AF /* LoginViewController.swift */; };
 		59DFCEE81AB2A41C009DE7AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DFCEE61AB2A41C009DE7AF /* Main.storyboard */; };
@@ -54,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5901439E1B0E74C3001C05AE /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		590EBBCC1AE494B500420384 /* MyMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuTableViewController.swift; sourceTree = "<group>"; };
 		590EBBCE1AE497E400420384 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		590EBBD01AEFF96900420384 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -68,6 +71,7 @@
 		5976B8F41B0396D400D8D2F4 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		5976B8F61B03AF7C00D8D2F4 /* AlbumAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumAPIController.swift; sourceTree = "<group>"; };
 		5976B8F81B03CC8B00D8D2F4 /* DefaultButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
+		59BC7A111B118179000BD75E /* GeoTableHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTableHeaderCell.swift; sourceTree = "<group>"; };
 		59DFCEDD1AB2A41C009DE7AF /* OyventApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OyventApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59DFCEE11AB2A41C009DE7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -146,10 +150,12 @@
 				59DFCEE41AB2A41C009DE7AF /* LoginViewController.swift */,
 				59DFCF0A1AB64326009DE7AF /* RegisterViewController.swift */,
 				59DFCF081AB64303009DE7AF /* HomeViewController.swift */,
+				5901439E1B0E74C3001C05AE /* CaptureViewController.swift */,
 				59EFA7F01AD4F89200CA3C84 /* GeoViewController.swift */,
 				59EFA7F21AD61F1A00CA3C84 /* DetailsViewController.swift */,
 				59DFCF121AB9398F009DE7AF /* MeViewController.swift */,
 				59EFA7E81ACCFA7C00CA3C84 /* ZoomViewController.swift */,
+				59DFCEE11AB2A41C009DE7AF /* Info.plist */,
 				59DFCEE61AB2A41C009DE7AF /* Main.storyboard */,
 				59DFCF0C1AB67F9A009DE7AF /* Images.xcassets */,
 				59DFCEEB1AB2A41D009DE7AF /* LaunchScreen.xib */,
@@ -161,7 +167,6 @@
 		59DFCEE01AB2A41C009DE7AF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				59DFCEE11AB2A41C009DE7AF /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				59EFA7EE1AD4F7B500CA3C84 /* GeoTableViewCell.swift */,
+				59BC7A111B118179000BD75E /* GeoTableHeaderCell.swift */,
 				590EBBD21AF5852C00420384 /* DetailsTableViewCell.swift */,
 				5976B8F01AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift */,
 				5976B8F21B038CDF00D8D2F4 /* MyCollectionReusableView.swift */,
@@ -354,6 +360,7 @@
 				59EFA7FB1AE491CE00CA3C84 /* ESideMenuNavigationController.swift in Sources */,
 				59EFA7EB1AD2231F00CA3C84 /* DateExtension.swift in Sources */,
 				590EBBD31AF5852C00420384 /* DetailsTableViewCell.swift in Sources */,
+				5901439F1B0E74C3001C05AE /* CaptureViewController.swift in Sources */,
 				59DFCF151ABBA84B009DE7AF /* Photo.swift in Sources */,
 				59DFCEE51AB2A41C009DE7AF /* LoginViewController.swift in Sources */,
 				5976B8EF1AF90A3F00D8D2F4 /* CustomView.swift in Sources */,
@@ -371,6 +378,7 @@
 				5976B8ED1AF9097D00D8D2F4 /* CustomButton.swift in Sources */,
 				59EFA7EF1AD4F7B500CA3C84 /* GeoTableViewCell.swift in Sources */,
 				59DFCF091AB64303009DE7AF /* HomeViewController.swift in Sources */,
+				59BC7A121B118179000BD75E /* GeoTableHeaderCell.swift in Sources */,
 				59EFA7F31AD61F1A00CA3C84 /* DetailsViewController.swift in Sources */,
 				5976B8F31B038CDF00D8D2F4 /* MyCollectionReusableView.swift in Sources */,
 				5976B8F11AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift in Sources */,

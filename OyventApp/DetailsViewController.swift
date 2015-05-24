@@ -40,6 +40,12 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
     var latitude : Double!
     var longitude : Double!
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.hidesBarsOnSwipe = true
+        //self.navigationController?.hidesBarsOnTap = false // setting hidesBarsOnTap to true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,7 +55,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         self.api = CommentAPIController(delegate: self)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         self.api?.searchComments(photo.pkPhotoID)
-        
+        //self.navigationController?.navigationBar.hidden = false
         
         
         

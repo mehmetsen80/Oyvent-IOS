@@ -11,7 +11,7 @@ import Foundation
 import QuartzCore
 import CoreLocation
 
-class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate,PhotoAPIControllerProtocol, ENSideMenuDelegate,  CLLocationManagerDelegate{
+class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate,PhotoAPIControllerProtocol, GeoTableHeaderViewCellDelegate, ENSideMenuDelegate,  CLLocationManagerDelegate{
 
     var api:PhotoAPIController?
     var photos:[Photo] = [Photo]()
@@ -35,6 +35,8 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     
     var albumID : Double = 0
     var albumName : String = ""
+    
+    var lastContentOffset : CGFloat = 0
     
     func scrollToTop() {
         var top = NSIndexPath(forRow: Foundation.NSNotFound, inSection: 0);
@@ -107,14 +109,27 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     
     func setupNavigationBar(){
     
+//        self.navigationController?.navigationBar.hidden = true
+        self.navigationController?.hidesBarsOnSwipe = true
+        
+        
+        //self.navigationController?.hidesBarsOnSwipe = true
+        //self.navigationController?.hidesBarsOnTap = true // setting hidesBarsOnTap to true
+        
+
+        
         /***************************** navigation general style  ********************/
         //self.navigationController?.navigationBar.barStyle = UIBarStyle.Default
         //self.navigationController?.navigationBar.backgroundColor = bgImageColor
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
-        //self.navigationController?.navigationBar.tintColor = bgImageColor
-        UINavigationBar.appearance().barTintColor =  bgImageColor
-        self.navigationController?.navigationBar.setBackgroundImage(onePixelImageWithColor(bgImageColor),
-            forBarMetrics: .Default)
+        
+        
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
+//        //self.navigationController?.navigationBar.tintColor = bgImageColor
+//        UINavigationBar.appearance().barTintColor =  bgImageColor
+//        self.navigationController?.navigationBar.setBackgroundImage(onePixelImageWithColor(bgImageColor),
+//            forBarMetrics: .Default)
+        
+        
         /***************************** navigation general style  ********************/
         
         
@@ -133,11 +148,11 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         
         
         /***************** right navigation button -> camera image ***********************/
-        var cameraImage:UIImage = UIImage(named: "camera")!
-        cameraImage = resizeImage(cameraImage, targetSize: CGSize(width:35, height:35))
-        cameraImage = cameraImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        var rightButton = UIBarButtonItem(image: cameraImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "cameraClicked")
-        self.navigationItem.rightBarButtonItem = rightButton
+//        var cameraImage:UIImage = UIImage(named: "camera")!
+//        cameraImage = resizeImage(cameraImage, targetSize: CGSize(width:35, height:35))
+//        cameraImage = cameraImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+//        var rightButton = UIBarButtonItem(image: cameraImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "cameraClicked")
+//        self.navigationItem.rightBarButtonItem = rightButton
         /************** end of navigation right button -> camera image ********************/
         
     }
@@ -182,6 +197,11 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         self.mTableView.addSubview(self.loadSpinner)
         //self.btnGeoAlbum?.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
         
+
+        
+        
+        
+        
     }
     
     override func viewDidLoad() {
@@ -199,7 +219,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     @IBAction func doResetPosts(sender: UIButton) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         self.albumID = 0
-        self.btnGeoAlbum.setTitle(self.city, forState: UIControlState.Normal)
+//        self.btnGeoAlbum.setTitle(self.city, forState: UIControlState.Normal)
         self.pageNo=0
         self.photos = []
         scrollToTop()
@@ -264,7 +284,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
                     self.city = city
                     self.api!.searchPhotos(0, latitude: self.latitude, longitude: self.longitude, albumID:  self.albumID)
                     self.albumName = (self.albumID != 0 ) ? self.albumName : city
-                    self.btnGeoAlbum.setTitle(self.albumName, forState: UIControlState.Normal)
+//                    self.btnGeoAlbum.setTitle(self.albumName, forState: UIControlState.Normal)
                     self.locationManager.stopUpdatingLocation()
                 }
                 
@@ -431,15 +451,73 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     }
     
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var v: UIView = UIView()
-        v.backgroundColor = UIColor.clearColor()
-        return v
-    }
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        var v: UIView = UIView()
+//        v.backgroundColor = UIColor.clearColor()
+//        return v
+//    }
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         // Get the row data for the selected row
         self.performSegueWithIdentifier("detailsView", sender: indexPath)
+    }
+    
+    func didSelectGeoTableHeaderViewCell(Selected: Bool, GeoHeader: GeoTableHeaderCell) {
+      
+        println("Header Selected!");
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+       return 1
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView
+    {
+        
+        var header = tableView.dequeueReusableCellWithIdentifier("GeoHeader") as GeoTableHeaderCell
+        header.delegate = self
+        
+        header.btnGeoAlbum.setTitle(self.albumName, forState: UIControlState.Normal)
+        /********************************** Main Album Button *********************************/
+       header.btnGeoAlbum?.setBackgroundImage(UIImage(named:"blank"), forState: UIControlState.Normal)
+       //get the image
+       let urlString = "https://s3-oy-vent-images-14.s3.amazonaws.com/58/04674bd29a28422c-medium.jpg"
+
+        // If the image does not exist, we need to download it
+        var imgURL: NSURL! = NSURL(string: urlString)
+
+        // Download an NSData representation of the image at the URL
+        let request: NSURLRequest = NSURLRequest(URL: imgURL)
+        let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
+                if !(error? != nil) {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        let image = UIImage(data: data)
+                        header.btnGeoAlbum?.setBackgroundImage(image, forState: UIControlState.Normal)
+                    }
+                }
+                else {
+                    println("Error: \(error.localizedDescription)")
+                }
+        })
+        
+        /***************************** End of Main Album Button ***************************/
+        
+        
+        //header.contentView.backgroundColor = UIColor.whiteColor()
+        return header
+    }
+    
+    
+//    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//        let headerView = view as UITableViewHeaderFooterView
+//        headerView.textLabel.textColor = UIColor(red: 151.0/255, green: 193.0/255, blue: 100.0/255, alpha: 1)
+//        let font = UIFont(name: "Montserrat", size: 18.0)
+//        headerView.textLabel.font = font!
+//    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 100
     }
     
     @IBAction func visitDetailsView(sender: UIButton) {
@@ -463,12 +541,39 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-        //println("maximumOffset \(maximumOffset)  currentOffset: \(currentOffset)")
+        println("maximumOffset \(maximumOffset)  currentOffset: \(currentOffset)")
         if (maximumOffset - currentOffset) <= 144  &&  maximumOffset > 0{
             //println("let's search: maximumOffset - currentOffset:\(maximumOffset - currentOffset)")
             api!.searchPhotos(++pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID)
         }
+        
+//        //frame Optional((0.0,20.0,320.0,44.0))
+//        let frame: CGRect? = self.navigationController?.navigationBar.frame;
+//        println("frame \(frame)")
+//        
+//        if(self.lastContentOffset >= currentOffset ){//Scroll Direction Down
+//            self.navigationController?.navigationBar.hidden = false
+//            self.navigationController?.navigationBar.frame = CGRect(x: 0.0, y: 20.0, width: 320, height: 44)
+//        }else{
+//        
+//            //self.navigationController?.navigationBar.frame.size.height = 0.0 // frame = CGRect(x: 0.0, y: 20.0, width: 320, height: 0)
+//            self.navigationController?.navigationBar.hidden = true
+//           
+//        }
+//        
+//    
+//        if(self.lastContentOffset>=currentOffset ){//scroll down
+//            self.navigationController?.navigationBar.hidden = false
+//        }else{
+//            self.navigationController?.navigationBar.hidden = true
+//        }
+//        self.lastContentOffset = scrollView.contentOffset.y - 0.1;
+
+        
     }
+    
+   
+   
     
     /*************************************** vote positive **********************************/
     @IBAction func doVoteUp(sender: UIButton) {
@@ -553,6 +658,8 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
             UIApplication.sharedApplication().openURL(url)
         }
     }
+    
+  
 
     func didReceivePhotoAPIResults(results: NSDictionary) {
         
@@ -573,15 +680,21 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
        }
     }
 
+    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
+        println("welcome back!")
+    }
    
     @IBAction func filterByAlbumID(sender: UIButton) {
         let buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mTableView)
         let indexPath: NSIndexPath = self.mTableView.indexPathForRowAtPoint(buttonPosition)!
         let photo:Photo = self.photos[indexPath.row]
+        
+
+        
         //println("fkAlbumID: \(photo.fkAlbumID)")
         //println("albumName: \(photo.albumName)")
         self.albumID = photo.fkAlbumID
-        self.btnGeoAlbum.setTitle(photo.albumName, forState: UIControlState.Normal)
+//        self.btnGeoAlbum.setTitle(photo.albumName, forState: UIControlState.Normal)
         pageNo=0
         self.photos = []
         scrollToTop()
@@ -597,10 +710,18 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var detailsViewController: DetailsViewController = segue.destinationViewController as DetailsViewController
-        let photoIndex = self.mTableView!.indexPathForSelectedRow()!.row
-        let selectedPhoto = self.photos[photoIndex]
-        detailsViewController.photo = selectedPhoto
+        
+        
+        if segue.identifier == "detailsView" {
+            var detailsViewController: DetailsViewController = segue.destinationViewController as DetailsViewController
+            let photoIndex = self.mTableView!.indexPathForSelectedRow()!.row
+            let selectedPhoto = self.photos[photoIndex]
+            detailsViewController.photo = selectedPhoto
+        }else if segue.identifier == "captureView" {
+            var captureViewController: CaptureViewController = segue.destinationViewController as CaptureViewController
+            captureViewController.albumID = self.albumID
+            captureViewController.albumName = self.albumName
+        }
     }
     
 
