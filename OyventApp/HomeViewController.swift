@@ -304,7 +304,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         withReuseIdentifier: "MyHeader", forIndexPath: indexPath)
                     as? MyCollectionReusableView
                 
-                header?.btnHeader.setTitle("Talk with Communities", forState: UIControlState.Normal)
+                header?.btnHeader.setTitle("Connect to Local Communities", forState: UIControlState.Normal)
                 //header?.btnHeader.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
             }
             return header!
@@ -319,6 +319,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let album:Album = self.albums[indexPath.row]
         //cell.backgroundColor = UIColor.blackColor()
         cell.btnGeoAlbum.setTitle(album.albumName, forState: UIControlState.Normal)
+        cell.btnGeoAlbum.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
         //cell.btnGeoAlbum?.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
         //cell.imgPoster?.image = (indexPath.row==0) ? UIImage(named: "city") : UIImage(named: "location-icon")
         
@@ -341,10 +342,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 if !(error? != nil) {
                     dispatch_async(dispatch_get_main_queue()) {
                         
-                        image = UIImage(data: data)
-                        // Store the image in to our cache
-                        self.imageCache[urlString] = image
-                        cell.imgPoster?.image = image
+//                        image = UIImage(data: data)
+//                        // Store the image in to our cache
+//                        self.imageCache[urlString] = image
+//                        cell.imgPoster?.image = image
                     }
                 }
                 else {
@@ -356,10 +357,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell.imgPoster?.image = image
         }
         /********************************** End of Big Poster ***************************/
+        cell.imgPoster?.hidden = true
         
         
-        
-        cell.lblMiles?.text = (indexPath.row==0) ? "" : "\(album.milesUser) mi"
+        cell.lblMiles?.text = (indexPath.row==0) ? "Main City" : "\(album.milesUser) miles"
         
         return cell
     }
@@ -390,6 +391,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         return  CGSize(width: screenWidth, height: 140)
     }
+    
+    @IBAction func doVisitAlbum(sender: DefaultButton) {
+        var buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mCollectionView)
+         let indexPath: NSIndexPath = self.mCollectionView!.indexPathForItemAtPoint(buttonPosition)!
+        //var indexPath: NSIndexPath = self.mCollectionView.indexPathForRowAtPoint(buttonPosition)!
+        let album:Album = self.albums[indexPath.row]
+        self.performSegueWithIdentifier("gotoMyNav", sender: indexPath)
+    }
+    
     
     @IBAction func doVisitCity(sender: UIButton) {
         println("doVisityCity()")

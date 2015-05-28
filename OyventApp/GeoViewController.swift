@@ -11,7 +11,7 @@ import Foundation
 import QuartzCore
 import CoreLocation
 
-class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate,PhotoAPIControllerProtocol, GeoTableHeaderViewCellDelegate, ENSideMenuDelegate,  CLLocationManagerDelegate{
+class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate,PhotoAPIControllerProtocol, GeoTableHeaderViewCellDelegate, ENSideMenuDelegate,  UIPopoverPresentationControllerDelegate, CLLocationManagerDelegate{
 
     var api:PhotoAPIController?
     var photos:[Photo] = [Photo]()
@@ -36,7 +36,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     var albumID : Double = 0
     var albumName : String = ""
     
-    var lastContentOffset : CGFloat = 0
+    
     
     func scrollToTop() {
         var top = NSIndexPath(forRow: Foundation.NSNotFound, inSection: 0);
@@ -493,7 +493,8 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
                 if !(error? != nil) {
                     dispatch_async(dispatch_get_main_queue()) {
                         let image = UIImage(data: data)
-                        header.btnGeoAlbum?.setBackgroundImage(image, forState: UIControlState.Normal)
+                        //header.btnGeoAlbum?.setBackgroundImage(image, forState: UIControlState.Normal)
+                        header.btnGeoAlbum?.setBackgroundImage(self.onePixelImageWithColor(self.bgImageColor), forState: UIControlState.Normal)
                     }
                 }
                 else {
@@ -508,13 +509,6 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         return header
     }
     
-    
-//    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//        let headerView = view as UITableViewHeaderFooterView
-//        headerView.textLabel.textColor = UIColor(red: 151.0/255, green: 193.0/255, blue: 100.0/255, alpha: 1)
-//        let font = UIFont(name: "Montserrat", size: 18.0)
-//        headerView.textLabel.font = font!
-//    }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 100
@@ -717,11 +711,24 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
             let photoIndex = self.mTableView!.indexPathForSelectedRow()!.row
             let selectedPhoto = self.photos[photoIndex]
             detailsViewController.photo = selectedPhoto
-        }else if segue.identifier == "captureView" {
-            var captureViewController: CaptureViewController = segue.destinationViewController as CaptureViewController
-            captureViewController.albumID = self.albumID
-            captureViewController.albumName = self.albumName
         }
+            //else if segue.identifier == "captureView" {
+//            var captureViewController: CaptureViewController = segue.destinationViewController as CaptureViewController
+//            captureViewController.albumID = self.albumID
+//            captureViewController.albumName = self.albumName
+//        }
+            else if segue.identifier == "selectCategory" {
+            var categoryViewController: CategoryViewController = segue.destinationViewController as CategoryViewController
+            //categoryViewController.preferredContentSize = CGSizeMake(500,600)
+            categoryViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+            categoryViewController.popoverPresentationController!.delegate = self
+            categoryViewController.albumID = self.albumID
+            categoryViewController.albumName = self.albumName
+        }
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
     }
     
 

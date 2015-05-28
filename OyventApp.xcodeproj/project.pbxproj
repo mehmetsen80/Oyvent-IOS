@@ -15,6 +15,7 @@
 		590EBBD51AF5E55A00420384 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBD41AF5E55A00420384 /* Comment.swift */; };
 		590EBBD71AF5F29D00420384 /* CommentAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBD61AF5F29D00420384 /* CommentAPIController.swift */; };
 		590EBBD91AF68B6900420384 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBD81AF68B6900420384 /* RoundButton.swift */; };
+		5936D6E11B141A5A00A02642 /* OnlyTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5936D6E01B141A5900A02642 /* OnlyTextViewController.swift */; };
 		5976B8ED1AF9097D00D8D2F4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8EC1AF9097D00D8D2F4 /* CustomButton.swift */; };
 		5976B8EF1AF90A3F00D8D2F4 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8EE1AF90A3F00D8D2F4 /* CustomView.swift */; };
 		5976B8F11AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F01AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift */; };
@@ -23,6 +24,7 @@
 		5976B8F71B03AF7C00D8D2F4 /* AlbumAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F61B03AF7C00D8D2F4 /* AlbumAPIController.swift */; };
 		5976B8F91B03CC8B00D8D2F4 /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F81B03CC8B00D8D2F4 /* DefaultButton.swift */; };
 		59BC7A121B118179000BD75E /* GeoTableHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC7A111B118179000BD75E /* GeoTableHeaderCell.swift */; };
+		59BC7A141B124906000BD75E /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC7A131B124906000BD75E /* CategoryViewController.swift */; };
 		59DFCEE31AB2A41C009DE7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */; };
 		59DFCEE51AB2A41C009DE7AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEE41AB2A41C009DE7AF /* LoginViewController.swift */; };
 		59DFCEE81AB2A41C009DE7AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DFCEE61AB2A41C009DE7AF /* Main.storyboard */; };
@@ -64,6 +66,7 @@
 		590EBBD41AF5E55A00420384 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		590EBBD61AF5F29D00420384 /* CommentAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentAPIController.swift; sourceTree = "<group>"; };
 		590EBBD81AF68B6900420384 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		5936D6E01B141A5900A02642 /* OnlyTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyTextViewController.swift; sourceTree = "<group>"; };
 		5976B8EC1AF9097D00D8D2F4 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		5976B8EE1AF90A3F00D8D2F4 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		5976B8F01AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 		5976B8F61B03AF7C00D8D2F4 /* AlbumAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumAPIController.swift; sourceTree = "<group>"; };
 		5976B8F81B03CC8B00D8D2F4 /* DefaultButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
 		59BC7A111B118179000BD75E /* GeoTableHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTableHeaderCell.swift; sourceTree = "<group>"; };
+		59BC7A131B124906000BD75E /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		59DFCEDD1AB2A41C009DE7AF /* OyventApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OyventApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59DFCEE11AB2A41C009DE7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 				59DFCF0A1AB64326009DE7AF /* RegisterViewController.swift */,
 				59DFCF081AB64303009DE7AF /* HomeViewController.swift */,
 				5901439E1B0E74C3001C05AE /* CaptureViewController.swift */,
+				59BC7A131B124906000BD75E /* CategoryViewController.swift */,
+				5936D6E01B141A5900A02642 /* OnlyTextViewController.swift */,
 				59EFA7F01AD4F89200CA3C84 /* GeoViewController.swift */,
 				59EFA7F21AD61F1A00CA3C84 /* DetailsViewController.swift */,
 				59DFCF121AB9398F009DE7AF /* MeViewController.swift */,
@@ -375,12 +381,14 @@
 				59DFCEE31AB2A41C009DE7AF /* AppDelegate.swift in Sources */,
 				590EBBCD1AE494B500420384 /* MyMenuTableViewController.swift in Sources */,
 				590EBBD71AF5F29D00420384 /* CommentAPIController.swift in Sources */,
+				59BC7A141B124906000BD75E /* CategoryViewController.swift in Sources */,
 				5976B8ED1AF9097D00D8D2F4 /* CustomButton.swift in Sources */,
 				59EFA7EF1AD4F7B500CA3C84 /* GeoTableViewCell.swift in Sources */,
 				59DFCF091AB64303009DE7AF /* HomeViewController.swift in Sources */,
 				59BC7A121B118179000BD75E /* GeoTableHeaderCell.swift in Sources */,
 				59EFA7F31AD61F1A00CA3C84 /* DetailsViewController.swift in Sources */,
 				5976B8F31B038CDF00D8D2F4 /* MyCollectionReusableView.swift in Sources */,
+				5936D6E11B141A5A00A02642 /* OnlyTextViewController.swift in Sources */,
 				5976B8F11AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift in Sources */,
 				5976B8F91B03CC8B00D8D2F4 /* DefaultButton.swift in Sources */,
 			);
