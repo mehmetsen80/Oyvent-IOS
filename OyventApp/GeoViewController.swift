@@ -697,9 +697,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     }
     
     
-    @IBAction func go2Home(sender: UIButton) {
-        //println("go to home page")
-    }
+   
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -429,6 +429,9 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                             var myAlert = UIAlertController(title: "Confirmation", message: "Post deleted successfully!", preferredStyle: UIAlertControllerStyle.Alert)
                             myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
                                 let nvg : MyNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController;
+                                var geoController:GeoViewController =  nvg.topViewController as GeoViewController
+                                geoController.albumID = self.photo.fkAlbumID
+                                geoController.albumName = self.photo.albumName
                                 self.presentViewController(nvg, animated: true, completion: nil)
                             }))
                             self.presentViewController(myAlert, animated: true, completion: nil)

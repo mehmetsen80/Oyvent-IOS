@@ -306,9 +306,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6CY-9f-x1j" kind="popoverPresentation" identifier="takePhoto" popoverAnchorView="TJL-VL-XxF" id="nZD-Ej-kf4">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="6CY-9f-x1j" kind="presentation" identifier="takePhoto" id="nZD-Ej-kf4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rU8-yV-MO2">
@@ -322,9 +320,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="odr-wq-rLI" kind="popoverPresentation" identifier="onlyText" popoverAnchorView="rU8-yV-MO2" id="cEl-1L-ZlK">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="odr-wq-rLI" kind="presentation" identifier="onlyText" id="cEl-1L-ZlK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6MX-gy-nqx">
@@ -382,9 +378,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6CY-9f-x1j" kind="popoverPresentation" identifier="fromLibrary" popoverAnchorView="AB4-cb-vUx" id="ekv-kj-UHq">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="6CY-9f-x1j" kind="presentation" identifier="fromLibrary" id="ekv-kj-UHq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1012,6 +1006,7 @@
                                 <connections>
                                     <action selector="doCancel:" destination="6CY-9f-x1j" eventType="touchUpInside" id="5sx-ek-CgA"/>
                                     <action selector="doCancel:" destination="odr-wq-rLI" eventType="touchUpInside" id="zSa-fn-ACc"/>
+                                    <segue destination="5Vg-5e-bD0" kind="unwind" unwindAction="unwindToThisViewController:" id="2Vl-DV-LeZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1034,10 +1029,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="btnAlbumName" destination="8AU-lE-KP8" id="7jq-JQ-Jvk"/>
+                        <outlet property="btnClose" destination="vso-Yg-HmX" id="Xvc-U0-tA3"/>
                         <outlet property="textView" destination="gIG-Bt-3nd" id="4hh-n9-AeO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIk-Sj-R39" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5Vg-5e-bD0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1061" y="2189"/>
         </scene>
@@ -1359,9 +1356,7 @@
                     <navigationItem key="navigationItem" id="TCb-XF-XBt">
                         <nil key="title"/>
                     </navigationItem>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="568"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="mTableView" destination="rYy-0B-gus" id="LDp-eX-rJf"/>
                     </connections>
@@ -1506,6 +1501,6 @@
         <image name="voteup" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ekv-kj-UHq"/>
+        <segue reference="nZD-Ej-kf4"/>
     </inferredMetricsTieBreakers>
 </document>

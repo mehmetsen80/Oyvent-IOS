@@ -39,26 +39,35 @@ class CategoryViewController: UIViewController,UIPopoverPresentationControllerDe
             var captureViewController: CaptureViewController = segue.destinationViewController as CaptureViewController
             captureViewController.albumID = self.albumID
             captureViewController.albumName = self.albumName
-            captureViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
-            captureViewController.popoverPresentationController!.delegate = self
+            //captureViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+            //captureViewController.popoverPresentationController!.delegate = self
         }else if segue.identifier == "fromLibrary" {
             var captureViewController: CaptureViewController = segue.destinationViewController as CaptureViewController
             captureViewController.albumID = self.albumID
             captureViewController.albumName = self.albumName
             captureViewController.segueLibrary = true
-            captureViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
-            captureViewController.popoverPresentationController!.delegate = self
+//            captureViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+//            captureViewController.popoverPresentationController!.delegate = self
         }else if segue.identifier == "onlyText" {
             var onlyTextViewController: OnlyTextViewController = segue.destinationViewController as OnlyTextViewController
-            
+            onlyTextViewController.albumID = self.albumID
+            onlyTextViewController.albumName = self.albumName
+//            onlyTextViewController.popoverPresentationController!.delegate = self
+//            onlyTextViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
         }
 
 
     }
     
-//    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-//        return UIModalPresentationStyle.None
-//    }
+    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
+        println("welcome back!")
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
     
 
 }
