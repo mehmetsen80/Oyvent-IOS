@@ -59,11 +59,11 @@ class CategoryViewController: UIViewController,UIPopoverPresentationControllerDe
 
     }
     
-    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
-        println("welcome back!")
-        dismissViewControllerAnimated(true, completion: nil)
-        
-    }
+//    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
+//        println("welcome back!")
+//        //dismissViewControllerAnimated(true, completion: nil)
+//        
+//    }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None

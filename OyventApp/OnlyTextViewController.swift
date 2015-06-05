@@ -155,10 +155,12 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
             return
         }
         
-        let postString = "processType=UPLOADIOSPHOTO&albumID=\(albumID)&userID=\(userID)&latitude=\(self.latitude)&longitude=\(self.longitude)&caption=\(caption)"
+        
+        
+        let postString = "processType=UPLOADIOSPHOTOONLYTEXT&albumID=\(albumID)&userID=\(userID)&latitude=\(self.latitude)&longitude=\(self.longitude)&caption=\(caption)"
         request.HTTPMethod = "POST"
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-        println("postString: \(postString)")
+//        println("postString: \(postString)")
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         

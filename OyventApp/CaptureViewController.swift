@@ -328,8 +328,136 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     
     
     @IBAction func shareNow(sender: UIButton) {
-        println("let's share post")
+        
+        var userID: Double = NSUserDefaults.standardUserDefaults().doubleForKey("userID")
+        let url = NSURL(string:"http://oyvent.com/ajax/PhotoHandlerWeb.php")
+        let request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "POST"
+        let caption = txtAddCaption.text
+    
+        let param = [
+            "processType" : "UPLOADIOSPHOTO",
+            "albumID" : "\(self.albumID)",
+            "userID" : "\(userID)",
+            "latitude" : "\(self.latitude)",
+            "longitude" : "\(self.longitude)",
+            "caption" : "\(caption)"
+        ]
+        
+        let boundary = generateBoundaryString()
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        var imageData = UIImageJPEGRepresentation(self.imageView.image, 1)
+        if(imageData==nil) { return; }
+        
+        
+        request.HTTPBody = createBodyWithParameters(param, filePathKey: "file", imageDataKey: imageData, boundary: boundary)
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request){
+            data, response, error  in
+            
+            if(error != nil){
+                println("error=\(error)")
+                return
+            }
+            
+//            // You can print out response object
+//            println("******* response = \(response)")
+            
+            
+            // Print out reponse body
+//            let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
+//            println("****** response data = \(responseString!)")
+            
+            
+            
+            var err: NSError?
+            var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
+            
+            if let parseJSON = json {
+                var resultValue:Bool = parseJSON["success"] as Bool!
+                var error:String? = parseJSON	["error"] as String?
+                
+                dispatch_async(dispatch_get_main_queue(),{
+                    
+                    if(!resultValue){
+                        //display alert message with confirmation
+                        var myAlert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                        myAlert.addAction(okAction)
+                        self.presentViewController(myAlert, animated: true, completion: nil)
+                    }else{
+                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+//                        self.txtAddCaption.text = ""
+//                        self.imageView.image = nil;
+                        
+                        //display alert message with confirmation
+                        var myAlert = UIAlertController(title: "Confirmation", message: "Post added successfully!", preferredStyle: UIAlertControllerStyle.Alert)
+                        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                            
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                            
+                            
+                            let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
+                            var geoController:GeoViewController =  nvg.topViewController as GeoViewController
+                            geoController.albumID = self.albumID
+                            geoController.albumName = self.albumName
+                            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+                            appDelegate.window?.rootViewController = nvg
+                            appDelegate.window?.makeKeyAndVisible()
+                            
+                            
+                        }))
+                        self.presentViewController(myAlert, animated: true, completion: nil)
+                        
+                    }
+                })
+            }
+        }
+        
+        task.resume()
+        
     }
+    
+    func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: NSData, boundary: String) -> NSData {
+        
+        var body = NSMutableData();
+        
+        if parameters != nil {
+            for (key, value) in parameters! {
+                body.appendString("--\(boundary)\r\n")
+                body.appendString("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+                body.appendString("\(value)\r\n")
+            }
+        }
+        
+        let filename = "oyvent-photo.jpg"
+        
+        let mimetype = "image/jpg"
+        
+        body.appendString("--\(boundary)\r\n")
+        body.appendString("Content-Disposition: form-data; name=\"\(filePathKey!)\"; filename=\"\(filename)\"\r\n")
+        body.appendString("Content-Type: \(mimetype)\r\n\r\n")
+        body.appendData(imageDataKey)
+        body.appendString("\r\n")
+        
+        body.appendString("--\(boundary)--\r\n")
+        
+        return body
+    }
+    
+
+    
+    
+    /// Create boundary string for multipart/form-data request
+    ///
+    /// :returns:            The boundary string that consists of "Boundary-" followed by a UUID string.
+    
+    func generateBoundaryString() -> String {
+        return "Boundary-\(NSUUID().UUIDString)"
+    }
+   
     
   
     //shoot a photo
@@ -465,5 +593,12 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     }/******* end of animate add comment textbox either up or down *****/
     
 
+}
 
+
+extension NSMutableData {
+    func appendString(string: String) {
+        let data = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        appendData(data!)
+    }
 }
