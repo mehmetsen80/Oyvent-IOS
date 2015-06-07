@@ -27,7 +27,9 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     let bgImageColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
     var segueLibrary: Bool = false
     
+    @IBOutlet weak var btnShareNow: UIButton!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var captureSession: AVCaptureSession! = nil
     var previewLayer : AVCaptureVideoPreviewLayer?
     @IBOutlet weak var imageView: UIImageView!
@@ -346,9 +348,13 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
         
         let boundary = generateBoundaryString()
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        var imageData = UIImageJPEGRepresentation(self.imageView.image, 1)
+        
+        let img : UIImage = self.fixOrientation(self.imageView.image!)
+        var imageData = UIImageJPEGRepresentation(img, 1)
         if(imageData==nil) { return; }
         
+        btnShareNow.enabled = false
+        activityIndicator.startAnimating()
         
         request.HTTPBody = createBodyWithParameters(param, filePathKey: "file", imageDataKey: imageData, boundary: boundary)
         
@@ -387,6 +393,8 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
                         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                         myAlert.addAction(okAction)
                         self.presentViewController(myAlert, animated: true, completion: nil)
+                        self.activityIndicator.stopAnimating()
+                        self.btnShareNow.enabled = true
                     }else{
                         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
 //                        self.txtAddCaption.text = ""
@@ -397,7 +405,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
                         myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
                             
                             self.dismissViewControllerAnimated(true, completion: nil)
-                            
+                            self.activityIndicator.stopAnimating()
                             
                             let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
                             var geoController:GeoViewController =  nvg.topViewController as GeoViewController
@@ -410,7 +418,8 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
                             
                         }))
                         self.presentViewController(myAlert, animated: true, completion: nil)
-                        
+                        self.activityIndicator.stopAnimating()
+                        self.btnShareNow.enabled = true
                     }
                 })
             }
@@ -475,12 +484,15 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
             stillImageOutput?.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: {
                 (sampleBuffer, error) in
                 let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
+                
+                var initialImage : UIImage = UIImage(data: imageData)!
+                let orientedImage = UIImage(CGImage: initialImage.CGImage, scale: 1, orientation: initialImage.imageOrientation)!
                
-                self.imageView.image = UIImage(data: imageData)
+                self.imageView.image = orientedImage
                 self.captureSession.stopRunning()
                 
                 //Save the captured preview to image
-                //UIImageWriteToSavedPhotosAlbum(self.mImageView.image, nil, nil, nil)
+                UIImageWriteToSavedPhotosAlbum(self.imageView.image, nil, nil, nil)
                 
             })
         }
@@ -499,6 +511,81 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
         imagePicker.modalPresentationStyle = .Popover
         presentViewController(imagePicker, animated: true, completion: nil)//4
         //imagePicker.popoverPresentationController?.barButtonItem = sender
+    }
+    
+    func fixOrientation(img:UIImage) -> UIImage {
+        
+        
+        // No-op if the orientation is already correct
+        if (img.imageOrientation == UIImageOrientation.Up) {
+            return img;
+        }
+        // We need to calculate the proper transformation to make the image upright.
+        // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
+        var transform:CGAffineTransform = CGAffineTransformIdentity
+        
+        if (img.imageOrientation == UIImageOrientation.Down
+            || img.imageOrientation == UIImageOrientation.DownMirrored) {
+                
+                transform = CGAffineTransformTranslate(transform, img.size.width, img.size.height)
+                transform = CGAffineTransformRotate(transform, CGFloat(M_PI))
+        }
+        
+        if (img.imageOrientation == UIImageOrientation.Left
+            || img.imageOrientation == UIImageOrientation.LeftMirrored) {
+                
+                transform = CGAffineTransformTranslate(transform, img.size.width, 0)
+                transform = CGAffineTransformRotate(transform, CGFloat(M_PI_2))
+        }
+        
+        if (img.imageOrientation == UIImageOrientation.Right
+            || img.imageOrientation == UIImageOrientation.RightMirrored) {
+                
+                transform = CGAffineTransformTranslate(transform, 0, img.size.height);
+                transform = CGAffineTransformRotate(transform,  CGFloat(-M_PI_2));
+        }
+        
+        if (img.imageOrientation == UIImageOrientation.UpMirrored
+            || img.imageOrientation == UIImageOrientation.DownMirrored) {
+                
+                transform = CGAffineTransformTranslate(transform, img.size.width, 0)
+                transform = CGAffineTransformScale(transform, -1, 1)
+        }
+        
+        if (img.imageOrientation == UIImageOrientation.LeftMirrored
+            || img.imageOrientation == UIImageOrientation.RightMirrored) {
+                
+                transform = CGAffineTransformTranslate(transform, img.size.height, 0);
+                transform = CGAffineTransformScale(transform, -1, 1);
+        }
+        
+        
+        // Now we draw the underlying CGImage into a new context, applying the transform
+        // calculated above.
+        var ctx:CGContextRef = CGBitmapContextCreate(nil, UInt(img.size.width), UInt(img.size.height),
+            CGImageGetBitsPerComponent(img.CGImage), 0,
+            CGImageGetColorSpace(img.CGImage),
+            CGImageGetBitmapInfo(img.CGImage));
+        CGContextConcatCTM(ctx, transform)
+        
+        
+        if (img.imageOrientation == UIImageOrientation.Left
+            || img.imageOrientation == UIImageOrientation.LeftMirrored
+            || img.imageOrientation == UIImageOrientation.Right
+            || img.imageOrientation == UIImageOrientation.RightMirrored
+            ) {
+                
+                CGContextDrawImage(ctx, CGRectMake(0,0,img.size.height,img.size.width), img.CGImage)
+        } else {
+            CGContextDrawImage(ctx, CGRectMake(0,0,img.size.width,img.size.height), img.CGImage)
+        }
+        
+        
+        // And now we just create a new UIImage from the drawing context
+        var cgimg:CGImageRef = CGBitmapContextCreateImage(ctx)
+        var imgEnd:UIImage = UIImage(CGImage: cgimg)!
+        
+        return imgEnd
     }
     
     

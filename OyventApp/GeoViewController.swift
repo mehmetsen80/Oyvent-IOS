@@ -27,6 +27,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     private let concurrentPhotoQueue = dispatch_queue_create(
         "com.oy.vent.photoQueue", DISPATCH_QUEUE_CONCURRENT)
     
+    @IBOutlet weak var btnCity: UIButton!
     var geoCoder: CLGeocoder!
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation!
@@ -282,8 +283,9 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
                     //println(city)
                     
                     self.city = city
+                    self.btnCity.setTitle(city, forState: UIControlState.Normal)
                     self.api!.searchPhotos(0, latitude: self.latitude, longitude: self.longitude, albumID:  self.albumID)
-                    self.albumName = (self.albumID != 0 ) ? self.albumName : city
+                    self.albumName = (self.albumID != 0 ) ? self.albumName : "General"
 //                    self.btnGeoAlbum.setTitle(self.albumName, forState: UIControlState.Normal)
                     self.locationManager.stopUpdatingLocation()
                 }
@@ -464,7 +466,11 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     
     func didSelectGeoTableHeaderViewCell(Selected: Bool, GeoHeader: GeoTableHeaderCell) {
       
-        println("Header Selected!");
+        pageNo=0
+        self.photos = []
+        self.imageCache = [String : UIImage]()
+        scrollToTop()
+        api!.searchPhotos(pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -526,9 +532,10 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         
         //println("currentOffset: \(currentOffset)  maximumOffset: \(maximumOffset)")
         if(currentOffset <  -100) {
-            //println("currentOffset>maximumOffset ->  currentOffset: \(currentOffset)  maximumOffset: \(maximumOffset)")
+            println("currentOffset>maximumOffset ->  currentOffset: \(currentOffset)  maximumOffset: \(maximumOffset)")
             self.loadSpinner.startAnimating()
-            api!.searchPhotos(0, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID)
+            pageNo=0
+            api!.searchPhotos(pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID)
         }
     }
     
@@ -537,9 +544,11 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         println("maximumOffset \(maximumOffset)  currentOffset: \(currentOffset)")
         if (maximumOffset - currentOffset) <= 144  &&  maximumOffset > 0{
-            //println("let's search: maximumOffset - currentOffset:\(maximumOffset - currentOffset)")
+            println("let's search: maximumOffset - currentOffset:\(maximumOffset - currentOffset)")
             api!.searchPhotos(++pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID)
         }
+        
+      
         
 //        //frame Optional((0.0,20.0,320.0,44.0))
 //        let frame: CGRect? = self.navigationController?.navigationBar.frame;
@@ -660,7 +669,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         dispatch_barrier_async(concurrentPhotoQueue) {
         var resultsArr: [Photo] = results["results"] as [Photo]
         dispatch_async(dispatch_get_main_queue(), {
-            
+          
             resultsArr = Photo.photosWithJSON(resultsArr)
             for (var i = 0; i < resultsArr.count; i++) {
                 self.photos.append(resultsArr[i])
@@ -677,6 +686,10 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
         println("welcome back!")
     }
+    
+    
+ 
+    
    
     @IBAction func filterByAlbumID(sender: UIButton) {
         let buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mTableView)
@@ -692,7 +705,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         pageNo=0
         self.photos = []
         scrollToTop()
-        api!.searchPhotos(pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID)
+        //api!.searchPhotos(pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID)
         
     }
     

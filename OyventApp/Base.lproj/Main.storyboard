@@ -894,6 +894,9 @@
                                     <action selector="switchCamera:" destination="6CY-9f-x1j" eventType="touchUpInside" id="pS3-rw-iPz"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Xma-kP-D2d">
+                                <rect key="frame" x="289" y="540" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -918,7 +921,9 @@
                             <constraint firstItem="rNM-kD-cxg" firstAttribute="leading" secondItem="fzO-rz-yVd" secondAttribute="leadingMargin" constant="-10" id="fhI-cS-qAe"/>
                             <constraint firstItem="UNt-36-olb" firstAttribute="leading" secondItem="fzO-rz-yVd" secondAttribute="leadingMargin" constant="-16" id="fyk-Mu-mMN"/>
                             <constraint firstItem="5vf-PI-QKM" firstAttribute="leading" secondItem="UNt-36-olb" secondAttribute="leading" id="gd9-BF-7AS"/>
+                            <constraint firstItem="Xma-kP-D2d" firstAttribute="leading" secondItem="yxb-WO-jUl" secondAttribute="trailing" constant="-31" id="qhJ-Jc-HgL"/>
                             <constraint firstItem="aWg-ZV-ZHy" firstAttribute="leading" secondItem="9M4-7P-ZOb" secondAttribute="trailing" constant="33" id="uB6-LV-6BU"/>
+                            <constraint firstItem="Xma-kP-D2d" firstAttribute="top" secondItem="yxb-WO-jUl" secondAttribute="bottom" constant="-28" id="y9I-R7-DOF"/>
                             <constraint firstItem="aWg-ZV-ZHy" firstAttribute="top" secondItem="5vf-PI-QKM" secondAttribute="bottom" constant="26" id="ztS-PR-VDm"/>
                         </constraints>
                     </view>
@@ -926,8 +931,10 @@
                     <navigationItem key="navigationItem" id="F01-Jz-T8w"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Xma-kP-D2d" id="jIC-aj-7mr"/>
                         <outlet property="btnAlbumName" destination="UNt-36-olb" id="eIj-Yb-nG9"/>
                         <outlet property="btnLibrary" destination="gpx-U2-mpt" id="g1a-ao-R13"/>
+                        <outlet property="btnShareNow" destination="yxb-WO-jUl" id="aDh-WI-I8o"/>
                         <outlet property="imageView" destination="5vf-PI-QKM" id="fG2-V4-OdW"/>
                         <outlet property="txtAddCaption" destination="bep-se-zFI" id="4Yf-Nt-TFD"/>
                     </connections>
@@ -1158,14 +1165,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVU-Bw-VxV">
-                                                    <rect key="frame" x="272" y="215" width="40" height="50"/>
+                                                    <rect key="frame" x="233" y="204" width="72" height="72"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="rjw-wP-1OJ"/>
-                                                        <constraint firstAttribute="width" constant="40" id="tV5-nZ-6Df"/>
+                                                        <constraint firstAttribute="height" constant="72" id="rjw-wP-1OJ"/>
+                                                        <constraint firstAttribute="width" constant="72" id="tV5-nZ-6Df"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="8"/>
-                                                    <state key="normal" title="0" backgroundImage="comments-icon-32">
+                                                    <state key="normal" title="0" backgroundImage="message">
                                                         <color key="titleColor" red="0.30249971310000001" green="0.57753758079999995" blue="0.92126341540000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <state key="highlighted">
@@ -1247,7 +1253,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hkc-Rv-wDD" firstAttribute="leading" secondItem="691-j4-hXI" secondAttribute="trailing" constant="20" id="1rp-8X-aZD"/>
-                                                <constraint firstItem="oak-O7-66G" firstAttribute="top" secondItem="ZVU-Bw-VxV" secondAttribute="bottom" constant="16" id="3by-9M-eVX"/>
+                                                <constraint firstItem="oak-O7-66G" firstAttribute="top" secondItem="ZVU-Bw-VxV" secondAttribute="bottom" constant="5" id="3by-9M-eVX"/>
                                                 <constraint firstItem="bVa-IJ-sL4" firstAttribute="top" secondItem="ISL-7h-rqb" secondAttribute="bottom" constant="6" id="48s-yJ-2Ot"/>
                                                 <constraint firstItem="691-j4-hXI" firstAttribute="top" secondItem="Lhc-YY-s6v" secondAttribute="topMargin" constant="14" id="7jb-gB-LOB"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Pjo-T2-6fJ" secondAttribute="bottom" constant="2" id="9We-FF-4wE"/>
@@ -1262,7 +1268,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="hkc-Rv-wDD" secondAttribute="trailing" constant="-4" id="HKM-v5-qG5"/>
                                                 <constraint firstItem="bVa-IJ-sL4" firstAttribute="leading" secondItem="aJE-RK-ujI" secondAttribute="leading" constant="1" id="JSJ-Th-IZ5"/>
                                                 <constraint firstItem="ISL-7h-rqb" firstAttribute="leading" secondItem="Lhc-YY-s6v" secondAttribute="leading" id="K0C-xd-WhI"/>
-                                                <constraint firstItem="ZVU-Bw-VxV" firstAttribute="leading" secondItem="ISL-7h-rqb" secondAttribute="trailing" constant="-48" id="LJm-rK-8wt"/>
+                                                <constraint firstItem="ZVU-Bw-VxV" firstAttribute="leading" secondItem="ISL-7h-rqb" secondAttribute="trailing" constant="-87" id="LJm-rK-8wt"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="cjM-Ad-W6h" secondAttribute="bottom" constant="3" id="LuC-lc-MsG"/>
                                                 <constraint firstItem="cjM-Ad-W6h" firstAttribute="bottom" secondItem="gRw-XK-fW1" secondAttribute="bottom" id="O9Q-w3-cAY"/>
                                                 <constraint firstItem="hkc-Rv-wDD" firstAttribute="trailing" secondItem="aJE-RK-ujI" secondAttribute="trailing" constant="-4" id="Pm1-tN-jc4"/>
@@ -1352,15 +1358,26 @@
                     </view>
                     <navigationItem key="navigationItem" id="TCb-XF-XBt">
                         <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mUa-A3-bz3">
+                            <rect key="frame" x="60" y="7" width="200" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="refreshTable:" destination="1bD-1i-I3u" eventType="touchUpInside" id="uMf-kU-DgP"/>
+                            </connections>
+                        </button>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="btnCity" destination="mUa-A3-bz3" id="GeP-bU-h0V"/>
                         <outlet property="mTableView" destination="rYy-0B-gus" id="LDp-eX-rJf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5p-yK-QQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="779" y="1156"/>
+            <point key="canvasLocation" x="922" y="1156"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="oEc-Jh-1zY">
@@ -1489,9 +1506,9 @@
         <image name="add" width="48" height="48"/>
         <image name="camera" width="48" height="48"/>
         <image name="capture" width="48" height="48"/>
-        <image name="comments-icon-32" width="32" height="32"/>
         <image name="galery" width="48" height="48"/>
         <image name="galery-icon" width="48" height="48"/>
+        <image name="message" width="48" height="48"/>
         <image name="rotate-camara" width="48" height="49"/>
         <image name="text" width="48" height="48"/>
         <image name="votedown" width="16" height="16"/>
