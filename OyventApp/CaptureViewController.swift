@@ -407,8 +407,10 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
                             self.dismissViewControllerAnimated(true, completion: nil)
                             self.activityIndicator.stopAnimating()
                             
-                            let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
+                            let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myGeoNav") as MyNavigationController
                             var geoController:GeoViewController =  nvg.topViewController as GeoViewController
+                        
+                            geoController.hasCustomNavigation = true
                             geoController.albumID = self.albumID
                             geoController.albumName = self.albumName
                             let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate

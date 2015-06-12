@@ -9,7 +9,7 @@
 import UIKit
 
 class MyMenuTableViewController: UITableViewController {
-    var selectedMenuItem : Int = 1
+    var selectedMenuItem : Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,7 +66,7 @@ class MyMenuTableViewController: UITableViewController {
                 cell!.textLabel?.text = "Near Me"
                 break
             case 2:
-                cell!.textLabel?.text = "Me"
+                cell!.textLabel?.text = "Logout" //me uiviewcontrol
                 break
             default:
                 cell!.textLabel?.text = "Home"
@@ -117,13 +117,17 @@ class MyMenuTableViewController: UITableViewController {
                 case 0:
                    //tabBarController.selectedIndex = 0
 //                   var homeView: HomeViewController = tabBarController.viewControllers![0] as HomeViewController
-                   let homeController: HomeViewController = mainStoryboard.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
+                     let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
+                   let homeController: HomeViewController = nvg.topViewController as HomeViewController
                    sideMenuController()?.setContentViewController(homeController)
                     break
                 case 1:
                     //tabBarController.selectedIndex = 1
-                    let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
+                    let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myGeoNav") as MyNavigationController
                     let geoController:GeoViewController =  nvg.topViewController as GeoViewController
+                    geoController.hasCustomNavigation = true
+//                     let geoController: GeoViewController = mainStoryboard.instantiateViewControllerWithIdentifier("geoView") as GeoViewController
+                    
                     sideMenuController()?.setContentViewController(geoController)
                     break
                 case 2:

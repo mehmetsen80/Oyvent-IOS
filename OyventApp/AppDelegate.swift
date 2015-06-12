@@ -34,8 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             
             let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
-            let geoController:GeoViewController =  nvg.topViewController as GeoViewController
+            //let geoController:GeoViewController =  nvg.topViewController as GeoViewController
             //let homeController:HomeViewController = mainStoryboard.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
+            
+            
+            
             window!.rootViewController = nvg
             window!.makeKeyAndVisible()
 

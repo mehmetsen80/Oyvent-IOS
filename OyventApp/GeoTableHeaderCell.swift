@@ -16,6 +16,7 @@ class GeoTableHeaderCell: UITableViewCell {
     
     var delegate : GeoTableHeaderViewCellDelegate?
     @IBOutlet weak var btnGeoAlbum: UIButton!
+    @IBOutlet weak var lblParentName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

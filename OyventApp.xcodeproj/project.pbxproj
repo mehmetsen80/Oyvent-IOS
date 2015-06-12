@@ -44,6 +44,8 @@
 		59EFA7F31AD61F1A00CA3C84 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7F21AD61F1A00CA3C84 /* DetailsViewController.swift */; };
 		59EFA7F91AE4915100CA3C84 /* ESideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7F81AE4915100CA3C84 /* ESideMenu.swift */; };
 		59EFA7FB1AE491CE00CA3C84 /* ESideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7FA1AE491CE00CA3C84 /* ESideMenuNavigationController.swift */; };
+		59EFD6A61B2506A7000DD915 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFD6A51B2506A7000DD915 /* CategoriesViewController.swift */; };
+		59EFD6A81B2506EC000DD915 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFD6A71B2506EC000DD915 /* CategoriesCollectionViewCell.swift */; };
 		59F175DF1AF87D0F005E7950 /* gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 59F175DE1AF87D0F005E7950 /* gitignore */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +101,8 @@
 		59EFA7F21AD61F1A00CA3C84 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		59EFA7F81AE4915100CA3C84 /* ESideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESideMenu.swift; sourceTree = "<group>"; };
 		59EFA7FA1AE491CE00CA3C84 /* ESideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESideMenuNavigationController.swift; sourceTree = "<group>"; };
+		59EFD6A51B2506A7000DD915 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		59EFD6A71B2506EC000DD915 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		59F175DE1AF87D0F005E7950 /* gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +163,7 @@
 				5936D6E01B141A5900A02642 /* OnlyTextViewController.swift */,
 				59EFA7F01AD4F89200CA3C84 /* GeoViewController.swift */,
 				59EFA7F21AD61F1A00CA3C84 /* DetailsViewController.swift */,
+				59EFD6A51B2506A7000DD915 /* CategoriesViewController.swift */,
 				59DFCF121AB9398F009DE7AF /* MeViewController.swift */,
 				59EFA7E81ACCFA7C00CA3C84 /* ZoomViewController.swift */,
 				59DFCEE11AB2A41C009DE7AF /* Info.plist */,
@@ -233,6 +238,7 @@
 				590EBBD21AF5852C00420384 /* DetailsTableViewCell.swift */,
 				5976B8F01AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift */,
 				5976B8F21B038CDF00D8D2F4 /* MyCollectionReusableView.swift */,
+				59EFD6A71B2506EC000DD915 /* CategoriesCollectionViewCell.swift */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 			files = (
 				5976B8F71B03AF7C00D8D2F4 /* AlbumAPIController.swift in Sources */,
 				590EBBD91AF68B6900420384 /* RoundButton.swift in Sources */,
+				59EFD6A81B2506EC000DD915 /* CategoriesCollectionViewCell.swift in Sources */,
 				59EFA7F11AD4F89200CA3C84 /* GeoViewController.swift in Sources */,
 				59EFA7E71AC8FE5A00CA3C84 /* UIVerticalAlignLabel.swift in Sources */,
 				59EFA7FB1AE491CE00CA3C84 /* ESideMenuNavigationController.swift in Sources */,
@@ -382,6 +389,7 @@
 				590EBBCD1AE494B500420384 /* MyMenuTableViewController.swift in Sources */,
 				590EBBD71AF5F29D00420384 /* CommentAPIController.swift in Sources */,
 				59BC7A141B124906000BD75E /* CategoryViewController.swift in Sources */,
+				59EFD6A61B2506A7000DD915 /* CategoriesViewController.swift in Sources */,
 				5976B8ED1AF9097D00D8D2F4 /* CustomButton.swift in Sources */,
 				59EFA7EF1AD4F7B500CA3C84 /* GeoTableViewCell.swift in Sources */,
 				59DFCF091AB64303009DE7AF /* HomeViewController.swift in Sources */,

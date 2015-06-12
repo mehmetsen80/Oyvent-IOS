@@ -36,7 +36,10 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     
     var albumID : Double = 0
     var albumName : String = ""
+    var fkParentID : Double = 0
+    var parentName : String = ""
     
+    var hasCustomNavigation: Bool = false
     
     
     func scrollToTop() {
@@ -110,8 +113,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     
     func setupNavigationBar(){
     
-//        self.navigationController?.navigationBar.hidden = true
-        self.navigationController?.hidesBarsOnSwipe = true
+        
         
         
         //self.navigationController?.hidesBarsOnSwipe = true
@@ -198,17 +200,19 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         self.mTableView.addSubview(self.loadSpinner)
         //self.btnGeoAlbum?.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
         
-
+        if(hasCustomNavigation){
+            setupNavigationBar()
+        }
         
-        
-        
+        self.navigationController?.navigationBar.hidden = false
+        self.navigationController?.hidesBarsOnSwipe = false
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //println("viewDidLoad()")
-        setupNavigationBar()
+        //setupNavigationBar()
     }
     
     required init(coder aDecoder: NSCoder)
@@ -222,9 +226,10 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         self.albumID = 0
 //        self.btnGeoAlbum.setTitle(self.city, forState: UIControlState.Normal)
         self.pageNo=0
+        self.fkParentID=0
         self.photos = []
         scrollToTop()
-        api!.searchPhotos(pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID)
+        api!.searchPhotos(pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID,fkParentID: self.fkParentID)
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
@@ -284,8 +289,8 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
                     
                     self.city = city
                     self.btnCity.setTitle(city, forState: UIControlState.Normal)
-                    self.api!.searchPhotos(0, latitude: self.latitude, longitude: self.longitude, albumID:  self.albumID)
-                    self.albumName = (self.albumID != 0 ) ? self.albumName : "General"
+                    self.api!.searchPhotos(0, latitude: self.latitude, longitude: self.longitude, albumID:  self.albumID, fkParentID: self.fkParentID)
+                    self.albumName = (self.albumID != 0 ) ? self.albumName : "all around me"
 //                    self.btnGeoAlbum.setTitle(self.albumName, forState: UIControlState.Normal)
                     self.locationManager.stopUpdatingLocation()
                 }
@@ -470,7 +475,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         self.photos = []
         self.imageCache = [String : UIImage]()
         scrollToTop()
-        api!.searchPhotos(pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID)
+        api!.searchPhotos(pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID, fkParentID: self.fkParentID)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -501,6 +506,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
                         let image = UIImage(data: data)
                         //header.btnGeoAlbum?.setBackgroundImage(image, forState: UIControlState.Normal)
                         header.btnGeoAlbum?.setBackgroundImage(self.onePixelImageWithColor(self.bgImageColor), forState: UIControlState.Normal)
+                            header.lblParentName.text = self.parentName
                     }
                 }
                 else {
@@ -535,7 +541,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
             println("currentOffset>maximumOffset ->  currentOffset: \(currentOffset)  maximumOffset: \(maximumOffset)")
             self.loadSpinner.startAnimating()
             pageNo=0
-            api!.searchPhotos(pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID)
+            api!.searchPhotos(pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID, fkParentID: self.fkParentID)
         }
     }
     
@@ -545,7 +551,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         println("maximumOffset \(maximumOffset)  currentOffset: \(currentOffset)")
         if (maximumOffset - currentOffset) <= 144  &&  maximumOffset > 0{
             println("let's search: maximumOffset - currentOffset:\(maximumOffset - currentOffset)")
-            api!.searchPhotos(++pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID)
+            api!.searchPhotos(++pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID,fkParentID: self.fkParentID)
         }
         
       

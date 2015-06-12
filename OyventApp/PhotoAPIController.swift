@@ -20,12 +20,12 @@ class PhotoAPIController{
         self.delegate = delegate
     }
     
-    func searchPhotos(currentPage: Int, latitude: String, longitude: String, albumID: Double) {
-        post(currentPage, latitude: latitude, longitude: longitude, albumID: albumID)
+    func searchPhotos(currentPage: Int, latitude: String, longitude: String, albumID: Double, fkParentID: Double) {
+        post(currentPage, latitude: latitude, longitude: longitude, albumID: albumID, fkParentID: fkParentID)
     }
     
     
-    func post(currentPage: Int, latitude: String, longitude: String, albumID: Double) {
+    func post(currentPage: Int, latitude: String, longitude: String, albumID: Double, fkParentID: Double) {
         
         let url = NSURL(string:"http://oyvent.com/ajax/Feeds.php")
         var request = NSMutableURLRequest(URL: url!)
@@ -33,7 +33,7 @@ class PhotoAPIController{
         request.HTTPMethod = "POST";
         var userID:String = NSUserDefaults.standardUserDefaults().stringForKey("userID")!
         //println("userID:\(userID)")
-        let postString = "processType=GETFEEDLIST&userID=\(userID)&currentPage=\(currentPage)&lat=\(latitude)&lng=\(longitude)&albumID=\(albumID)"
+        let postString = "processType=GETFEEDLIST&userID=\(userID)&currentPage=\(currentPage)&lat=\(latitude)&lng=\(longitude)&albumID=\(albumID)&fkParentID=\(fkParentID)"
         //println("photos postString: \(postString)")
         var err: NSError?
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
