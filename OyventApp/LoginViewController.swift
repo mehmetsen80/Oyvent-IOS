@@ -98,7 +98,7 @@ class LoginViewController: UIViewController {
                         
                         
                         //let homeController:HomeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
-                        let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
+                        let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myMainNav") as MyNavigationController
                         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
                         appDelegate.window?.rootViewController = nvg
                         appDelegate.window?.makeKeyAndVisible()

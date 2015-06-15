@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyCollectionReusableView: UICollectionReusableView {
+class HomeCollectionReusableView: UICollectionReusableView {
     
   
     @IBOutlet weak var btnHeader: UIButton!

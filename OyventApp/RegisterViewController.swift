@@ -108,10 +108,10 @@ class RegisterViewController: UIViewController {
                         myAlert.addAction(okAction)
                         self.presentViewController(myAlert, animated: true, completion: nil)
                         
-                        let homeController:HomeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
-                        //let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
+                        //let homeController:HomeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
+                        let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myMainNav") as MyNavigationController
                         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-                        appDelegate.window?.rootViewController = homeController
+                        appDelegate.window?.rootViewController = nvg
                         appDelegate.window?.makeKeyAndVisible()
                     }
                 })

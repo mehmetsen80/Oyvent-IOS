@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else{
             
             
-            let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
+            let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myMainNav") as MyNavigationController
             //let geoController:GeoViewController =  nvg.topViewController as GeoViewController
             //let homeController:HomeViewController = mainStoryboard.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
             

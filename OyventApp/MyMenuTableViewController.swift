@@ -116,16 +116,33 @@ class MyMenuTableViewController: UITableViewController {
                 switch (indexPath.row) {
                 case 0:
                    //tabBarController.selectedIndex = 0
+                    
+                    //if you want jumb immediately
 //                   var homeView: HomeViewController = tabBarController.viewControllers![0] as HomeViewController
-                     let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
-                   let homeController: HomeViewController = nvg.topViewController as HomeViewController
-                   sideMenuController()?.setContentViewController(homeController)
+                    
+                    //------------------------------------------------------------------------------------------------------
+                    //if HomeViewController is the first view when logged in, disabled for now
+//                    let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myHomeNav") as MyNavigationController
+//                   let homeController: HomeViewController = nvg.topViewController as HomeViewController
+//                     sideMenuController()?.setContentViewController(homeController)
+                    
+                    //-------------------------------------------------------------------------------------------------------
+                    
+                    
+                    
+                    let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myMainNav") as MyNavigationController
+                    let mainController: MainViewController = nvg.topViewController as MainViewController
+                    sideMenuController()?.setContentViewController(mainController)
+                    
+                    
                     break
                 case 1:
                     //tabBarController.selectedIndex = 1
                     let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myGeoNav") as MyNavigationController
                     let geoController:GeoViewController =  nvg.topViewController as GeoViewController
                     geoController.hasCustomNavigation = true
+                    
+                    //if you want jumb immediately
 //                     let geoController: GeoViewController = mainStoryboard.instantiateViewControllerWithIdentifier("geoView") as GeoViewController
                     
                     sideMenuController()?.setContentViewController(geoController)

@@ -9,14 +9,18 @@
 import UIKit
 import CoreLocation
 
-class CategoriesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,ENSideMenuDelegate, CLLocationManagerDelegate {
+class MainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,ENSideMenuDelegate, AlbumAPIControllerProtocol, CLLocationManagerDelegate {
 
     @IBOutlet weak var mCollectionView: UICollectionView!
-    let kCellIdentifier: String = "categoryCell"
-    var categories:[String] = ["General","Coffee&Tea","Entertainment","Event","Food&Dining","Greek","Housing","Night Out", "Shopping","Student Services","Sport"]
+    let kCellIdentifier: String = "mainCell"
+    var api:AlbumAPIController?
+    var pageNo:Int = 0
+    var albums:[Album] = [Album]()
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
     let bgImageColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
+    var loadSpinner:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+    @IBOutlet weak var btnCity: UIButton!
     
     //geo related
     var geoCoder: CLGeocoder!
@@ -26,11 +30,25 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     var longitude : String!
     var city:String = ""
     
+
+    
+    
+    private let concurrentAlbumQueue = dispatch_queue_create(
+        "com.oy.vent.parentAlbumQueue", DISPATCH_QUEUE_CONCURRENT)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        api = AlbumAPIController(delegate: self)
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         self.sideMenuController()?.sideMenu?.delegate = self
         setupLocationManager();
+        
+        //load more spinner
+        self.loadSpinner.center = self.mCollectionView.center
+        self.loadSpinner.frame = CGRectMake((self.mCollectionView.frame.width-10)/2 , -10, 10, 10);
+        self.loadSpinner.hidesWhenStopped = true
+        self.mCollectionView.addSubview(self.loadSpinner)
         
         //get the screen sizes
         let screenSize: CGRect = UIScreen.mainScreen().bounds
@@ -128,6 +146,8 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
                 if let city = placeMark.addressDictionary["City"] as? NSString {
                     println(city)
                     self.city = city
+                    self.btnCity.setTitle(city, forState: UIControlState.Normal)
+                    self.api!.searchParentAlbums(0, latitude: self.latitude, longitude: self.longitude)
                     self.locationManager.stopUpdatingLocation()
                 }
                 
@@ -266,28 +286,42 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(collectionView: UICollectionView,viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
-        var header: MyCollectionReusableView?
+        var header: MainCollectionReusableView?
         
         if kind == UICollectionElementKindSectionHeader {
             header =
                 collectionView.dequeueReusableSupplementaryViewOfKind(kind,
-                    withReuseIdentifier: "CategoryHeader", forIndexPath: indexPath)
-                as? MyCollectionReusableView
+                    withReuseIdentifier: "mainHeader", forIndexPath: indexPath)
+                as? MainCollectionReusableView
             
-            header?.btnHeader.setTitle("Categories", forState: UIControlState.Normal)
-            //header?.btnHeader.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
+            header?.lblMainHeader.text = "Communities Near By"
+          
         }
         return header!
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as HomeCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as MainCollectionViewCell
         
         
-        let category:String = self.categories[indexPath.row]
+        let album:Album = self.albums[indexPath.row]
         //cell.backgroundColor = UIColor.blackColor()
-        cell.btnGeoAlbum.setTitle(category, forState: UIControlState.Normal)
-        cell.btnGeoAlbum.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
+        cell.btnParent.setTitle(album.albumName, forState: UIControlState.Normal)
+        cell.btnParent.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
+        
+        
+        if(album.fkParentID == 0){
+            cell.lblMiles?.text = "\(album.milesUser) miles"
+            cell.lblMiles.hidden = false
+        }
+        
+        cell.layer.cornerRadius = 12.0
+        cell.layer.shadowColor = UIColor.darkGrayColor().CGColor
+        cell.layer.shadowOffset = CGSizeMake(5, 5.0);
+        cell.layer.shadowRadius = 12.0
+        cell.layer.shadowOpacity = 1.0
+        cell.layer.masksToBounds = true
+        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.contentView.bounds, cornerRadius: 12).CGPath
         
         return cell
     }
@@ -297,17 +331,27 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        return  albums.count
+    }
+    
+    @IBAction func doVisitHome(sender: UIButton) {
+        var buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mCollectionView)
+        let indexPath: NSIndexPath = self.mCollectionView!.indexPathForItemAtPoint(buttonPosition)!
+        //var indexPath: NSIndexPath = self.mCollectionView.indexPathForRowAtPoint(buttonPosition)!
+        let album:Album = self.albums[indexPath.row]
+        self.performSegueWithIdentifier("gotoHome", sender: indexPath)
     }
     
     func collectionView(collectionView: UICollectionView,
         shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+            let album:Album = self.albums[indexPath.row]
+            self.performSegueWithIdentifier("gotoHome", sender: indexPath)
             return false
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        return  CGSize(width: (screenWidth-40)/2, height: screenWidth/2)
+        return  CGSize(width: (screenWidth-40), height: (screenWidth/2)-40)
         
         //return  CGSize(width: screenWidth, height: 140)
     }
@@ -327,15 +371,50 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    func didReceiveAlbumAPIResults(results: NSDictionary) {
+        
+        dispatch_barrier_async(concurrentAlbumQueue) {
+            var resultsArr: [Album] = results["results"] as [Album]
+            dispatch_async(dispatch_get_main_queue(), {
+                
+                resultsArr = Album.albumsWithJSON(resultsArr)
+                for (var i = 0; i < resultsArr.count; i++) {
+                    self.albums.append(resultsArr[i])
+                }
+                self.mCollectionView!.reloadData()
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                self.loadSpinner.stopAnimating()
+            })
+            
+        }
+    }
+
     
-    /*
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        
+        if segue.identifier == "gotoHome"{
+            //let geoViewController:GeoViewController =  segue.destinationViewController as GeoViewController
+            var myNavController: MyNavigationController = segue.destinationViewController as MyNavigationController
+            let homeViewController:HomeViewController =  myNavController.topViewController as HomeViewController
+            let indexPath : NSIndexPath = sender as NSIndexPath
+            let indexPaths : NSArray = self.mCollectionView.indexPathsForSelectedItems()
+            
+            //println(indexPath)
+            var selectedAlbum = self.albums[indexPath.row]
+            println("albumName: \(selectedAlbum.albumName!) pkAlbumID: \(selectedAlbum.pkAlbumID!)")
+            homeViewController.selectedAlbum = selectedAlbum
+           
+        }
+        
     }
-    */
+
 
 }

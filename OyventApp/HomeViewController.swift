@@ -30,11 +30,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
-    
+    var selectedAlbum : Album!
     
     private let concurrentAlbumQueue = dispatch_queue_create(
         "com.oy.vent.albumQueue", DISPATCH_QUEUE_CONCURRENT)
     
+    var hasCustomNavigation: Bool = false
 
     
     override func viewDidAppear(animated: Bool) {
@@ -52,8 +53,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        setupNavigationBar()
-        
         api = AlbumAPIController(delegate: self)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         self.sideMenuController()?.sideMenu?.delegate = self
@@ -70,6 +69,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         self.screenWidth = screenSize.width
         self.screenHeight = screenSize.height
+        
+        if(hasCustomNavigation){
+            setupNavigationBar()
+        }
 
     }
     
@@ -173,7 +176,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     println(city)
                     self.city = city
                     self.btnCity.setTitle(city, forState: UIControlState.Normal)
-                    self.api!.searchAlbums(0, latitude: self.latitude, longitude: self.longitude)
+                    self.api!.searchAllAlbums(0, latitude: self.latitude, longitude: self.longitude, pkAlbumID: self.selectedAlbum.pkAlbumID)
                     //self.albums.append(Album(pkAlbumID: -1, albumName: self.city))//initial city cell
                     self.locationManager.stopUpdatingLocation()
                 }
@@ -306,15 +309,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(collectionView: UICollectionView,viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
             
-            var header: MyCollectionReusableView?
+            var header: HomeCollectionReusableView?
             
             if kind == UICollectionElementKindSectionHeader {
                 header =
                     collectionView.dequeueReusableSupplementaryViewOfKind(kind,
                         withReuseIdentifier: "MyHeader", forIndexPath: indexPath)
-                    as? MyCollectionReusableView
+                    as? HomeCollectionReusableView
                 
-                header?.btnHeader.setTitle("Categories", forState: UIControlState.Normal)
+                header?.btnHeader.setTitle("Select a Category", forState: UIControlState.Normal)
                 //header?.btnHeader.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
             }
             return header!
@@ -466,7 +469,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         //println("maximumOffset \(maximumOffset)  currentOffset: \(currentOffset)")
         if (maximumOffset - currentOffset) <= 144  &&  maximumOffset > 0{
             //println("let's search: maximumOffset - currentOffset:\(maximumOffset - currentOffset)")
-            //api!.searchAlbums(++pageNo, latitude: self.latitude, longitude: self.longitude)
+            //api!.searchAllAlbums(++pageNo, latitude: self.latitude, longitude: self.longitude, pkAlbumID: self.selectedAlbum.pkAlbumID)
         }
     }
     

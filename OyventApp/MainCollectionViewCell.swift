@@ -8,7 +8,9 @@
 
 import UIKit
 
-class CategoriesCollectionViewCell: UICollectionViewCell {
+class MainCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var btnCategory: UIButton!
+    @IBOutlet weak var btnParent: UIButton!
+    @IBOutlet weak var lblMiles: UILabel!
+   
 }
