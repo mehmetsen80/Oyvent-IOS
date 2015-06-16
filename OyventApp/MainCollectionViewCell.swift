@@ -12,5 +12,6 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var btnParent: UIButton!
     @IBOutlet weak var lblMiles: UILabel!
+    @IBOutlet weak var lblPhotoSize: UILabel!
    
 }

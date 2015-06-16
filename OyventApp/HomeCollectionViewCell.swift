@@ -20,6 +20,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imgPoster: UIImageView!
     @IBOutlet weak var lblMiles: UILabel!
     @IBOutlet weak var btnParentName: UIButton!
+    @IBOutlet weak var lblPhotoSize: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

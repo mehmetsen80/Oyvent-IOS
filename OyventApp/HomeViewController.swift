@@ -384,6 +384,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell.lblMiles.hidden = false
         }
         
+        cell.lblPhotoSize.text = "(\(album.photoSize!))"
+        
         
         cell.layer.cornerRadius = 12.0
         //cell.layer.shadowColor = UIColor.blueColor().CGColor

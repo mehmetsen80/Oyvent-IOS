@@ -23,6 +23,7 @@ class Album{
     let address: String?
     let radius: Float?
     let milesUser:Double = 0
+    let photoSize: Int?
     
     init(pkAlbumID: Double, albumName: String){
         self.pkAlbumID = pkAlbumID
@@ -30,7 +31,7 @@ class Album{
     }
     
     init(pkAlbumID: Double, fkUserID: Double, fkParentID: Double, fkCategoryID: Double, albumName: String, albumUserName: String, parentName: String,
-        latitude: Double, longitude: Double, postDate: String, address: String, radius: Float, milesUser:Double){
+        latitude: Double, longitude: Double, postDate: String, address: String, radius: Float, milesUser: Double, photoSize: Int){
         
             self.pkAlbumID = pkAlbumID
             self.fkUserID = fkUserID
@@ -45,6 +46,7 @@ class Album{
             self.address = address
             self.radius = radius
             self.milesUser = milesUser
+            self.photoSize = photoSize
     }
     
     class func albumsWithJSON(allResults: NSArray) -> [Album] {
@@ -64,7 +66,7 @@ class Album{
                 var fkCategoryID = result["FKCATEGORYID"] as? Double
                 var albumName: String? = result["ALBUMNAME"] as? String ?? ""
                 var albumUserName: String?  = result["ALBUMUSERNAME"] as? String ?? ""
-                var parentName: String? = result["PARENTNAME"] as? String ?? "All Categories"
+                var parentName: String? = result["PARENTNAME"] as? String ?? "General"
                 var latitude = result["LATITUDE"] as? Double
                 var longitude = result["LONGITUDE"] as? Double
                 var postDate:String? = result["POSTDATE"] as? String ?? ""
@@ -72,8 +74,9 @@ class Album{
                 var radius:Float? = result["RADIUS"] as? Float
                 var milesUser:Double? = result["DISTANCE"] as? Double
                 milesUser = round(milesUser! * (pow(10.0, 2.0))) / (pow(10.0, 2.0))
+                var photoSize = result["PHOTOSIZE"] as? Int
                 
-                var album = Album(pkAlbumID: pkAlbumID!, fkUserID: fkUserID!, fkParentID: fkParentID!, fkCategoryID: fkCategoryID!, albumName: albumName!, albumUserName: albumUserName!, parentName: parentName!, latitude: latitude!, longitude: longitude!, postDate: postDate!, address: address!, radius: radius!, milesUser:milesUser!)
+                var album = Album(pkAlbumID: pkAlbumID!, fkUserID: fkUserID!, fkParentID: fkParentID!, fkCategoryID: fkCategoryID!, albumName: albumName!, albumUserName: albumUserName!, parentName: parentName!, latitude: latitude!, longitude: longitude!, postDate: postDate!, address: address!, radius: radius!, milesUser: milesUser!, photoSize: photoSize!)
                 albums.append(album)
             }
         }

@@ -315,6 +315,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell.lblMiles.hidden = false
         }
         
+        cell.lblPhotoSize.text = "(\(album.photoSize!))"
+        
         cell.layer.cornerRadius = 12.0
         cell.layer.shadowColor = UIColor.darkGrayColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(5, 5.0);

@@ -183,9 +183,10 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BI6-Ft-WKQ">
                                                     <rect key="frame" x="0.0" y="0.0" width="140" height="138"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uu3-5u-IX4" customClass="DefaultButton" customModule="OyventApp" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uu3-5u-IX4" customClass="DefaultButton" customModule="OyventApp" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="140" height="138"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <inset key="contentEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" title="Button">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -213,6 +214,16 @@
                                                     <color key="textColor" red="0.82543071239999999" green="0.87771420460000005" blue="0.93227193809999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rM4-r5-q2z">
+                                                    <rect key="frame" x="31" y="33" width="78" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="78" id="NzC-9T-num"/>
+                                                        <constraint firstAttribute="height" constant="16" id="bHm-oV-luD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.96799656479999996" green="0.96676835839999997" blue="0.98822206440000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -220,6 +231,7 @@
                                             <constraint firstAttribute="trailingMargin" secondItem="zD1-qG-flB" secondAttribute="trailing" constant="-8" id="4XQ-vq-QFG"/>
                                             <constraint firstItem="Uu3-5u-IX4" firstAttribute="top" secondItem="uQV-W5-MIB" secondAttribute="topMargin" constant="-8" id="EB2-em-0oL"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="BI6-Ft-WKQ" secondAttribute="bottom" constant="-8" id="GQK-oS-QSb"/>
+                                            <constraint firstItem="Uu3-5u-IX4" firstAttribute="top" secondItem="rM4-r5-q2z" secondAttribute="bottom" constant="-49" id="K2d-66-Egr"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="Uu3-5u-IX4" secondAttribute="bottom" constant="-8" id="KK5-rx-dsj"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="BI6-Ft-WKQ" secondAttribute="trailing" constant="-8" id="KbJ-yA-TiJ"/>
                                             <constraint firstItem="BI6-Ft-WKQ" firstAttribute="top" secondItem="uQV-W5-MIB" secondAttribute="topMargin" constant="-8" id="KsU-xy-42j"/>
@@ -229,6 +241,7 @@
                                             <constraint firstItem="Uu3-5u-IX4" firstAttribute="leading" secondItem="uQV-W5-MIB" secondAttribute="leadingMargin" constant="-8" id="SpE-U9-UbP"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="Uu3-5u-IX4" secondAttribute="trailing" constant="-8" id="hBO-DP-gwo"/>
                                             <constraint firstAttribute="centerY" secondItem="BI6-Ft-WKQ" secondAttribute="centerY" id="n6R-kN-j7U"/>
+                                            <constraint firstAttribute="centerX" secondItem="rM4-r5-q2z" secondAttribute="centerX" id="nkI-lp-0sZ"/>
                                             <constraint firstAttribute="centerX" secondItem="Uu3-5u-IX4" secondAttribute="centerX" id="pOv-RN-dZv"/>
                                             <constraint firstItem="zD1-qG-flB" firstAttribute="leading" secondItem="uQV-W5-MIB" secondAttribute="leadingMargin" constant="-8" id="r0c-JF-T8f"/>
                                             <constraint firstItem="Jti-wz-uy8" firstAttribute="top" secondItem="BI6-Ft-WKQ" secondAttribute="bottom" constant="-25" id="sBZ-ii-khK"/>
@@ -240,6 +253,7 @@
                                             <outlet property="btnParentName" destination="zD1-qG-flB" id="inO-8Y-Yh5"/>
                                             <outlet property="imgPoster" destination="BI6-Ft-WKQ" id="L1m-Qp-yrq"/>
                                             <outlet property="lblMiles" destination="Jti-wz-uy8" id="Mjb-Sw-mAb"/>
+                                            <outlet property="lblPhotoSize" destination="rM4-r5-q2z" id="lzT-MU-jfh"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -304,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKJ-vD-hHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="423" y="1551"/>
+            <point key="canvasLocation" x="387" y="1551"/>
         </scene>
         <!--Select Post Category-->
         <scene sceneID="pCl-OK-AYu">
@@ -1546,6 +1560,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afL-56-STz">
                                                     <rect key="frame" x="0.0" y="0.0" width="132" height="132"/>
                                                     <state key="normal" title="Button">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -1562,12 +1577,24 @@
                                                     <color key="textColor" red="0.82543071239999999" green="0.87771420460000005" blue="0.93227193809999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EM-MD-1nY">
+                                                    <rect key="frame" x="32" y="79" width="68" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="0Pw-Ni-W4o"/>
+                                                        <constraint firstAttribute="width" constant="68" id="6Ui-ma-9yF"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="bottomMargin" secondItem="afL-56-STz" secondAttribute="bottom" constant="-8" id="5dN-27-Kf1"/>
                                             <constraint firstItem="afL-56-STz" firstAttribute="top" secondItem="yqK-Dc-S3C" secondAttribute="topMargin" constant="-8" id="Eqw-x1-TMd"/>
+                                            <constraint firstItem="sLg-Rw-CBw" firstAttribute="top" secondItem="6EM-MD-1nY" secondAttribute="bottom" constant="6" id="KoO-mI-GnI"/>
+                                            <constraint firstAttribute="centerX" secondItem="6EM-MD-1nY" secondAttribute="centerX" id="LMY-NN-tz7"/>
                                             <constraint firstItem="afL-56-STz" firstAttribute="leading" secondItem="yqK-Dc-S3C" secondAttribute="leadingMargin" constant="-8" id="Re4-8u-ujL"/>
                                             <constraint firstAttribute="centerY" secondItem="afL-56-STz" secondAttribute="centerY" id="Sy5-o7-Kfb"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="afL-56-STz" secondAttribute="trailing" constant="-8" id="cP4-zk-juS"/>
@@ -1578,6 +1605,7 @@
                                         <connections>
                                             <outlet property="btnParent" destination="afL-56-STz" id="fdf-dR-Im7"/>
                                             <outlet property="lblMiles" destination="sLg-Rw-CBw" id="odp-UC-8cL"/>
+                                            <outlet property="lblPhotoSize" destination="6EM-MD-1nY" id="xA9-JE-QYk"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1631,7 +1659,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gr-Hb-6Tf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-720" y="1551"/>
+            <point key="canvasLocation" x="-733" y="1551"/>
         </scene>
         <!--Home-->
         <scene sceneID="GaE-Ut-4n4">
