@@ -47,6 +47,7 @@ class LogoutViewController: UIViewController, ENSideMenuDelegate {
     }
 
     
+    
     func setupNavigationBar(){
         
         var menuImage:UIImage = UIImage(named: "oyvent-icon-72")!
@@ -73,15 +74,15 @@ class LogoutViewController: UIViewController, ENSideMenuDelegate {
     
     // MARK: - ENSideMenu Delegate
     func sideMenuWillOpen() {
-        println("sideMenuWillOpen")
+        //println("sideMenuWillOpen")
     }
     
     func sideMenuWillClose() {
-        println("sideMenuWillClose")
+        //println("sideMenuWillClose")
     }
     
     func sideMenuShouldOpenSideMenu() -> Bool {
-        println("sideMenuShouldOpenSideMenu")
+        //println("sideMenuShouldOpenSideMenu")
         return true
     }
     
