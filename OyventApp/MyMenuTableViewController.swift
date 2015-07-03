@@ -9,7 +9,7 @@
 import UIKit
 
 class MyMenuTableViewController: UITableViewController {
-    var selectedMenuItem : Int = -1
+    var selectedMenuItem : Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,10 +62,10 @@ class MyMenuTableViewController: UITableViewController {
             case 0:
                 cell!.textLabel?.text = "Home"
                 break
+//            case 1:
+//                cell!.textLabel?.text = "Near Me"
+//                break
             case 1:
-                cell!.textLabel?.text = "Near Me"
-                break
-            case 2:
                 cell!.textLabel?.text = "Logout" //me uiviewcontrol
                 break
             default:
@@ -136,25 +136,30 @@ class MyMenuTableViewController: UITableViewController {
                     
                     
                     break
+//                case 1:
+//                    //tabBarController.selectedIndex = 1
+//                    let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("getGeo") as MyNavigationController
+//                    let geoController:GeoViewController =  nvg.topViewController as GeoViewController
+//                    geoController.hasCustomNavigation = true
+//                    
+//                    //if you want jumb immediately
+////                     let geoController: GeoViewController = mainStoryboard.instantiateViewControllerWithIdentifier("geoView") as GeoViewController
+//                    
+//                    sideMenuController()?.setContentViewController(geoController)
+//                    
+//                    
+//                    //self.performSegueWithIdentifier("getGeo", sender: nil)
+//                    
+//                    break
                 case 1:
-                    //tabBarController.selectedIndex = 1
-                    let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("getGeo") as MyNavigationController
-                    let geoController:GeoViewController =  nvg.topViewController as GeoViewController
-                    geoController.hasCustomNavigation = true
-                    
-                    //if you want jumb immediately
-//                     let geoController: GeoViewController = mainStoryboard.instantiateViewControllerWithIdentifier("geoView") as GeoViewController
-                    
-                    sideMenuController()?.setContentViewController(geoController)
-                    
-                    
-                    //self.performSegueWithIdentifier("getGeo", sender: nil)
-                    
-                    break
-                case 2:
                     //tabBarController.selectedIndex = 4
-                    var meView: MeViewController = mainStoryboard.instantiateViewControllerWithIdentifier("meView") as MeViewController
-                    sideMenuController()?.setContentViewController(meView)
+//                    var meView: MeViewController = mainStoryboard.instantiateViewControllerWithIdentifier("meView") as MeViewController
+//                    sideMenuController()?.setContentViewController(meView)
+                    
+                    
+                    var logoutView: LogoutViewController = mainStoryboard.instantiateViewControllerWithIdentifier("logoutView") as LogoutViewController
+                     sideMenuController()?.setContentViewController(logoutView)
+                    
                     
                     break
                 case 3:

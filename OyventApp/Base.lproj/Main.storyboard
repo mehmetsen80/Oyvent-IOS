@@ -336,7 +336,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKJ-vD-hHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1124" y="1662"/>
+            <point key="canvasLocation" x="1009" y="1811"/>
         </scene>
         <!--Select Post Category-->
         <scene sceneID="pCl-OK-AYu">
@@ -1108,17 +1108,6 @@
                     <view key="view" contentMode="scaleToFill" id="QEf-nH-yad">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCe-RA-jpr">
-                                <rect key="frame" x="136" y="131" width="49" height="30"/>
-                                <state key="normal" title="Logout">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="doLogout:" destination="ETr-Nu-2Vf" eventType="touchUpInside" id="6Hf-cQ-pAG"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" tag="4" title="Me" id="Beg-ME-mt5"/>
@@ -1126,7 +1115,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GzW-2n-HoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2758" y="1957"/>
+            <point key="canvasLocation" x="1042" y="547"/>
+        </scene>
+        <!--Logout View Controller-->
+        <scene sceneID="CD2-aF-jfH">
+            <objects>
+                <viewController storyboardIdentifier="logoutView" id="Ni6-Ht-HUd" customClass="LogoutViewController" customModule="OyventApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qfi-0n-RZc"/>
+                        <viewControllerLayoutGuide type="bottom" id="tkz-fi-IAq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iwd-07-1Qg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure to logout?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzG-C8-eId">
+                                <rect key="frame" x="32" y="79" width="257" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="1yY-yW-jOj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hn2-PO-kW2">
+                                <rect key="frame" x="92" y="131" width="136" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="RXH-hx-NWX"/>
+                                    <constraint firstAttribute="width" constant="136" id="WYQ-B0-vJC"/>
+                                </constraints>
+                                <state key="normal" title="Yes, let me logout!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doLogout:" destination="Ni6-Ht-HUd" eventType="touchUpInside" id="CYH-He-ZB6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hn2-PO-kW2" firstAttribute="top" secondItem="FzG-C8-eId" secondAttribute="bottom" constant="24" id="5Az-p7-d5R"/>
+                            <constraint firstItem="FzG-C8-eId" firstAttribute="top" secondItem="Qfi-0n-RZc" secondAttribute="bottom" constant="59" id="GGL-8Q-5sg"/>
+                            <constraint firstItem="FzG-C8-eId" firstAttribute="centerX" secondItem="iwd-07-1Qg" secondAttribute="centerX" id="IZ7-wl-BQi"/>
+                            <constraint firstItem="FzG-C8-eId" firstAttribute="centerX" secondItem="hn2-PO-kW2" secondAttribute="centerX" id="po9-Nc-M2O"/>
+                            <constraint firstItem="FzG-C8-eId" firstAttribute="leading" secondItem="iwd-07-1Qg" secondAttribute="leadingMargin" constant="16" id="vmB-jl-f47"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YIY-0j-a7s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2630" y="1889"/>
         </scene>
         <!--Geo View Controller-->
         <scene sceneID="aDA-8H-bfP">
@@ -1696,7 +1735,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gr-Hb-6Tf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1003" y="1307"/>
+            <point key="canvasLocation" x="595" y="1094"/>
         </scene>
         <!--My Navigation Controller-->
         <scene sceneID="Nat-Ps-q57">
@@ -1716,12 +1755,11 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="LDb-kV-ocz" kind="relationship" relationship="rootViewController" id="L5w-tf-OoF"/>
-                        <segue destination="1bD-1i-I3u" kind="show" identifier="getGeo" id="LIy-fY-31a"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U88-u2-xVy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1049" y="730"/>
+            <point key="canvasLocation" x="116" y="1094"/>
         </scene>
     </scenes>
     <resources>
@@ -1737,7 +1775,7 @@
         <image name="voteup" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LIy-fY-31a"/>
+        <segue reference="Cfw-Q2-36T"/>
         <segue reference="nZD-Ej-kf4"/>
     </inferredMetricsTieBreakers>
 </document>

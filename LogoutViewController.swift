@@ -1,20 +1,24 @@
 //
-//  MeViewController.swift
+//  LogoutViewController.swift
 //  OyventApp
 //
-//  Created by Mehmet Sen on 3/17/15.
+//  Created by Mehmet Sen on 7/3/15.
 //  Copyright (c) 2015 Oyvent. All rights reserved.
 //
 
 import UIKit
 
-class MeViewController: UIViewController, ENSideMenuDelegate {
+class LogoutViewController: UIViewController, ENSideMenuDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.sideMenuController()?.sideMenu?.delegate = self
     }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         let size = image.size
@@ -54,9 +58,14 @@ class MeViewController: UIViewController, ENSideMenuDelegate {
     
     override func viewDidAppear(animated: Bool) {
         
+        let isUserLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
+        
+        if(!isUserLoggedIn){
+            self.performSegueWithIdentifier("loginView", sender: self)
+        }
+        
         setupNavigationBar()
     }
-    
     
     func sideMenuClicked(){
         toggleSideMenuView()
@@ -64,27 +73,48 @@ class MeViewController: UIViewController, ENSideMenuDelegate {
     
     // MARK: - ENSideMenu Delegate
     func sideMenuWillOpen() {
-        //println("sideMenuWillOpen")
+        println("sideMenuWillOpen")
     }
     
     func sideMenuWillClose() {
-        //println("sideMenuWillClose")
+        println("sideMenuWillClose")
     }
     
     func sideMenuShouldOpenSideMenu() -> Bool {
-        //println("sideMenuShouldOpenSideMenu")
+        println("sideMenuShouldOpenSideMenu")
         return true
     }
     
+    @IBAction func doLogout(sender: UIButton) {
+        
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"userID")
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"fullname")
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"username")
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"email")
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"password")
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"lastlogindate")
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey:"signupdate")
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isadmin")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        let loginViewController:LoginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("loginView") as LoginViewController
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        appDelegate.window?.rootViewController = loginViewController
+        appDelegate.window?.makeKeyAndVisible()
+        
+    }
+
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "loginView"){
+            println("it works!")
+        }
     }
-    */
+    
 
 }

@@ -25,6 +25,7 @@
 		5976B8F71B03AF7C00D8D2F4 /* AlbumAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F61B03AF7C00D8D2F4 /* AlbumAPIController.swift */; };
 		5976B8F91B03CC8B00D8D2F4 /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F81B03CC8B00D8D2F4 /* DefaultButton.swift */; };
 		5996119C1B45791B006777E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5996119A1B45791B006777E8 /* Main.storyboard */; };
+		5996119E1B46A830006777E8 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5996119D1B46A830006777E8 /* LogoutViewController.swift */; };
 		59BC7A121B118179000BD75E /* GeoTableHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC7A111B118179000BD75E /* GeoTableHeaderCell.swift */; };
 		59BC7A141B124906000BD75E /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC7A131B124906000BD75E /* CategoryViewController.swift */; };
 		59DFCEE31AB2A41C009DE7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */; };
@@ -82,6 +83,7 @@
 		5976B8F81B03CC8B00D8D2F4 /* DefaultButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
 		599611971B4578E2006777E8 /* OyventApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = OyventApp.xcodeproj; sourceTree = SOURCE_ROOT; };
 		5996119B1B45791B006777E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5996119D1B46A830006777E8 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogoutViewController.swift; path = ../LogoutViewController.swift; sourceTree = "<group>"; };
 		59BC7A111B118179000BD75E /* GeoTableHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTableHeaderCell.swift; sourceTree = "<group>"; };
 		59BC7A131B124906000BD75E /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		59DFCEDD1AB2A41C009DE7AF /* OyventApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OyventApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,7 +161,6 @@
 		59DFCEDF1AB2A41C009DE7AF /* OyventApp */ = {
 			isa = PBXGroup;
 			children = (
-				5996119A1B45791B006777E8 /* Main.storyboard */,
 				599611971B4578E2006777E8 /* OyventApp.xcodeproj */,
 				59F175DE1AF87D0F005E7950 /* gitignore */,
 				59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */,
@@ -178,9 +179,11 @@
 				59EFA7F01AD4F89200CA3C84 /* GeoViewController.swift */,
 				59EFA7F21AD61F1A00CA3C84 /* DetailsViewController.swift */,
 				59EFD6A51B2506A7000DD915 /* MainViewController.swift */,
+				5996119D1B46A830006777E8 /* LogoutViewController.swift */,
 				59DFCF121AB9398F009DE7AF /* MeViewController.swift */,
 				59EFA7E81ACCFA7C00CA3C84 /* ZoomViewController.swift */,
 				59DFCEE11AB2A41C009DE7AF /* Info.plist */,
+				5996119A1B45791B006777E8 /* Main.storyboard */,
 				59DFCF0C1AB67F9A009DE7AF /* Images.xcassets */,
 				59DFCEEB1AB2A41D009DE7AF /* LaunchScreen.xib */,
 				59DFCEE01AB2A41C009DE7AF /* Supporting Files */,
@@ -421,6 +424,7 @@
 				59BC7A121B118179000BD75E /* GeoTableHeaderCell.swift in Sources */,
 				59EFA7F31AD61F1A00CA3C84 /* DetailsViewController.swift in Sources */,
 				5976B8F31B038CDF00D8D2F4 /* HomeHeaderCollectionReusableView.swift in Sources */,
+				5996119E1B46A830006777E8 /* LogoutViewController.swift in Sources */,
 				5936D6E11B141A5A00A02642 /* OnlyTextViewController.swift in Sources */,
 				5976B8F11AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift in Sources */,
 				5976B8F91B03CC8B00D8D2F4 /* DefaultButton.swift in Sources */,
