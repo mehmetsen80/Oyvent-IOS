@@ -682,7 +682,13 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     }
 
     @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
-        println("welcome back!")
+        println("welcome back to GeoViewController!")
+        pageNo=0
+        self.photos = []
+        self.imageCache = [String : UIImage]()
+        scrollToTop()
+        api!.searchPhotos(pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID, fkParentID: self.fkParentID)
+        
     }
     
     

@@ -28,6 +28,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     var segueLibrary: Bool = false
     
     @IBOutlet weak var btnShareNow: UIButton!
+    @IBOutlet weak var btnClose: UIButton!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var captureSession: AVCaptureSession! = nil
@@ -404,18 +405,19 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
                         var myAlert = UIAlertController(title: "Confirmation", message: "Post added successfully!", preferredStyle: UIAlertControllerStyle.Alert)
                         myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
                             
-                            self.dismissViewControllerAnimated(true, completion: nil)
+                            //self.dismissViewControllerAnimated(true, completion: nil)
                             self.activityIndicator.stopAnimating()
+                            self.btnClose.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
                             
-                            let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myGeoNav") as MyNavigationController
-                            var geoController:GeoViewController =  nvg.topViewController as GeoViewController
-                        
-                            geoController.hasCustomNavigation = true
-                            geoController.albumID = self.albumID
-                            geoController.albumName = self.albumName
-                            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-                            appDelegate.window?.rootViewController = nvg
-                            appDelegate.window?.makeKeyAndVisible()
+//                            let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myGeoNav") as MyNavigationController
+//                            var geoController:GeoViewController =  nvg.topViewController as GeoViewController
+//                        
+//                            geoController.hasCustomNavigation = true
+//                            geoController.albumID = self.albumID
+//                            geoController.albumName = self.albumName
+//                            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+//                            appDelegate.window?.rootViewController = nvg
+//                            appDelegate.window?.makeKeyAndVisible()
                             
                             
                         }))

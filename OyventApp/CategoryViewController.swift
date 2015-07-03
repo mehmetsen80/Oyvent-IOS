@@ -13,6 +13,8 @@ class CategoryViewController: UIViewController,UIPopoverPresentationControllerDe
     var albumID : Double = 0
     var albumName : String = ""
     
+    @IBOutlet weak var btnClose: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,11 +61,11 @@ class CategoryViewController: UIViewController,UIPopoverPresentationControllerDe
 
     }
     
-//    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
-//        println("welcome back!")
-//        //dismissViewControllerAnimated(true, completion: nil)
-//        
-//    }
+    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
+        println("welcome back to CategoryViewController!")
+        self.btnClose.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+        
+    }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None

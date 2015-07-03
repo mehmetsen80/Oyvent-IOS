@@ -378,20 +378,6 @@
                                     <segue destination="odr-wq-rLI" kind="presentation" identifier="onlyText" id="cEl-1L-ZlK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6MX-gy-nqx">
-                                <rect key="frame" x="265" y="0.0" width="30" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="3Fo-9m-tvz"/>
-                                    <constraint firstAttribute="width" constant="30" id="pBV-Jb-dh7"/>
-                                </constraints>
-                                <state key="normal" title="X">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelCategory:" destination="7FP-HT-uoP" eventType="touchUpInside" id="yyD-bq-FGB"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTn-Xp-YSU">
                                 <rect key="frame" x="41" y="68" width="42" height="21"/>
                                 <constraints>
@@ -436,6 +422,21 @@
                                     <segue destination="6CY-9f-x1j" kind="presentation" identifier="fromLibrary" id="ekv-kj-UHq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6MX-gy-nqx">
+                                <rect key="frame" x="265" y="0.0" width="30" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="3Fo-9m-tvz"/>
+                                    <constraint firstAttribute="width" constant="30" id="pBV-Jb-dh7"/>
+                                </constraints>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelCategory:" destination="7FP-HT-uoP" eventType="touchUpInside" id="yyD-bq-FGB"/>
+                                    <segue destination="IPa-xn-kio" kind="unwind" unwindAction="unwindToThisViewController:" id="lZh-FY-hhR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -461,8 +462,12 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="90"/>
+                    <connections>
+                        <outlet property="btnClose" destination="6MX-gy-nqx" id="0sZ-Wb-3he"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qp7-K0-tQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="IPa-xn-kio" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1591" y="1645"/>
         </scene>
@@ -856,6 +861,7 @@
                                 </state>
                                 <connections>
                                     <action selector="doCancel:" destination="6CY-9f-x1j" eventType="touchUpInside" id="Rl4-MM-BIA"/>
+                                    <segue destination="FRx-Uu-0ia" kind="unwind" unwindAction="unwindToThisViewController:" id="TlZ-G9-AGB"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5vf-PI-QKM">
@@ -988,6 +994,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="Xma-kP-D2d" id="jIC-aj-7mr"/>
                         <outlet property="btnAlbumName" destination="UNt-36-olb" id="eIj-Yb-nG9"/>
+                        <outlet property="btnClose" destination="rNM-kD-cxg" id="xXZ-3S-xl5"/>
                         <outlet property="btnLibrary" destination="gpx-U2-mpt" id="g1a-ao-R13"/>
                         <outlet property="btnShareNow" destination="yxb-WO-jUl" id="aDh-WI-I8o"/>
                         <outlet property="imageView" destination="5vf-PI-QKM" id="fG2-V4-OdW"/>
@@ -995,6 +1002,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6nV-Ar-TSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="FRx-Uu-0ia" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1454" y="2189"/>
         </scene>
@@ -1095,7 +1103,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIk-Sj-R39" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="5Vg-5e-bD0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1873" y="2189"/>
+            <point key="canvasLocation" x="1915" y="2189"/>
         </scene>
         <!--Me-->
         <scene sceneID="x6J-kA-9eG">
@@ -1776,6 +1784,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Cfw-Q2-36T"/>
-        <segue reference="nZD-Ej-kf4"/>
+        <segue reference="ekv-kj-UHq"/>
     </inferredMetricsTieBreakers>
 </document>

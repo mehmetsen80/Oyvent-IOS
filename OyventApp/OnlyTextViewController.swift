@@ -195,16 +195,18 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
                         var myAlert = UIAlertController(title: "Confirmation", message: "Post added successfully!", preferredStyle: UIAlertControllerStyle.Alert)
                         myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
                         
-                            self.dismissViewControllerAnimated(true, completion: nil)
-                            //self.btnClose.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+                           // self.dismissViewControllerAnimated(true, completion: nil)
+                           
+                            self.btnClose.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+                            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                             
-                            let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
-                            var geoController:GeoViewController =  nvg.topViewController as GeoViewController
-                            geoController.albumID = self.albumID
-                            geoController.albumName = self.albumName
-                            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-                            appDelegate.window?.rootViewController = nvg
-                            appDelegate.window?.makeKeyAndVisible()
+//                            let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
+//                            var geoController:GeoViewController =  nvg.topViewController as GeoViewController
+//                            geoController.albumID = self.albumID
+//                            geoController.albumName = self.albumName
+//                            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+//                            appDelegate.window?.rootViewController = nvg
+//                            appDelegate.window?.makeKeyAndVisible()
                             
                             
                         }))
