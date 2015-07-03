@@ -52,15 +52,15 @@ class Comment{
             // get the all comment list
             for result in allResults {
                 
-                var pkCommentID =  result["PKCOMMENTID"] as? Double
-                var fkPhotoID = result["FKPHOTOID"] as? Double
-                var fkUserID = result["FKUSERID"] as? Double
-                var fullName: String? = result["FULLNAME"] as? String ?? ""
-                var message: String?  = result["COMMENT"] as? String ?? ""
-                var latitude = result["LATITUDE"] as? Double
-                var longitude = result["LONGITUDE"] as? Double
-                var postDate:String? = result["POSTDATE"] as? String ?? ""
-                var email:String? = result["EMAIL"] as? String ?? ""
+                let pkCommentID =  result["PKCOMMENTID"] as? Double
+                let fkPhotoID = result["FKPHOTOID"] as? Double
+                let fkUserID = result["FKUSERID"] as? Double
+                let fullName: String? = result["FULLNAME"] as? String ?? ""
+                let message: String?  = result["COMMENT"] as? String ?? ""
+                let latitude = result["LATITUDE"] as? Double
+                let longitude = result["LONGITUDE"] as? Double
+                let postDate:String? = result["POSTDATE"] as? String ?? ""
+                let email:String? = result["EMAIL"] as? String ?? ""
               
                 var comment = Comment(pkCommentID: pkCommentID!, fkPhotoID: fkPhotoID!, fkUserID: fkUserID!, fullName: fullName!, message: message!, latitude: latitude!, longitude: longitude!, postDate: postDate!, email: email!)
                 comments.append(comment)

@@ -18,7 +18,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     var albums:[Album] = [Album]()
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
-    let bgImageColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
+    let bgImageColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
     var loadSpinner:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     @IBOutlet weak var btnCity: UIButton!
     
@@ -29,6 +29,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     var latitude : String!
     var longitude : String!
     var city:String = ""
+    var imageCache = [String : UIImage]()
     
 
     
@@ -200,26 +201,14 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     func setupNavigationBar(){
         
         //self.navigationController?.hidesBarsOnTap = true
-        self.navigationController?.hidesBarsOnSwipe = true
+        //self.navigationController?.hidesBarsOnSwipe = true
         
         /***************************** navigation general style  ********************/
-        //self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        //self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
-        //self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+//        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
+//        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         /***************************** navigation general style  ********************/
         
-        
-        /***************************** navigation general style  ********************/
-        //self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        //self.navigationController?.navigationBar.backgroundColor = bgImageColor
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
-        //self.navigationController?.navigationBar.tintColor = bgImageColor
-        //UINavigationBar.appearance().barTintColor =  bgImageColor
-        /* self.navigationController?.navigationBar.setBackgroundImage(onePixelImageWithColor(bgImageColor),
-        forBarMetrics: .Default) */
-        
-        /***************************** navigation general style  ********************/
         
         
         /*********************** left navigation button -> menu image ********************/
@@ -236,13 +225,26 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         /***************************** navigation title button style  ********************/
         
         
-        /***************** right navigation button -> camera image ***********************/
-        //        var cameraImage:UIImage = UIImage(named: "camera")!
-        //        cameraImage = resizeImage(cameraImage, targetSize: CGSize(width:40, height:40))
-        //        cameraImage = cameraImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        //        var rightButton = UIBarButtonItem(image: cameraImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "cameraClicked")
-        //        self.navigationItem.rightBarButtonItem = rightButton
-        /************** end of navigation right button -> camera image ********************/
+        /***************** right navigation button -> location image ***********************/
+                var locationImage:UIImage = UIImage(named: "location-icon-grey")!
+                locationImage = resizeImage(locationImage, targetSize: CGSize(width:30, height:30))
+                locationImage = locationImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                var rightButton = UIBarButtonItem(image: locationImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "locationClicked")
+                self.navigationItem.rightBarButtonItem = rightButton
+        /************** end of navigation right button -> location image ********************/
+        
+    }
+    
+    func locationClicked(){
+        //Present new view controller
+//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
+//        let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myGeoNav") as MyNavigationController
+//        let geoController:GeoViewController =  nvg.topViewController as GeoViewController
+//        geoController.hasCustomNavigation = true
+//        sideMenuController()?.setContentViewController(geoController)
+//        sideMenuController()?.sideMenu?.hideSideMenu()
+        
+        self.performSegueWithIdentifier("jumptoGeo", sender: nil)
         
     }
     
@@ -315,15 +317,62 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell.lblMiles.hidden = false
         }
         
-        cell.lblPhotoSize.text = "(\(album.photoSize!))"
+        cell.lblPhotoSize.text = "(\(album.totalPhotoSize!) posts)"
         
+        
+        cell.imgPoster?.image = UIImage(named:"blank")
+        //get the image
+        let urlString: String? = album.urlMedium
+        if(urlString != ""){
+            var image = self.imageCache[urlString!]
+            if(image == nil) {
+                
+                // If the image does not exist, we need to download it
+                var imgURL: NSURL! = NSURL(string: urlString!)
+                
+                // Download an NSData representation of the image at the URL
+                let request: NSURLRequest = NSURLRequest(URL: imgURL)
+                let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
+                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
+                    if !(error? != nil) {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            
+                            image = UIImage(data: data)
+                            // Store the image in to our cache
+                            self.imageCache[urlString!] = image
+                            cell.imgPoster?.image = image
+                        }
+                    }
+                    else {
+                        println("Error: \(error.localizedDescription)")
+                    }
+                })
+                
+            } else {
+                cell.imgPoster?.image = image
+            }
+        }
+
+        
+        
+        
+//        cell.layer.cornerRadius = 12.0
+//        cell.layer.shadowColor = UIColor.darkGrayColor().CGColor
+//        cell.layer.shadowOffset = CGSizeMake(5, 5.0);
+//        cell.layer.shadowRadius = 12.0
+//        cell.layer.shadowOpacity = 1.0
+//        cell.layer.masksToBounds = true
+//        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.contentView.bounds, cornerRadius: 12).CGPath
+        
+        
+        
+        cell.backgroundColor = UIColor(red: 0xff/255, green: 0xff/255, blue: 0xff/255, alpha: 1.0)//00507d
         cell.layer.cornerRadius = 12.0
-        cell.layer.shadowColor = UIColor.darkGrayColor().CGColor
-        cell.layer.shadowOffset = CGSizeMake(5, 5.0);
-        cell.layer.shadowRadius = 12.0
-        cell.layer.shadowOpacity = 1.0
         cell.layer.masksToBounds = true
-        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.contentView.bounds, cornerRadius: 12).CGPath
+        cell.layer.borderWidth = 1.0
+        cell.layer.borderColor = UIColor(red: 0xcc/255, green: 0xcc/255, blue: 0xcc/255, alpha: 1.0).CGColor
+
+        
         
         return cell
     }
@@ -404,8 +453,9 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         if segue.identifier == "gotoHome"{
             //let geoViewController:GeoViewController =  segue.destinationViewController as GeoViewController
-            var myNavController: MyNavigationController = segue.destinationViewController as MyNavigationController
-            let homeViewController:HomeViewController =  myNavController.topViewController as HomeViewController
+            //var myNavController: MyNavigationController = segue.destinationViewController as MyNavigationController
+            //let homeViewController:HomeViewController =  myNavController.topViewController as HomeViewController
+            let homeViewController:HomeViewController = segue.destinationViewController as HomeViewController
             let indexPath : NSIndexPath = sender as NSIndexPath
             let indexPaths : NSArray = self.mCollectionView.indexPathsForSelectedItems()
             

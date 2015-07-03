@@ -45,6 +45,10 @@ public extension UIViewController {
         sideMenuController()?.sideMenu?.showSideMenu()
     }
     
+    public func selectMenuItem () {
+        sideMenuController()?.sideMenu?.menuPosition 
+    }
+    
     public func isSideMenuOpen () -> Bool {
         let sieMenuOpen = self.sideMenuController()?.sideMenu?.isMenuOpen
         return sieMenuOpen!

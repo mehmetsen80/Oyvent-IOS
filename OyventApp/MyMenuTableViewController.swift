@@ -9,7 +9,7 @@
 import UIKit
 
 class MyMenuTableViewController: UITableViewController {
-    var selectedMenuItem : Int = 0
+    var selectedMenuItem : Int = -1
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,7 +69,7 @@ class MyMenuTableViewController: UITableViewController {
                 cell!.textLabel?.text = "Logout" //me uiviewcontrol
                 break
             default:
-                cell!.textLabel?.text = "Home"
+                //cell!.textLabel?.text = "Home"
                 break
         }
         
@@ -138,7 +138,7 @@ class MyMenuTableViewController: UITableViewController {
                     break
                 case 1:
                     //tabBarController.selectedIndex = 1
-                    let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myGeoNav") as MyNavigationController
+                    let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("getGeo") as MyNavigationController
                     let geoController:GeoViewController =  nvg.topViewController as GeoViewController
                     geoController.hasCustomNavigation = true
                     
@@ -146,6 +146,10 @@ class MyMenuTableViewController: UITableViewController {
 //                     let geoController: GeoViewController = mainStoryboard.instantiateViewControllerWithIdentifier("geoView") as GeoViewController
                     
                     sideMenuController()?.setContentViewController(geoController)
+                    
+                    
+                    //self.performSegueWithIdentifier("getGeo", sender: nil)
+                    
                     break
                 case 2:
                     //tabBarController.selectedIndex = 4

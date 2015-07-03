@@ -16,9 +16,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var mCollectionView: UICollectionView!
     let kCellIdentifier: String = "homeCell"
     var pageNo:Int = 0
-    let bgImageColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
+    let bgImageColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
     var loadSpinner:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     @IBOutlet weak var btnCity: UIButton!
+    @IBOutlet weak var lblFooter: UILabel!
+
     
     var geoCoder: CLGeocoder!
     var locationManager: CLLocationManager!
@@ -46,6 +48,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: 0) as HomeCollectionViewCell
 //        cell.btnGeoAlbum.setTitle(self.city, forState: UIControlState.Normal)
 //        cell.imgPoster?.image = UIImage(named: "location-icon")
+        
+       
        
         
     }
@@ -53,6 +57,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        
+        pageNo = 0
+        imageCache = [String : UIImage]()
+        albums = [Album]()
+        
         api = AlbumAPIController(delegate: self)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         self.sideMenuController()?.sideMenu?.delegate = self
@@ -70,9 +79,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.screenWidth = screenSize.width
         self.screenHeight = screenSize.height
         
+        
+//        self.navigationController?.navigationBar.barStyle = UIBarStyle.Default
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
+//        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        
+        
         if(hasCustomNavigation){
             setupNavigationBar()
         }
+
+        
 
     }
     
@@ -234,17 +252,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.navigationController?.hidesBarsOnSwipe = false
         
         /***************************** navigation general style  ********************/
-        //self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        //self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
-        //self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        /***************************** navigation general style  ********************/
+//        self.navigationController?.navigationBar.barStyle = UIBarStyle.Default
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
+//        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()        /***************************** navigation general style  ********************/
         
         
         /***************************** navigation general style  ********************/
         //self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         //self.navigationController?.navigationBar.backgroundColor = bgImageColor
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
+        //self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
         //self.navigationController?.navigationBar.tintColor = bgImageColor
         //UINavigationBar.appearance().barTintColor =  bgImageColor
         /* self.navigationController?.navigationBar.setBackgroundImage(onePixelImageWithColor(bgImageColor),
@@ -267,14 +284,26 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         /***************************** navigation title button style  ********************/
         
         
-        /***************** right navigation button -> camera image ***********************/
-//        var cameraImage:UIImage = UIImage(named: "camera")!
-//        cameraImage = resizeImage(cameraImage, targetSize: CGSize(width:40, height:40))
-//        cameraImage = cameraImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-//        var rightButton = UIBarButtonItem(image: cameraImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "cameraClicked")
+        /***************** right navigation button -> location image ***********************/
+//        var locationImage:UIImage = UIImage(named: "location-icon-grey")!
+//        locationImage = resizeImage(locationImage, targetSize: CGSize(width:30, height:30))
+//        locationImage = locationImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+//        var rightButton = UIBarButtonItem(image: locationImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "locationClicked")
 //        self.navigationItem.rightBarButtonItem = rightButton
-        /************** end of navigation right button -> camera image ********************/
+
+        /************** end of navigation right button -> location image ********************/
         
+    }
+    
+    func locationClicked(){
+        //Present new view controller
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
+        //let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myGeoNav") as MyNavigationController
+        //let geoController:GeoViewController =  nvg.topViewController as GeoViewController
+       self.performSegueWithIdentifier("jumptoGeo", sender: nil)
+        //geoController.hasCustomNavigation = true
+       // sideMenuController()?.setContentViewController(geoController)
+        //sideMenuController()?.sideMenu?.hideSideMenu()
     }
     
     
@@ -309,17 +338,32 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(collectionView: UICollectionView,viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
             
-            var header: HomeCollectionReusableView?
-            
+        var header: HomeHeaderCollectionReusableView?
+        var footer: HomeFooterCollectionReusableView?
+        
             if kind == UICollectionElementKindSectionHeader {
                 header =
                     collectionView.dequeueReusableSupplementaryViewOfKind(kind,
                         withReuseIdentifier: "MyHeader", forIndexPath: indexPath)
-                    as? HomeCollectionReusableView
+                    as? HomeHeaderCollectionReusableView
                 
                 header?.btnHeader.setTitle("Select a Category", forState: UIControlState.Normal)
-                //header?.btnHeader.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
+                header?.btnHeader.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
+                
+                return header!
+            } else if kind == UICollectionElementKindSectionFooter {
+             
+                footer =
+                    collectionView.dequeueReusableSupplementaryViewOfKind(kind,
+                        withReuseIdentifier: "MyFooter", forIndexPath: indexPath)
+                    as? HomeFooterCollectionReusableView
+                
+                footer?.lblFooter.text = "Total \(albums.count) Categories"
+                
+                return footer!
+                
             }
+        
             return header!
     }
    
@@ -327,95 +371,142 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as HomeCollectionViewCell
-   
-        
         
         let album:Album = self.albums[indexPath.row]
+        
+        
+        
         //cell.backgroundColor = UIColor.blackColor()
-        cell.btnGeoAlbum.setTitle(album.albumName, forState: UIControlState.Normal)
-        cell.btnGeoAlbum.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
+        //cell.btnGeoAlbum.setTitle(album.albumName, forState: UIControlState.Normal)
+        //cell.btnGeoAlbum.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
+        cell.btnGeoAlbum.setBackgroundImage(self.getCategoryImage(album.fkCategoryID!), forState: UIControlState.Normal)
+
+        
         //cell.btnGeoAlbum?.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
         //cell.imgPoster?.image = (indexPath.row==0) ? UIImage(named: "city") : UIImage(named: "location-icon")
         
         //parentName
-        cell.btnParentName.setTitle(album.parentName, forState: UIControlState.Normal)
+        if(album.fkParentID==0){
+            cell.btnParentName.setTitle(album.albumName! + " (\(album.totalPhotoSize!))", forState: UIControlState.Normal)
+            cell.lblCategoryName.hidden = true
+            
+        }else{
+            cell.btnParentName.setTitle(album.parentName, forState: UIControlState.Normal)
+        }
         cell.btnParentName.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
+        
+        //category Name
+        cell.lblCategoryName.text = "\(album.albumName!) (\(album.photoSize!))"
+        
+        
 
         /********************************** Big Poster *********************************/
-        cell.imgPoster?.image = UIImage(named:"blank")
-        //get the image
-        let urlString = "https://s3-oy-vent-images-14.s3.amazonaws.com/58/04674bd29a28422c-medium.jpg"
-        var image = self.imageCache[urlString]
-        if(image == nil) {
+        
+        //println("album.fkCategoryID: \(album.fkCategoryID!)")
+        
+        let ctgID = album.fkCategoryID!
+        
+        if(ctgID == 0){ //parent category
+       
+        
+            cell.imgPoster?.image = UIImage(named:"blank")
+            //get the image
+            let urlString: String? = album.urlMedium
+            if(urlString != ""){
+                var image = self.imageCache[urlString!]
+                if(image == nil) {
             
-            // If the image does not exist, we need to download it
-            var imgURL: NSURL! = NSURL(string: urlString)
+                    // If the image does not exist, we need to download it
+                    var imgURL: NSURL! = NSURL(string: urlString!)
             
-            // Download an NSData representation of the image at the URL
-            let request: NSURLRequest = NSURLRequest(URL: imgURL)
-            let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
-                if !(error? != nil) {
-                    dispatch_async(dispatch_get_main_queue()) {
+                    // Download an NSData representation of the image at the URL
+                    let request: NSURLRequest = NSURLRequest(URL: imgURL)
+                    let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
+                    NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
+                        if !(error? != nil) {
+                            dispatch_async(dispatch_get_main_queue()) {
                         
-//                        image = UIImage(data: data)
-//                        // Store the image in to our cache
-//                        self.imageCache[urlString] = image
-//                        cell.imgPoster?.image = image
-                    }
-                }
-                else {
-                    println("Error: \(error.localizedDescription)")
-                }
-            })
+                                image = UIImage(data: data)
+                                // Store the image in to our cache
+                                self.imageCache[urlString!] = image
+                                cell.imgPoster?.image = image
+                            }
+                        }
+                        else {
+                            println("Error: \(error.localizedDescription)")
+                        }
+                    })
             
-        } else {
-            cell.imgPoster?.image = image
+                } else {
+                    cell.imgPoster?.image = image
+                }
+            }
         }
+        else{//child category
+            
+           //cell.imgPoster?.image = self.getCategoryImage(album.fkCategoryID!)
+            //cell.imgPoster?.image = UIImage(named: ("ctg-dining"))!
+
+        }
+            
+        
         /********************************** End of Big Poster ***************************/
-        cell.imgPoster?.hidden = true
+        //cell.imgPoster?.hidden = false
         
         
         //enable this if needed
-//        cell.lblMiles?.text = (indexPath.row==0) ? "Main City" : "\(album.milesUser) miles"
-        
+        //cell.lblMiles?.text = (indexPath.row==0) ? "Main City" : "\(album.milesUser) miles"
         if(album.fkParentID == 0){
             cell.lblMiles?.text = "\(album.milesUser) miles"
             cell.lblMiles.hidden = false
         }
         
-        cell.lblPhotoSize.text = "(\(album.photoSize!))"
         
-        
+        cell.backgroundColor = UIColor(red: 0x00/255, green: 0x50/255, blue: 0x7d/255, alpha: 1.0)//
         cell.layer.cornerRadius = 12.0
-        //cell.layer.shadowColor = UIColor.blueColor().CGColor
-        cell.layer.shadowColor = UIColor.darkGrayColor().CGColor
-        cell.layer.shadowOffset = CGSizeMake(5, 5.0);
-        cell.layer.shadowRadius = 12.0
-        cell.layer.shadowOpacity = 1.0
         cell.layer.masksToBounds = true
-        //cell.clipsToBounds = false
-        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.contentView.bounds, cornerRadius: 12).CGPath
-        //cell.layer.shadowPath = UIBezierPath(rect: cell.contentView.bounds).CGPath
-        //cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
- 
+        cell.layer.borderWidth = 1.0
+        cell.layer.borderColor = UIColor(red: 0xcc/255, green: 0xcc/255, blue: 0xcc/255, alpha: 1.0).CGColor
+       
         
         return cell
     }
     
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets
-//    {
-//        return UIEdgeInsetsMake(10, 5, 5, 10); //top,left,bottom,right
-//    }
-
-    
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+    func getCategoryImage(catagoryID: Double) -> UIImage{
+        
+        var categoryPoster = UIImage(named:"blank")
+        
+        switch (catagoryID){
+            case 4:
+                categoryPoster = UIImage(named: "ctg-dining")
+            case 5:
+                categoryPoster = UIImage(named: "ctg-greek")
+            case 7:
+                categoryPoster = UIImage(named: "ctg-sports")
+            case 8:
+                categoryPoster = UIImage(named: "ctg-studentservices")
+            case 9:
+                categoryPoster = UIImage(named: "ctg-housing")
+            
+            default:
+                categoryPoster = UIImage(named: "ctg-general")
+        }
+        
+        return categoryPoster!
     }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets
+    {
+        return UIEdgeInsetsMake(10, 10, 10, 10); //top,left,bottom,right
+    }
+
+   
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return albums.count
     }
+    
+    
     
     func collectionView(collectionView: UICollectionView,
         shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -432,6 +523,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
        
         let album:Album = self.albums[indexPath.row]
+        
+        //println("albumName: \(album.albumName)  screenWidth: \(screenWidth)  screenHeight: \(screenHeight)")
         
         return (album.fkParentID == 0) ? CGSize(width: screenWidth-20, height: screenWidth/3) : CGSize(width: (screenWidth-40)/2, height: screenWidth/3)
          //return  CGSize(width: (screenWidth-40)/2, height: screenWidth/2)
@@ -485,6 +578,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 for (var i = 0; i < resultsArr.count; i++) {
                     self.albums.append(resultsArr[i])
                 }
+                
+                
                 self.mCollectionView!.reloadData()
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 self.loadSpinner.stopAnimating()
@@ -505,8 +600,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         if segue.identifier == "gotoGeo"{
             //let geoViewController:GeoViewController =  segue.destinationViewController as GeoViewController
-            var myNavController: MyNavigationController = segue.destinationViewController as MyNavigationController
-            let geoViewController:GeoViewController =  myNavController.topViewController as GeoViewController
+            //var myNavController: MyNavigationController = segue.destinationViewController as MyNavigationController
+            //let geoViewController:GeoViewController =  myNavController.topViewController as GeoViewController
+            let geoViewController:GeoViewController = segue.destinationViewController as GeoViewController
             geoViewController.hasCustomNavigation = false
             let indexPath : NSIndexPath = sender as NSIndexPath
             let indexPaths : NSArray = self.mCollectionView.indexPathsForSelectedItems()
@@ -518,6 +614,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             geoViewController.albumName = selectedAlbum.albumName!
             geoViewController.fkParentID = selectedAlbum.fkParentID!
             geoViewController.parentName = selectedAlbum.parentName!
+        }else if segue.identifier == "jumptoGeo"{
+            
         }
         
     }

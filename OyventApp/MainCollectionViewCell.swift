@@ -10,8 +10,17 @@ import UIKit
 
 class MainCollectionViewCell: UICollectionViewCell {
     
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     @IBOutlet weak var btnParent: UIButton!
     @IBOutlet weak var lblMiles: UILabel!
     @IBOutlet weak var lblPhotoSize: UILabel!
+    @IBOutlet weak var imgPoster: UIImageView!
    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
 }

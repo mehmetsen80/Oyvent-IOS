@@ -20,7 +20,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     var pageNo:Int = 0
     var city:String = ""
     @IBOutlet weak var mTableView: UITableView!
-    let bgImageColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
+    let bgImageColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
     var loadSpinner:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     
     @IBOutlet weak var btnGeoAlbum: UIButton!
@@ -113,26 +113,13 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     
     func setupNavigationBar(){
     
-        
-        
-        
         //self.navigationController?.hidesBarsOnSwipe = true
         //self.navigationController?.hidesBarsOnTap = true // setting hidesBarsOnTap to true
         
-
-        
         /***************************** navigation general style  ********************/
-        //self.navigationController?.navigationBar.barStyle = UIBarStyle.Default
-        //self.navigationController?.navigationBar.backgroundColor = bgImageColor
-        
-        
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
-//        //self.navigationController?.navigationBar.tintColor = bgImageColor
-//        UINavigationBar.appearance().barTintColor =  bgImageColor
-//        self.navigationController?.navigationBar.setBackgroundImage(onePixelImageWithColor(bgImageColor),
-//            forBarMetrics: .Default)
-        
-        
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         /***************************** navigation general style  ********************/
         
         
@@ -150,20 +137,25 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         /***************************** navigation title button style  ********************/
         
         
-        /***************** right navigation button -> camera image ***********************/
-//        var cameraImage:UIImage = UIImage(named: "camera")!
-//        cameraImage = resizeImage(cameraImage, targetSize: CGSize(width:35, height:35))
-//        cameraImage = cameraImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-//        var rightButton = UIBarButtonItem(image: cameraImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "cameraClicked")
-//        self.navigationItem.rightBarButtonItem = rightButton
-        /************** end of navigation right button -> camera image ********************/
+        /***************** right navigation button -> location image ***********************/
+        var locationImage:UIImage = UIImage(named: "location-icon-grey")!
+        locationImage = resizeImage(locationImage, targetSize: CGSize(width:30, height:30))
+        locationImage = locationImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        var rightButton = UIBarButtonItem(image: locationImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "locationClicked")
+        self.navigationItem.rightBarButtonItem = rightButton
+        /************** end of navigation right button -> location image ********************/
         
     }
     
-   
     
-    func cameraClicked(){
-        //println("cameraClicked");
+    func locationClicked(){
+        //Present new view controller
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
+        let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myGeoNav") as MyNavigationController
+        let geoController:GeoViewController =  nvg.topViewController as GeoViewController
+        geoController.hasCustomNavigation = true
+        sideMenuController()?.setContentViewController(geoController)
+        sideMenuController()?.sideMenu?.hideSideMenu()
     }
     
     func sideMenuClicked(){
@@ -290,7 +282,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
                     self.city = city
                     self.btnCity.setTitle(city, forState: UIControlState.Normal)
                     self.api!.searchPhotos(0, latitude: self.latitude, longitude: self.longitude, albumID:  self.albumID, fkParentID: self.fkParentID)
-                    self.albumName = (self.albumID != 0 ) ? self.albumName : "all around me"
+                    self.albumName = (self.albumID != 0 ) ? self.albumName : "Near Me"
 //                    self.btnGeoAlbum.setTitle(self.albumName, forState: UIControlState.Normal)
                     self.locationManager.stopUpdatingLocation()
                 }
