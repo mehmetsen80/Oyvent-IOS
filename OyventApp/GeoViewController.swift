@@ -400,21 +400,33 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         
         
         
+        /************************ other inputs  ******************************/
+        cell.lblCaption?.text = photo.caption
+        cell.lblFullName?.text = photo.fullName
+        cell.lblPostDate?.text = (photo.postDate != "") ? NSDate().offsetFrom(NSDate().dateFromString(photo.postDate)) : "" //get the post date in days,minutes,month,year
+        cell.lblMilesGeo?.text = NSString(format: "%.2f", photo.milesUser) + " mi"
+        /********************* End of other inputs  ***************************/
+        
+        
         /**************************** pick up the right social button ************************/
         if(photo.fkFacebookID != ""){//facebook social button
             cell.btnSocial?.frame =  CGRect(x:0, y:0, width: 10, height: 10)
             cell.btnSocial?.setBackgroundImage(UIImage(named: "face-icon-32"), forState: UIControlState.Normal)
             cell.btnSocial?.tintColor=UIColor.blackColor()
+            cell.lblFullName?.text = photo.ownedBy
+            
         }
         if(photo.fkTwitterID != ""){//twitter social button
             cell.btnSocial?.frame =  CGRect(x:0, y:0, width: 10, height: 10)
             cell.btnSocial?.setBackgroundImage(UIImage(named: "twitter-icon-32"), forState: UIControlState.Normal)
             cell.btnSocial?.tintColor=UIColor.blackColor()
+            cell.lblFullName?.text = photo.ownedBy
         }
         if(photo.fkInstagramID != ""){//instagram social button
             cell.btnSocial?.frame =  CGRect(x:0, y:0, width: 10, height: 10)
             cell.btnSocial?.setBackgroundImage(UIImage(named: "instagram-icon-32"), forState: UIControlState.Normal)
             cell.btnSocial?.tintColor=UIColor.blackColor()
+            cell.lblFullName?.text = photo.ownedBy
         }
         //if no social button, then clear the background of social button
         if(photo.fkInstagramID == "" && photo.fkTwitterID == "" && photo.fkFacebookID == ""){
@@ -424,12 +436,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         
         
         
-        /************************ other inputs  ******************************/
-        cell.lblCaption?.text = photo.caption
-        cell.lblFullName?.text = photo.fullName
-        cell.lblPostDate?.text = (photo.postDate != "") ? NSDate().offsetFrom(NSDate().dateFromString(photo.postDate)) : "" //get the post date in days,minutes,month,year
-        cell.lblMilesGeo?.text = NSString(format: "%.2f", photo.milesUser) + " mi"
-        /********************* End of other inputs  ***************************/
+       
         
         return cell
 

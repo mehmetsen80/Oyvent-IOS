@@ -108,35 +108,43 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         /************************** End of user is admin or same user *****************/
         
         
-        /**************************** pick up the right social button ************************/
-        if(photo.fkFacebookID != ""){//facebook social button
-            self.btnSocial?.frame =  CGRect(x:0, y:0, width: 10, height: 10)
-            self.btnSocial?.setBackgroundImage(UIImage(named: "face-icon-32"), forState: UIControlState.Normal)
-            self.btnSocial?.tintColor=UIColor.blackColor()
-        }
-        if(photo.fkTwitterID != ""){//twitter social button
-            self.btnSocial?.frame =  CGRect(x:0, y:0, width: 10, height: 10)
-            self.btnSocial?.setBackgroundImage(UIImage(named: "twitter-icon-32"), forState: UIControlState.Normal)
-            self.btnSocial?.tintColor=UIColor.blackColor()
-            
-        }
-        if(photo.fkInstagramID != ""){//instagram social button
-            self.btnSocial?.frame =  CGRect(x:0, y:0, width: 10, height: 10)
-            self.btnSocial?.setBackgroundImage(UIImage(named: "instagram-icon-32"), forState: UIControlState.Normal)
-            self.btnSocial?.tintColor=UIColor.blackColor()
-        }
-        //if no social button, then clear the background of social button
-        if(photo.fkInstagramID == "" && photo.fkTwitterID == "" && photo.fkFacebookID == ""){
-            self.btnSocial?.setBackgroundImage(nil, forState: UIControlState.Normal)
-        }
-        /********************* End of pick up the right social button ************************/
-
         
         /************************ other inputs  ******************************/
         self.lblMiles?.text = NSString(format: "%.2f", photo.milesUser)+" mi" //miles of user
         self.lblFullName?.text = photo.fullName //fullname of the user
         self.lblPostDate?.text = (photo.postDate != "") ? NSDate().offsetFrom(NSDate().dateFromString(photo.postDate)) : "" //get the post date in days,minutes,month,year
         /********************* End of other inputs  ***************************/
+        
+        
+        /**************************** pick up the right social button ************************/
+        if(photo.fkFacebookID != ""){//facebook social button
+            self.btnSocial?.frame =  CGRect(x:0, y:0, width: 10, height: 10)
+            self.btnSocial?.setBackgroundImage(UIImage(named: "face-icon-32"), forState: UIControlState.Normal)
+            self.btnSocial?.tintColor=UIColor.blackColor()
+            self.lblFullName?.text = photo.ownedBy
+        }
+        if(photo.fkTwitterID != ""){//twitter social button
+            self.btnSocial?.frame =  CGRect(x:0, y:0, width: 10, height: 10)
+            self.btnSocial?.setBackgroundImage(UIImage(named: "twitter-icon-32"), forState: UIControlState.Normal)
+            self.btnSocial?.tintColor=UIColor.blackColor()
+            self.lblFullName?.text = photo.ownedBy
+            
+        }
+        if(photo.fkInstagramID != ""){//instagram social button
+            self.btnSocial?.frame =  CGRect(x:0, y:0, width: 10, height: 10)
+            self.btnSocial?.setBackgroundImage(UIImage(named: "instagram-icon-32"), forState: UIControlState.Normal)
+            self.btnSocial?.tintColor=UIColor.blackColor()
+            self.lblFullName?.text = photo.ownedBy
+        }
+        //if no social button, then clear the background of social button
+        if(photo.fkInstagramID == "" && photo.fkTwitterID == "" && photo.fkFacebookID == ""){
+            self.btnSocial?.setBackgroundImage(nil, forState: UIControlState.Normal)
+            self.lblFullName?.text = photo.ownedBy
+        }
+        /********************* End of pick up the right social button ************************/
+
+        
+       
     }
     
     
@@ -428,12 +436,18 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                             //display alert message with confirmation
                             var myAlert = UIAlertController(title: "Confirmation", message: "Post deleted successfully!", preferredStyle: UIAlertControllerStyle.Alert)
                             myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-                                let nvg : MyNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("myGeoNav") as MyNavigationController;
-                                var geoController:GeoViewController =  nvg.topViewController as GeoViewController
-                                geoController.hasCustomNavigation = true
-                                geoController.albumID = self.photo.fkAlbumID
-                                geoController.albumName = self.photo.albumName
+//                                let nvg : MyNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("myGeoNav") as MyNavigationController;
+//                                var geoController:GeoViewController =  nvg.topViewController as GeoViewController
+//                                geoController.hasCustomNavigation = true
+//                                geoController.albumID = self.photo.fkAlbumID
+//                                geoController.albumName = self.photo.albumName
+//                                self.presentViewController(nvg, animated: true, completion: nil)
+                                
+                          
+                                let nvg : MyNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("myMainNav") as MyNavigationController;
                                 self.presentViewController(nvg, animated: true, completion: nil)
+                                
+                                
                             }))
                             self.presentViewController(myAlert, animated: true, completion: nil)
                         }
@@ -651,7 +665,15 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                 resultsArr = Comment.commentsWithJSON(resultsArr)
                 //before comment manipulation, first add the caption as the first comment
                 if(self.photo.caption != ""){
-                    self.comments.append(Comment(fullName: self.photo.fullName,message: self.photo.caption))
+                    
+                    if(self.photo.fkFacebookID != "" || self.photo.fkTwitterID != "" || self.photo.fkInstagramID != ""){
+                        
+                        self.comments.append(Comment(fullName: self.photo.ownedBy,message: self.photo.caption))
+                        
+                    }else{
+                    
+                        self.comments.append(Comment(fullName: self.photo.fullName,message: self.photo.caption))
+                    }
                     self.lblComments.text = "Comments (\(self.comments.count))"
                 }
                 
@@ -666,6 +688,9 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                 if(resultsArr.count == 0 && self.comments.count == 0){
                         self.comments.append(Comment(fullName: "",message: "no comment yet"))
                         self.lblComments.text = "Comments (0)" //size is zero if no comments
+                }else if(resultsArr.count > 0 && self.comments.count == 1 && (self.photo.fkFacebookID != "" || self.photo.fkTwitterID != "" || self.photo.fkInstagramID != "")){
+                    self.comments[0].fullName = self.photo.ownedBy
+                    println("comment owned by: \(self.photo.ownedBy)")
                 }
                 
                 self.mTableView!.reloadData()

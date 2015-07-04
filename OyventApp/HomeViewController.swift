@@ -348,7 +348,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     as? HomeHeaderCollectionReusableView
                 
                 header?.btnHeader.setTitle("Select a Category", forState: UIControlState.Normal)
-                header?.btnHeader.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
+                //header?.btnHeader.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
                 
                 return header!
             } else if kind == UICollectionElementKindSectionFooter {

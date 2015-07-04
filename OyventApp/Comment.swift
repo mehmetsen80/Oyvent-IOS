@@ -13,7 +13,7 @@ class Comment{
     let pkCommentID: Double?
     let fkPhotoID: Double?
     let fkUserID: Double?
-    let fullName: String?
+    var fullName: String?
     let message: String?
     let latitude: Double?
     let longitude: Double?
@@ -40,6 +40,8 @@ class Comment{
         self.postDate = postDate
         self.email = email
     }
+    
+
     
     class func commentsWithJSON(allResults: NSArray) -> [Comment] {
     
