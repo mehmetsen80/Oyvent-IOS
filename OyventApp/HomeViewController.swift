@@ -21,6 +21,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var btnCity: UIButton!
     @IBOutlet weak var lblFooter: UILabel!
 
+    let colors = Colors()
     
     var geoCoder: CLGeocoder!
     var locationManager: CLLocationManager!
@@ -109,7 +110,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func setupLocationManager(){
         
         geoCoder = CLGeocoder()
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if appDelegate.locManager != nil {
             self.locationManager = appDelegate.locManager!
             self.locationManager.delegate = self
@@ -121,7 +122,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         
         if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways){
                 
                 if self.locationManager.location != nil {
                     currentLocation = self.locationManager.location
@@ -170,7 +171,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             placemarks, error in
             
             if error == nil && placemarks.count > 0 {
-                let placeArray = placemarks as [CLPlacemark]
+                let placeArray = placemarks as! [CLPlacemark]
                 
                 // Place details
                 var placeMark: CLPlacemark!
@@ -192,8 +193,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 // City
                 if let city = placeMark.addressDictionary["City"] as? NSString {
                     println(city)
-                    self.city = city
-                    self.btnCity.setTitle(city, forState: UIControlState.Normal)
+                    self.city = city as String
+                    self.btnCity.setTitle(city as String, forState: UIControlState.Normal)
                     self.api!.searchAllAlbums(0, latitude: self.latitude, longitude: self.longitude, pkAlbumID: self.selectedAlbum.pkAlbumID)
                     //self.albums.append(Album(pkAlbumID: -1, albumName: self.city))//initial city cell
                     self.locationManager.stopUpdatingLocation()
@@ -274,7 +275,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         var menuImage:UIImage = UIImage(named: "oyvent-icon-72")!
         menuImage = resizeImage(menuImage,targetSize: CGSize(width: 30, height: 30))
         menuImage = menuImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        var leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "sideMenuClicked")
+        var leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "sideMenuClicked")
         self.navigationItem.leftBarButtonItem = leftButton
         /***************** end of navigation left button -> menu image********************/
         
@@ -370,7 +371,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as HomeCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! HomeCollectionViewCell
         
         let album:Album = self.albums[indexPath.row]
         
@@ -422,18 +423,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     // Download an NSData representation of the image at the URL
                     let request: NSURLRequest = NSURLRequest(URL: imgURL)
                     let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
-                    NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
-                        if !(error? != nil) {
+                    NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?,error: NSError?) -> Void in
+                        if let noerror = data {
                             dispatch_async(dispatch_get_main_queue()) {
                         
-                                image = UIImage(data: data)
+                                image = UIImage(data: noerror)
                                 // Store the image in to our cache
                                 self.imageCache[urlString!] = image
                                 cell.imgPoster?.image = image
                             }
                         }
                         else {
-                            println("Error: \(error.localizedDescription)")
+                            println("Error: \(error!.localizedDescription)")
                         }
                     })
             
@@ -457,39 +458,60 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         //enable this if needed
         //cell.lblMiles?.text = (indexPath.row==0) ? "Main City" : "\(album.milesUser) miles"
         if(album.fkParentID == 0){
-            cell.lblMiles?.text = "\(album.milesUser) miles"
+            cell.lblMiles?.text = "\(album.milesUser!) miles"
             cell.lblMiles.hidden = false
         }
         
         
-        cell.backgroundColor = UIColor(red: 0x00/255, green: 0x50/255, blue: 0x7d/255, alpha: 1.0)//
+       
+//        cell.backgroundColor = UIColor.clearColor()
+//        var backgroundLayer = colors.gl
+//        backgroundLayer.frame = cell.layer.bounds
+//        let backgroundView = UIView(frame: cell.layer.bounds)
+//        cell.layer.insertSublayer(backgroundLayer, atIndex: 0)
+//        cell.backgroundView = backgroundView
+        
+        
+        
+        cell.backgroundColor = UIColor(red: 0x00/255, green: 0x50/255, blue: 0x7d/255, alpha: 0.8)
         cell.layer.cornerRadius = 12.0
         cell.layer.masksToBounds = true
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor(red: 0xcc/255, green: 0xcc/255, blue: 0xcc/255, alpha: 1.0).CGColor
-       
+
         
         return cell
     }
+    
+   
     
     func getCategoryImage(catagoryID: Double) -> UIImage{
         
         var categoryPoster = UIImage(named:"blank")
         
         switch (catagoryID){
-            case 4:
-                categoryPoster = UIImage(named: "ctg-dining")
-            case 5:
-                categoryPoster = UIImage(named: "ctg-greek")
-            case 7:
-                categoryPoster = UIImage(named: "ctg-sports")
-            case 8:
-                categoryPoster = UIImage(named: "ctg-studentservices")
-            case 9:
-                categoryPoster = UIImage(named: "ctg-housing")
-            
-            default:
-                categoryPoster = UIImage(named: "ctg-general")
+        case 2:
+            categoryPoster = UIImage(named: "ctg-coffee")
+        case 3:
+            categoryPoster = UIImage(named: "ctg-parking")
+        case 4:
+            categoryPoster = UIImage(named: "ctg-dining")
+        case 5:
+            categoryPoster = UIImage(named: "ctg-greek")
+        case 6:
+            categoryPoster = UIImage(named: "ctg-shopping")
+        case 7:
+            categoryPoster = UIImage(named: "ctg-sports")
+        case 8:
+            categoryPoster = UIImage(named: "ctg-studentservices")
+        case 9:
+            categoryPoster = UIImage(named: "ctg-housing")
+        case 10:
+            categoryPoster = UIImage(named: "ctg-police")
+        case 11:
+            categoryPoster = UIImage(named: "ctg-class")
+        default:
+            categoryPoster = UIImage(named: "ctg-general") //categoryID = 1
         }
         
         return categoryPoster!
@@ -571,7 +593,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func didReceiveAlbumAPIResults(results: NSDictionary) {
         
         dispatch_barrier_async(concurrentAlbumQueue) {
-            var resultsArr: [Album] = results["results"] as [Album]
+            var resultsArr: [Album] = results["results"] as! [Album]
             dispatch_async(dispatch_get_main_queue(), {
                 
                 resultsArr = Album.albumsWithJSON(resultsArr)
@@ -602,9 +624,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             //let geoViewController:GeoViewController =  segue.destinationViewController as GeoViewController
             //var myNavController: MyNavigationController = segue.destinationViewController as MyNavigationController
             //let geoViewController:GeoViewController =  myNavController.topViewController as GeoViewController
-            let geoViewController:GeoViewController = segue.destinationViewController as GeoViewController
+            let geoViewController:GeoViewController = segue.destinationViewController as! GeoViewController
             geoViewController.hasCustomNavigation = false
-            let indexPath : NSIndexPath = sender as NSIndexPath
+            let indexPath : NSIndexPath = sender as! NSIndexPath
             let indexPaths : NSArray = self.mCollectionView.indexPathsForSelectedItems()
      
             //println(indexPath)

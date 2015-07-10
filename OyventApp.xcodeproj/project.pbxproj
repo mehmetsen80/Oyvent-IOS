@@ -17,6 +17,7 @@
 		590EBBD91AF68B6900420384 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBD81AF68B6900420384 /* RoundButton.swift */; };
 		5936D6E11B141A5A00A02642 /* OnlyTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5936D6E01B141A5900A02642 /* OnlyTextViewController.swift */; };
 		594B28911B2E5BEE001D5503 /* MainCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B28901B2E5BEE001D5503 /* MainCollectionReusableView.swift */; };
+		597123111B4A49DC00CF46A7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597123101B4A49DC00CF46A7 /* Colors.swift */; };
 		5976B8ED1AF9097D00D8D2F4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8EC1AF9097D00D8D2F4 /* CustomButton.swift */; };
 		5976B8EF1AF90A3F00D8D2F4 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8EE1AF90A3F00D8D2F4 /* CustomView.swift */; };
 		5976B8F11AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F01AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift */; };
@@ -74,6 +75,7 @@
 		590EBBD81AF68B6900420384 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		5936D6E01B141A5900A02642 /* OnlyTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyTextViewController.swift; sourceTree = "<group>"; };
 		594B28901B2E5BEE001D5503 /* MainCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionReusableView.swift; sourceTree = "<group>"; };
+		597123101B4A49DC00CF46A7 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5976B8EC1AF9097D00D8D2F4 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		5976B8EE1AF90A3F00D8D2F4 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		5976B8F01AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -134,6 +136,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5971230F1B4A49C000CF46A7 /* style */ = {
+			isa = PBXGroup;
+			children = (
+				597123101B4A49DC00CF46A7 /* Colors.swift */,
+			);
+			name = style;
+			sourceTree = "<group>";
+		};
 		599611981B4578E2006777E8 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -164,6 +174,7 @@
 				599611971B4578E2006777E8 /* OyventApp.xcodeproj */,
 				59F175DE1AF87D0F005E7950 /* gitignore */,
 				59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */,
+				5971230F1B4A49C000CF46A7 /* style */,
 				59F175DA1AF878CE005E7950 /* api */,
 				59F175D71AF877F6005E7950 /* button */,
 				59F175D91AF8789A005E7950 /* cell */,
@@ -424,6 +435,7 @@
 				59BC7A121B118179000BD75E /* GeoTableHeaderCell.swift in Sources */,
 				59EFA7F31AD61F1A00CA3C84 /* DetailsViewController.swift in Sources */,
 				5976B8F31B038CDF00D8D2F4 /* HomeHeaderCollectionReusableView.swift in Sources */,
+				597123111B4A49DC00CF46A7 /* Colors.swift in Sources */,
 				599611A01B46B12F006777E8 /* LogoutViewController.swift in Sources */,
 				5936D6E11B141A5A00A02642 /* OnlyTextViewController.swift in Sources */,
 				5976B8F11AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift in Sources */,
@@ -553,9 +565,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = OyventApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = OyventApp;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -566,9 +580,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = OyventApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = OyventApp;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

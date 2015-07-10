@@ -93,12 +93,12 @@ class MyMenuTableViewController: UITableViewController {
         
         //Present new view controller
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         var isUserLoggedIn:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
         
         if(!isUserLoggedIn){
-            var loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("loginView") as LoginViewController
+            var loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("loginView")as! LoginViewController
             
             appDelegate.window?.rootViewController = loginViewController
             appDelegate.window?.makeKeyAndVisible()
@@ -130,8 +130,8 @@ class MyMenuTableViewController: UITableViewController {
                     
                     
                     
-                    let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myMainNav") as MyNavigationController
-                    let mainController: MainViewController = nvg.topViewController as MainViewController
+                    let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myMainNav") as! MyNavigationController
+                    let mainController: MainViewController = nvg.topViewController as! MainViewController
                     sideMenuController()?.setContentViewController(mainController)
                     
                     
@@ -157,7 +157,7 @@ class MyMenuTableViewController: UITableViewController {
 //                    sideMenuController()?.setContentViewController(meView)
                     
                     
-                    var logoutView: LogoutViewController = mainStoryboard.instantiateViewControllerWithIdentifier("logoutView") as LogoutViewController
+                    var logoutView: LogoutViewController = mainStoryboard.instantiateViewControllerWithIdentifier("logoutView") as! LogoutViewController
                      sideMenuController()?.setContentViewController(logoutView)
                     
                     

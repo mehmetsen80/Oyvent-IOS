@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>DF54D92A-A61B-44A1-9836-5AA392A98215</string>
 	<key>IDESourceControlProjectName</key>
-	<string>OyventApp</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>40E8A609984201AD6E2B108D68CF29D3F8B451F1</key>
 		<string>https://github.com/mehmetsen80/Oyvent-IOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>OyventApp.xcodeproj</string>
+	<string>OyventApp.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>40E8A609984201AD6E2B108D68CF29D3F8B451F1</key>

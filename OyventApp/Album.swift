@@ -22,7 +22,7 @@ class Album{
     let postDate: String?
     let address: String?
     let radius: Float?
-    let milesUser:Double = 0
+    let milesUser:Double?
     let photoSize: Int?
     let totalPhotoSize: Int?
     let urlLarge: String?
@@ -33,6 +33,25 @@ class Album{
     init(pkAlbumID: Double, albumName: String){
         self.pkAlbumID = pkAlbumID
         self.albumName = albumName
+        
+        self.fkUserID = 0
+        self.fkParentID = 0
+        self.fkCategoryID  = 0
+        self.albumUserName = ""
+        self.parentName = ""
+        self.latitude = 0
+        self.longitude = 0
+        self.postDate = ""
+        self.address = ""
+        self.radius = 0.0
+        self.milesUser = 0
+        self.photoSize = 0
+        self.totalPhotoSize = 0
+        self.urlLarge = ""
+        self.urlMedium = ""
+        self.urlSmall = ""
+        self.urlThumb = ""
+        
     }
     
     init(pkAlbumID: Double, fkUserID: Double, fkParentID: Double, fkCategoryID: Double, albumName: String, albumUserName: String, parentName: String,

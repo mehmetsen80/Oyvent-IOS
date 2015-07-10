@@ -16,18 +16,18 @@ class ZoomViewController: UIViewController , UIScrollViewDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let photo:Photo = appDelegate.zoomedPhoto!
         var imgURL: NSURL! = NSURL(string: photo.largeImageURL)
         // Download an NSData representation of the image at the URL
         let request: NSURLRequest = NSURLRequest(URL: imgURL)
         let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
         
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
-            if !(error? != nil) {
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?,error: NSError?) -> Void in
+            if let noerror = data {
                 dispatch_async(dispatch_get_main_queue()) {
                     
-                    let largeImage:UIImage = UIImage(data: data)!
+                    let largeImage:UIImage = UIImage(data: noerror)!
                     
                     // 1
                     //let image = UIImage(named: "oyvent")!
@@ -61,7 +61,7 @@ class ZoomViewController: UIViewController , UIScrollViewDelegate  {
                 }
             }
             else {
-                println("Error: \(error.localizedDescription)")
+                println("Error: \(error!.localizedDescription)")
             }
         })
 
@@ -113,11 +113,11 @@ class ZoomViewController: UIViewController , UIScrollViewDelegate  {
         mScrollView.zoomToRect(rectToZoomTo, animated: true)
     }
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView!{
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView?{
         return mImageView
     }
     
-    func scrollViewDidZoom(scrollView: UIScrollView!) {
+    func scrollViewDidZoom(scrollView: UIScrollView) {
         centerScrollViewContents()
     }
 
@@ -139,7 +139,7 @@ class ZoomViewController: UIViewController , UIScrollViewDelegate  {
         // Insert your save data statements in this function
         println("Insert your save data statements in this function")
         
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.zoomedPhoto = nil
         
     }

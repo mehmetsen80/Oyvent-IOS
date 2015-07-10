@@ -66,15 +66,15 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         var imgURL: NSURL! = NSURL(string: urlString)
         let request: NSURLRequest = NSURLRequest(URL: imgURL)// Download an NSData representation of the image at the URL
         let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
-            if !(error? != nil) {
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?,error: NSError?) -> Void in
+            if let noerror = data {
                 dispatch_async(dispatch_get_main_queue()) {
-                    var image = UIImage(data: data)
+                    var image = UIImage(data: noerror)
                     self.btnBigPoster?.setBackgroundImage(image, forState: UIControlState.Normal)
                 }
             }
             else {
-                println("Error: \(error.localizedDescription)")
+                println("Error: \(error!.localizedDescription)")
             }
         })
         /********************************** End of Big Poster ***************************/
@@ -83,7 +83,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
        
         /************************ album Name should less than 37 chars ***********************/
         let albumName = self.photo.albumName
-        if(countElements(albumName)>37){
+        if(count(albumName)>37){
             self.btnGeoAlbum?.setTitle(albumName.substringToIndex(advance(albumName.startIndex, 37))+"..." , forState: UIControlState.Normal)
         }else{
             self.btnGeoAlbum?.setTitle(albumName, forState: UIControlState.Normal)
@@ -110,7 +110,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         
         
         /************************ other inputs  ******************************/
-        self.lblMiles?.text = NSString(format: "%.2f", photo.milesUser)+" mi" //miles of user
+        self.lblMiles?.text = (NSString(format: "%.2f", photo.milesUser) as String)+" mi" //miles of user
         self.lblFullName?.text = photo.fullName //fullname of the user
         self.lblPostDate?.text = (photo.postDate != "") ? NSDate().offsetFrom(NSDate().dateFromString(photo.postDate)) : "" //get the post date in days,minutes,month,year
         /********************* End of other inputs  ***************************/
@@ -157,7 +157,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         myAlert.addAction(okAction)
         
         geoCoder = CLGeocoder() //first time initialization of geoCoder for later purposes
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if appDelegate.locManager != nil {//initialize location manager
             self.locationManager = appDelegate.locManager!
             self.locationManager.delegate = self
@@ -169,7 +169,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         
         //ask for location authorization and get latitude and longitude coordinates
         if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways){
                 
                 if self.locationManager.location != nil {
                     currentLocation = self.locationManager.location
@@ -232,7 +232,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
             placemarks, error in
             
             if error == nil && placemarks.count > 0 {
-                let placeArray = placemarks as [CLPlacemark]
+                let placeArray = placemarks as! [CLPlacemark]
                 
                 // Place details
                 var placeMark: CLPlacemark!
@@ -287,7 +287,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
     
     /************************************** vote up or down *******************************/
     func vote(voteType: String){
-        let pkPhotoID:String = NSString(format: "%.0f", photo.pkPhotoID)
+        let pkPhotoID:String = NSString(format: "%.0f", photo.pkPhotoID) as String
         let userID:String = NSUserDefaults.standardUserDefaults().stringForKey("userID")!
         let url = NSURL(string:"http://oyvent.com/ajax/Album.php")
         let request = NSMutableURLRequest(URL: url!)
@@ -308,9 +308,9 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
             var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
             
             if let parseJSON = json {
-                let resultValue:Bool = parseJSON["success"] as Bool!
-                let message:String? = parseJSON	["message"] as String?
-                let already:Bool = parseJSON["already"] as Bool!
+                let resultValue:Bool = parseJSON["success"] as! Bool!
+                let message:String? = parseJSON	["message"] as! String?
+                let already:Bool = parseJSON["already"] as! Bool!
                 
                  dispatch_async(dispatch_get_main_queue(),{
                     if(!resultValue){
@@ -366,7 +366,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath) as DetailsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath) as! DetailsTableViewCell
         let comment:Comment = self.comments[indexPath.row]
         cell.btnUser.setTitle(comment.fullName, forState: UIControlState.Normal)
         cell.lblComment.text = comment.message
@@ -421,8 +421,8 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                 var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
                 
                 if let parseJSON = json {
-                    let resultValue:Bool = parseJSON["success"] as Bool!
-                    let message:String? = parseJSON	["error"] as String?
+                    let resultValue:Bool = parseJSON["success"] as! Bool!
+                    let message:String? = parseJSON	["error"] as! String?
                     
                     dispatch_async(dispatch_get_main_queue(),{
                         
@@ -444,7 +444,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
 //                                self.presentViewController(nvg, animated: true, completion: nil)
                                 
                           
-                                let nvg : MyNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("myMainNav") as MyNavigationController;
+                                let nvg : MyNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("myMainNav") as! MyNavigationController;
                                 self.presentViewController(nvg, animated: true, completion: nil)
                                 
                                 
@@ -506,8 +506,8 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                 var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
                 
                 if let parseJSON = json {
-                    let resultValue:Bool = parseJSON["success"] as Bool!
-                    let message:String? = parseJSON	["error"] as String?
+                    let resultValue:Bool = parseJSON["success"] as! Bool!
+                    let message:String? = parseJSON	["error"] as! String?
                     
                     dispatch_async(dispatch_get_main_queue(),{
                         
@@ -579,7 +579,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         UIView.commitAnimations()
     }/******* end of animate add comment textbox either up or down *****/
     //when the user touches out of textbox view, end the viewing, move back down
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true);
     }
     
@@ -613,8 +613,8 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
             var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
             
             if let parseJSON = json {
-                var resultValue:Bool = parseJSON["success"] as Bool!
-                var error:String? = parseJSON	["error"] as String?
+                var resultValue:Bool = parseJSON["success"] as! Bool!
+                var error:String? = parseJSON	["error"] as! String?
                 
                 dispatch_async(dispatch_get_main_queue(),{
                     
@@ -645,7 +645,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
     @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {}
     /*********************** go to the zoom photo screen *************************/
     @IBAction func doZoom(sender: UIButton) {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.zoomedPhoto = photo
             appDelegate.window?.makeKeyAndVisible()
         performSegueWithIdentifier("zoomPoster", sender: self)
@@ -656,7 +656,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         
         dispatch_barrier_async(concurrentCommentQueue) {
             var resultsArr: [Comment] = []
-            resultsArr  = results["results"] as [Comment]
+            resultsArr  = results["results"] as! [Comment]
             self.comments = []
             dispatch_async(dispatch_get_main_queue(), {
                 

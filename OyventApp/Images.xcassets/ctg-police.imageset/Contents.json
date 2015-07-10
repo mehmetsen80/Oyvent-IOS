@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "message-icon-white.png"
+      "filename" : "police.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "message-icon-white_2X.png"
+      "filename" : "police_2X.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "message-icon-white_3X.png"
+      "filename" : "police_3X.png"
     }
   ],
   "info" : {

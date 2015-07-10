@@ -56,16 +56,16 @@ class LoginViewController: UIViewController {
             var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
             
             if let parseJSON = json {
-                var resultValue = parseJSON["success"] as Bool!
+                var resultValue = parseJSON["success"] as! Bool!
                 println("resultValue=\(resultValue)")
                 
-                let message:String? = parseJSON	["message"] as String?
-                let userID:Double? = parseJSON["userID"] as Double?
-                let fullname:String? = parseJSON["fullname"] as String?
-                let username:String? = parseJSON["username"] as String?
-                let lastlogindate:String? = parseJSON["lastlogindate"] as String?
-                let signupdate:String? = parseJSON["signupdate"] as String?
-                let isadmin:Bool = parseJSON["isadmin"] as Bool!
+                let message:String? = parseJSON	["message"] as! String?
+                let userID:Double? = parseJSON["userID"] as! Double?
+                let fullname:String? = parseJSON["fullname"] as! String?
+                let username:String? = parseJSON["username"] as! String?
+                let lastlogindate:String? = parseJSON["lastlogindate"] as! String?
+                let signupdate:String? = parseJSON["signupdate"] as! String?
+                let isadmin:Bool = parseJSON["isadmin"] as! Bool!
                 
                 
                 
@@ -98,8 +98,8 @@ class LoginViewController: UIViewController {
                         
                         
                         //let homeController:HomeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
-                        let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myMainNav") as MyNavigationController
-                        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+                        let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myMainNav") as! MyNavigationController
+                        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                         appDelegate.window?.rootViewController = nvg
                         appDelegate.window?.makeKeyAndVisible()
                         

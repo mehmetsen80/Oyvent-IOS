@@ -106,7 +106,7 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
         var menuImage:UIImage = UIImage(named: "oyvent-icon-72")!
         menuImage = resizeImage(menuImage,targetSize: CGSize(width: 30, height: 30))
         menuImage = menuImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        var leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "sideMenuClicked")
+        var leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "sideMenuClicked")
         self.navigationItem.leftBarButtonItem = leftButton
         /***************** end of navigation left button -> menu image********************/
         
@@ -176,8 +176,8 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
             var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
             
             if let parseJSON = json {
-                var resultValue:Bool = parseJSON["success"] as Bool!
-                var error:String? = parseJSON	["error"] as String?
+                var resultValue:Bool = parseJSON["success"] as! Bool!
+                var error:String? = parseJSON	["error"] as! String?
                 
                 dispatch_async(dispatch_get_main_queue(),{
                     
@@ -227,7 +227,7 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
     func setupLocationManager(){
         
         geoCoder = CLGeocoder()
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if appDelegate.locManager != nil {
             self.locationManager = appDelegate.locManager!
             self.locationManager.delegate = self
@@ -239,7 +239,7 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
         
         
         if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways){
                 
                 if self.locationManager.location != nil {
                     currentLocation = self.locationManager.location
@@ -288,7 +288,7 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
             placemarks, error in
             
             if error == nil && placemarks.count > 0 {
-                let placeArray = placemarks as [CLPlacemark]
+                let placeArray = placemarks as! [CLPlacemark]
                 
                 // Place details
                 var placeMark: CLPlacemark!
@@ -297,8 +297,8 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
                 // City
                 if let city = placeMark.addressDictionary["City"] as? NSString {
                     //println(city)
-                    self.city = city
-                    self.albumName = (self.albumID != 0 ) ? self.albumName : city
+                    self.city = city as String
+                    self.albumName = (self.albumID != 0 ) ? self.albumName : self.city
                     self.btnAlbumName.setTitle(self.albumName, forState: UIControlState.Normal)
                     self.locationManager.stopUpdatingLocation()
                     self.locationManager.stopUpdatingLocation()

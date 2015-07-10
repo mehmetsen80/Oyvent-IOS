@@ -53,7 +53,7 @@ class LogoutViewController: UIViewController, ENSideMenuDelegate {
         var menuImage:UIImage = UIImage(named: "oyvent-icon-72")!
         menuImage = resizeImage(menuImage,targetSize: CGSize(width: 30, height: 30))
         menuImage = menuImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        var leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "sideMenuClicked")
+        var leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "sideMenuClicked")
         self.navigationItem.leftBarButtonItem = leftButton
     }
     
@@ -99,9 +99,9 @@ class LogoutViewController: UIViewController, ENSideMenuDelegate {
         NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isadmin")
         NSUserDefaults.standardUserDefaults().synchronize()
         
-        let loginViewController:LoginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("loginView") as LoginViewController
+        let loginViewController:LoginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("loginView") as! LoginViewController
         
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = loginViewController
         appDelegate.window?.makeKeyAndVisible()
         

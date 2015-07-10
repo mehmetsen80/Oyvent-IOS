@@ -26,14 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let isUserLoggedIn:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
         if(!isUserLoggedIn){
-            let loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("loginView") as LoginViewController
+            let loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("loginView") as! LoginViewController
             
             window!.rootViewController = loginViewController
             window!.makeKeyAndVisible()
         }else{
             
             
-            let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myMainNav") as MyNavigationController
+            let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myMainNav") as! MyNavigationController
             //let geoController:GeoViewController =  nvg.topViewController as GeoViewController
             //let homeController:HomeViewController = mainStoryboard.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
             

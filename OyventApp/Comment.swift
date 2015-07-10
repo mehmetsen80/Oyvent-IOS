@@ -25,6 +25,14 @@ class Comment{
         
         self.fullName = fullName
         self.message = message
+        
+        self.pkCommentID = 0
+        self.fkPhotoID = 0
+        self.fkUserID = 0
+        self.latitude = 0
+        self.longitude = 0
+        self.postDate = ""
+        self.email = ""
   
     }
     

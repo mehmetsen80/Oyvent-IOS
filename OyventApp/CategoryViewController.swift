@@ -38,20 +38,20 @@ class CategoryViewController: UIViewController,UIPopoverPresentationControllerDe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "takePhoto" {
-            var captureViewController: CaptureViewController = segue.destinationViewController as CaptureViewController
+            var captureViewController: CaptureViewController = segue.destinationViewController as! CaptureViewController
             captureViewController.albumID = self.albumID
             captureViewController.albumName = self.albumName
             //captureViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
             //captureViewController.popoverPresentationController!.delegate = self
         }else if segue.identifier == "fromLibrary" {
-            var captureViewController: CaptureViewController = segue.destinationViewController as CaptureViewController
+            var captureViewController: CaptureViewController = segue.destinationViewController as! CaptureViewController
             captureViewController.albumID = self.albumID
             captureViewController.albumName = self.albumName
             captureViewController.segueLibrary = true
 //            captureViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
 //            captureViewController.popoverPresentationController!.delegate = self
         }else if segue.identifier == "onlyText" {
-            var onlyTextViewController: OnlyTextViewController = segue.destinationViewController as OnlyTextViewController
+            var onlyTextViewController: OnlyTextViewController = segue.destinationViewController as! OnlyTextViewController
             onlyTextViewController.albumID = self.albumID
             onlyTextViewController.albumName = self.albumName
 //            onlyTextViewController.popoverPresentationController!.delegate = self

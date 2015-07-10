@@ -63,7 +63,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     func setupLocationManager(){
         
         geoCoder = CLGeocoder()
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if appDelegate.locManager != nil {
             self.locationManager = appDelegate.locManager!
             self.locationManager.delegate = self
@@ -75,7 +75,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         
         if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways){
                 
                 if self.locationManager.location != nil {
                     currentLocation = self.locationManager.location
@@ -124,7 +124,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
             placemarks, error in
             
             if error == nil && placemarks.count > 0 {
-                let placeArray = placemarks as [CLPlacemark]
+                let placeArray = placemarks as! [CLPlacemark]
                 
                 // Place details
                 var placeMark: CLPlacemark!
@@ -146,8 +146,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
                 // City
                 if let city = placeMark.addressDictionary["City"] as? NSString {
                     println(city)
-                    self.city = city
-                    self.btnCity.setTitle(city, forState: UIControlState.Normal)
+                    self.city = city as String
+                    self.btnCity.setTitle(self.city, forState: UIControlState.Normal)
                     self.api!.searchParentAlbums(0, latitude: self.latitude, longitude: self.longitude)
                     self.locationManager.stopUpdatingLocation()
                 }
@@ -215,7 +215,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         var menuImage:UIImage = UIImage(named: "oyvent-icon-72")!
         menuImage = resizeImage(menuImage,targetSize: CGSize(width: 30, height: 30))
         menuImage = menuImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        var leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "sideMenuClicked")
+        var leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "sideMenuClicked")
         self.navigationItem.leftBarButtonItem = leftButton
         /***************** end of navigation left button -> menu image********************/
         
@@ -229,7 +229,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
                 var locationImage:UIImage = UIImage(named: "location-icon-grey")!
                 locationImage = resizeImage(locationImage, targetSize: CGSize(width:30, height:30))
                 locationImage = locationImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-                var rightButton = UIBarButtonItem(image: locationImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "locationClicked")
+                var rightButton = UIBarButtonItem(image: locationImage, style: UIBarButtonItemStyle.Plain, target: self, action: "locationClicked")
                 self.navigationItem.rightBarButtonItem = rightButton
         /************** end of navigation right button -> location image ********************/
         
@@ -303,7 +303,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as MainCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! MainCollectionViewCell
         
         
         let album:Album = self.albums[indexPath.row]
@@ -313,7 +313,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         
         if(album.fkParentID == 0){
-            cell.lblMiles?.text = "\(album.milesUser) miles"
+            cell.lblMiles?.text = "\(album.milesUser!) miles"
             cell.lblMiles.hidden = false
         }
         
@@ -323,30 +323,33 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         cell.imgPoster?.image = UIImage(named:"blank")
         //get the image
         let urlString: String? = album.urlMedium
-        if(urlString != ""){
+        if(urlString != "" && urlString != nil){
             var image = self.imageCache[urlString!]
             if(image == nil) {
                 
                 // If the image does not exist, we need to download it
-                var imgURL: NSURL! = NSURL(string: urlString!)
+                var imgURL: NSURL? = NSURL(string: urlString!)
+                
+                if let url = imgURL{
                 
                 // Download an NSData representation of the image at the URL
-                let request: NSURLRequest = NSURLRequest(URL: imgURL)
+                let request: NSURLRequest = NSURLRequest(URL: url)
                 let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
-                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
-                    if !(error? != nil) {
+                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?,error: NSError?) -> Void in
+                    if let noerror = data {
                         dispatch_async(dispatch_get_main_queue()) {
-                            
-                            image = UIImage(data: data)
+                            image = UIImage(data: noerror)
                             // Store the image in to our cache
                             self.imageCache[urlString!] = image
                             cell.imgPoster?.image = image
                         }
                     }
                     else {
-                        println("Error: \(error.localizedDescription)")
+                        println("Error: \(error!.localizedDescription)")
                     }
                 })
+                    
+                }
                 
             } else {
                 cell.imgPoster?.image = image
@@ -425,7 +428,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     func didReceiveAlbumAPIResults(results: NSDictionary) {
         
         dispatch_barrier_async(concurrentAlbumQueue) {
-            var resultsArr: [Album] = results["results"] as [Album]
+            var resultsArr: [Album] = results["results"] as! [Album]
             dispatch_async(dispatch_get_main_queue(), {
                 
                 resultsArr = Album.albumsWithJSON(resultsArr)
@@ -455,8 +458,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
             //let geoViewController:GeoViewController =  segue.destinationViewController as GeoViewController
             //var myNavController: MyNavigationController = segue.destinationViewController as MyNavigationController
             //let homeViewController:HomeViewController =  myNavController.topViewController as HomeViewController
-            let homeViewController:HomeViewController = segue.destinationViewController as HomeViewController
-            let indexPath : NSIndexPath = sender as NSIndexPath
+            let homeViewController:HomeViewController = segue.destinationViewController as! HomeViewController
+            let indexPath : NSIndexPath = sender as! NSIndexPath
             let indexPaths : NSArray = self.mCollectionView.indexPathsForSelectedItems()
             
             //println(indexPath)

@@ -74,7 +74,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     func setupLocationManager(){
         
         geoCoder = CLGeocoder()
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if appDelegate.locManager != nil {
             self.locationManager = appDelegate.locManager!
             self.locationManager.delegate = self
@@ -86,7 +86,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
         
         
         if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways){
                 
                 if self.locationManager.location != nil {
                     currentLocation = self.locationManager.location
@@ -135,7 +135,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
             placemarks, error in
             
             if error == nil && placemarks.count > 0 {
-                let placeArray = placemarks as [CLPlacemark]
+                let placeArray = placemarks as! [CLPlacemark]
                 
                 // Place details
                 var placeMark: CLPlacemark!
@@ -144,8 +144,8 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
                 // City
                 if let city = placeMark.addressDictionary["City"] as? NSString {
                     //println(city)
-                    self.city = city
-                    self.albumName = (self.albumID != 0 ) ? self.albumName : city
+                    self.city = city as String
+                    self.albumName = (self.albumID != 0 ) ? self.albumName : self.city
                     self.btnAlbumName.setTitle(self.albumName, forState: UIControlState.Normal)
                     self.locationManager.stopUpdatingLocation()
                     if(self.segueLibrary){//trigger the library button image if segue from library
@@ -248,7 +248,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     func resetSession() {
         
         var err: NSError? = nil
-        let inputs = captureSession.inputs as [AVCaptureInput]
+        let inputs = captureSession.inputs as! [AVCaptureInput]
         var input = AVCaptureDeviceInput(device: captureDevice, error: &err)
         if( contains(inputs, input) ) {
             captureSession.removeInput(AVCaptureDeviceInput(device: captureDevice, error: &err))
@@ -282,7 +282,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
         
         var err: NSError? = nil
         var input = AVCaptureDeviceInput(device: captureDevice, error: &err)
-        let inputs = captureSession.inputs as [AVCaptureInput]
+        let inputs = captureSession.inputs as! [AVCaptureInput]
         
         
         if( !contains(inputs, input) ){
@@ -383,8 +383,8 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
             var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
             
             if let parseJSON = json {
-                var resultValue:Bool = parseJSON["success"] as Bool!
-                var error:String? = parseJSON	["error"] as String?
+                var resultValue:Bool = parseJSON["success"] as! Bool!
+                var error:String? = parseJSON	["error"] as! String?
                 
                 dispatch_async(dispatch_get_main_queue(),{
                     
@@ -566,7 +566,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
         
         // Now we draw the underlying CGImage into a new context, applying the transform
         // calculated above.
-        var ctx:CGContextRef = CGBitmapContextCreate(nil, UInt(img.size.width), UInt(img.size.height),
+        var ctx:CGContextRef = CGBitmapContextCreate(nil, Int(img.size.width), Int(img.size.height),
             CGImageGetBitsPerComponent(img.CGImage), 0,
             CGImageGetColorSpace(img.CGImage),
             CGImageGetBitmapInfo(img.CGImage));
@@ -608,7 +608,8 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
             captureSession.stopRunning()
         }
         
-        if(!imageView.layer.sublayers.isEmpty){
+        if(imageView.layer.sublayers != nil){
+           // if(!imageView.layer.sublayers.isEmpty)
             previewLayer?.removeFromSuperlayer()
         }
         let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage
@@ -645,14 +646,14 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     let screenWidth = UIScreen.mainScreen().bounds.size.width
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        var anyTouch = touches.anyObject() as UITouch
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        var anyTouch = touches.first as! UITouch
         var touchPercent = anyTouch.locationInView(self.view).x / screenWidth
         focusTo(Float(touchPercent))
     }
     
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        var anyTouch = touches.anyObject() as UITouch
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        var anyTouch = touches.first as! UITouch
         var touchPercent = anyTouch.locationInView(self.view).x / screenWidth
         focusTo(Float(touchPercent))
         

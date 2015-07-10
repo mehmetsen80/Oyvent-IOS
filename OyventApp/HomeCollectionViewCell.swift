@@ -10,7 +10,7 @@ import UIKit
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
-    
+    let colors = Colors()
     
     required init(coder aDecoder: NSCoder) {
       super.init(coder: aDecoder)
@@ -34,8 +34,24 @@ class HomeCollectionViewCell: UICollectionViewCell {
 //        self.viewForBaselineLayout()?.layer.shadowOpacity = 1.0
     
 
+//        var backgroundLayer = colors.gl
+//        backgroundLayer.frame = layer.bounds
+//        let backgroundView = UIView(frame: layer.bounds)
+//        self.viewForBaselineLayout()?.layer.insertSublayer(backgroundLayer, atIndex: 0)
+//        self.backgroundView = backgroundView
+//        self.viewForBaselineLayout()?.layer.cornerRadius = 12.0
+//        self.viewForBaselineLayout()?.layer.masksToBounds = true
+//        self.viewForBaselineLayout()?.layer.borderWidth = 1.0
+//        self.viewForBaselineLayout()?.layer.borderColor = UIColor(red: 0xcc/255, green: 0xcc/255, blue: 0xcc/255, alpha: 1.0).CGColor
+
+        
         
     }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        //gradientLayer.frame = bounds
+//    }
+  
 
     
 }

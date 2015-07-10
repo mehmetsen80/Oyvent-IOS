@@ -128,7 +128,7 @@ class Photo{
                 let postDate:String? = result["POSTDATE"] as? String ?? ""
                 let fullName:String? = result["FULLNAME"] as? String ?? ""
                 let email:String? = result["EMAIL"] as? String ?? ""
-                let albumName:String? = result["ALBUMNAME"] as? String ?? ""
+                let albumName:String? = result["ALBUMNAME"] as? String ?? "Me"
                 let fkAlbumID:Double? =  result["FKALBUMID"] as? Double
                 let thumbImageURL:String? = result["URLTHUMB"] as? String ?? ""
                 let largeImageURL:String? = result["URLLARGE"] as? String ?? ""
