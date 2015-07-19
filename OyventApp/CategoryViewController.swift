@@ -14,6 +14,8 @@ class CategoryViewController: UIViewController,UIPopoverPresentationControllerDe
     var albumName : String = ""
     
     @IBOutlet weak var btnClose: UIButton!
+    @IBOutlet weak var btnClose2: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,10 @@ class CategoryViewController: UIViewController,UIPopoverPresentationControllerDe
         dismissViewControllerAnimated(true, completion: nil)
     }
 
+    @IBAction func closeCategory(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     
     // MARK: - Navigation
 
@@ -63,9 +69,14 @@ class CategoryViewController: UIViewController,UIPopoverPresentationControllerDe
     
     @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
         println("welcome back to CategoryViewController!")
-        self.btnClose.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
-        
+        dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func unwindToThisViewController2(ssegue: UIStoryboardSegue) {
+        println("unwind2")
+        self.btnClose2.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+    }
+    
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None

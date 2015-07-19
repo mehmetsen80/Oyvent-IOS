@@ -524,7 +524,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return 120
     }
     
     @IBAction func visitDetailsView(sender: UIButton) {
@@ -692,15 +692,18 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
 
     @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
         println("welcome back to GeoViewController!")
+        
+    }
+    
+    @IBAction func unwindToThisViewController2(segue: UIStoryboardSegue) {
+        println("welcome back to GeoViewController unwind2!")
+        
         pageNo=0
         self.photos = []
         self.imageCache = [String : UIImage]()
         scrollToTop()
         api!.searchPhotos(pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID, fkParentID: self.fkParentID)
-        
     }
-    
-    
  
     
    

@@ -29,6 +29,8 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     
     @IBOutlet weak var btnShareNow: UIButton!
     @IBOutlet weak var btnClose: UIButton!
+    @IBOutlet weak var btnClose2: UIButton!
+  
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var captureSession: AVCaptureSession! = nil
@@ -407,7 +409,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
                             
                             //self.dismissViewControllerAnimated(true, completion: nil)
                             self.activityIndicator.stopAnimating()
-                            self.btnClose.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+                            self.btnClose2.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
                             
 //                            let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myGeoNav") as MyNavigationController
 //                            var geoController:GeoViewController =  nvg.topViewController as GeoViewController

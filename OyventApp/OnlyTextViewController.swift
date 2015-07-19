@@ -26,6 +26,7 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
     @IBOutlet weak var btnAlbumName: UIButton!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var btnClose: UIButton!
+    @IBOutlet weak var btnClose2: UIButton!
     
     override func viewDidAppear(animated: Bool) {
         textView.becomeFirstResponder()
@@ -197,7 +198,7 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
                         
                            // self.dismissViewControllerAnimated(true, completion: nil)
                            
-                            self.btnClose.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+                            self.btnClose2.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
                             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                             
 //                            let nvg: MyNavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("myNav") as MyNavigationController
