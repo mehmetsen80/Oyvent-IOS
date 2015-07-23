@@ -399,13 +399,26 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(collectionView: UICollectionView,
         shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
             let album:Album = self.albums[indexPath.row]
-            self.performSegueWithIdentifier("gotoHome", sender: indexPath)
+            //self.performSegueWithIdentifier("gotoHome", sender: indexPath)
+            
+            
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
+            let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myCategoryFeedNav") as! MyNavigationController
+            var homeViewController:HomeViewController =  nvg.topViewController as! HomeViewController
+            
+            println("albumName: \(album.albumName!) pkAlbumID: \(album.pkAlbumID!)")
+            homeViewController.selectedAlbum = album
+            sideMenuController()?.setContentViewController(homeViewController)
+            
+            
+            
             return false
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        return  CGSize(width: (screenWidth-40), height: (screenWidth/2)-40)
+        //return  CGSize(width: (screenWidth-40), height: (screenWidth/2)-40)
+        return  CGSize(width: (screenWidth-40), height: 160)
         
         //return  CGSize(width: screenWidth, height: 140)
     }
@@ -456,8 +469,9 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         if segue.identifier == "gotoHome"{
             //let geoViewController:GeoViewController =  segue.destinationViewController as GeoViewController
-            //var myNavController: MyNavigationController = segue.destinationViewController as MyNavigationController
-            //let homeViewController:HomeViewController =  myNavController.topViewController as HomeViewController
+            //var myNavController: MyNavigationController = segue.destinationViewController as! MyNavigationController
+            //let homeViewController:HomeViewController =  myNavController.topViewController as! HomeViewController
+            //sideMenuController()?.setContentViewController(homeViewController)
             let homeViewController:HomeViewController = segue.destinationViewController as! HomeViewController
             let indexPath : NSIndexPath = sender as! NSIndexPath
             let indexPaths : NSArray = self.mCollectionView.indexPathsForSelectedItems()

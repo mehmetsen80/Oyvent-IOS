@@ -316,7 +316,7 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
             self.textView.text = ""
         }
         
-        animateViewMoving(true, moveValue: 225)
+        //animateViewMoving(true, moveValue: 240)
         
         return true
     }
@@ -327,7 +327,7 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
             self.textView.textColor = UIColor.lightGrayColor()
         }
         
-        animateViewMoving(false, moveValue: 225)
+        //animateViewMoving(false, moveValue: 240)
     }
     
 //    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
