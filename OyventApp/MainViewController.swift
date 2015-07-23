@@ -56,10 +56,15 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.screenWidth = screenSize.width
         self.screenHeight = screenSize.height
         
-        setupNavigationBar()
+        //setupNavigationBar()
         
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        setupNavigationBar()
+    }
+    
     func setupLocationManager(){
         
         geoCoder = CLGeocoder()
@@ -244,7 +249,17 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        sideMenuController()?.setContentViewController(geoController)
 //        sideMenuController()?.sideMenu?.hideSideMenu()
         
-        self.performSegueWithIdentifier("jumptoGeo", sender: nil)
+        //self.performSegueWithIdentifier("jumptoGeo", sender: nil)//not used anymore
+        
+        
+        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
+        let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNavGeo") as! MyNavigationController
+        var geoViewController:GeoViewController =  nvg.topViewController as! GeoViewController
+        geoViewController.hasCustomNavigation = true
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = nvg
+        appDelegate.window?.makeKeyAndVisible()
         
     }
     
@@ -393,24 +408,29 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         let indexPath: NSIndexPath = self.mCollectionView!.indexPathForItemAtPoint(buttonPosition)!
         //var indexPath: NSIndexPath = self.mCollectionView.indexPathForRowAtPoint(buttonPosition)!
         let album:Album = self.albums[indexPath.row]
-        self.performSegueWithIdentifier("gotoHome", sender: indexPath)
+        
+        //To do: fix this
+        //self.performSegueWithIdentifier("gotoHome", sender: indexPath)
+        
+        
+        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
+        let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myCategoryFeedNav") as! MyNavigationController
+        var homeViewController:HomeViewController =  nvg.topViewController as! HomeViewController
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        println("albumName: \(album.albumName!) pkAlbumID: \(album.pkAlbumID!)")
+        homeViewController.selectedAlbum = album
+        appDelegate.window?.rootViewController = nvg
+        appDelegate.window?.makeKeyAndVisible()
+        
     }
     
+    //this is actually not triggered right now
     func collectionView(collectionView: UICollectionView,
         shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
             let album:Album = self.albums[indexPath.row]
             //self.performSegueWithIdentifier("gotoHome", sender: indexPath)
-            
-            
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
-            let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myCategoryFeedNav") as! MyNavigationController
-            var homeViewController:HomeViewController =  nvg.topViewController as! HomeViewController
-            
-            println("albumName: \(album.albumName!) pkAlbumID: \(album.pkAlbumID!)")
-            homeViewController.selectedAlbum = album
-            sideMenuController()?.setContentViewController(homeViewController)
-            
-            
+ 
             
             return false
     }
@@ -462,28 +482,28 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
-        
-        if segue.identifier == "gotoHome"{
-            //let geoViewController:GeoViewController =  segue.destinationViewController as GeoViewController
-            //var myNavController: MyNavigationController = segue.destinationViewController as! MyNavigationController
-            //let homeViewController:HomeViewController =  myNavController.topViewController as! HomeViewController
-            //sideMenuController()?.setContentViewController(homeViewController)
-            let homeViewController:HomeViewController = segue.destinationViewController as! HomeViewController
-            let indexPath : NSIndexPath = sender as! NSIndexPath
-            let indexPaths : NSArray = self.mCollectionView.indexPathsForSelectedItems()
-            
-            //println(indexPath)
-            var selectedAlbum = self.albums[indexPath.row]
-            println("albumName: \(selectedAlbum.albumName!) pkAlbumID: \(selectedAlbum.pkAlbumID!)")
-            homeViewController.selectedAlbum = selectedAlbum
-           
-        }
-        
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        // Get the new view controller using segue.destinationViewController.
+//        // Pass the selected object to the new view controller.
+//        
+//        
+//        if segue.identifier == "gotoHome"{
+//            //let geoViewController:GeoViewController =  segue.destinationViewController as GeoViewController
+//            //var myNavController: MyNavigationController = segue.destinationViewController as! MyNavigationController
+//            //let homeViewController:HomeViewController =  myNavController.topViewController as! HomeViewController
+//            //sideMenuController()?.setContentViewController(homeViewController)
+//            let homeViewController:HomeViewController = segue.destinationViewController as! HomeViewController
+//            let indexPath : NSIndexPath = sender as! NSIndexPath
+//            let indexPaths : NSArray = self.mCollectionView.indexPathsForSelectedItems()
+//            
+//            //println(indexPath)
+//            var selectedAlbum = self.albums[indexPath.row]
+//            println("albumName: \(selectedAlbum.albumName!) pkAlbumID: \(selectedAlbum.pkAlbumID!)")
+//            homeViewController.selectedAlbum = selectedAlbum
+//           
+//        }
+//        
+//    }
 
 
 }

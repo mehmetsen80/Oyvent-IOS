@@ -149,13 +149,24 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     
     
     func locationClicked(){
-        //Present new view controller
+        //this block also works
+//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
+//        let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("navGeo") as! MyNavigationController
+//        let geoController:GeoViewController =  nvg.topViewController as! GeoViewController
+//        geoController.hasCustomNavigation = true
+//        sideMenuController()?.setContentViewController(geoController)
+//        sideMenuController()?.sideMenu?.hideSideMenu()
+        
+        
+        
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
-        let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myGeoNav") as! MyNavigationController
-        let geoController:GeoViewController =  nvg.topViewController as! GeoViewController
-        geoController.hasCustomNavigation = true
-        sideMenuController()?.setContentViewController(geoController)
-        sideMenuController()?.sideMenu?.hideSideMenu()
+        let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNavGeo") as! MyNavigationController
+        var geoViewController:GeoViewController =  nvg.topViewController as! GeoViewController
+        geoViewController.hasCustomNavigation = true
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = nvg
+        appDelegate.window?.makeKeyAndVisible()
+
     }
     
     func sideMenuClicked(){

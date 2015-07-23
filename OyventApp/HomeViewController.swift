@@ -91,7 +91,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             setupNavigationBar()
         }
 
-        
+        setupNavigationBar()
 
     }
     
@@ -286,25 +286,24 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         
         /***************** right navigation button -> location image ***********************/
-//        var locationImage:UIImage = UIImage(named: "location-icon-grey")!
-//        locationImage = resizeImage(locationImage, targetSize: CGSize(width:30, height:30))
-//        locationImage = locationImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-//        var rightButton = UIBarButtonItem(image: locationImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "locationClicked")
-//        self.navigationItem.rightBarButtonItem = rightButton
-
+        var locationImage:UIImage = UIImage(named: "location-icon-grey")!
+        locationImage = resizeImage(locationImage, targetSize: CGSize(width:30, height:30))
+        locationImage = locationImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        var rightButton = UIBarButtonItem(image: locationImage, style: UIBarButtonItemStyle.Plain, target: self, action: "locationClicked")
+        self.navigationItem.rightBarButtonItem = rightButton
         /************** end of navigation right button -> location image ********************/
+
         
     }
     
     func locationClicked(){
-        //Present new view controller
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
-        //let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myGeoNav") as MyNavigationController
-        //let geoController:GeoViewController =  nvg.topViewController as GeoViewController
-       self.performSegueWithIdentifier("jumptoGeo", sender: nil)
-        //geoController.hasCustomNavigation = true
-       // sideMenuController()?.setContentViewController(geoController)
-        //sideMenuController()?.sideMenu?.hideSideMenu()
+        let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNavGeo") as! MyNavigationController
+        var geoViewController:GeoViewController =  nvg.topViewController as! GeoViewController
+        geoViewController.hasCustomNavigation = true
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = nvg
+        appDelegate.window?.makeKeyAndVisible()
     }
     
     
@@ -622,9 +621,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         if segue.identifier == "gotoGeo"{
             //let geoViewController:GeoViewController =  segue.destinationViewController as GeoViewController
-            //var myNavController: MyNavigationController = segue.destinationViewController as MyNavigationController
-            //let geoViewController:GeoViewController =  myNavController.topViewController as GeoViewController
-            let geoViewController:GeoViewController = segue.destinationViewController as! GeoViewController
+            var myNavController: MyNavigationController = segue.destinationViewController as! MyNavigationController
+            let geoViewController:GeoViewController =  myNavController.topViewController as! GeoViewController
+            //let geoViewController:GeoViewController = segue.destinationViewController as! GeoViewController
             geoViewController.hasCustomNavigation = false
             let indexPath : NSIndexPath = sender as! NSIndexPath
             let indexPaths : NSArray = self.mCollectionView.indexPathsForSelectedItems()

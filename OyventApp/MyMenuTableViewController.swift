@@ -9,7 +9,7 @@
 import UIKit
 
 class MyMenuTableViewController: UITableViewController {
-    var selectedMenuItem : Int = 0
+    var selectedMenuItem : Int = -1
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -115,7 +115,7 @@ class MyMenuTableViewController: UITableViewController {
             
                 switch (indexPath.row) {
                 case 0:
-                   //tabBarController.selectedIndex = 0
+                 //tabBarController!.selectedIndex = 0
                     
                     //if you want jumb immediately
 //                   var homeView: HomeViewController = tabBarController.viewControllers![0] as HomeViewController
@@ -152,7 +152,7 @@ class MyMenuTableViewController: UITableViewController {
 //                    
 //                    break
                 case 1:
-                    //tabBarController.selectedIndex = 4
+                    //tabBarController!.selectedIndex = 1
 //                    var meView: MeViewController = mainStoryboard.instantiateViewControllerWithIdentifier("meView") as MeViewController
 //                    sideMenuController()?.setContentViewController(meView)
                     

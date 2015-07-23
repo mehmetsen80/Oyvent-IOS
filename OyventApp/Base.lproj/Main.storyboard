@@ -147,7 +147,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UU1-4S-2nX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="spK-gf-6nb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3018" y="1148"/>
+            <point key="canvasLocation" x="3550" y="1148"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="t43-yZ-4gC">
@@ -340,7 +340,7 @@
                     <connections>
                         <outlet property="btnCity" destination="rvy-fJ-W8O" id="kZy-Eh-fH5"/>
                         <outlet property="mCollectionView" destination="4vT-BD-LSq" id="otR-Ck-xjv"/>
-                        <segue destination="1bD-1i-I3u" kind="show" identifier="gotoGeo" id="Cfw-Q2-36T"/>
+                        <segue destination="sFQ-i3-uvS" kind="show" identifier="gotoGeo" id="Cfw-Q2-36T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKJ-vD-hHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -862,7 +862,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Zc-SP-03x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2476" y="1148"/>
+            <point key="canvasLocation" x="3008" y="1148"/>
         </scene>
         <!--Capture-->
         <scene sceneID="Ils-hf-a3G">
@@ -1322,7 +1322,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="9XQ-0y-ij2"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <inset key="contentEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" title="Button">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1565,7 +1565,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5p-yK-QQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1690" y="1094"/>
+            <point key="canvasLocation" x="2485" y="1094"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="oEc-Jh-1zY">
@@ -1813,8 +1813,6 @@
                     <connections>
                         <outlet property="btnCity" destination="sTu-mL-YYa" id="zb4-B4-QGE"/>
                         <outlet property="mCollectionView" destination="LrO-0f-W95" id="Dm3-J9-jRJ"/>
-                        <segue destination="6Kj-Js-26K" kind="presentation" identifier="gotoHome" id="7Ji-yE-ice"/>
-                        <segue destination="1bD-1i-I3u" kind="show" identifier="jumptoGeo" id="DS7-qu-ST0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gr-Hb-6Tf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1850,6 +1848,7 @@
             <objects>
                 <navigationController storyboardIdentifier="myCategoryFeedNav" automaticallyAdjustsScrollViewInsets="NO" id="6Kj-Js-26K" customClass="MyNavigationController" customModule="OyventApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Wj-RV-v03">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1862,6 +1861,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LdS-W8-9bq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1009" y="1811"/>
+        </scene>
+        <!--My Navigation Controller-->
+        <scene sceneID="E0r-2A-BWx">
+            <objects>
+                <navigationController storyboardIdentifier="myNavGeo" automaticallyAdjustsScrollViewInsets="NO" id="sFQ-i3-uvS" customClass="MyNavigationController" customModule="OyventApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oZT-Tl-ia3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1bD-1i-I3u" kind="relationship" relationship="rootViewController" id="Nrv-BG-qOG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s8l-Gn-Jqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1963" y="1130"/>
         </scene>
     </scenes>
     <resources>
@@ -1877,7 +1894,6 @@
         <image name="voteup" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cfw-Q2-36T"/>
         <segue reference="ekv-kj-UHq"/>
     </inferredMetricsTieBreakers>
 </document>
