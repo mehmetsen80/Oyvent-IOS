@@ -29,6 +29,8 @@
 		599611A01B46B12F006777E8 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5996119F1B46B12F006777E8 /* LogoutViewController.swift */; };
 		59BC7A121B118179000BD75E /* GeoTableHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC7A111B118179000BD75E /* GeoTableHeaderCell.swift */; };
 		59BC7A141B124906000BD75E /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC7A131B124906000BD75E /* CategoryViewController.swift */; };
+		59D15F5E1B74582500CCA50F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D15F5D1B74582500CCA50F /* Profile.swift */; };
+		59D15F601B745C1000CCA50F /* ProfileAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D15F5F1B745C1000CCA50F /* ProfileAPIController.swift */; };
 		59DFCEE31AB2A41C009DE7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */; };
 		59DFCEE51AB2A41C009DE7AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEE41AB2A41C009DE7AF /* LoginViewController.swift */; };
 		59DFCEED1AB2A41D009DE7AF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59DFCEEB1AB2A41D009DE7AF /* LaunchScreen.xib */; };
@@ -41,6 +43,8 @@
 		59DFCF171ABBE995009DE7AF /* PhotoAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCF161ABBE995009DE7AF /* PhotoAPIController.swift */; };
 		59E39B141B31337A003200D2 /* HomeFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E39B131B31337A003200D2 /* HomeFooterCollectionReusableView.swift */; };
 		59E39B161B3D1B6C003200D2 /* SolidButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E39B151B3D1B6C003200D2 /* SolidButton.swift */; };
+		59EE80A11B649E0B001DCF46 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE80A01B649E0B001DCF46 /* ProfileViewController.swift */; };
+		59EE80A51B64A86B001DCF46 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE80A41B64A86B001DCF46 /* MenuTableViewController.swift */; };
 		59EFA7E71AC8FE5A00CA3C84 /* UIVerticalAlignLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7E61AC8FE5A00CA3C84 /* UIVerticalAlignLabel.swift */; };
 		59EFA7E91ACCFA7C00CA3C84 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7E81ACCFA7C00CA3C84 /* ZoomViewController.swift */; };
 		59EFA7EB1AD2231F00CA3C84 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7EA1AD2231F00CA3C84 /* DateExtension.swift */; };
@@ -88,6 +92,8 @@
 		5996119F1B46B12F006777E8 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		59BC7A111B118179000BD75E /* GeoTableHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTableHeaderCell.swift; sourceTree = "<group>"; };
 		59BC7A131B124906000BD75E /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		59D15F5D1B74582500CCA50F /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		59D15F5F1B745C1000CCA50F /* ProfileAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAPIController.swift; sourceTree = "<group>"; };
 		59DFCEDD1AB2A41C009DE7AF /* OyventApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OyventApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59DFCEE11AB2A41C009DE7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +110,8 @@
 		59DFCF161ABBE995009DE7AF /* PhotoAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoAPIController.swift; sourceTree = "<group>"; };
 		59E39B131B31337A003200D2 /* HomeFooterCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		59E39B151B3D1B6C003200D2 /* SolidButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolidButton.swift; sourceTree = "<group>"; };
+		59EE80A01B649E0B001DCF46 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		59EE80A41B64A86B001DCF46 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		59EFA7E61AC8FE5A00CA3C84 /* UIVerticalAlignLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIVerticalAlignLabel.swift; sourceTree = "<group>"; };
 		59EFA7E81ACCFA7C00CA3C84 /* ZoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		59EFA7EA1AD2231F00CA3C84 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -190,6 +198,7 @@
 				5936D6E01B141A5900A02642 /* OnlyTextViewController.swift */,
 				59EFA7F01AD4F89200CA3C84 /* GeoViewController.swift */,
 				59EFA7F21AD61F1A00CA3C84 /* DetailsViewController.swift */,
+				59EE80A01B649E0B001DCF46 /* ProfileViewController.swift */,
 				59EFD6A51B2506A7000DD915 /* MainViewController.swift */,
 				59DFCF121AB9398F009DE7AF /* MeViewController.swift */,
 				59EFA7E81ACCFA7C00CA3C84 /* ZoomViewController.swift */,
@@ -232,6 +241,7 @@
 				59DFCF141ABBA84B009DE7AF /* Photo.swift */,
 				590EBBD41AF5E55A00420384 /* Comment.swift */,
 				5976B8F41B0396D400D8D2F4 /* Album.swift */,
+				59D15F5D1B74582500CCA50F /* Profile.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -254,6 +264,7 @@
 				59EFA7FA1AE491CE00CA3C84 /* ESideMenuNavigationController.swift */,
 				590EBBCC1AE494B500420384 /* MyMenuTableViewController.swift */,
 				590EBBCE1AE497E400420384 /* MyNavigationController.swift */,
+				59EE80A41B64A86B001DCF46 /* MenuTableViewController.swift */,
 			);
 			name = menu;
 			sourceTree = "<group>";
@@ -279,6 +290,7 @@
 				59DFCF161ABBE995009DE7AF /* PhotoAPIController.swift */,
 				590EBBD61AF5F29D00420384 /* CommentAPIController.swift */,
 				5976B8F61B03AF7C00D8D2F4 /* AlbumAPIController.swift */,
+				59D15F5F1B745C1000CCA50F /* ProfileAPIController.swift */,
 			);
 			name = api;
 			sourceTree = "<group>";
@@ -408,6 +420,7 @@
 				59EFA7F11AD4F89200CA3C84 /* GeoViewController.swift in Sources */,
 				59EFA7E71AC8FE5A00CA3C84 /* UIVerticalAlignLabel.swift in Sources */,
 				59EFA7FB1AE491CE00CA3C84 /* ESideMenuNavigationController.swift in Sources */,
+				59EE80A51B64A86B001DCF46 /* MenuTableViewController.swift in Sources */,
 				59EFA7EB1AD2231F00CA3C84 /* DateExtension.swift in Sources */,
 				590EBBD31AF5852C00420384 /* DetailsTableViewCell.swift in Sources */,
 				59E39B161B3D1B6C003200D2 /* SolidButton.swift in Sources */,
@@ -423,6 +436,7 @@
 				59DFCF0B1AB64326009DE7AF /* RegisterViewController.swift in Sources */,
 				59DFCF171ABBE995009DE7AF /* PhotoAPIController.swift in Sources */,
 				590EBBCF1AE497E400420384 /* MyNavigationController.swift in Sources */,
+				59EE80A11B649E0B001DCF46 /* ProfileViewController.swift in Sources */,
 				59DFCEE31AB2A41C009DE7AF /* AppDelegate.swift in Sources */,
 				590EBBCD1AE494B500420384 /* MyMenuTableViewController.swift in Sources */,
 				590EBBD71AF5F29D00420384 /* CommentAPIController.swift in Sources */,
@@ -430,6 +444,7 @@
 				594B28911B2E5BEE001D5503 /* MainCollectionReusableView.swift in Sources */,
 				59EFD6A61B2506A7000DD915 /* MainViewController.swift in Sources */,
 				5976B8ED1AF9097D00D8D2F4 /* CustomButton.swift in Sources */,
+				59D15F5E1B74582500CCA50F /* Profile.swift in Sources */,
 				59EFA7EF1AD4F7B500CA3C84 /* GeoTableViewCell.swift in Sources */,
 				59DFCF091AB64303009DE7AF /* HomeViewController.swift in Sources */,
 				59BC7A121B118179000BD75E /* GeoTableHeaderCell.swift in Sources */,
@@ -438,6 +453,7 @@
 				597123111B4A49DC00CF46A7 /* Colors.swift in Sources */,
 				599611A01B46B12F006777E8 /* LogoutViewController.swift in Sources */,
 				5936D6E11B141A5A00A02642 /* OnlyTextViewController.swift in Sources */,
+				59D15F601B745C1000CCA50F /* ProfileAPIController.swift in Sources */,
 				5976B8F11AFBBD7500D8D2F4 /* HomeCollectionViewCell.swift in Sources */,
 				5976B8F91B03CC8B00D8D2F4 /* DefaultButton.swift in Sources */,
 			);

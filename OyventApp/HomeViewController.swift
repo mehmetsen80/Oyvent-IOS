@@ -23,14 +23,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     let colors = Colors()
     
+    //location
     var geoCoder: CLGeocoder!
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation!
     var latitude : String!
     var longitude : String!
     var city:String = ""
-    var imageCache = [String : UIImage]()
     
+    var imageCache = [String : UIImage]()
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
     var selectedAlbum : Album!
@@ -67,7 +68,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         self.sideMenuController()?.sideMenu?.delegate = self
         
-        setupLocationManager();
+        setupLocationManager()
         
         //load more spinner
         self.loadSpinner.center = self.mCollectionView.center
@@ -87,9 +88,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         
         
-        if(hasCustomNavigation){
-            setupNavigationBar()
-        }
+//        if(hasCustomNavigation){
+//            setupNavigationBar()
+//        }
 
         setupNavigationBar()
 
@@ -251,24 +252,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         self.navigationController?.hidesBarsOnTap = false
         self.navigationController?.hidesBarsOnSwipe = false
-        
-        /***************************** navigation general style  ********************/
-//        self.navigationController?.navigationBar.barStyle = UIBarStyle.Default
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
-//        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()        /***************************** navigation general style  ********************/
-        
-        
-        /***************************** navigation general style  ********************/
-        //self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        //self.navigationController?.navigationBar.backgroundColor = bgImageColor
-        
-        //self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
-        //self.navigationController?.navigationBar.tintColor = bgImageColor
-        //UINavigationBar.appearance().barTintColor =  bgImageColor
-        /* self.navigationController?.navigationBar.setBackgroundImage(onePixelImageWithColor(bgImageColor),
-            forBarMetrics: .Default) */
-        
-        /***************************** navigation general style  ********************/
         
         
         /*********************** left navigation button -> menu image ********************/
@@ -547,7 +530,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         //println("albumName: \(album.albumName)  screenWidth: \(screenWidth)  screenHeight: \(screenHeight)")
         
-        return (album.fkParentID == 0) ? CGSize(width: screenWidth-20, height: screenWidth/3) : CGSize(width: (screenWidth-40)/2, height: screenWidth/3)
+        return (album.fkParentID == 0) ? CGSize(width: screenWidth-20, height: screenWidth/2.5) : CGSize(width: (screenWidth-40)/2, height: screenWidth/2.5)
          //return  CGSize(width: (screenWidth-40)/2, height: screenWidth/2)
         //return  CGSize(width: screenWidth, height: 140)
     }

@@ -37,7 +37,7 @@ class AlbumAPIController{
         var userID:String = NSUserDefaults.standardUserDefaults().stringForKey("userID")! //userID is not being used right now for album class, keep this for future reference
         //println("userID:\(userID)")
         let postString = "processType=GETALLALBUMLISTNEARBY&userID=\(userID)&currentPage=\(currentPage)&lat=\(latitude)&lng=\(longitude)&pkAlbumID=\(pkAlbumID)"
-        println("photos All albums postString: \(postString)")
+        println("post All albums postString: \(postString)")
         var err: NSError?
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         

@@ -311,7 +311,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
                     withReuseIdentifier: "mainHeader", forIndexPath: indexPath)
                 as? MainCollectionReusableView
             
-            header?.lblMainHeader.text = "Communities Near By"
+            header?.lblMainHeader.text = "Groups Near By"
           
         }
         return header!

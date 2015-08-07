@@ -24,8 +24,7 @@ class MyMenuTableViewController: UITableViewController {
         
         tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedMenuItem, inSection: 0), animated: false, scrollPosition: .Middle)
         
-       
-
+      
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,9 +39,11 @@ class MyMenuTableViewController: UITableViewController {
         return 1
     }
     
+
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return 3
+        return 4
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -54,18 +55,22 @@ class MyMenuTableViewController: UITableViewController {
             cell!.backgroundColor = UIColor.clearColor()
             cell!.textLabel?.textColor = UIColor.darkGrayColor()
             let selectedBackgroundView = UIView(frame: CGRectMake(0, 0, cell!.frame.size.width, cell!.frame.size.height))
-            selectedBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
+            selectedBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.4)
             cell!.selectedBackgroundView = selectedBackgroundView
+            
         }
         
         switch(indexPath.row){
             case 0:
                 cell!.textLabel?.text = "Home"
                 break
-//            case 1:
-//                cell!.textLabel?.text = "Near Me"
-//                break
             case 1:
+                cell!.textLabel?.text = "Near Me"
+                break
+            case 2:
+                cell!.textLabel?.text = "My Profile"
+            break
+            case 3:
                 cell!.textLabel?.text = "Logout" //me uiviewcontrol
                 break
             default:
@@ -136,22 +141,26 @@ class MyMenuTableViewController: UITableViewController {
                     
                     
                     break
-//                case 1:
-//                    //tabBarController.selectedIndex = 1
-//                    let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("getGeo") as MyNavigationController
-//                    let geoController:GeoViewController =  nvg.topViewController as GeoViewController
-//                    geoController.hasCustomNavigation = true
-//                    
-//                    //if you want jumb immediately
-////                     let geoController: GeoViewController = mainStoryboard.instantiateViewControllerWithIdentifier("geoView") as GeoViewController
-//                    
-//                    sideMenuController()?.setContentViewController(geoController)
-//                    
-//                    
-//                    //self.performSegueWithIdentifier("getGeo", sender: nil)
-//                    
-//                    break
                 case 1:
+                    //tabBarController.selectedIndex = 1
+                    
+                    let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNavGeo") as! MyNavigationController
+                    var geoViewController:GeoViewController =  nvg.topViewController as! GeoViewController
+                    geoViewController.hasCustomNavigation = true
+                    appDelegate.window?.rootViewController = nvg
+                    appDelegate.window?.makeKeyAndVisible()
+                    
+                    
+                    break
+                case 2:
+                    
+                    let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNavProfile") as! MyNavigationController
+                    var profileViewController:ProfileViewController =  nvg.topViewController as! ProfileViewController
+                    //to do: set things about profile if you need before navigating to profile view
+                    appDelegate.window?.rootViewController = nvg
+                    appDelegate.window?.makeKeyAndVisible()
+                    break
+                case 3:
                     //tabBarController!.selectedIndex = 1
 //                    var meView: MeViewController = mainStoryboard.instantiateViewControllerWithIdentifier("meView") as MeViewController
 //                    sideMenuController()?.setContentViewController(meView)
@@ -162,10 +171,10 @@ class MyMenuTableViewController: UITableViewController {
                     
                     
                     break
-                case 3:
+                case 4:
                     //tabBarController.selectedIndex = 3
                     break
-                case 4:
+                case 5:
                     break
                 default:
                     //tabBarController.selectedIndex = 0
