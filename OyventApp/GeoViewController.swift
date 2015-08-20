@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import QuartzCore
 import CoreLocation
+import Haneke
 
 class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate,PhotoAPIControllerProtocol, GeoTableHeaderViewCellDelegate, ENSideMenuDelegate,  UIPopoverPresentationControllerDelegate, CLLocationManagerDelegate{
 
@@ -348,16 +349,22 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         
         /********************************** Big Poster *********************************/
         cell.imgPoster?.image = UIImage(named:"blank")
+        
         //get the image
         let urlString = photo.mediumImageURL
         var image = self.imageCache[urlString]
         if(image == nil) {
             
+            
             // If the image does not exist, we need to download it
             var imgURL: NSURL! = NSURL(string: urlString)
             
+            
+            cell.imgPoster?.hnk_setImageFromURL(imgURL)
+            
+            
             // Download an NSData representation of the image at the URL
-            let request: NSURLRequest = NSURLRequest(URL: imgURL)
+            /*let request: NSURLRequest = NSURLRequest(URL: imgURL)
             let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?,error: NSError?) -> Void in
                 if let noerror = data {
@@ -372,7 +379,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
                 else {
                     println("Error: \(error!.localizedDescription)")
                 }
-            })
+            })*/
             
         } else {
             cell.imgPoster?.image = image

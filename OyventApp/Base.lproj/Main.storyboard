@@ -1843,10 +1843,10 @@
             </objects>
             <point key="canvasLocation" x="116" y="1094"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="sfD-Gz-2Vd">
             <objects>
-                <viewController id="miC-4i-SYb" customClass="ProfileViewController" customModule="OyventApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Profile" id="miC-4i-SYb" customClass="ProfileViewController" customModule="OyventApp" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HA0-eW-gBt"/>
                         <viewControllerLayoutGuide type="bottom" id="eN5-ig-xsg"/>
@@ -1855,28 +1855,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.69999999999999973" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQe-pD-an7">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQe-pD-an7">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="257"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tB-vi-iLB">
-                                        <rect key="frame" x="97" y="74" width="127" height="127"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFs-A0-1FL">
+                                        <rect key="frame" x="31" y="188" width="260" height="26"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="127" id="XyW-tK-ToJ"/>
-                                            <constraint firstAttribute="height" constant="127" id="xMX-jU-LaW"/>
+                                            <constraint firstAttribute="width" constant="260" id="3gw-aM-cUp"/>
+                                            <constraint firstAttribute="height" constant="26" id="LGU-pR-Vjy"/>
                                         </constraints>
-                                        <state key="normal" title="Button">
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tB-vi-iLB" customClass="CircleButton" customModule="OyventApp" customModuleProvider="target">
+                                        <rect key="frame" x="110" y="74" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="XyW-tK-ToJ"/>
+                                            <constraint firstAttribute="height" constant="100" id="xMX-jU-LaW"/>
+                                        </constraints>
+                                        <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="8uM-UW-31o" kind="show" identifier="profilePhotos" id="2EL-Jy-Y6R"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.2444671253" green="0.46914206429999999" blue="0.74806660349999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.82543071239999999" green="0.87771420460000005" blue="0.93227193809999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="6tB-vi-iLB" firstAttribute="leading" secondItem="eQe-pD-an7" secondAttribute="leading" constant="97" id="6X0-yR-aeb"/>
+                                    <constraint firstItem="QFs-A0-1FL" firstAttribute="top" secondItem="6tB-vi-iLB" secondAttribute="bottom" constant="14" id="3az-go-uBb"/>
+                                    <constraint firstItem="6tB-vi-iLB" firstAttribute="leading" secondItem="eQe-pD-an7" secondAttribute="leading" constant="110" id="6X0-yR-aeb"/>
                                     <constraint firstItem="6tB-vi-iLB" firstAttribute="top" secondItem="eQe-pD-an7" secondAttribute="top" constant="74" id="MRS-Ne-G4q"/>
                                     <constraint firstAttribute="height" constant="257" id="OOr-PW-6yc"/>
-                                    <constraint firstAttribute="trailing" secondItem="6tB-vi-iLB" secondAttribute="trailing" constant="96" id="V4P-rK-c8a"/>
+                                    <constraint firstAttribute="trailing" secondItem="6tB-vi-iLB" secondAttribute="trailing" constant="110" id="V4P-rK-c8a"/>
                                     <constraint firstAttribute="centerX" secondItem="6tB-vi-iLB" secondAttribute="centerX" constant="-0.5" id="eBb-ik-0qh"/>
+                                    <constraint firstAttribute="centerX" secondItem="QFs-A0-1FL" secondAttribute="centerX" constant="-0.5" id="v4C-pc-xxj"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1900,11 +1915,63 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="btnCity" destination="oYp-f6-ZhG" id="Dwo-3e-Kqh"/>
+                        <outlet property="btnPhoto" destination="6tB-vi-iLB" id="bUR-zr-of5"/>
+                        <outlet property="lblFullName" destination="QFs-A0-1FL" id="daI-cA-9ck"/>
+                        <outlet property="mImageView" destination="QFs-A0-1FL" id="MF6-Cl-w2Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ox6-Nb-EmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="817" y="1830"/>
+        </scene>
+        <!--Paged Scroll View Controller-->
+        <scene sceneID="AX6-BE-9Xb">
+            <objects>
+                <viewController id="8uM-UW-31o" customClass="PagedScrollViewController" customModule="OyventApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oR3-2u-QmJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="MSd-oD-MVM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V23-Yj-EWj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="fGt-ih-DhB">
+                                <rect key="frame" x="0.0" y="531" width="320" height="37"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="hHG-Xi-d6M"/>
+                                </constraints>
+                            </pageControl>
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Nb-mI-yfY">
+                                <rect key="frame" x="0.0" y="64" width="320" height="469"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8uM-UW-31o" id="629-H1-c2v"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fGt-ih-DhB" firstAttribute="leading" secondItem="V23-Yj-EWj" secondAttribute="leadingMargin" constant="-16" id="4fG-Nj-af7"/>
+                            <constraint firstItem="MSd-oD-MVM" firstAttribute="top" secondItem="fGt-ih-DhB" secondAttribute="bottom" id="AZg-ib-rAf"/>
+                            <constraint firstAttribute="centerX" secondItem="6Nb-mI-yfY" secondAttribute="centerX" id="KKS-on-Z9M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fGt-ih-DhB" secondAttribute="trailing" constant="-16" id="Vkf-fm-bP4"/>
+                            <constraint firstItem="6Nb-mI-yfY" firstAttribute="top" secondItem="oR3-2u-QmJ" secondAttribute="bottom" id="fCf-gi-Nf5"/>
+                            <constraint firstItem="fGt-ih-DhB" firstAttribute="top" secondItem="6Nb-mI-yfY" secondAttribute="bottom" constant="-2" id="gLv-Rw-bBn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Nb-mI-yfY" secondAttribute="trailing" constant="-16" id="nmC-cL-wpw"/>
+                            <constraint firstItem="6Nb-mI-yfY" firstAttribute="leading" secondItem="V23-Yj-EWj" secondAttribute="leadingMargin" constant="-16" id="p11-90-BMs"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="pageControl" destination="fGt-ih-DhB" id="Uig-jy-Kgr"/>
+                        <outlet property="scrollView" destination="6Nb-mI-yfY" id="epW-TR-nhH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6XS-g4-FxH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1242" y="1830"/>
         </scene>
         <!--My Navigation Controller-->
         <scene sceneID="SNH-ZX-As4">

@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import Foundation
+import QuartzCore
 import CoreLocation
 
-class ProfileViewController: UIViewController, CLLocationManagerDelegate {
 
+class ProfileViewController: UIViewController, ProfileAPIControllerProtocol, CLLocationManagerDelegate,ENSideMenuDelegate {
+
+    var userApi:ProfileAPIController?
+    private let concurrentProfileQueue = dispatch_queue_create(
+        "com.oy.vent.profileQueue", DISPATCH_QUEUE_CONCURRENT)
     //location
     var geoCoder: CLGeocoder!
     var locationManager: CLLocationManager!
@@ -19,14 +25,34 @@ class ProfileViewController: UIViewController, CLLocationManagerDelegate {
     var longitude : String!
     var city:String = ""
     @IBOutlet weak var btnCity: UIButton!
+    @IBOutlet weak var lblFullName: UILabel!
+    @IBOutlet weak var btnPhoto: UIButton!
+    var pkUserID : Double!
+ 
+    @IBOutlet weak var mImageView: UILabel!
     
+    override func viewDidAppear(animated: Bool) {
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        self.sideMenuController()?.sideMenu?.delegate = self
+        pkUserID = 12
+        userApi = ProfileAPIController(delegate: self)
+        setupLocationManager()
+        setupNavigationBar()
+        self.navigationController?.navigationBar.hidden = false
+        self.navigationController?.hidesBarsOnSwipe = false
+        var effect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        var blurView = UIVisualEffectView(effect: effect)
+        blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        mImageView.addSubview(blurView)
+       
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupLocationManager()
-        setupNavigationBar()
     }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -123,6 +149,7 @@ class ProfileViewController: UIViewController, CLLocationManagerDelegate {
                     self.city = city as String
                     self.btnCity.setTitle(city as String, forState: UIControlState.Normal)
                     //to do: initiate the profile info
+                    self.userApi?.searchProfile(self.pkUserID)
                     self.locationManager.stopUpdatingLocation()
                 }
                 
@@ -170,6 +197,9 @@ class ProfileViewController: UIViewController, CLLocationManagerDelegate {
         return newImage
     }
     
+    func displayProfileInfo(){
+        
+    }
     
     func setupNavigationBar(){
         
@@ -241,6 +271,46 @@ class ProfileViewController: UIViewController, CLLocationManagerDelegate {
         return image!
     }/***************** end of get a transparent background image ***************/
     
+    
+    //
+    func didReceiveProfileAPIResults(results:NSDictionary){
+        
+       dispatch_barrier_async(concurrentProfileQueue) {
+        var profile: Profile = Profile.profileWithJSON(results);
+            dispatch_async(dispatch_get_main_queue(), {
+                //full name
+                self.lblFullName.text = profile.fullName
+                
+                /***************** get main profile photo  **************/
+                //set default as no picture
+                self.btnPhoto?.setBackgroundImage(UIImage(named:"nopic"), forState: UIControlState.Normal)
+                
+                //if we have thumb profile picture
+                if(profile.urlThumb != ""){
+                    // let's download it
+                    var imgURL: NSURL! = NSURL(string: profile.urlThumb!)
+                    // Download an NSData representation of the image at the URL
+                    let request: NSURLRequest = NSURLRequest(URL: imgURL)
+                    let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
+                    NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?,error: NSError?) -> Void in
+                        if let noerror = data {
+                            dispatch_async(dispatch_get_main_queue()) {
+                                let image = UIImage(data: noerror)
+                                self.btnPhoto?.setBackgroundImage(image, forState: UIControlState.Normal)
+                            }
+                        }
+                        else {
+                            println("Error: \(error!.localizedDescription)")
+                        }
+                    })
+                } /****************** get main profile photo  ****************/
+                
+                
+                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                
+            })
+        }
+    }
     
 
     /*

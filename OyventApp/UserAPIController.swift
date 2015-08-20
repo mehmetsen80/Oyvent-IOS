@@ -1,22 +1,22 @@
 //
-//  ProfileAPIController.swift
+//  UserAPIController.swift
 //  OyventApp
 //
-//  Created by Mehmet Sen on 8/6/15.
+//  Created by Mehmet Sen on 8/7/15.
 //  Copyright (c) 2015 Oyvent. All rights reserved.
 //
 
 import Foundation
 
-protocol ProfileAPIControllerProtocol {
-    func didReceiveProfileAPIResults(results: NSDictionary)
+protocol UserAPIControllerProtocol {
+    func didReceiveUserAPIResults(results: NSDictionary)
 }
 
-class ProfileAPIController{
+class UserAPIController{
     
-    var delegate: ProfileAPIControllerProtocol
+    var delegate: UserAPIControllerProtocol
     
-    init(delegate: ProfileAPIControllerProtocol) {
+    init(delegate: UserAPIControllerProtocol) {
         self.delegate = delegate
     }
     
@@ -48,7 +48,7 @@ class ProfileAPIController{
             var err: NSError?
             if let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as? NSDictionary {
                 //println("Dictionary: \(json)")
-                self.delegate.didReceiveProfileAPIResults(json)
+                self.delegate.didReceiveUserAPIResults(json)
                 
             } else {
                 //if nil
@@ -57,6 +57,5 @@ class ProfileAPIController{
         }
         
         task.resume()
-
     }
 }
