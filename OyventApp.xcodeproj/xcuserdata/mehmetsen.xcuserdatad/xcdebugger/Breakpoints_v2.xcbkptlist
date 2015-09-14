@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/GeoViewController.swift"
-            timestampString = "461641482.485682"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "750"
-            endingLineNumber = "750"
+            startingLineNumber = "759"
+            endingLineNumber = "759"
             landmarkName = "GeoViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/GeoViewController.swift"
-            timestampString = "461641482.485682"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/GeoViewController.swift"
-            timestampString = "461641482.485682"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "608"
-            endingLineNumber = "608"
+            startingLineNumber = "617"
+            endingLineNumber = "617"
             landmarkName = "doVoteUp(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/GeoViewController.swift"
-            timestampString = "461641482.485682"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "736"
-            endingLineNumber = "736"
+            startingLineNumber = "745"
+            endingLineNumber = "745"
             landmarkName = "filterByAlbumID(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/DetailsViewController.swift"
-            timestampString = "457681353.773529"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "383"
-            endingLineNumber = "383"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/DetailsViewController.swift"
-            timestampString = "457681353.773529"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "590"
-            endingLineNumber = "590"
+            startingLineNumber = "597"
+            endingLineNumber = "597"
             landmarkName = "doAddComment(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/DetailsViewController.swift"
-            timestampString = "457681353.773529"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "616"
-            endingLineNumber = "616"
+            startingLineNumber = "623"
+            endingLineNumber = "623"
             landmarkName = "doAddComment(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/GeoViewController.swift"
-            timestampString = "461641482.485682"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
             landmarkName = "locationManager(_:didUpdateToLocation:fromLocation:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/GeoViewController.swift"
-            timestampString = "461641482.485682"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "562"
-            endingLineNumber = "562"
+            startingLineNumber = "571"
+            endingLineNumber = "571"
             landmarkName = "scrollViewWillEndDragging(_:withVelocity:targetContentOffset:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/GeoViewController.swift"
-            timestampString = "461641482.485682"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "698"
-            endingLineNumber = "698"
+            startingLineNumber = "707"
+            endingLineNumber = "707"
             landmarkName = "didReceivePhotoAPIResults(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/GeoViewController.swift"
-            timestampString = "461641482.485682"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "695"
-            endingLineNumber = "695"
+            startingLineNumber = "704"
+            endingLineNumber = "704"
             landmarkName = "didReceivePhotoAPIResults(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -986,11 +986,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/DetailsViewController.swift"
-            timestampString = "457681810.940805"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "691"
-            endingLineNumber = "691"
+            startingLineNumber = "698"
+            endingLineNumber = "698"
             landmarkName = "didReceiveCommentAPIResults(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1002,11 +1002,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/DetailsViewController.swift"
-            timestampString = "457681810.940805"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "688"
-            endingLineNumber = "688"
+            startingLineNumber = "695"
+            endingLineNumber = "695"
             landmarkName = "didReceiveCommentAPIResults(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1018,11 +1018,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/DetailsViewController.swift"
-            timestampString = "457681874.696882"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "667"
-            endingLineNumber = "667"
+            startingLineNumber = "674"
+            endingLineNumber = "674"
             landmarkName = "didReceiveCommentAPIResults(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1030,15 +1030,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/DetailsViewController.swift"
-            timestampString = "457802683.943837"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "509"
-            endingLineNumber = "509"
+            startingLineNumber = "516"
+            endingLineNumber = "516"
             landmarkName = "doDeleteComment(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1146,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/GeoViewController.swift"
-            timestampString = "461641482.485682"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426"
+            startingLineNumber = "435"
+            endingLineNumber = "435"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1162,11 +1162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/GeoViewController.swift"
-            timestampString = "461641482.485682"
+            timestampString = "463901698.141937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "552"
-            endingLineNumber = "552"
+            startingLineNumber = "561"
+            endingLineNumber = "561"
             landmarkName = "visitDetailsView(_:)"
             landmarkType = "5">
          </BreakpointContent>

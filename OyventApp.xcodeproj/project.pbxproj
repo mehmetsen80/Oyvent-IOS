@@ -32,6 +32,7 @@
 		592608591B79B7C700F93F36 /* photo4.png in Resources */ = {isa = PBXBuildFile; fileRef = 592608541B79B7C700F93F36 /* photo4.png */; };
 		5926085A1B79B7C700F93F36 /* photo5.png in Resources */ = {isa = PBXBuildFile; fileRef = 592608551B79B7C700F93F36 /* photo5.png */; };
 		5936D6E11B141A5A00A02642 /* OnlyTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5936D6E01B141A5900A02642 /* OnlyTextViewController.swift */; };
+		59384A361B8609E7001B9B8E /* ProfilePhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59384A351B8609E7001B9B8E /* ProfilePhotosViewController.swift */; };
 		594B28911B2E5BEE001D5503 /* MainCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B28901B2E5BEE001D5503 /* MainCollectionReusableView.swift */; };
 		597123111B4A49DC00CF46A7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597123101B4A49DC00CF46A7 /* Colors.swift */; };
 		5976B8ED1AF9097D00D8D2F4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8EC1AF9097D00D8D2F4 /* CustomButton.swift */; };
@@ -113,6 +114,7 @@
 		592608541B79B7C700F93F36 /* photo4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo4.png; sourceTree = "<group>"; };
 		592608551B79B7C700F93F36 /* photo5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo5.png; sourceTree = "<group>"; };
 		5936D6E01B141A5900A02642 /* OnlyTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyTextViewController.swift; sourceTree = "<group>"; };
+		59384A351B8609E7001B9B8E /* ProfilePhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfilePhotosViewController.swift; path = ../ProfilePhotosViewController.swift; sourceTree = "<group>"; };
 		594B28901B2E5BEE001D5503 /* MainCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionReusableView.swift; sourceTree = "<group>"; };
 		597123101B4A49DC00CF46A7 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5976B8EC1AF9097D00D8D2F4 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				59EFA7F01AD4F89200CA3C84 /* GeoViewController.swift */,
 				59EFA7F21AD61F1A00CA3C84 /* DetailsViewController.swift */,
 				59EE80A01B649E0B001DCF46 /* ProfileViewController.swift */,
+				59384A351B8609E7001B9B8E /* ProfilePhotosViewController.swift */,
 				59EFD6A51B2506A7000DD915 /* MainViewController.swift */,
 				59DFCF121AB9398F009DE7AF /* MeViewController.swift */,
 				5926084F1B79B34A00F93F36 /* PagedScrollViewController.swift */,
@@ -603,6 +606,7 @@
 				597123111B4A49DC00CF46A7 /* Colors.swift in Sources */,
 				599611A01B46B12F006777E8 /* LogoutViewController.swift in Sources */,
 				5936D6E11B141A5A00A02642 /* OnlyTextViewController.swift in Sources */,
+				59384A361B8609E7001B9B8E /* ProfilePhotosViewController.swift in Sources */,
 				591180B01B85987E005D597F /* GalleryBrowsePhotoViewController.swift in Sources */,
 				59D15F601B745C1000CCA50F /* ProfileAPIController.swift in Sources */,
 				592608501B79B34A00F93F36 /* PagedScrollViewController.swift in Sources */,

@@ -12,7 +12,7 @@ import QuartzCore
 import CoreLocation
 import Haneke
 
-class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate,PhotoAPIControllerProtocol, GeoTableHeaderViewCellDelegate, ENSideMenuDelegate,  UIPopoverPresentationControllerDelegate, CLLocationManagerDelegate{
+class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate,PhotoAPIControllerProtocol, GeoTableHeaderViewCellDelegate,  UIPopoverPresentationControllerDelegate, CLLocationManagerDelegate{
 
     var api:PhotoAPIController?
     var photos:[Photo] = [Photo]()
@@ -169,31 +169,31 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         appDelegate.window?.makeKeyAndVisible()
 
     }
-    
-    func sideMenuClicked(){
-        toggleSideMenuView()
-    }
-    
-    // MARK: - ENSideMenu Delegate
-    func sideMenuWillOpen() {
-        //println("sideMenuWillOpen")
-    }
-    
-    func sideMenuWillClose() {
-        //println("sideMenuWillClose")
-    }
-    
-    func sideMenuShouldOpenSideMenu() -> Bool {
-        //println("sideMenuShouldOpenSideMenu")
-        return true
-    }
+//    
+//    func sideMenuClicked(){
+//        toggleSideMenuView()
+//    }
+//    
+//    // MARK: - ENSideMenu Delegate
+//    func sideMenuWillOpen() {
+//        //println("sideMenuWillOpen")
+//    }
+//    
+//    func sideMenuWillClose() {
+//        //println("sideMenuWillClose")
+//    }
+//    
+//    func sideMenuShouldOpenSideMenu() -> Bool {
+//        //println("sideMenuShouldOpenSideMenu")
+//        return true
+//    }
     
     override func viewDidAppear(animated: Bool) {
         println("viewDidAppear()  pageNo: \(pageNo)")
         
         setupLocationManager();
         
-        self.sideMenuController()?.sideMenu?.delegate = self
+        //self.sideMenuController()?.sideMenu?.delegate = self
         
         api = PhotoAPIController(delegate: self)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -202,21 +202,30 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         self.loadSpinner.frame = CGRectMake((self.mTableView.frame.width-10)/2 , -10, 10, 10);
         self.loadSpinner.hidesWhenStopped = true
         self.mTableView.addSubview(self.loadSpinner)
+        self.navigationController!.navigationBar.hidden = false
+        
         //self.btnGeoAlbum?.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
         
-        if(hasCustomNavigation){
-            setupNavigationBar()
-        }
+//        if(hasCustomNavigation){
+//            setupNavigationBar()
+//        }
         
-        self.navigationController?.navigationBar.hidden = false
-        self.navigationController?.hidesBarsOnSwipe = false
+        //self.navigationController?.navigationBar.hidden = false
+        //self.navigationController?.hidesBarsOnSwipe = false
         
+    }
+    
+    override func viewWillDisappear(animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+        self.navigationController!.navigationBarHidden = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //println("viewDidLoad()")
         //setupNavigationBar()
+        self.navigationController!.navigationBar.hidden = false
     }
     
     required init(coder aDecoder: NSCoder)
@@ -359,7 +368,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
             // If the image does not exist, we need to download it
             var imgURL: NSURL! = NSURL(string: urlString)
             
-            
+            //haneke
             cell.imgPoster?.hnk_setImageFromURL(imgURL)
             
             

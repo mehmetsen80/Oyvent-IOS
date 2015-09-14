@@ -181,7 +181,7 @@ class MenuTableViewController: UITableViewController {
                 case 0:
                     //My Profile
                     let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNavProfile") as! MyNavigationController
-                    var profileViewController:ProfileViewController =  nvg.topViewController as! ProfileViewController
+                    //var meViewController:MeViewController =  nvg.topViewController as! MeViewController
                     //to do: set things about profile if you need before navigating to profile view
                     appDelegate.window?.rootViewController = nvg
                     appDelegate.window?.makeKeyAndVisible()

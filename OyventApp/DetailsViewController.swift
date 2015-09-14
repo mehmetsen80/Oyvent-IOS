@@ -42,7 +42,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.navigationController?.hidesBarsOnSwipe = true
+        //self.navigationController?.hidesBarsOnSwipe = true
         //self.navigationController?.hidesBarsOnTap = false // setting hidesBarsOnTap to true
     }
     
@@ -55,7 +55,8 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         self.api = CommentAPIController(delegate: self)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         self.api?.searchComments(photo.pkPhotoID)
-        //self.navigationController?.navigationBar.hidden = false
+        self.navigationController!.navigationBar.hidden = false
+        
         
         
         
@@ -147,6 +148,12 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
        
     }
     
+    
+    override func viewWillDisappear(animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+        self.navigationController!.navigationBarHidden = false
+    }
     
     /************************ setup location manager along with use authorization *****************/
     func setupLocationManager(){
