@@ -78,9 +78,7 @@ class PagedScrollViewController: UIViewController , UIScrollViewDelegate{
         }
         
         // 1
-        if let pageView = pageViews[page] {
-            // Do nothing. The view is already loaded.
-        } else {
+       
             // 2
             var frame = scrollView.bounds
             frame.origin.x = frame.size.width * CGFloat(page)
@@ -98,7 +96,7 @@ class PagedScrollViewController: UIViewController , UIScrollViewDelegate{
             pageViews[page] = newPageView
             
              //self.centerScrollViewContents()
-        }
+        
     }
     
     func purgePage(page: Int) {
@@ -150,7 +148,7 @@ class PagedScrollViewController: UIViewController , UIScrollViewDelegate{
     
     func centerScrollViewContents() {
         let boundsSize = self.scrollView.bounds.size
-        var mImageView: UIImageView = self.pageViews[pageControl.currentPage]!
+        let mImageView: UIImageView = self.pageViews[pageControl.currentPage]!
         var contentsFrame = mImageView.frame
       
         

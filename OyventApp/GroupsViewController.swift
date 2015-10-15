@@ -8,13 +8,14 @@
 
 import UIKit
 import CoreLocation
+import Haneke
 
-class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate ,ENSideMenuDelegate, AlbumAPIControllerProtocol,  CLLocationManagerDelegate {
+class GroupsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate , AlbumAPIControllerProtocol,  CLLocationManagerDelegate {
 
     var api:AlbumAPIController?
     var albums:[Album] = [Album]()
     @IBOutlet weak var mCollectionView: UICollectionView!
-    let kCellIdentifier: String = "homeCell"
+    let kCellIdentifier: String = "groupsCell"
     var pageNo:Int = 0
     let bgImageColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
     var loadSpinner:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
@@ -66,7 +67,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         api = AlbumAPIController(delegate: self)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        self.sideMenuController()?.sideMenu?.delegate = self
+      
         
         setupLocationManager()
         
@@ -81,22 +82,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.screenWidth = screenSize.width
         self.screenHeight = screenSize.height
         
-        
-//        self.navigationController?.navigationBar.barStyle = UIBarStyle.Default
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]  // Title's text color
-//        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        
-        
-        
-//        if(hasCustomNavigation){
-//            setupNavigationBar()
-//        }
-
-        setupNavigationBar()
 
     }
     
-    required init(coder aDecoder: NSCoder){
+    required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
     }
     
@@ -136,82 +125,57 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 }
                 
         }else {
-            println("Location services are not enabled");
+            print("Location services are not enabled", terminator: "");
         }
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("error to get location : \(error)")
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("error to get location : \(error)", terminator: "")
         
         if let clErr = CLError(rawValue: error.code) {
             switch clErr {
             case .LocationUnknown:
-                println("location unknown")
+                print("location unknown", terminator: "")
             case .Denied:
-                println("denied")
+                print("denied", terminator: "")
             default:
-                println("unknown Core Location error")
+                print("unknown Core Location error", terminator: "")
             }
         } else {
-            println("other error")
+            print("other error", terminator: "")
         }
         
     }
     
     
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         
         currentLocation = newLocation
         self.latitude = "\(currentLocation.coordinate.latitude)"
         self.longitude = "\(currentLocation.coordinate.longitude)"
         
-        println("didUpdateToLocation longitude \(self.latitude)")
-        println("didUpdateToLocation latitude \(self.longitude)")
+        print("didUpdateToLocation longitude \(self.latitude)", terminator: "")
+        print("didUpdateToLocation latitude \(self.longitude)", terminator: "")
         
         geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: {
             placemarks, error in
             
-            if error == nil && placemarks.count > 0 {
-                let placeArray = placemarks as! [CLPlacemark]
-                
+            if error == nil && placemarks!.count > 0 {
+                let placeArray = placemarks as [CLPlacemark]?
                 // Place details
-                var placeMark: CLPlacemark!
-                placeMark = placeArray[0]
-                
-                // Address dictionary
-                println(placeMark.addressDictionary)
-                
-                // Location name
-                if let locationName = placeMark.addressDictionary["Name"] as? NSString {
-                    println(locationName)
-                }
-                
-                // Street address
-                if let street = placeMark.addressDictionary["Thoroughfare"] as? NSString {
-                    println(street)
-                }
+                let placeMark: CLPlacemark! = placeArray?[0]
                 
                 // City
-                if let city = placeMark.addressDictionary["City"] as? NSString {
-                    println(city)
+                if let city = placeMark.addressDictionary?["City"] as? NSString {
+                    print(city, terminator: "")
                     self.city = city as String
                     self.btnCity.setTitle(city as String, forState: UIControlState.Normal)
-                    self.api!.searchAllAlbums(0, latitude: self.latitude, longitude: self.longitude, pkAlbumID: self.selectedAlbum.pkAlbumID)
+                    //self.api!.searchAllAlbums(0, latitude: self.latitude, longitude: self.longitude, pkAlbumID: self.selectedAlbum.pkAlbumID)
+                    self.api!.searchAllAlbums(0, latitude: self.latitude, longitude: self.longitude, pkAlbumID: 34)
+                    
                     //self.albums.append(Album(pkAlbumID: -1, albumName: self.city))//initial city cell
                     self.locationManager.stopUpdatingLocation()
                 }
-                
-                // Zip code
-                if let zip = placeMark.addressDictionary["ZIP"] as? NSString {
-                    println(zip)
-                }
-                
-                // Country
-                if let country = placeMark.addressDictionary["Country"] as? NSString {
-                    println(country)
-                }
-                
-                
                 
             }
         })
@@ -247,88 +211,40 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         return newImage
     }
 
-    
-    func setupNavigationBar(){
-        
-        self.navigationController?.hidesBarsOnTap = false
-        self.navigationController?.hidesBarsOnSwipe = false
-        
-        
-        /*********************** left navigation button -> menu image ********************/
-        var menuImage:UIImage = UIImage(named: "oyvent-icon-72")!
-        menuImage = resizeImage(menuImage,targetSize: CGSize(width: 30, height: 30))
-        menuImage = menuImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        var leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "sideMenuClicked")
-        self.navigationItem.leftBarButtonItem = leftButton
-        /***************** end of navigation left button -> menu image********************/
-        
-        
-        /***************************** navigation title button style  ********************/
-        //self.btnAlbum.setTitle("", forState: UIControlState.Normal)
-        /***************************** navigation title button style  ********************/
-        
-        
-        /***************** right navigation button -> location image ***********************/
-        var locationImage:UIImage = UIImage(named: "location-icon-grey")!
-        locationImage = resizeImage(locationImage, targetSize: CGSize(width:30, height:30))
-        locationImage = locationImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        var rightButton = UIBarButtonItem(image: locationImage, style: UIBarButtonItemStyle.Plain, target: self, action: "locationClicked")
-        self.navigationItem.rightBarButtonItem = rightButton
-        /************** end of navigation right button -> location image ********************/
 
-        
-    }
     
     func locationClicked(){
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
         let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNavGeo") as! MyNavigationController
-        var geoViewController:GeoViewController =  nvg.topViewController as! GeoViewController
+        let geoViewController:GeoViewController =  nvg.topViewController as! GeoViewController
         geoViewController.hasCustomNavigation = true
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = nvg
         appDelegate.window?.makeKeyAndVisible()
     }
-    
-    
-    func sideMenuClicked(){
-        toggleSideMenuView()
-    }
-    
-    // MARK: - ENSideMenu Delegate
-    func sideMenuWillOpen() {
-        //println("sideMenuWillOpen")
-    }
-    
-    func sideMenuWillClose() {
-        //println("sideMenuWillClose")
-    }
-    
-    func sideMenuShouldOpenSideMenu() -> Bool {
-        //println("sideMenuShouldOpenSideMenu")
-        return true
-    }
+
     
     /********************* get a transparent background image *******************/
     func onePixelImageWithColor(color : UIColor) -> UIImage {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
-        var context = CGBitmapContextCreate(nil, 1, 1, 8, 0, colorSpace, bitmapInfo)
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue)
+        let context = CGBitmapContextCreate(nil, 1, 1, 8, 0, colorSpace, bitmapInfo.rawValue)
         CGContextSetFillColorWithColor(context, color.CGColor)
         CGContextFillRect(context, CGRectMake(0, 0, 1, 1))
-        let image = UIImage(CGImage: CGBitmapContextCreateImage(context))
-        return image!
+        let image = UIImage(CGImage: CGBitmapContextCreateImage(context)!)
+        return image
     }/***************** end of get a transparent background image ***************/
     
     func collectionView(collectionView: UICollectionView,viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
             
-        var header: HomeHeaderCollectionReusableView?
-        var footer: HomeFooterCollectionReusableView?
+        var header: GroupsHeaderCollectionReusableView?
+        var footer: GroupsFooterCollectionReusableView?
         
             if kind == UICollectionElementKindSectionHeader {
                 header =
                     collectionView.dequeueReusableSupplementaryViewOfKind(kind,
                         withReuseIdentifier: "MyHeader", forIndexPath: indexPath)
-                    as? HomeHeaderCollectionReusableView
+                    as? GroupsHeaderCollectionReusableView
                 
                 header?.btnHeader.setTitle("Select a Category", forState: UIControlState.Normal)
                 //header?.btnHeader.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
@@ -339,7 +255,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 footer =
                     collectionView.dequeueReusableSupplementaryViewOfKind(kind,
                         withReuseIdentifier: "MyFooter", forIndexPath: indexPath)
-                    as? HomeFooterCollectionReusableView
+                    as? GroupsFooterCollectionReusableView
                 
                 footer?.lblFooter.text = "Total \(albums.count) Categories"
                 
@@ -353,17 +269,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! HomeCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! GroupsCollectionViewCell
         
         let album:Album = self.albums[indexPath.row]
-        
-        
         
         //cell.backgroundColor = UIColor.blackColor()
         //cell.btnGeoAlbum.setTitle(album.albumName, forState: UIControlState.Normal)
         //cell.btnGeoAlbum.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
+        
         cell.btnGeoAlbum.setBackgroundImage(self.getCategoryImage(album.fkCategoryID!), forState: UIControlState.Normal)
-
+        
         
         //cell.btnGeoAlbum?.setBackgroundImage(onePixelImageWithColor(bgImageColor), forState: UIControlState.Normal)
         //cell.imgPoster?.image = (indexPath.row==0) ? UIImage(named: "city") : UIImage(named: "location-icon")
@@ -388,6 +303,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         //println("album.fkCategoryID: \(album.fkCategoryID!)")
         
         let ctgID = album.fkCategoryID!
+        print("Category Name: \(album.albumName)  Category ID: \(album.fkCategoryID)", terminator: "")
         
         if(ctgID == 0){ //parent category
        
@@ -396,14 +312,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             //get the image
             let urlString: String? = album.urlMedium
             if(urlString != ""){
-                var image = self.imageCache[urlString!]
+                let image = self.imageCache[urlString!]
                 if(image == nil) {
             
                     // If the image does not exist, we need to download it
-                    var imgURL: NSURL! = NSURL(string: urlString!)
+                    let imgURL: NSURL! = NSURL(string: urlString!)
+                    
+                    //haneke
+                    cell.imgPoster?.hnk_setImageFromURL(imgURL)
             
                     // Download an NSData representation of the image at the URL
-                    let request: NSURLRequest = NSURLRequest(URL: imgURL)
+                    /*let request: NSURLRequest = NSURLRequest(URL: imgURL)
                     let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
                     NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?,error: NSError?) -> Void in
                         if let noerror = data {
@@ -418,7 +337,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         else {
                             println("Error: \(error!.localizedDescription)")
                         }
-                    })
+                    })*/
+                    
             
                 } else {
                     cell.imgPoster?.image = image
@@ -494,6 +414,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             categoryPoster = UIImage(named: "ctg-class")
         default:
             categoryPoster = UIImage(named: "ctg-general") //categoryID = 1
+            
         }
         
         return categoryPoster!
@@ -518,7 +439,23 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             let album:Album = self.albums[indexPath.row]
             //println("albumName: \(album.albumName!) albumpkID: \(album.pkAlbumID!)")
             
-            self.performSegueWithIdentifier("gotoGeo", sender: indexPath)
+            ///self.performSegueWithIdentifier("gotoGeo", sender: indexPath)
+            
+            /**********************************************************************************/
+            // get tabBarController, then UINavigationBar, then ViewController, update ViewController and finally select 1st tabItem
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let mainTabBar : UITabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("mainTabBar") as! UITabBarController
+            let nvg: UINavigationController = mainTabBar.viewControllers![0] as! UINavigationController
+            let geoView:GeoViewController =  nvg.topViewController as! GeoViewController
+            geoView.albumID = album.pkAlbumID!
+            geoView.albumName = album.albumName!
+            geoView.fkParentID = album.fkParentID!
+            geoView.parentName = album.parentName!
+            geoView.scrollToTop()  //it breaks when tab changes
+            mainTabBar.selectedIndex = 0
+            appDelegate.window?.rootViewController = mainTabBar
+            appDelegate.window?.makeKeyAndVisible()
+            /**********************************************************************************/
             
             //println("shouldSelectItemAtIndexPath: \(indexPath.row)")
             return false
@@ -530,29 +467,51 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         //println("albumName: \(album.albumName)  screenWidth: \(screenWidth)  screenHeight: \(screenHeight)")
         
-        return (album.fkParentID == 0) ? CGSize(width: screenWidth-20, height: screenWidth/2.5) : CGSize(width: (screenWidth-40)/2, height: screenWidth/2.5)
+        return (album.fkParentID == 0) ? CGSize(width: screenWidth, height: screenWidth/2.5) : CGSize(width: (screenWidth-40)/2, height: screenWidth/2.5)
          //return  CGSize(width: (screenWidth-40)/2, height: screenWidth/2)
         //return  CGSize(width: screenWidth, height: 140)
     }
     
     @IBAction func doVisitAlbum(sender: DefaultButton) {
-        var buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mCollectionView)
+        let buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mCollectionView)
          let indexPath: NSIndexPath = self.mCollectionView!.indexPathForItemAtPoint(buttonPosition)!
         //var indexPath: NSIndexPath = self.mCollectionView.indexPathForRowAtPoint(buttonPosition)!
         let album:Album = self.albums[indexPath.row]
-        self.performSegueWithIdentifier("gotoGeo", sender: indexPath)
+        //self.performSegueWithIdentifier("gotoGeo", sender: indexPath)
+        
+        
+        
+        /**********************************************************************************/
+        // get tabBarController, then UINavigationBar, then ViewController, update ViewController and finally select 1st tabItem
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let mainTabBar : UITabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("mainTabBar") as! UITabBarController
+        let nvg: UINavigationController = mainTabBar.viewControllers![0] as! UINavigationController
+        let geoView:GeoViewController =  nvg.topViewController as! GeoViewController
+        geoView.albumID = album.pkAlbumID!
+        geoView.albumName = album.albumName!
+        geoView.fkParentID = album.fkParentID!
+        geoView.parentName = album.parentName!
+        geoView.scrollToTop()  //it breaks when tab changes
+        mainTabBar.selectedIndex = 0
+        appDelegate.window?.rootViewController = mainTabBar
+        appDelegate.window?.makeKeyAndVisible()
+        /**********************************************************************************/
+        
+        
+        
+        
     }
     
     
     @IBAction func doVisitCity(sender: UIButton) {
-        println("doVisityCity()")
+        print("doVisityCity()", terminator: "")
     }
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         
-        //println("currentOffset: \(currentOffset)  maximumOffset: \(maximumOffset)")
+        print("currentOffset: \(currentOffset)  maximumOffset: \(maximumOffset)")
 //        if(currentOffset <  -100) {
 //            //println("currentOffset>maximumOffset ->  currentOffset: \(currentOffset)  maximumOffset: \(maximumOffset)")
 //            self.loadSpinner.startAnimating()
@@ -604,16 +563,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         if segue.identifier == "gotoGeo"{
             //let geoViewController:GeoViewController =  segue.destinationViewController as GeoViewController
-            var myNavController: MyNavigationController = segue.destinationViewController as! MyNavigationController
-            let geoViewController:GeoViewController =  myNavController.topViewController as! GeoViewController
+            //var myNavController: MyNavigationController = segue.destinationViewController as! MyNavigationController
+            let nvg: UINavigationController = segue.destinationViewController as! UINavigationController
+            let geoViewController: GeoViewController =  nvg.topViewController as! GeoViewController
             //let geoViewController:GeoViewController = segue.destinationViewController as! GeoViewController
             geoViewController.hasCustomNavigation = false
             let indexPath : NSIndexPath = sender as! NSIndexPath
-            let indexPaths : NSArray = self.mCollectionView.indexPathsForSelectedItems()
+            
+            //let indexPaths : NSArray = self.mCollectionView.indexPathsForSelectedItems()!
      
             //println(indexPath)
-            var selectedAlbum = self.albums[indexPath.row]
-            println("albumName: \(selectedAlbum.albumName!) pkAlbumID: \(selectedAlbum.pkAlbumID!)")
+            let selectedAlbum = self.albums[indexPath.row]
+            print("albumName: \(selectedAlbum.albumName!) pkAlbumID: \(selectedAlbum.pkAlbumID!)", terminator: "")
             geoViewController.albumID = selectedAlbum.pkAlbumID!
             geoViewController.albumName = selectedAlbum.albumName!
             geoViewController.fkParentID = selectedAlbum.fkParentID!

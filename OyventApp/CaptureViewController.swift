@@ -101,30 +101,30 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
                 }
                 
         }else {
-            println("Location services are not enabled");
+            print("Location services are not enabled");
         }
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("error to get location : \(error)")
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("error to get location : \(error)")
         
         if let clErr = CLError(rawValue: error.code) {
             switch clErr {
             case .LocationUnknown:
-                println("location unknown")
+                print("location unknown")
             case .Denied:
-                println("denied")
+                print("denied")
             default:
-                println("unknown Core Location error")
+                print("unknown Core Location error")
             }
         } else {
-            println("other error")
+            print("other error")
         }
         
     }
     
     
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         
         currentLocation = newLocation
         self.latitude = "\(currentLocation.coordinate.latitude)"
@@ -136,15 +136,12 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
         geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: {
             placemarks, error in
             
-            if error == nil && placemarks.count > 0 {
-                let placeArray = placemarks as! [CLPlacemark]
-                
+            if error == nil && placemarks!.count > 0 {
+                let placeArray = placemarks as [CLPlacemark]?
                 // Place details
-                var placeMark: CLPlacemark!
-                placeMark = placeArray[0]
-                
+                let placeMark: CLPlacemark! = placeArray?[0]
                 // City
-                if let city = placeMark.addressDictionary["City"] as? NSString {
+                if let city = placeMark.addressDictionary?["City"] as? NSString {
                     //println(city)
                     self.city = city as String
                     self.albumName = (self.albumID != 0 ) ? self.albumName : self.city
@@ -175,7 +172,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
                     if device.position == AVCaptureDevicePosition.Front {
                         captureDevice = device as? AVCaptureDevice
                         if captureDevice != nil {
-                            println("Capture Front device found")
+                            print("Capture Front device found")
                             currentCamera = CameraType.Front
                             beginSession()
                             break
@@ -186,7 +183,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
                     if device.position == AVCaptureDevicePosition.Back {
                         captureDevice = device as? AVCaptureDevice
                         if captureDevice != nil {
-                            println("Capture Back device found")
+                            print("Capture Back device found")
                             currentCamera = CameraType.Back
                             beginSession()
                             break
@@ -241,7 +238,10 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     func configureDevice() {
         
         if let device = captureDevice {
-            device.lockForConfiguration(nil)
+            do {
+                try device.lockForConfiguration()
+            } catch _ {
+            }
             //device.focusMode = .Locked
             device.unlockForConfiguration()
         }
@@ -251,14 +251,24 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
         
         var err: NSError? = nil
         let inputs = captureSession.inputs as! [AVCaptureInput]
-        var input = AVCaptureDeviceInput(device: captureDevice, error: &err)
-        if( contains(inputs, input) ) {
-            captureSession.removeInput(AVCaptureDeviceInput(device: captureDevice, error: &err))
+        var input: AVCaptureDeviceInput!
+        do {
+            input = try AVCaptureDeviceInput(device: captureDevice)
+        } catch let error as NSError {
+            err = error
+            input = nil
+        }
+        if( inputs.contains(input) ) {
+            do{
+            captureSession.removeInput(try AVCaptureDeviceInput(device: captureDevice))
+            }catch{
+                
+            }
         }
         
         if captureSession.running {
             captureSession.stopRunning()
-            if(!self.imageView.layer.sublayers.isEmpty){
+            if(!self.imageView.layer.sublayers!.isEmpty){
                 self.previewLayer?.removeFromSuperlayer()
             }
         }
@@ -283,30 +293,36 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
         configureDevice()
         
         var err: NSError? = nil
-        var input = AVCaptureDeviceInput(device: captureDevice, error: &err)
+        var input: AVCaptureDeviceInput!
+        do {
+            input = try AVCaptureDeviceInput(device: captureDevice)
+        } catch let error as NSError {
+            err = error
+            input = nil
+        }
         let inputs = captureSession.inputs as! [AVCaptureInput]
         
         
-        if( !contains(inputs, input) ){
+        if( !inputs.contains(input) ){
             if captureSession.canAddInput(input) {
                 captureSession.addInput(input)
             }
         }
         
         if err != nil {
-            println("error: \(err?.localizedDescription)")
+            print("error: \(err?.localizedDescription)")
         }
         
         //create preview layer and add it the imageview and start session
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        self.imageView.layer.addSublayer(previewLayer)
+        self.imageView.layer.addSublayer(previewLayer!)
         if !captureSession.running {
             captureSession.startRunning()
         }
         
         
         //adjust the preview layer bounds to put the video inside the imageview
-        var bounds: CGRect? = self.imageView.layer.bounds as CGRect
+        let bounds: CGRect? = self.imageView.layer.bounds as CGRect
         self.previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill;
         self.previewLayer?.bounds = bounds!
         self.previewLayer?.position = CGPointMake(CGRectGetMidX(bounds!), CGRectGetMidY(bounds!))
@@ -334,7 +350,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     
     @IBAction func shareNow(sender: UIButton) {
         
-        var userID: Double = NSUserDefaults.standardUserDefaults().doubleForKey("userID")
+        let userID: Double = NSUserDefaults.standardUserDefaults().doubleForKey("userID")
         let url = NSURL(string:"http://oyvent.com/ajax/PhotoHandlerWeb.php")
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
@@ -353,13 +369,13 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
         let img : UIImage = self.fixOrientation(self.imageView.image!)
-        var imageData = UIImageJPEGRepresentation(img, 1)
+        let imageData = UIImageJPEGRepresentation(img, 1)
         if(imageData==nil) { return; }
         
         btnShareNow.enabled = false
         activityIndicator.startAnimating()
         
-        request.HTTPBody = createBodyWithParameters(param, filePathKey: "file", imageDataKey: imageData, boundary: boundary)
+        request.HTTPBody = createBodyWithParameters(param, filePathKey: "file", imageDataKey: imageData!, boundary: boundary)
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
@@ -367,7 +383,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
             data, response, error  in
             
             if(error != nil){
-                println("error=\(error)")
+                print("error=\(error)")
                 return
             }
             
@@ -381,18 +397,19 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
             
             
             
-            var err: NSError?
-            var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
+            //var err: NSError?
+            do{
+                let parseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers  ) as? NSDictionary
             
-            if let parseJSON = json {
-                var resultValue:Bool = parseJSON["success"] as! Bool!
-                var error:String? = parseJSON	["error"] as! String?
+           
+                let resultValue:Bool = parseJSON?["success"] as! Bool!
+                let error:String? = parseJSON?["error"] as! String?
                 
                 dispatch_async(dispatch_get_main_queue(),{
                     
                     if(!resultValue){
                         //display alert message with confirmation
-                        var myAlert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                        let myAlert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
                         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                         myAlert.addAction(okAction)
                         self.presentViewController(myAlert, animated: true, completion: nil)
@@ -404,8 +421,8 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
 //                        self.imageView.image = nil;
                         
                         //display alert message with confirmation
-                        var myAlert = UIAlertController(title: "Confirmation", message: "Post added successfully!", preferredStyle: UIAlertControllerStyle.Alert)
-                        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                        let myAlert = UIAlertController(title: "Confirmation", message: "Post added successfully!", preferredStyle: UIAlertControllerStyle.Alert)
+                        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
                             
                             //self.dismissViewControllerAnimated(true, completion: nil)
                             self.activityIndicator.stopAnimating()
@@ -428,6 +445,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
                         self.btnShareNow.enabled = true
                     }
                 })
+            }catch{
             }
         }
         
@@ -437,7 +455,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     
     func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: NSData, boundary: String) -> NSData {
         
-        var body = NSMutableData();
+        let body = NSMutableData();
         
         if parameters != nil {
             for (key, value) in parameters! {
@@ -467,7 +485,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     
     /// Create boundary string for multipart/form-data request
     ///
-    /// :returns:            The boundary string that consists of "Boundary-" followed by a UUID string.
+    /// - returns:            The boundary string that consists of "Boundary-" followed by a UUID string.
     
     func generateBoundaryString() -> String {
         return "Boundary-\(NSUUID().UUIDString)"
@@ -480,25 +498,26 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
         
         
         if(!self.captureSession.running){
-            self.imageView.layer.addSublayer(previewLayer)
+            self.imageView.layer.addSublayer(previewLayer!)
             self.captureSession.startRunning()
             return
         }
         
-        var videoConnection :AVCaptureConnection?
+        //let videoConnection :AVCaptureConnection?
+        
         if let videoConnection = stillImageOutput?.connectionWithMediaType(AVMediaTypeVideo){
             stillImageOutput?.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: {
                 (sampleBuffer, error) in
                 let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
                 
-                var initialImage : UIImage = UIImage(data: imageData)!
-                let orientedImage = UIImage(CGImage: initialImage.CGImage, scale: 1, orientation: initialImage.imageOrientation)!
+                let initialImage : UIImage = UIImage(data: imageData)!
+                let orientedImage = UIImage(CGImage: initialImage.CGImage!, scale: 1, orientation: initialImage.imageOrientation)
                
                 self.imageView.image = orientedImage
                 self.captureSession.stopRunning()
                 
                 //Save the captured preview to image
-                UIImageWriteToSavedPhotosAlbum(self.imageView.image, nil, nil, nil)
+                UIImageWriteToSavedPhotosAlbum(self.imageView.image!, nil, nil, nil)
                 
             })
         }
@@ -508,7 +527,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     @IBAction func fromLibrary(sender: UIButton) {
         
         if(!self.captureSession.running){
-            self.imageView.layer.addSublayer(previewLayer)
+            self.imageView.layer.addSublayer(previewLayer!)
             self.captureSession.startRunning()
         }
         
@@ -568,10 +587,10 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
         
         // Now we draw the underlying CGImage into a new context, applying the transform
         // calculated above.
-        var ctx:CGContextRef = CGBitmapContextCreate(nil, Int(img.size.width), Int(img.size.height),
+        let ctx:CGContextRef = CGBitmapContextCreate(nil, Int(img.size.width), Int(img.size.height),
             CGImageGetBitsPerComponent(img.CGImage), 0,
             CGImageGetColorSpace(img.CGImage),
-            CGImageGetBitmapInfo(img.CGImage));
+            CGImageGetBitmapInfo(img.CGImage).rawValue)!;
         CGContextConcatCTM(ctx, transform)
         
         
@@ -588,8 +607,8 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
         
         
         // And now we just create a new UIImage from the drawing context
-        var cgimg:CGImageRef = CGBitmapContextCreateImage(ctx)
-        var imgEnd:UIImage = UIImage(CGImage: cgimg)!
+        let cgimg:CGImageRef = CGBitmapContextCreateImage(ctx)!
+        let imgEnd:UIImage = UIImage(CGImage: cgimg)
         
         return imgEnd
     }
@@ -604,7 +623,7 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         if(captureSession.running){
             captureSession.stopRunning()
@@ -638,25 +657,29 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
     
     func focusTo(value : Float) {
         if let device = captureDevice {
-            if(device.lockForConfiguration(nil)) {
+            do{
+               try device.lockForConfiguration()
+                
                 device.setFocusModeLockedWithLensPosition(value, completionHandler: { (time) -> Void in
                         //
                 })
                 device.unlockForConfiguration()
             }
+            catch{
+            }
         }
     }
     
     let screenWidth = UIScreen.mainScreen().bounds.size.width
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        var anyTouch = touches.first as! UITouch
-        var touchPercent = anyTouch.locationInView(self.view).x / screenWidth
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let anyTouch = touches.first!
+        let touchPercent = anyTouch.locationInView(self.view).x / screenWidth
         focusTo(Float(touchPercent))
     }
     
-    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
-        var anyTouch = touches.first as! UITouch
-        var touchPercent = anyTouch.locationInView(self.view).x / screenWidth
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let anyTouch = touches.first!
+        let touchPercent = anyTouch.locationInView(self.view).x / screenWidth
         focusTo(Float(touchPercent))
         
         self.view.endEditing(true);

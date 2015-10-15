@@ -34,7 +34,7 @@ class RegisterViewController: UIViewController {
         let password = txtPassword.text
         
         //check for empty fields
-        if(fullname.isEmpty || email.isEmpty || password.isEmpty){
+        if(fullname!.isEmpty || email!.isEmpty || password!.isEmpty){
             //display alert message
             displayAlertMessage("All fields are required!")
             return
@@ -52,23 +52,24 @@ class RegisterViewController: UIViewController {
             data, response, error in
             
             if(error != nil){
-                println("error=\(error)")
+                print("error=\(error)", terminator: "")
                 return
             }
             
-            var err: NSError?
-            var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
+            //var err: NSError?
+            do{
+                let parseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers  ) as? NSDictionary
             
-            if let parseJSON = json {
-                var resultValue = parseJSON["success"] as! Bool
-                println("resultValue=\(resultValue)")
+            
+                let resultValue = parseJSON?["success"] as! Bool
+                print("resultValue=\(resultValue)")
                 
-                var message:String = parseJSON["message"] as! String!
-                var userID:Double = parseJSON["userID"] as! Double!
-                var username:String? = parseJSON["username"] as? String
-                var lastlogindate:String = parseJSON["lastlogindate"] as! String!
-                var signupdate:String = parseJSON["signupdate"] as! String!
-                let isadmin:Bool = parseJSON["isadmin"] as! Bool!
+                let message:String = parseJSON?["message"] as! String!
+                let userID:Double = parseJSON?["userID"] as! Double!
+                let username:String? = parseJSON?["username"] as? String
+                let lastlogindate:String = parseJSON?["lastlogindate"] as! String!
+                let signupdate:String = parseJSON?["signupdate"] as! String!
+                let isadmin:Bool = parseJSON?["isadmin"] as! Bool!
                 
                 
                 dispatch_async(dispatch_get_main_queue(),{
@@ -77,7 +78,7 @@ class RegisterViewController: UIViewController {
                     
                     if(!resultValue){
                         //display alert message with confirmation
-                        var myAlert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                        let myAlert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
                         
                         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                         myAlert.addAction(okAction)
@@ -99,7 +100,7 @@ class RegisterViewController: UIViewController {
                         
                         
                         //display alert message with confirmation
-                        var myAlert = UIAlertController(title: "Alert", message: "Welcome to Oyvent!", preferredStyle: UIAlertControllerStyle.Alert)
+                        let myAlert = UIAlertController(title: "Alert", message: "Welcome to Oyvent!", preferredStyle: UIAlertControllerStyle.Alert)
                         
                         let okAction = UIAlertAction(title: "Let's Start!", style: UIAlertActionStyle.Default){ action in
                             self.dismissViewControllerAnimated(true, completion:nil)
@@ -116,7 +117,7 @@ class RegisterViewController: UIViewController {
                     }
                 })
                 
-            }
+            }catch{}
         }
         
         task.resume()
@@ -125,7 +126,7 @@ class RegisterViewController: UIViewController {
     }
     
     func displayAlertMessage(alertMessage:String){
-        var myAlert = UIAlertController(title: "Alert", message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        let myAlert = UIAlertController(title: "Alert", message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
         
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
         

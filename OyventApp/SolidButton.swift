@@ -11,7 +11,7 @@ import UIKit
 
 class SolidButton : UIButton {
     
-    required init(coder decoder: NSCoder) {
+    required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
         
         // backgroundColor = UIColor.whiteColor()

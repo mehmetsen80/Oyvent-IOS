@@ -53,7 +53,7 @@ class LogoutViewController: UIViewController, ENSideMenuDelegate {
         var menuImage:UIImage = UIImage(named: "oyvent-icon-72")!
         menuImage = resizeImage(menuImage,targetSize: CGSize(width: 30, height: 30))
         menuImage = menuImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        var leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "sideMenuClicked")
+        let leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "sideMenuClicked")
         self.navigationItem.leftBarButtonItem = leftButton
     }
     
@@ -113,7 +113,7 @@ class LogoutViewController: UIViewController, ENSideMenuDelegate {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "loginView"){
-            println("it works!")
+            print("it works!", terminator: "")
         }
     }
     

@@ -20,7 +20,7 @@ class Profile{
     
     class func profileWithJSON(allResults: NSDictionary) -> Profile{
         
-        var profile : Profile = Profile()
+        let profile : Profile = Profile()
         //store results in our table data array, in fact we have here only one item
         /*if(allResults.count>0) {
             

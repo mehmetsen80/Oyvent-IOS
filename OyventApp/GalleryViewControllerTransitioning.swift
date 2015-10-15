@@ -48,12 +48,17 @@ class GalleryViewControllerTransitioning: NSObject, UIViewControllerAnimatedTran
     var zoomToCellFrameUponDismissal = true
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        
+        
+        //let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        //let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        
+        
+        
         let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
         let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
         
-        let container = transitionContext.containerView()
+        let container = transitionContext.containerView()!
         let transitionDuration = self.transitionDuration(transitionContext)
         
         if !reversed {
@@ -63,7 +68,7 @@ class GalleryViewControllerTransitioning: NSObject, UIViewControllerAnimatedTran
             imageView.frame = cellFrame
             container.addSubview(imageView)
             toView.alpha = 0
-            UIView.animateWithDuration(transitionDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: nil, animations: { () -> Void in
+            UIView.animateWithDuration(transitionDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: { () -> Void in
                 fromView.alpha = 0
                 imageView.frame = UIScreen.mainScreen().bounds
             }, completion: { complete in
@@ -78,7 +83,7 @@ class GalleryViewControllerTransitioning: NSObject, UIViewControllerAnimatedTran
             imageView.contentMode = .ScaleAspectFit
             imageView.frame = UIScreen.mainScreen().bounds
             container.addSubview(imageView)
-            UIView.animateWithDuration(transitionDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: nil, animations: { () -> Void in
+            UIView.animateWithDuration(transitionDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: { () -> Void in
                 fromView.alpha = 0
                 imageView.alpha = 0
                 if self.zoomToCellFrameUponDismissal {
@@ -94,7 +99,7 @@ class GalleryViewControllerTransitioning: NSObject, UIViewControllerAnimatedTran
         }
     }
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.5
     }
 }

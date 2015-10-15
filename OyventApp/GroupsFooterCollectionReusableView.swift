@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeFooterCollectionReusableView: UICollectionReusableView {
+class GroupsFooterCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var lblFooter: UILabel!
     
 }

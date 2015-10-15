@@ -1,19 +1,19 @@
 PODS:
-  - Alamofire (1.3.1)
-  - Cartography (0.5.0)
+  - Alamofire (2.0.2)
+  - Cartography (0.6.0)
   - FastImageCache (1.3)
-  - HanekeSwift (0.9.1)
+  - HanekeSwift (0.10.0)
 
 DEPENDENCIES:
   - Alamofire
-  - Cartography
+  - Cartography (~> 0.6)
   - FastImageCache (~> 1.3)
   - HanekeSwift
 
 SPEC CHECKSUMS:
-  Alamofire: e4ab637e3195b645c814b87a652373439e59f2a4
-  Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
+  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
   FastImageCache: 25f214fd46405daca3d1995d783fb83b9036c62e
-  HanekeSwift: 50d37bfbc4432edc649167e538c259feccb4a2bb
+  HanekeSwift: d6f5bdf9dbdbbc09d59623b2c1d533e46463dd4d
 
 COCOAPODS: 0.38.2

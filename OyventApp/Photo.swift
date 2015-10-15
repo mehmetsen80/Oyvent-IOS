@@ -139,7 +139,7 @@ class Photo{
                 var milesUser:Double? = result["DISTANCE"] as? Double
                 milesUser = round(milesUser! * (pow(10.0, 2.0))) / (pow(10.0, 2.0))
                 
-                var newPhoto = Photo(pkPhotoID: pkPhotoID!, fkUserID: fkUserID!, oy:oy!, lat1:lat1!,
+                let newPhoto = Photo(pkPhotoID: pkPhotoID!, fkUserID: fkUserID!, oy:oy!, lat1:lat1!,
                     long1:long1!, lat2:lat2!, long2:long2!, milesGeo:milesGeo, milesUser:milesUser!, fkTwitterID:fkTwitterID!, fkInstagramID:fkInstagramID!, fkFacebookID:fkFacebookID!, contentLink:contentLink!, ownedBy:ownedBy!, caption:caption!, createdDate:createdDate!, postDate: postDate!,
                     thumbImageURL: thumbImageURL!, largeImageURL: largeImageURL!,
                     mediumImageURL: mediumImageURL!, smallImageURL: smallImageURL!,

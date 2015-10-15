@@ -11,7 +11,8 @@ import UIKit
 
 class CustomView : UIView {
     
-    required init(coder decoder: NSCoder) {
+    required init?(coder decoder: NSCoder) {
+
         super.init(coder: decoder)
         
         // backgroundColor = UIColor.whiteColor()

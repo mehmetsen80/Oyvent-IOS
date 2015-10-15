@@ -107,7 +107,7 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
         var menuImage:UIImage = UIImage(named: "oyvent-icon-72")!
         menuImage = resizeImage(menuImage,targetSize: CGSize(width: 30, height: 30))
         menuImage = menuImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        var leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "sideMenuClicked")
+        let leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "sideMenuClicked")
         self.navigationItem.leftBarButtonItem = leftButton
         /***************** end of navigation left button -> menu image********************/
         
@@ -169,22 +169,22 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
             data, response, error  in
             
             if(error != nil){
-                println("error=\(error)")
+                print("error=\(error)", terminator: "")
                 return
             }
             
-            var err: NSError?
-            var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
+            do{
+                let parseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers  ) as? NSDictionary
             
-            if let parseJSON = json {
-                var resultValue:Bool = parseJSON["success"] as! Bool!
-                var error:String? = parseJSON	["error"] as! String?
+          
+                let resultValue:Bool = parseJSON?["success"] as! Bool!
+                let error:String? = parseJSON?["error"] as! String?
                 
                 dispatch_async(dispatch_get_main_queue(),{
                     
                     if(!resultValue){
                         //display alert message with confirmation
-                        var myAlert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                        let myAlert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
                         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                         myAlert.addAction(okAction)
                         self.presentViewController(myAlert, animated: true, completion: nil)
@@ -193,8 +193,8 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
                         self.textView.text = ""
                         
                         //display alert message with confirmation
-                        var myAlert = UIAlertController(title: "Confirmation", message: "Post added successfully!", preferredStyle: UIAlertControllerStyle.Alert)
-                        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                        let myAlert = UIAlertController(title: "Confirmation", message: "Post added successfully!", preferredStyle: UIAlertControllerStyle.Alert)
+                        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
                         
                            // self.dismissViewControllerAnimated(true, completion: nil)
                            
@@ -215,7 +215,7 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
                         
                     }
                 })
-            }
+            }catch{}
         }
         
         task.resume()
@@ -253,24 +253,24 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
                 }
                 
         }else {
-            println("Location services are not enabled");
+            print("Location services are not enabled", terminator: "");
         }
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("error to get location : \(error)")
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("error to get location : \(error)", terminator: "")
         
         if let clErr = CLError(rawValue: error.code) {
             switch clErr {
             case .LocationUnknown:
-                println("location unknown")
+                print("location unknown", terminator: "")
             case .Denied:
-                println("denied")
+                print("denied", terminator: "")
             default:
-                println("unknown Core Location error")
+                print("unknown Core Location error", terminator: "")
             }
         } else {
-            println("other error")
+            print("other error", terminator: "")
         }
         
     }
@@ -288,15 +288,13 @@ class OnlyTextViewController: UIViewController, CLLocationManagerDelegate, UITex
         geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: {
             placemarks, error in
             
-            if error == nil && placemarks.count > 0 {
-                let placeArray = placemarks as! [CLPlacemark]
-                
+            if error == nil && placemarks!.count > 0 {
+                let placeArray = placemarks as [CLPlacemark]?
                 // Place details
-                var placeMark: CLPlacemark!
-                placeMark = placeArray[0]
-                
+                let placeMark: CLPlacemark! = placeArray?[0]
+
                 // City
-                if let city = placeMark.addressDictionary["City"] as? NSString {
+                if let city = placeMark.addressDictionary?["City"] as? NSString {
                     //println(city)
                     self.city = city as String
                     self.albumName = (self.albumID != 0 ) ? self.albumName : self.city

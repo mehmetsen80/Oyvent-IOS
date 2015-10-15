@@ -83,65 +83,51 @@ class MeViewController: UIViewController, ProfileAPIControllerProtocol, CLLocati
                 }
                 
         }else {
-            println("Location services are not enabled");
+            print("Location services are not enabled", terminator: "");
         }
     }
     
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("error to get location : \(error)")
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("error to get location : \(error)", terminator: "")
         
         if let clErr = CLError(rawValue: error.code) {
             switch clErr {
             case .LocationUnknown:
-                println("location unknown")
+                print("location unknown", terminator: "")
             case .Denied:
-                println("denied")
+                print("denied", terminator: "")
             default:
-                println("unknown Core Location error")
+                print("unknown Core Location error", terminator: "")
             }
         } else {
-            println("other error")
+            print("other error", terminator: "")
         }
         
     }
     
     
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         
         currentLocation = newLocation
         self.latitude = "\(currentLocation.coordinate.latitude)"
         self.longitude = "\(currentLocation.coordinate.longitude)"
         
-        println("didUpdateToLocation longitude \(self.latitude)")
-        println("didUpdateToLocation latitude \(self.longitude)")
+        print("didUpdateToLocation longitude \(self.latitude)", terminator: "")
+        print("didUpdateToLocation latitude \(self.longitude)", terminator: "")
         
         geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: {
             placemarks, error in
             
-            if error == nil && placemarks.count > 0 {
-                let placeArray = placemarks as! [CLPlacemark]
-                
+            if error == nil && placemarks!.count > 0 {
+                let placeArray = placemarks as [CLPlacemark]?
                 // Place details
-                var placeMark: CLPlacemark!
-                placeMark = placeArray[0]
+                let placeMark: CLPlacemark! = placeArray?[0]
                 
-                // Address dictionary
-                println(placeMark.addressDictionary)
-                
-                // Location name
-                if let locationName = placeMark.addressDictionary["Name"] as? NSString {
-                    println(locationName)
-                }
-                
-                // Street address
-                if let street = placeMark.addressDictionary["Thoroughfare"] as? NSString {
-                    println(street)
-                }
-                
+              
                 // City
-                if let city = placeMark.addressDictionary["City"] as? NSString {
-                    println(city)
+                if let city = placeMark.addressDictionary?["City"] as? NSString {
+                    print(city, terminator: "")
                     self.city = city as String
                     self.btnCity.setTitle(city as String, forState: UIControlState.Normal)
                     //to do: initiate the profile info
@@ -149,15 +135,7 @@ class MeViewController: UIViewController, ProfileAPIControllerProtocol, CLLocati
                     self.locationManager.stopUpdatingLocation()
                 }
                 
-                // Zip code
-                if let zip = placeMark.addressDictionary["ZIP"] as? NSString {
-                    println(zip)
-                }
-                
-                // Country
-                if let country = placeMark.addressDictionary["Country"] as? NSString {
-                    println(country)
-                }
+               
                 
             }
         })
@@ -206,7 +184,7 @@ class MeViewController: UIViewController, ProfileAPIControllerProtocol, CLLocati
         var menuImage:UIImage = UIImage(named: "oyvent-icon-72")!
         menuImage = resizeImage(menuImage,targetSize: CGSize(width: 30, height: 30))
         menuImage = menuImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        var leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "sideMenuClicked")
+        let leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "sideMenuClicked")
         self.navigationItem.leftBarButtonItem = leftButton
         /***************** end of navigation left button -> menu image********************/
         
@@ -220,7 +198,7 @@ class MeViewController: UIViewController, ProfileAPIControllerProtocol, CLLocati
         var locationImage:UIImage = UIImage(named: "location-icon-grey")!
         locationImage = resizeImage(locationImage, targetSize: CGSize(width:30, height:30))
         locationImage = locationImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        var rightButton = UIBarButtonItem(image: locationImage, style: UIBarButtonItemStyle.Plain, target: self, action: "locationClicked")
+        let rightButton = UIBarButtonItem(image: locationImage, style: UIBarButtonItemStyle.Plain, target: self, action: "locationClicked")
         self.navigationItem.rightBarButtonItem = rightButton
         /************** end of navigation right button -> location image ********************/
         
@@ -230,7 +208,7 @@ class MeViewController: UIViewController, ProfileAPIControllerProtocol, CLLocati
     func locationClicked(){
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
         let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNavGeo") as! MyNavigationController
-        var geoViewController:GeoViewController =  nvg.topViewController as! GeoViewController
+        let geoViewController:GeoViewController =  nvg.topViewController as! GeoViewController
         geoViewController.hasCustomNavigation = true
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = nvg
@@ -259,12 +237,12 @@ class MeViewController: UIViewController, ProfileAPIControllerProtocol, CLLocati
     /********************* get a transparent background image *******************/
     func onePixelImageWithColor(color : UIColor) -> UIImage {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
-        var context = CGBitmapContextCreate(nil, 1, 1, 8, 0, colorSpace, bitmapInfo)
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue)
+        let context = CGBitmapContextCreate(nil, 1, 1, 8, 0, colorSpace, bitmapInfo.rawValue)
         CGContextSetFillColorWithColor(context, color.CGColor)
         CGContextFillRect(context, CGRectMake(0, 0, 1, 1))
-        let image = UIImage(CGImage: CGBitmapContextCreateImage(context))
-        return image!
+        let image = UIImage(CGImage: CGBitmapContextCreateImage(context)!)
+        return image
     }/***************** end of get a transparent background image ***************/
     
     
@@ -272,7 +250,7 @@ class MeViewController: UIViewController, ProfileAPIControllerProtocol, CLLocati
     func didReceiveProfileAPIResults(results:NSDictionary){
         
         dispatch_barrier_async(concurrentProfileQueue) {
-            var profile: Profile = Profile.profileWithJSON(results);
+            let profile: Profile = Profile.profileWithJSON(results);
             dispatch_async(dispatch_get_main_queue(), {
                 //full name
                 self.lblFullName.text = profile.fullName
@@ -284,10 +262,10 @@ class MeViewController: UIViewController, ProfileAPIControllerProtocol, CLLocati
                 //if we have thumb profile picture
                 if(profile.urlThumb != ""){
                     // let's download it
-                    var imgURL: NSURL! = NSURL(string: profile.urlThumb!)
+                    let imgURL: NSURL! = NSURL(string: profile.urlThumb!)
                     // Download an NSData representation of the image at the URL
                     let request: NSURLRequest = NSURLRequest(URL: imgURL)
-                    let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
+                    //let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
                     NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?,error: NSError?) -> Void in
                         if let noerror = data {
                             dispatch_async(dispatch_get_main_queue()) {
@@ -296,7 +274,7 @@ class MeViewController: UIViewController, ProfileAPIControllerProtocol, CLLocati
                             }
                         }
                         else {
-                            println("Error: \(error!.localizedDescription)")
+                            print("Error: \(error!.localizedDescription)", terminator: "")
                         }
                     })
                 } /****************** get main profile photo  ****************/

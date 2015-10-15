@@ -23,7 +23,7 @@ class GalleryImageCell: UICollectionViewCell {
     
 //    var imageEntity: FICEntity? 
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -32,6 +32,8 @@ class GalleryImageCell: UICollectionViewCell {
         super.init(frame: frame)
         commonInit()
     }
+
+   
     
     private func commonInit() {
         backgroundColor = UIColor(white: 0.8, alpha: 1)
@@ -40,11 +42,12 @@ class GalleryImageCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        layout(imageView) { v in
-            v.left == v.superview!.left
-            v.right == v.superview!.right
-            v.top == v.superview!.top
-            v.bottom == v.superview!.bottom
-        }
+        
+//        layout(imageView) { v in
+//            v.left == v.superview!.left
+//            v.right == v.superview!.right
+//            v.top == v.superview!.top
+//            v.bottom == v.superview!.bottom
+//        }
     }
 }

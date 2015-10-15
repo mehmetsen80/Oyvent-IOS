@@ -27,8 +27,8 @@ class LoginViewController: UIViewController {
 
     @IBAction func doLogin(sender: AnyObject) {
         
-        let email = txtEmail.text
-        let password = txtPassword.text
+        let email = txtEmail.text!
+        let password = txtPassword.text!
         
         if(email.isEmpty || password.isEmpty) { return }
 
@@ -47,25 +47,27 @@ class LoginViewController: UIViewController {
             
             if(error != nil){
                 self.myActivityIndicator.stopAnimating()
-                println("error=\(error)")
+                print("error=\(error)", terminator: "")
                 return
             }
             
             
-            var err: NSError?
-            var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
+            //var err: NSError?
+            do{
+            let parseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers  ) as? NSDictionary
             
-            if let parseJSON = json {
-                var resultValue = parseJSON["success"] as! Bool!
-                println("resultValue=\(resultValue)")
+                print(parseJSON)
+             
+                let resultValue = parseJSON?["success"] as! Bool!
+                print("resultValue=\(resultValue)")
                 
-                let message:String? = parseJSON	["message"] as! String?
-                let userID:Double? = parseJSON["userID"] as! Double?
-                let fullname:String? = parseJSON["fullname"] as! String?
-                let username:String? = parseJSON["username"] as! String?
-                let lastlogindate:String? = parseJSON["lastlogindate"] as! String?
-                let signupdate:String? = parseJSON["signupdate"] as! String?
-                let isadmin:Bool = parseJSON["isadmin"] as! Bool!
+                let message:String? = parseJSON?["message"] as! String?
+                let userID:Double? = parseJSON?["userID"] as! Double?
+                let fullname:String? = parseJSON?["fullname"] as! String?
+                let username:String? = parseJSON?["username"] as! String?
+                let lastlogindate:String? = parseJSON?["lastlogindate"] as! String?
+                let signupdate:String? = parseJSON?["signupdate"] as! String?
+                let isadmin:Bool? = parseJSON?["isadmin"] as! Bool?
                 
                 
                 
@@ -75,7 +77,7 @@ class LoginViewController: UIViewController {
                     
                     if(!resultValue){
                         //display alert message with confirmation
-                        var myAlert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                        let myAlert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
                         
                         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                         myAlert.addAction(okAction)
@@ -92,7 +94,7 @@ class LoginViewController: UIViewController {
                         NSUserDefaults.standardUserDefaults().setObject(password, forKey:"password")
                         NSUserDefaults.standardUserDefaults().setObject(lastlogindate, forKey:"lastlogindate")
                         NSUserDefaults.standardUserDefaults().setObject(signupdate, forKey:"signupdate")
-                        NSUserDefaults.standardUserDefaults().setBool(isadmin, forKey: "isadmin")
+                        NSUserDefaults.standardUserDefaults().setBool(isadmin!, forKey: "isadmin")
                         NSUserDefaults.standardUserDefaults().synchronize()
                         
                         
@@ -106,7 +108,9 @@ class LoginViewController: UIViewController {
                     }
                 })
                 
-            }
+                } catch {
+                    
+                }
         }
         
         task.resume()

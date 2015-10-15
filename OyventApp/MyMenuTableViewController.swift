@@ -48,7 +48,7 @@ class MyMenuTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("CELL") as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("CELL", forIndexPath: indexPath) as? UITableViewCell
         
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
@@ -89,7 +89,7 @@ class MyMenuTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        println("did select row: \(indexPath.row)")
+        print("did select row: \(indexPath.row)", terminator: "")
         
         if (indexPath.row == selectedMenuItem) {
             return
@@ -100,10 +100,10 @@ class MyMenuTableViewController: UITableViewController {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
-        var isUserLoggedIn:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
+        let isUserLoggedIn:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
         
         if(!isUserLoggedIn){
-            var loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("loginView")as! LoginViewController
+            let loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("loginView")as! LoginViewController
             
             appDelegate.window?.rootViewController = loginViewController
             appDelegate.window?.makeKeyAndVisible()
@@ -145,7 +145,7 @@ class MyMenuTableViewController: UITableViewController {
                     //tabBarController.selectedIndex = 1
                     
                     let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNavGeo") as! MyNavigationController
-                    var geoViewController:GeoViewController =  nvg.topViewController as! GeoViewController
+                    let geoViewController:GeoViewController =  nvg.topViewController as! GeoViewController
                     geoViewController.hasCustomNavigation = true
                     appDelegate.window?.rootViewController = nvg
                     appDelegate.window?.makeKeyAndVisible()
@@ -166,7 +166,7 @@ class MyMenuTableViewController: UITableViewController {
 //                    sideMenuController()?.setContentViewController(meView)
                     
                     
-                    var logoutView: LogoutViewController = mainStoryboard.instantiateViewControllerWithIdentifier("logoutView") as! LogoutViewController
+                    let logoutView: LogoutViewController = mainStoryboard.instantiateViewControllerWithIdentifier("logoutView") as! LogoutViewController
                      sideMenuController()?.setContentViewController(logoutView)
                     
                     

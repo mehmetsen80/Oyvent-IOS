@@ -110,7 +110,7 @@ class Album{
                 let urlSmall: String? = result["URLSMALL"] as? String ?? ""
                 let urlThumb: String? = result["URLTHUMB"] as? String ?? ""
                 
-                var album = Album(pkAlbumID: pkAlbumID!, fkUserID: fkUserID!, fkParentID: fkParentID!, fkCategoryID: fkCategoryID!, albumName: albumName!, albumUserName: albumUserName!, parentName: parentName!, latitude: latitude!, longitude: longitude!, postDate: postDate!, address: address!, radius: radius!, milesUser: milesUser!, photoSize: photoSize!, totalPhotoSize: totalPhotoSize!, urlLarge: urlLarge!, urlMedium: urlMedium!, urlSmall: urlSmall!, urlThumb: urlThumb!)
+                let album = Album(pkAlbumID: pkAlbumID!, fkUserID: fkUserID!, fkParentID: fkParentID!, fkCategoryID: fkCategoryID!, albumName: albumName!, albumUserName: albumUserName!, parentName: parentName!, latitude: latitude!, longitude: longitude!, postDate: postDate!, address: address!, radius: radius!, milesUser: milesUser!, photoSize: photoSize!, totalPhotoSize: totalPhotoSize!, urlLarge: urlLarge!, urlMedium: urlMedium!, urlSmall: urlSmall!, urlThumb: urlThumb!)
                 albums.append(album)
             }
         }

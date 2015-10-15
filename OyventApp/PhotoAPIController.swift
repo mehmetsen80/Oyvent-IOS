@@ -28,14 +28,14 @@ class PhotoAPIController{
     func post(currentPage: Int, latitude: String, longitude: String, albumID: Double, fkParentID: Double) {
         
         let url = NSURL(string:"http://oyvent.com/ajax/Feeds.php")
-        var request = NSMutableURLRequest(URL: url!)
-        var session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url!)
+        //var session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST";
-        var userID:String = NSUserDefaults.standardUserDefaults().stringForKey("userID")!
+        let userID:String = NSUserDefaults.standardUserDefaults().stringForKey("userID")!
         //println("userID:\(userID)")
         let postString = "processType=GETFEEDLIST&userID=\(userID)&currentPage=\(currentPage)&lat=\(latitude)&lng=\(longitude)&albumID=\(albumID)&fkParentID=\(fkParentID)"
         //println("photos postString: \(postString)")
-        var err: NSError?
+       
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
        
         
@@ -44,18 +44,19 @@ class PhotoAPIController{
             
             if(error != nil) {
                 // If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                print(error!.localizedDescription, terminator: "")
             }
         
             
-            var err: NSError?
-            if let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as? NSDictionary {
-                //println("Dictionary: \(json)")
-                self.delegate.didReceivePhotoAPIResults(json)
+            do{
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary 
+                    //println("Dictionary: \(json)")
+                    self.delegate.didReceivePhotoAPIResults(json)
                 
-            } else {
+            } catch {
                 //if nil
-                let resultString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                //let resultString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                print("Fetch failed: \((error as NSError).localizedDescription)")
             }
         }
         

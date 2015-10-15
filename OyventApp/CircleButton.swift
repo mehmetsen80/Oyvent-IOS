@@ -11,7 +11,7 @@ import UIKit
 
 class CircleButton: UIButton {
 
-    required init(coder decoder: NSCoder) {
+    required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
         //backgroundColor = UIColor(red: 0x04/255, green: 0x7f/255, blue: 0xb7/255, alpha: 1.0)
     }

@@ -7,244 +7,266 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01A3462D5463ECA0D0FEBB26659E5FC2 /* UIView+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D8054AC8140777BBF76D731E64FFD7 /* UIView+Haneke.swift */; };
-		070901522DC3A4E37C593BA45E36BB85 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B820EDB044737D8E01FC3579B60B4 /* View.swift */; };
-		08F9C798465BBA3F03C635FD5BDEAD26 /* FICUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = BE16F9C04BFC70B371805D1F4218577D /* FICUtilities.m */; };
-		09CF59C00387567AF34FA85C25C11793 /* Cartography-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC6E1E09E9CBDDAB16124155B61FB4F /* Cartography-dummy.m */; };
-		10F337DCDE8F51C4526EBC0C0ACFA67B /* NSHTTPURLResponse+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589831B7585BC0AA61A1C2F5EAA5F142 /* NSHTTPURLResponse+Haneke.swift */; };
-		13E68ADF1092ED9D1A5B0A3AABD70A40 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AF16E538E4298183905317E9722882 /* Foundation.framework */; };
-		13F4B19ACB9D90E9E4A616AC0C60E3D1 /* FICImageTableChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B116E81AF3761B1263AE06D60578D5E9 /* FICImageTableChunk.m */; };
-		17F998B99F6FA7264D3FE9C128BFDFB9 /* FICUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 23306E1C3C586434FC5706035527CCCD /* FICUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		19536B3F72BA489F3B21D428C5EB5E38 /* NSFileManager+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F21031EDF55ED85BEFF99F099EAFC /* NSFileManager+Haneke.swift */; };
-		1B60CFEBAD0EFA175810C0EF23240D97 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DFF41F79B416123B74418358D0885 /* Request.swift */; };
-		26237FED5AB1C5E94C368DB4D272DEBE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911246AC9D0C11B5F8D8E35988535905 /* Data.swift */; };
-		262E0B57A33D06A182CC53A9DF58EF72 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDB0505ACC3C5EE22B17333551D9240 /* Format.swift */; };
-		29AED8711922EE48962B9FA7EA28B20C /* FICImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 48138D15B7A5A7F84D9636EE71DE6E3D /* FICImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2B0C9CBF78BFB15718B1A5DF2A66C345 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8234B3567BB67DB3C31D92CFEDEEE7B /* ServerTrustPolicy.swift */; };
-		2B2DE722147C3162C6B098030E888872 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AF16E538E4298183905317E9722882 /* Foundation.framework */; };
-		2C599994852F75DBD0AE3FF89EEBFF6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AF16E538E4298183905317E9722882 /* Foundation.framework */; };
-		2D429BDAC493208A916F727EC42694F7 /* FICImports.h in Headers */ = {isa = PBXBuildFile; fileRef = C0EAD93AC14A0D6D67A689E1F8C836B6 /* FICImports.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2EA42D81D453505EB2F3FF3EA66F939D /* FICImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DF594A6B272BE50E14611E2394B37FCE /* FICImageCache.m */; };
-		2FAE5125FD1D26D20F7FE68F3D95A119 /* FICImageTableEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D7C562F3E4C2EB63DCF05C368ED87D /* FICImageTableEntry.m */; };
-		30A204E044478A520134D09CAFDD3782 /* ConstraintGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C040F0B8FECA45BCF03F8E6BC71663 /* ConstraintGroup.swift */; };
-		30CFA8B34EF65AE80FF1FAE388C13D58 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AF16E538E4298183905317E9722882 /* Foundation.framework */; };
-		34D30F84F51947617C8832AA616A9DFC /* NetworkFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F3DB64E221C6F34BF704223454ED06 /* NetworkFetcher.swift */; };
-		37CA5FAAEE69C29C6AB383A36C1C1B85 /* FICImageTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 1924749B26CCFBF9B421D85382730EB8 /* FICImageTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3A2AC3AD9338B1A7094212EB0CCEB23D /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06731842810211E34A1F672480A201C0 /* ParameterEncoding.swift */; };
-		3BACD7FB832C692279C92E007F17295F /* FICImageTableChunk.h in Headers */ = {isa = PBXBuildFile; fileRef = EEDA94DAD78134C9B34DED2A02D4DDD7 /* FICImageTableChunk.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3CCBE7211E85F8FA0F8198385E0F5A69 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E6573DC7107D65782479EA37526F59 /* Alamofire.swift */; };
-		3D376FBC154D6227FE16C57DF8EBD6C3 /* Coefficients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C93AD0BD6040B1F04945281D5CFCAF9 /* Coefficients.swift */; };
-		41306ADE8BDEBB820D8FB2AA61945873 /* CGSize+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111CA0EBC43844AEFBE7CE0B51C5C90 /* CGSize+Swift.swift */; };
-		41399A80CC9646D8ADA177A8A9FD713E /* UIImageView+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19CA4D3C5582B616E76BDBE4265CEEE /* UIImageView+Haneke.swift */; };
-		45A85079D312F3F0320533E6A357219A /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2032CF939E07035DA379FE321F8B9E /* Upload.swift */; };
-		49E9666F36D9C235360AD6C084DB7E61 /* CryptoSwiftMD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F798D911F12D3FB5C0CDC09046BBABC /* CryptoSwiftMD5.swift */; };
-		4A2D0B02E203EC888E4E0D946D3BB123 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98182DF62A74B1EA91C604491BE7 /* Constraint.swift */; };
-		4AA25911EF62F2A738F40AEC7093022E /* LayoutProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FD1C216DA0BD76C72F700E376AD7C9 /* LayoutProxy.swift */; };
-		4EC56B1C75919E7F94AB40A52AA78F05 /* Compound.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAFCEA6A62D747BFC6C5FDA203C6A0C /* Compound.swift */; };
-		579DB392184B23AC4FF0988D4B999039 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C41662386A3901B6F14EBDE3072E668 /* Alamofire-dummy.m */; };
-		5A44ECC3002935FA80439BBD42857790 /* FICImageTableEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D972CAFEA3D40ADE70AF7CD611B211 /* FICImageTableEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		649F2AAC3DB5886E1DC15B1FC3722576 /* Cartography-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A4D621E3A230357FC7127ABD847A1E41 /* Cartography-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		746838DABEBC1BD6E39497DBC8E907AB /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E713BFBCB6635BA0E3DDCE07D473AD92 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		75C9F0037566499CD85B522C80E7B22D /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F3056C97E2291FDDB8589869E6479F /* Point.swift */; };
-		783B42513AF007D8DCFA5735189F720B /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3052269E5344208F2BA67B4A4699B04B /* Fetch.swift */; };
-		8152065E550919ABE9B8A49A03B8E02F /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D281E6B5573CE126B978046AA0D4A /* Download.swift */; };
-		85DEBFCBF5E93A3250BF908823AD9E38 /* FICImageCache+FICErrorLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = 5642AA97862DC5001C7C656F83D552C6 /* FICImageCache+FICErrorLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		932D470B653C2372866AE8C65BC0D56E /* FICImageTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B3403348AD15554F5B7D48BE04BCC5 /* FICImageTable.m */; };
-		9ABD69E18E1971C786800BC4DB72F844 /* HanekeSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DFF6B4EE382AF85FC10230F9A9228BA0 /* HanekeSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C7892BEC27A946FE532229654D67D59 /* Align.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6F1BD834EB7285A7753961EDFD15F0 /* Align.swift */; };
-		9D075F1A6B370372A2A3FAE7C43C27B3 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8E8963E9DF76911CB46E8AD13416A /* DiskCache.swift */; };
-		9E9FDDAFA2929278460C41B813BEE778 /* Edges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985752849DA2E077CCEA21EAC2EA2FB1 /* Edges.swift */; };
+		0477002B387B0FC6425FA6107976A1D6 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DEC2600883907FDDFF27AB4F661560 /* Priority.swift */; };
+		047D78025FC7D468BDD295BDDEF7420A /* NetworkFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308B7BEB84DF082AB7EC0C5D5F0E17C /* NetworkFetcher.swift */; };
+		059F4A0BCA131694BA10E32B6BBE93E4 /* UIImage+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8316A7652EE239CC112FDBA0B2008 /* UIImage+Haneke.swift */; };
+		09BE1A480A9368BE8871C220A17FBAC7 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF7DD6E4EBE102C5314401125B9D92C /* View.swift */; };
+		12691623C277D2FE670518EB620D0EB1 /* FastImageCache-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 95F296D9BA13731D2F79E1193E04E96E /* FastImageCache-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		12D7AEB7C09276F6E416982DE6CE06B8 /* String+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583DFE8FD71D6D9F7A4210DE82CD8AC3 /* String+Haneke.swift */; };
+		160E5EEE4D4044F4D01A0B000D828912 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB3B0595148BB034E49449AC9B6C968 /* Result.swift */; };
+		18334AB2178762DE1BC8C308C53A80BC /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4AA846ADD1F2F72BB4E7260451281 /* Expression.swift */; };
+		19995A03A262BA329CEA75883E10EB28 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605024CB0E5DA80C328157857865CB46 /* MultipartFormData.swift */; };
+		1E12ABAB080B6CCEA583D954876601FD /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE0B4278AC6A83CEFE9DA673E0F279 /* Fetcher.swift */; };
+		1F0CF04D83DC21CBEF915EB6AA81F954 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 48140E02BBF69E5E4BC5044E707D036F /* Alamofire-dummy.m */; };
+		245CBDD5C063171DB2F392E4C2DAF85C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57579CD8EB4C3798DD36A6F2554E41C9 /* Foundation.framework */; };
+		256B227F656BE142D3DC55C8E75F8979 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527E5E37487CF14ACED9B2C91020ED89 /* Edge.swift */; };
+		275665325202FAEBB59890EC7FCF16A8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51CD045072A689348D3036DA6AFFF80 /* Cache.swift */; };
+		283A400A60B3E3AE4A7DDCB3A14FD652 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57579CD8EB4C3798DD36A6F2554E41C9 /* Foundation.framework */; };
+		28DB7BCECC6797F78E9E63FC96B95605 /* Cartography-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F901AD5B6AAF332BE01E00B8B41703C /* Cartography-dummy.m */; };
+		30CFA8B34EF65AE80FF1FAE388C13D58 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57579CD8EB4C3798DD36A6F2554E41C9 /* Foundation.framework */; };
+		31FEEB709ABFDDEC2C725A9687BEA556 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A61D0039FCDCFFCE894F782B36AB422 /* Point.swift */; };
+		32A94F36E34BA78DFCFEE325ABEE6681 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E91FF53AD737625308F32F2C0C5B7AE /* Error.swift */; };
+		35D9675A728E4922FEEC73EC55826525 /* UIView+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62EB6534BBC3E3093E0833A22025108 /* UIView+Haneke.swift */; };
+		3AD14A706B31DA837BCD7AEADE1E8074 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6526D5D0A56CD171363357BB1D510381 /* Extensions.swift */; };
+		3DA62145F85DB145821FE45471C7B4C1 /* FICUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A03CF28678481F8628CD7377DC59D2 /* FICUtilities.m */; };
+		3EEE9C34482B4BE1EF479CF7A61B5794 /* FastImageCache-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 80CDFE8A7B41E91C16ED1D5CF41ACCCA /* FastImageCache-dummy.m */; };
+		4241EBC4886A189EA96630620BE0177E /* FICImageTableChunk.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F576B6D6BE35605E191477E24B58899 /* FICImageTableChunk.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4592437882A3CA655D2833A950341412 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5DA8175C45B58F5933F657641C0F3 /* Request.swift */; };
+		46BB310248315836813E25848B947876 /* FICImageFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 399F7CB2F6F7378ADA57582E700A1380 /* FICImageFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		487F14E5346E82E7627D5A02367DC2FF /* Distribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920ACBF49EC9C63E9CE265C8E01251D7 /* Distribute.swift */; };
+		48DBFB3AFCC94140C58F59381062C5E8 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F33D43E1957F2457AA0CAFF6D9ED8 /* Manager.swift */; };
+		49526AF31AD4E25DC0D1F77315A9DA74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57579CD8EB4C3798DD36A6F2554E41C9 /* Foundation.framework */; };
+		4C0C24B3F154FAE2D017E06B54006377 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 00A8A506AE67F0A42D19C17528544E94 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3836D24FC1BB3D5F68FF1BBE443205 /* Align.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9BD7F9017AEAE77F7B1A1202AA8872 /* Align.swift */; };
+		50ED41421F1909F9CB1EB899E83E4135 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57579CD8EB4C3798DD36A6F2554E41C9 /* Foundation.framework */; };
+		54BE850B64ACF03C9E34EE1B287242C6 /* FICImageTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 21A5AABA154E9C28A3AAFB0AFADABF5B /* FICImageTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		55C97371FF93AA63BE2F05A03841E61A /* UIImageView+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3317312D1A7B621E876C2EFF1C5E4AD /* UIImageView+Haneke.swift */; };
+		56D4779BCF88F93F89282D51A15A828D /* NSFileManager+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = C832E8D05030821AE551A6EA44FCEB0D /* NSFileManager+Haneke.swift */; };
+		5F0B38FFF784F45D9D587C09DC197C85 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE0F894A9FE69E04360FE637E650354 /* Format.swift */; };
+		6146CA7B45F5A8076771075A4C530EA7 /* FICImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CFF987D9A9D2A5F31385C3270D5E5 /* FICImageCache.m */; };
+		61EF9C75D4E57D2B1673E3F62F0996A0 /* UIButton+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3DC4206CEC7E7E3D6FC31897006903 /* UIButton+Haneke.swift */; };
+		62FA049E75277D80C9BDE8E70EEBF963 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05EAD93C7A341BCE19B66C4AF0EC04F /* ParameterEncoding.swift */; };
+		6301435E6D512F1B9F7922A3FC929344 /* FICImageTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8B9C3D2F6FF570FB12D21D2DA6B0F2 /* FICImageTable.m */; };
+		644E734A0420F6A82D97A9087A645C71 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B86E9533650C11C82AF6E590126342 /* DiskCache.swift */; };
+		69191778B8AA77F55CAB3AD5AE495F1E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1128BA47485B9A22448930CDD72F52B /* Validation.swift */; };
+		7566421583FAD6296B84296CEB1D6DB9 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923A29DB99A8C957D80C0840126B288E /* Constraint.swift */; };
+		758A945E9D92FEF8E7ADEE9136A003F3 /* FICImageTableEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = E53978A50BB5F1114CFBD3CB02B0EC03 /* FICImageTableEntry.m */; };
+		7896BCFA3347571BC05DED0F566D0379 /* DiskFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A779624FD79FBCDC867A7EC02616C5F /* DiskFetcher.swift */; };
+		80122AC8DC31281C661B83AB8A07512E /* FICImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 039FE12F6DC17168ECD42E8CDEF70396 /* FICImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		88B8B90308AE0D0C634C0D2EC47F6A71 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CD6EE3B049462A4E654B9EBC60A4E /* ViewUtils.swift */; };
+		89D3E59CDAC13BD59A53674912A5FFE4 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA66E527137EEFE18F2B75F00C3F12 /* Upload.swift */; };
+		89FC18266CC0C054C9DA030151522366 /* FICUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = C0C363DA3D24F7D0A3149F88E89D8450 /* FICUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A68D67843B6072D310C04D660174BA8 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3332B088AEA00F4B25501DF1F6817A /* Context.swift */; };
+		8CB61472291B709BBDEEFAF8661256C5 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D280BD6AC3ACAE6C65A390482C91055 /* Stream.swift */; };
+		922ABA51FDAB069FCC21A74A38E717D6 /* LayoutProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A7B3EBECD074C0267AD09D59098CE5 /* LayoutProxy.swift */; };
+		957D5D2934E0664A4C82F3F36E4D9B19 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE006F55215ED8CC6C1F35CC73B129F /* Dimension.swift */; };
+		9B08A7FACB9818C705D8F6AED9E45334 /* FICImageTableEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A8965AEB290C0B8E964CF0A8D57BC08 /* FICImageTableEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A171C2ABC1043A4FA93C45798566CDC8 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C356A528DDE17AD841DFACD0A947F7 /* Pods-dummy.m */; };
-		A44E0C39C6466AA8A0DE8389D2DD40AB /* DiskFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F11682F9DFD37A816747E5608BE5C /* DiskFetcher.swift */; };
-		AB766DBDAB5B925DFAC762B6DF17C414 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49598DC40B86DB62B66CFC279CD26B5 /* Dimension.swift */; };
-		AC285485B8A6AE36ECC2F88D8182EB64 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C318DA499D4D81F0893938815AF2561 /* Fetcher.swift */; };
+		A25356E70AE02042842EF843E0A7D596 /* HanekeSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E4DF575D30AB0C64FA28FE6911CCD70C /* HanekeSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAFD3308355E8D051D75BB2EDAA2BACA /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A2F4F40E2B313FDD076D9D0D8A76E /* Size.swift */; };
 		AE3F030C2025ED7BF90F495DA30BE76A /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 296DBD5BB2152C8FE8BAD8E47A99A0ED /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B249B69F1BD8C6262AB0645AED6A4E0B /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF99D0CA83F0A0A6D6766E432537F10 /* ResponseSerialization.swift */; };
-		B47756F9F8F9C74C9D358DB5496C3F5B /* UIButton+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F4C8EDADB83B1C88D3A718A760D611 /* UIButton+Haneke.swift */; };
-		B83137591E4FC0E6BC84EFCCA48AA118 /* FICImageFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE4D7DDC1724E57AC8C29C3B2ADAD1 /* FICImageFormat.m */; };
-		B8932A098C47D955B69B1EAC736DDEFE /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818ED9E9946E10904A718ACE88709F0D /* Cache.swift */; };
-		BEBBD0808C197A60C8C7E8B787BBBEA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AF16E538E4298183905317E9722882 /* Foundation.framework */; };
-		C377C8DA29CB2C44E9B0FA0809EDDFA1 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA36267FF06AB12305F3571207F2DD /* Manager.swift */; };
-		C39C693279EECB3CB3A3D633F05E0D19 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A5C0BE9557AEF6287F035781B02292 /* Log.swift */; };
-		C6243140C3F13AF84327A2F13BCF736D /* FICEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CE65CDBA5D82E679AA3747A30E9D3B4 /* FICEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CC0DF497534219A477FA1301B476D4C5 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01434BEA0618D03B15332F1C8D19AAA8 /* MultipartFormData.swift */; };
-		CC854F73F09E94C4DCEACB318AC37C1D /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77383248CA739CAA4598579D3E299C15 /* Validation.swift */; };
-		D01DF3B8E6179BFEBDEB6697FAC0CC99 /* HanekeSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7596CB6F6548A3BE476881FB886CA62E /* HanekeSwift-dummy.m */; };
-		D1F72BA90789E416693DEB69B8856317 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B80799861E36955D7C7B9DAAA4961A /* Extensions.swift */; };
-		D66D499E98B1E92901B25EA9B6511F94 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAA9AEDE2718348FC55BA7C4E92BF34 /* Edge.swift */; };
-		D817498BA96F048B6DF0053F98176845 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765AE7C707BB9141FBB6E05D57103012 /* Size.swift */; };
-		DAA6208FD78F8F20D82930CB597FE131 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35408EAC0C896FB6AE1A8CB6225F9C8 /* Layout.swift */; };
-		DCF1F84D5DD1C5966EA9F2159B4C5F59 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A8AC626474F6C9894BB25650A8E40E /* Property.swift */; };
-		DE4FFE1AB8E1BEB5CE491B151D44F5EB /* String+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8C315A5E6AAA08A2ABC18608ED7DB /* String+Haneke.swift */; };
-		E19903E54B1B478C1CCD18E151629BDE /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DC56CF1688D6B9B642772FA249356B /* Context.swift */; };
-		E377961F194C32214DCDF1BDB27FE7EE /* FastImageCache-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6486FB98FADE45A4CCE31B70792DDF2 /* FastImageCache-dummy.m */; };
-		E75F5EC5D058EA1CC5831FEA47136484 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = D673E9868DA121C1A81D49C3F143D9BD /* Expression.swift */; };
-		E8D77A1BDC609E24972385229201763D /* UIImage+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822C5DB977F68090C72F4BDF17B6B494 /* UIImage+Haneke.swift */; };
-		E9020616330BA56E738D58FE873C220C /* Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4CAC25473BDDBFF76003477B18E07F /* Haneke.swift */; };
-		EC5B60ED3A17FC73E5EF37C7A7EDB8B1 /* FastImageCache-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C1EBCF7DB4E593DE06820187533FBF2B /* FastImageCache-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EECE4D482177835C267CF543E62077A1 /* Distribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C1989120498C2BD24DBFF70DB22D /* Distribute.swift */; };
-		EF3CC62A599AB6C57E22F781FA80248C /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D12F6BE446744A14B0C4AB0744A20F /* ViewUtils.swift */; };
-		F2F2FC52D698F140EF680E28C1DEEFA9 /* FICImageFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 82C38850B1549234889740D4ED42479F /* FICImageFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F32229FB40339ED7782700B4F959DFF5 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651002A492CEFD3F537980BD7CC0255 /* Priority.swift */; };
+		B6661231CDA134D47505384B53A7522E /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283636156A510F4C19AF2EC016DD56CC /* Fetch.swift */; };
+		BDBC174A75E590F8B650780A9505368A /* FICImageFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEBFD2F9FD214636C99F48A562664FF /* FICImageFormat.m */; };
+		C286AA8B5495F0889D0D1010C65F31E5 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93962138524A1CFBE1BB4CF4621FE336 /* Alamofire.swift */; };
+		C58D206926EDC3769696505F7D14E25C /* ConstraintGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D107AC4C16B828D9D7723BF499346C04 /* ConstraintGroup.swift */; };
+		C7948ED2389A35CB8FE0595464B2642C /* CGSize+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BAC478BBF4D7C0B95520C17EA8F584 /* CGSize+Swift.swift */; };
+		C7FE6F73472B80914D7E521AA0BA1146 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919E73DFEFF88B1138651612296B51DC /* ServerTrustPolicy.swift */; };
+		CD121409266AB95E524222E930CA8328 /* CryptoSwiftMD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470BDFE54DCBDF503AA99A90A692304 /* CryptoSwiftMD5.swift */; };
+		CD7083EB9950B827963174932597996B /* Compound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A91ACBC3DF827C9EC4E0A1CD0871D84 /* Compound.swift */; };
+		CE739F05A86CD7FA2E93BEA9B0BD7472 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143098B12C1A8BC95C1E2DB2864E734 /* Log.swift */; };
+		CEB9DA43C1C63C71D2AA63F660579E57 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE7A9907E6DF050470253D104B4DEC /* Property.swift */; };
+		D16EBC7A430719D8C0774640049C06C6 /* NSHTTPURLResponse+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405029D98DB9FAAD9474DE7A510A6272 /* NSHTTPURLResponse+Haneke.swift */; };
+		D5C2C5B8830EF5767BE0919E722B28D4 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CCBC2579A16DA66B439E8002E5B489 /* Download.swift */; };
+		D60AE084AF5E7EF09ADF0664EF69A394 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8E890B8EB3ABBBA9C3F67BD9E279F /* Data.swift */; };
+		D6E84D8C9DBDFAFFCA68F2AAA3E7979D /* Edges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3584B926EE4A759E1690B51BAB6179CC /* Edges.swift */; };
+		DC57A7191D441754420BD4DC619810EB /* FICImageTableChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A8C8241D6FFD39ACBDAA3AD5760C49 /* FICImageTableChunk.m */; };
+		E0ECD23A6D7E33FB2865E670DDB21B5D /* FICEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 932E726BBD9EBBC9A5D3542E7ADBDC11 /* FICEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E440FCFC8EDB1AFE0E1581501B6440FF /* FICImageCache+FICErrorLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = C43E4B4789F6C4ADF0A92300976E572C /* FICImageCache+FICErrorLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E5DA5E65F8450C5DEDCA5B81EEB66973 /* Cartography-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E5FE6583AC1CCD70865DFBE2F0E8143 /* Cartography-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA4B4AEA23752A628D7719F766C4EC85 /* Constrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB581B6C99A71BB0AC0C540477A220F1 /* Constrain.swift */; };
+		EB98D380AD161B6D7AD518C1B84AD0D2 /* Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3DD87D369A29C8A1C14A945ADD6943 /* Haneke.swift */; };
+		ECB2FD9BC9A446DBBD5822945A2A54C9 /* Coefficients.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87E9CE3B907071112E9817A626BCA47 /* Coefficients.swift */; };
+		EF1A7633C4DA296447364C2C012602C0 /* HanekeSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A77B9EFDE22DB5C9F5D837DB7E744E3F /* HanekeSwift-dummy.m */; };
+		F7D10CC77EE6E9FE23F0C670C1155DD2 /* FICImports.h in Headers */ = {isa = PBXBuildFile; fileRef = 84AEDC630C51C111478300496276C890 /* FICImports.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF2FC6F801305892EDCB9D9361CEEA72 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060659BFADCDAE3A711059CB37BD3BA2 /* ResponseSerialization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		81AE03ABC1E0EBE3E2CC1621DA937839 /* PBXContainerItemProxy */ = {
+		2FD64F00FEAA26AAA85077325F6AAC13 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E493D064C971B20CC0542CBE318CCB81;
-			remoteInfo = Cartography;
-		};
-		A1811D2758C93E7217E52FFB0DA85154 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 936D1C655BE850D32A9B5DD157E24235;
-			remoteInfo = FastImageCache;
-		};
-		A63CEF5A31D13DC419031FE9C6CDF2E4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AFA56FAC8F5C8E3565A0656958C1618A;
+			remoteGlobalIDString = 3E16DD50343DE184157795B9B7A2C7C5;
 			remoteInfo = Alamofire;
 		};
-		AA18E82F9EB1CF1F03E078D76985DB89 /* PBXContainerItemProxy */ = {
+		3F4207D0F414BB1DA4DCBB6E0BD44185 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B27381F8EF033444960536F4D6D1C102;
+			remoteGlobalIDString = 8797ED247E366F6D9F24FAE9CDD33A38;
 			remoteInfo = HanekeSwift;
+		};
+		949ED4A73AC645A0E698396EC188B32D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 530050EC0EE0E9891DD5A25EC66DAF43;
+			remoteInfo = Cartography;
+		};
+		B2140E851C573A6A2F5661E5D9B05CDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA6773D48630C8C094C901AD5CA53FEF;
+			remoteInfo = FastImageCache;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01434BEA0618D03B15332F1C8D19AAA8 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
-		0651002A492CEFD3F537980BD7CC0255 /* Priority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Priority.swift; path = Cartography/Priority.swift; sourceTree = "<group>"; };
-		06731842810211E34A1F672480A201C0 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
-		0767A4682444DAB2423E75D068E08E32 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		09D972CAFEA3D40ADE70AF7CD611B211 /* FICImageTableEntry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICImageTableEntry.h; path = FastImageCache/FICImageTableEntry.h; sourceTree = "<group>"; };
-		116D281E6B5573CE126B978046AA0D4A /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
-		17DC56CF1688D6B9B642772FA249356B /* Context.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Context.swift; path = Cartography/Context.swift; sourceTree = "<group>"; };
-		18FC333113080F368173B534C8A53794 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
-		1924749B26CCFBF9B421D85382730EB8 /* FICImageTable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICImageTable.h; path = FastImageCache/FICImageTable.h; sourceTree = "<group>"; };
-		1C0D51E0067C744F2AFCF229EC003F3A /* HanekeSwift-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "HanekeSwift-Private.xcconfig"; sourceTree = "<group>"; };
-		220F21031EDF55ED85BEFF99F099EAFC /* NSFileManager+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSFileManager+Haneke.swift"; path = "Haneke/NSFileManager+Haneke.swift"; sourceTree = "<group>"; };
-		23306E1C3C586434FC5706035527CCCD /* FICUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICUtilities.h; path = FastImageCache/FICUtilities.h; sourceTree = "<group>"; };
-		26E6573DC7107D65782479EA37526F59 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		00A8A506AE67F0A42D19C17528544E94 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		039FE12F6DC17168ECD42E8CDEF70396 /* FICImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICImageCache.h; path = FastImageCache/FICImageCache.h; sourceTree = "<group>"; };
+		04E4AA846ADD1F2F72BB4E7260451281 /* Expression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expression.swift; path = Cartography/Expression.swift; sourceTree = "<group>"; };
+		060659BFADCDAE3A711059CB37BD3BA2 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
+		08AA66E527137EEFE18F2B75F00C3F12 /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
+		091AAB6C2EA4573F20CA5726AE5B2AD8 /* Haneke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Haneke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A8965AEB290C0B8E964CF0A8D57BC08 /* FICImageTableEntry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICImageTableEntry.h; path = FastImageCache/FICImageTableEntry.h; sourceTree = "<group>"; };
+		0CEBFD2F9FD214636C99F48A562664FF /* FICImageFormat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FICImageFormat.m; path = FastImageCache/FICImageFormat.m; sourceTree = "<group>"; };
+		133F33D43E1957F2457AA0CAFF6D9ED8 /* Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Source/Manager.swift; sourceTree = "<group>"; };
+		19C82961CA0A260E1073821FEF6466C5 /* HanekeSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HanekeSwift.xcconfig; sourceTree = "<group>"; };
+		1D1352CFE742F27E9709EA249C0F039F /* Cartography.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cartography.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F576B6D6BE35605E191477E24B58899 /* FICImageTableChunk.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICImageTableChunk.h; path = FastImageCache/FICImageTableChunk.h; sourceTree = "<group>"; };
+		21A5AABA154E9C28A3AAFB0AFADABF5B /* FICImageTable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICImageTable.h; path = FastImageCache/FICImageTable.h; sourceTree = "<group>"; };
+		25C5DA8175C45B58F5933F657641C0F3 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		27C8316A7652EE239CC112FDBA0B2008 /* UIImage+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+Haneke.swift"; path = "Haneke/UIImage+Haneke.swift"; sourceTree = "<group>"; };
+		27CCBC2579A16DA66B439E8002E5B489 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
+		283636156A510F4C19AF2EC016DD56CC /* Fetch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Fetch.swift; path = Haneke/Fetch.swift; sourceTree = "<group>"; };
+		2868C818DF9A25BB4DD1CEC381AC13E9 /* Cartography.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Cartography.modulemap; sourceTree = "<group>"; };
 		296DBD5BB2152C8FE8BAD8E47A99A0ED /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
-		2F89A30D175207228C12702844B71522 /* HanekeSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HanekeSwift-prefix.pch"; sourceTree = "<group>"; };
-		3052269E5344208F2BA67B4A4699B04B /* Fetch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Fetch.swift; path = Haneke/Fetch.swift; sourceTree = "<group>"; };
-		34FD1C216DA0BD76C72F700E376AD7C9 /* LayoutProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutProxy.swift; path = Cartography/LayoutProxy.swift; sourceTree = "<group>"; };
-		35F4C8EDADB83B1C88D3A718A760D611 /* UIButton+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Haneke.swift"; path = "Haneke/UIButton+Haneke.swift"; sourceTree = "<group>"; };
-		38EE4D7DDC1724E57AC8C29C3B2ADAD1 /* FICImageFormat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FICImageFormat.m; path = FastImageCache/FICImageFormat.m; sourceTree = "<group>"; };
-		3F619E0D78A46CE94DD6DDC6D74D5C5C /* Cartography-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cartography-prefix.pch"; sourceTree = "<group>"; };
-		48138D15B7A5A7F84D9636EE71DE6E3D /* FICImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICImageCache.h; path = FastImageCache/FICImageCache.h; sourceTree = "<group>"; };
-		48D8054AC8140777BBF76D731E64FFD7 /* UIView+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Haneke.swift"; path = "Haneke/UIView+Haneke.swift"; sourceTree = "<group>"; };
-		4CE65CDBA5D82E679AA3747A30E9D3B4 /* FICEntity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICEntity.h; path = FastImageCache/FICEntity.h; sourceTree = "<group>"; };
-		4DC6E1E09E9CBDDAB16124155B61FB4F /* Cartography-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Cartography-dummy.m"; sourceTree = "<group>"; };
-		4F211CD1E1679B00AE50F8B6EBA1BA89 /* FastImageCache.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FastImageCache.xcconfig; sourceTree = "<group>"; };
-		50665E8ACB75627F30B1DD6C4841E0A5 /* HanekeSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HanekeSwift.xcconfig; sourceTree = "<group>"; };
-		52B80799861E36955D7C7B9DAAA4961A /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Cartography/Extensions.swift; sourceTree = "<group>"; };
-		55B3403348AD15554F5B7D48BE04BCC5 /* FICImageTable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FICImageTable.m; path = FastImageCache/FICImageTable.m; sourceTree = "<group>"; };
-		5642AA97862DC5001C7C656F83D552C6 /* FICImageCache+FICErrorLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FICImageCache+FICErrorLogging.h"; path = "FastImageCache/FICImageCache+FICErrorLogging.h"; sourceTree = "<group>"; };
-		589831B7585BC0AA61A1C2F5EAA5F142 /* NSHTTPURLResponse+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSHTTPURLResponse+Haneke.swift"; path = "Haneke/NSHTTPURLResponse+Haneke.swift"; sourceTree = "<group>"; };
-		5BDA36267FF06AB12305F3571207F2DD /* Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Source/Manager.swift; sourceTree = "<group>"; };
-		5C93AD0BD6040B1F04945281D5CFCAF9 /* Coefficients.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Coefficients.swift; path = Cartography/Coefficients.swift; sourceTree = "<group>"; };
-		5E1B5111F041C16D07DF3C8FACEE7B63 /* Haneke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Haneke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F798D911F12D3FB5C0CDC09046BBABC /* CryptoSwiftMD5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CryptoSwiftMD5.swift; path = Haneke/CryptoSwiftMD5.swift; sourceTree = "<group>"; };
-		6C41662386A3901B6F14EBDE3072E668 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
-		6E45D81F52964FD0FD26B097E0FA4B14 /* Cartography.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Cartography.xcconfig; sourceTree = "<group>"; };
+		2A61D0039FCDCFFCE894F782B36AB422 /* Point.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Point.swift; path = Cartography/Point.swift; sourceTree = "<group>"; };
+		2C8B9C3D2F6FF570FB12D21D2DA6B0F2 /* FICImageTable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FICImageTable.m; path = FastImageCache/FICImageTable.m; sourceTree = "<group>"; };
+		2E03055795AB614553AFFD99C1FF61F4 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		3584B926EE4A759E1690B51BAB6179CC /* Edges.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Edges.swift; path = Cartography/Edges.swift; sourceTree = "<group>"; };
+		36C43C3BE6FCFBD43FA2A7818D7AC9A4 /* HanekeSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HanekeSwift-prefix.pch"; sourceTree = "<group>"; };
+		399F7CB2F6F7378ADA57582E700A1380 /* FICImageFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICImageFormat.h; path = FastImageCache/FICImageFormat.h; sourceTree = "<group>"; };
+		3CF7DD6E4EBE102C5314401125B9D92C /* View.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = View.swift; path = Cartography/View.swift; sourceTree = "<group>"; };
+		3D280BD6AC3ACAE6C65A390482C91055 /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
+		405029D98DB9FAAD9474DE7A510A6272 /* NSHTTPURLResponse+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSHTTPURLResponse+Haneke.swift"; path = "Haneke/NSHTTPURLResponse+Haneke.swift"; sourceTree = "<group>"; };
+		4397E963CEE33FBBE321989E208DD3E3 /* FastImageCache.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FastImageCache.modulemap; sourceTree = "<group>"; };
+		48140E02BBF69E5E4BC5044E707D036F /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
+		4A779624FD79FBCDC867A7EC02616C5F /* DiskFetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DiskFetcher.swift; path = Haneke/DiskFetcher.swift; sourceTree = "<group>"; };
+		4C3CFF987D9A9D2A5F31385C3270D5E5 /* FICImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FICImageCache.m; path = FastImageCache/FICImageCache.m; sourceTree = "<group>"; };
+		4DE0F894A9FE69E04360FE637E650354 /* Format.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Format.swift; path = Haneke/Format.swift; sourceTree = "<group>"; };
+		4E5FE6583AC1CCD70865DFBE2F0E8143 /* Cartography-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cartography-umbrella.h"; sourceTree = "<group>"; };
+		4E782F16E339F3DCCD0818DF6C2A20BE /* Cartography.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Cartography.xcconfig; sourceTree = "<group>"; };
+		4F155308BA3E1AA828D16D4280008F43 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F901AD5B6AAF332BE01E00B8B41703C /* Cartography-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Cartography-dummy.m"; sourceTree = "<group>"; };
+		527E5E37487CF14ACED9B2C91020ED89 /* Edge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Edge.swift; path = Cartography/Edge.swift; sourceTree = "<group>"; };
+		546A2F4F40E2B313FDD076D9D0D8A76E /* Size.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Size.swift; path = Cartography/Size.swift; sourceTree = "<group>"; };
+		5470BDFE54DCBDF503AA99A90A692304 /* CryptoSwiftMD5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CryptoSwiftMD5.swift; path = Haneke/CryptoSwiftMD5.swift; sourceTree = "<group>"; };
+		57579CD8EB4C3798DD36A6F2554E41C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		583DFE8FD71D6D9F7A4210DE82CD8AC3 /* String+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Haneke.swift"; path = "Haneke/String+Haneke.swift"; sourceTree = "<group>"; };
+		605024CB0E5DA80C328157857865CB46 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
+		6526D5D0A56CD171363357BB1D510381 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Cartography/Extensions.swift; sourceTree = "<group>"; };
+		6A91ACBC3DF827C9EC4E0A1CD0871D84 /* Compound.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Compound.swift; path = Cartography/Compound.swift; sourceTree = "<group>"; };
 		73D7D1722BBD75C8027BB8671E0BC2A1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
-		7596CB6F6548A3BE476881FB886CA62E /* HanekeSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HanekeSwift-dummy.m"; sourceTree = "<group>"; };
-		765AE7C707BB9141FBB6E05D57103012 /* Size.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Size.swift; path = Cartography/Size.swift; sourceTree = "<group>"; };
-		77383248CA739CAA4598579D3E299C15 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
-		77B78AA0EA0ED94925A7BD355E813B3D /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		74342425B9069896CE6E2F89370F50D5 /* Alamofire-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Alamofire-Private.xcconfig"; sourceTree = "<group>"; };
+		76AD1DD8D80245F88813707962B9D805 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		781B97C2D85672B397BC42AA070A6456 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pods.modulemap; sourceTree = "<group>"; };
-		7A698C14F0597FE25950A7C5C4DC4C16 /* FastImageCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FastImageCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E46C00D85B06AE17271E20B50F99FCF /* Alamofire-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Alamofire-Private.xcconfig"; sourceTree = "<group>"; };
-		818ED9E9946E10904A718ACE88709F0D /* Cache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cache.swift; path = Haneke/Cache.swift; sourceTree = "<group>"; };
-		822C5DB977F68090C72F4BDF17B6B494 /* UIImage+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+Haneke.swift"; path = "Haneke/UIImage+Haneke.swift"; sourceTree = "<group>"; };
-		82C38850B1549234889740D4ED42479F /* FICImageFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICImageFormat.h; path = FastImageCache/FICImageFormat.h; sourceTree = "<group>"; };
-		8748C0C5752B2054346CA90895A70233 /* Cartography.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Cartography.modulemap; sourceTree = "<group>"; };
+		80CDFE8A7B41E91C16ED1D5CF41ACCCA /* FastImageCache-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FastImageCache-dummy.m"; sourceTree = "<group>"; };
+		82E5E385B8587AA5A42AC4B75A227B35 /* FastImageCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FastImageCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		838C4E685D8B467C2CF7C92103E18CCC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84AEDC630C51C111478300496276C890 /* FICImports.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICImports.h; path = FastImageCache/FICImports.h; sourceTree = "<group>"; };
 		87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		8C318DA499D4D81F0893938815AF2561 /* Fetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Fetcher.swift; path = Haneke/Fetcher.swift; sourceTree = "<group>"; };
-		911246AC9D0C11B5F8D8E35988535905 /* Data.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Haneke/Data.swift; sourceTree = "<group>"; };
-		96F3DB64E221C6F34BF704223454ED06 /* NetworkFetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkFetcher.swift; path = Haneke/NetworkFetcher.swift; sourceTree = "<group>"; };
-		985752849DA2E077CCEA21EAC2EA2FB1 /* Edges.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Edges.swift; path = Cartography/Edges.swift; sourceTree = "<group>"; };
-		9A2CBA35B3B5EAD84757AF4EBE1E1EE1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C1842ADC83965FD545C4255D1377766 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E91FF53AD737625308F32F2C0C5B7AE /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Source/Error.swift; sourceTree = "<group>"; };
+		919E73DFEFF88B1138651612296B51DC /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
+		920ACBF49EC9C63E9CE265C8E01251D7 /* Distribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Distribute.swift; path = Cartography/Distribute.swift; sourceTree = "<group>"; };
+		923A29DB99A8C957D80C0840126B288E /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Cartography/Constraint.swift; sourceTree = "<group>"; };
+		9308B7BEB84DF082AB7EC0C5D5F0E17C /* NetworkFetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkFetcher.swift; path = Haneke/NetworkFetcher.swift; sourceTree = "<group>"; };
+		932E726BBD9EBBC9A5D3542E7ADBDC11 /* FICEntity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICEntity.h; path = FastImageCache/FICEntity.h; sourceTree = "<group>"; };
+		93962138524A1CFBE1BB4CF4621FE336 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		958764A1B8C4090AEE497800F3E3EE87 /* Cartography-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Cartography-Private.xcconfig"; sourceTree = "<group>"; };
+		95F296D9BA13731D2F79E1193E04E96E /* FastImageCache-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FastImageCache-umbrella.h"; sourceTree = "<group>"; };
+		97AE0B4278AC6A83CEFE9DA673E0F279 /* Fetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Fetcher.swift; path = Haneke/Fetcher.swift; sourceTree = "<group>"; };
 		9C36463B45AD6C0107A8B448A0E4448D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		A4D621E3A230357FC7127ABD847A1E41 /* Cartography-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cartography-umbrella.h"; sourceTree = "<group>"; };
-		A5A65D72A2E1839C98577E77DB6874E4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A8871BC2E28C9E9D0F56557E5A1A9A9C /* Cartography.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cartography.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9AF16E538E4298183905317E9722882 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		B116E81AF3761B1263AE06D60578D5E9 /* FICImageTableChunk.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FICImageTableChunk.m; path = FastImageCache/FICImageTableChunk.m; sourceTree = "<group>"; };
-		B19CA4D3C5582B616E76BDBE4265CEEE /* UIImageView+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+Haneke.swift"; path = "Haneke/UIImageView+Haneke.swift"; sourceTree = "<group>"; };
-		B309AB9B3730A51F6CED64BC49613278 /* Cartography-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Cartography-Private.xcconfig"; sourceTree = "<group>"; };
-		B3FD3A83BC15183317CCFE3DF5263B59 /* HanekeSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HanekeSwift.modulemap; sourceTree = "<group>"; };
-		B8234B3567BB67DB3C31D92CFEDEEE7B /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
-		B865AE83E7AAAC3FEF104DAECDBA78F0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA2032CF939E07035DA379FE321F8B9E /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
+		A51CD045072A689348D3036DA6AFFF80 /* Cache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cache.swift; path = Haneke/Cache.swift; sourceTree = "<group>"; };
+		A77B9EFDE22DB5C9F5D837DB7E744E3F /* HanekeSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HanekeSwift-dummy.m"; sourceTree = "<group>"; };
+		A9C8E890B8EB3ABBBA9C3F67BD9E279F /* Data.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Haneke/Data.swift; sourceTree = "<group>"; };
+		AB581B6C99A71BB0AC0C540477A220F1 /* Constrain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constrain.swift; path = Cartography/Constrain.swift; sourceTree = "<group>"; };
+		AC3DC4206CEC7E7E3D6FC31897006903 /* UIButton+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Haneke.swift"; path = "Haneke/UIButton+Haneke.swift"; sourceTree = "<group>"; };
+		B143098B12C1A8BC95C1E2DB2864E734 /* Log.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Log.swift; path = Haneke/Log.swift; sourceTree = "<group>"; };
+		B752FE79D6A11045FBE42B1A95FC94DE /* FastImageCache.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FastImageCache.xcconfig; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BD6F1BD834EB7285A7753961EDFD15F0 /* Align.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Align.swift; path = Cartography/Align.swift; sourceTree = "<group>"; };
-		BE16F9C04BFC70B371805D1F4218577D /* FICUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FICUtilities.m; path = FastImageCache/FICUtilities.m; sourceTree = "<group>"; };
 		C0C356A528DDE17AD841DFACD0A947F7 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		C0D7C562F3E4C2EB63DCF05C368ED87D /* FICImageTableEntry.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FICImageTableEntry.m; path = FastImageCache/FICImageTableEntry.m; sourceTree = "<group>"; };
-		C0EAD93AC14A0D6D67A689E1F8C836B6 /* FICImports.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICImports.h; path = FastImageCache/FICImports.h; sourceTree = "<group>"; };
-		C1EBCF7DB4E593DE06820187533FBF2B /* FastImageCache-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FastImageCache-umbrella.h"; sourceTree = "<group>"; };
-		C3A8AC626474F6C9894BB25650A8E40E /* Property.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Property.swift; path = Cartography/Property.swift; sourceTree = "<group>"; };
-		C73B820EDB044737D8E01FC3579B60B4 /* View.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = View.swift; path = Cartography/View.swift; sourceTree = "<group>"; };
+		C0C363DA3D24F7D0A3149F88E89D8450 /* FICUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICUtilities.h; path = FastImageCache/FICUtilities.h; sourceTree = "<group>"; };
+		C3317312D1A7B621E876C2EFF1C5E4AD /* UIImageView+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+Haneke.swift"; path = "Haneke/UIImageView+Haneke.swift"; sourceTree = "<group>"; };
+		C3DEC2600883907FDDFF27AB4F661560 /* Priority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Priority.swift; path = Cartography/Priority.swift; sourceTree = "<group>"; };
+		C43E4B4789F6C4ADF0A92300976E572C /* FICImageCache+FICErrorLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FICImageCache+FICErrorLogging.h"; path = "FastImageCache/FICImageCache+FICErrorLogging.h"; sourceTree = "<group>"; };
+		C62EB6534BBC3E3093E0833A22025108 /* UIView+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Haneke.swift"; path = "Haneke/UIView+Haneke.swift"; sourceTree = "<group>"; };
+		C832E8D05030821AE551A6EA44FCEB0D /* NSFileManager+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSFileManager+Haneke.swift"; path = "Haneke/NSFileManager+Haneke.swift"; sourceTree = "<group>"; };
+		C8F659B37C1B00D74B786CE757813219 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9A03CF28678481F8628CD7377DC59D2 /* FICUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FICUtilities.m; path = FastImageCache/FICUtilities.m; sourceTree = "<group>"; };
+		CACE7A9907E6DF050470253D104B4DEC /* Property.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Property.swift; path = Cartography/Property.swift; sourceTree = "<group>"; };
 		CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		CD4C98182DF62A74B1EA91C604491BE7 /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Cartography/Constraint.swift; sourceTree = "<group>"; };
 		D0405803033A2A777B8E4DFA0C1800ED /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D35408EAC0C896FB6AE1A8CB6225F9C8 /* Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = Cartography/Layout.swift; sourceTree = "<group>"; };
-		D5F3056C97E2291FDDB8589869E6479F /* Point.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Point.swift; path = Cartography/Point.swift; sourceTree = "<group>"; };
-		D6486FB98FADE45A4CCE31B70792DDF2 /* FastImageCache-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FastImageCache-dummy.m"; sourceTree = "<group>"; };
-		D673E9868DA121C1A81D49C3F143D9BD /* Expression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expression.swift; path = Cartography/Expression.swift; sourceTree = "<group>"; };
-		D6A5C0BE9557AEF6287F035781B02292 /* Log.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Log.swift; path = Haneke/Log.swift; sourceTree = "<group>"; };
-		DA7DFF41F79B416123B74418358D0885 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
-		DDDB0505ACC3C5EE22B17333551D9240 /* Format.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Format.swift; path = Haneke/Format.swift; sourceTree = "<group>"; };
-		DF594A6B272BE50E14611E2394B37FCE /* FICImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FICImageCache.m; path = FastImageCache/FICImageCache.m; sourceTree = "<group>"; };
-		DFAA9AEDE2718348FC55BA7C4E92BF34 /* Edge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Edge.swift; path = Cartography/Edge.swift; sourceTree = "<group>"; };
-		DFF6B4EE382AF85FC10230F9A9228BA0 /* HanekeSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HanekeSwift-umbrella.h"; sourceTree = "<group>"; };
-		E1C040F0B8FECA45BCF03F8E6BC71663 /* ConstraintGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintGroup.swift; path = Cartography/ConstraintGroup.swift; sourceTree = "<group>"; };
-		E2F9C1989120498C2BD24DBFF70DB22D /* Distribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Distribute.swift; path = Cartography/Distribute.swift; sourceTree = "<group>"; };
+		D05EAD93C7A341BCE19B66C4AF0EC04F /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		D0DF8809926F0F044630E194D145EA17 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
+		D107AC4C16B828D9D7723BF499346C04 /* ConstraintGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintGroup.swift; path = Cartography/ConstraintGroup.swift; sourceTree = "<group>"; };
+		D20CD6EE3B049462A4E654B9EBC60A4E /* ViewUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewUtils.swift; path = Cartography/ViewUtils.swift; sourceTree = "<group>"; };
+		D3BAC478BBF4D7C0B95520C17EA8F584 /* CGSize+Swift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGSize+Swift.swift"; path = "Haneke/CGSize+Swift.swift"; sourceTree = "<group>"; };
+		D6BD50AF5E49085094C1E389130AAC58 /* FastImageCache-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "FastImageCache-Private.xcconfig"; sourceTree = "<group>"; };
+		D77F88D7049B84B1D20C2FFD2FB2FD9D /* FastImageCache-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FastImageCache-prefix.pch"; sourceTree = "<group>"; };
+		D87E9CE3B907071112E9817A626BCA47 /* Coefficients.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Coefficients.swift; path = Cartography/Coefficients.swift; sourceTree = "<group>"; };
+		D9A7B3EBECD074C0267AD09D59098CE5 /* LayoutProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutProxy.swift; path = Cartography/LayoutProxy.swift; sourceTree = "<group>"; };
+		E0FAE9F8ED558F02FE5686CBAF077582 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		E1128BA47485B9A22448930CDD72F52B /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
+		E170A108D51C96CEB64023FC811CCD8D /* Cartography-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cartography-prefix.pch"; sourceTree = "<group>"; };
+		E2AB2D16B9E1CD731DBF4994F568FE0C /* HanekeSwift-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "HanekeSwift-Private.xcconfig"; sourceTree = "<group>"; };
+		E2B86E9533650C11C82AF6E590126342 /* DiskCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DiskCache.swift; path = Haneke/DiskCache.swift; sourceTree = "<group>"; };
 		E3FC836FCEB97638CDA41B0489790041 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E49598DC40B86DB62B66CFC279CD26B5 /* Dimension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Dimension.swift; path = Cartography/Dimension.swift; sourceTree = "<group>"; };
-		E526B6A59FEF2E3565F0BF44C29ACB8D /* FastImageCache.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FastImageCache.modulemap; sourceTree = "<group>"; };
-		E713BFBCB6635BA0E3DDCE07D473AD92 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		E4DF575D30AB0C64FA28FE6911CCD70C /* HanekeSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HanekeSwift-umbrella.h"; sourceTree = "<group>"; };
+		E53978A50BB5F1114CFBD3CB02B0EC03 /* FICImageTableEntry.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FICImageTableEntry.m; path = FastImageCache/FICImageTableEntry.m; sourceTree = "<group>"; };
+		E6A8C8241D6FFD39ACBDAA3AD5760C49 /* FICImageTableChunk.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FICImageTableChunk.m; path = FastImageCache/FICImageTableChunk.m; sourceTree = "<group>"; };
 		E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
 		E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA5F11682F9DFD37A816747E5608BE5C /* DiskFetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DiskFetcher.swift; path = Haneke/DiskFetcher.swift; sourceTree = "<group>"; };
-		EAE3956381D87BD3C16D4994B67D8772 /* FastImageCache-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FastImageCache-prefix.pch"; sourceTree = "<group>"; };
-		EB4CAC25473BDDBFF76003477B18E07F /* Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Haneke.swift; path = Haneke/Haneke.swift; sourceTree = "<group>"; };
-		EEDA94DAD78134C9B34DED2A02D4DDD7 /* FICImageTableChunk.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FICImageTableChunk.h; path = FastImageCache/FICImageTableChunk.h; sourceTree = "<group>"; };
-		F111CA0EBC43844AEFBE7CE0B51C5C90 /* CGSize+Swift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGSize+Swift.swift"; path = "Haneke/CGSize+Swift.swift"; sourceTree = "<group>"; };
-		F3A8C315A5E6AAA08A2ABC18608ED7DB /* String+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Haneke.swift"; path = "Haneke/String+Haneke.swift"; sourceTree = "<group>"; };
-		F6D12F6BE446744A14B0C4AB0744A20F /* ViewUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewUtils.swift; path = Cartography/ViewUtils.swift; sourceTree = "<group>"; };
-		F705F480702B683054867D4703FBA523 /* FastImageCache-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "FastImageCache-Private.xcconfig"; sourceTree = "<group>"; };
-		FAC8E8963E9DF76911CB46E8AD13416A /* DiskCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DiskCache.swift; path = Haneke/DiskCache.swift; sourceTree = "<group>"; };
-		FAF99D0CA83F0A0A6D6766E432537F10 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
-		FD91863E89058E0A9C5A854208717FE9 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
-		FFAFCEA6A62D747BFC6C5FDA203C6A0C /* Compound.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Compound.swift; path = Cartography/Compound.swift; sourceTree = "<group>"; };
+		EEB3B0595148BB034E49449AC9B6C968 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
+		EFE006F55215ED8CC6C1F35CC73B129F /* Dimension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Dimension.swift; path = Cartography/Dimension.swift; sourceTree = "<group>"; };
+		FD3DD87D369A29C8A1C14A945ADD6943 /* Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Haneke.swift; path = Haneke/Haneke.swift; sourceTree = "<group>"; };
+		FE3332B088AEA00F4B25501DF1F6817A /* Context.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Context.swift; path = Cartography/Context.swift; sourceTree = "<group>"; };
+		FE9BD7F9017AEAE77F7B1A1202AA8872 /* Align.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Align.swift; path = Cartography/Align.swift; sourceTree = "<group>"; };
+		FF8A5B226CEFBE1A78467D11D39662FD /* HanekeSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HanekeSwift.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		01D960BED5BA3DDFEBE551D744CFF229 /* Frameworks */ = {
+		103C3DBDB11F0ABA41F5BD94FC4CE88B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13E68ADF1092ED9D1A5B0A3AABD70A40 /* Foundation.framework in Frameworks */,
+				283A400A60B3E3AE4A7DDCB3A14FD652 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ACD21208A192530651B2603C903D9F53 /* Frameworks */ = {
+		66FB1E884A91372AF2A7872E3A96E3B4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C599994852F75DBD0AE3FF89EEBFF6B /* Foundation.framework in Frameworks */,
+				245CBDD5C063171DB2F392E4C2DAF85C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78AE9137D933BA7A6BB822FE7AEC6F90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49526AF31AD4E25DC0D1F77315A9DA74 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D25E069A1BA2C3813AC6D162635B8219 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50ED41421F1909F9CB1EB899E83E4135 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,136 +278,77 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDD5AABF1266CC0C5445E94F5B5258D1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BEBBD0808C197A60C8C7E8B787BBBEA0 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F870627AB2A08302B52ACA589248CEBE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2B2DE722147C3162C6B098030E888872 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0686548B28FE8109BD33D514D16EB344 /* Support Files */ = {
+		0AF3C7604C9F9C37AE38926F86644A97 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E526B6A59FEF2E3565F0BF44C29ACB8D /* FastImageCache.modulemap */,
-				4F211CD1E1679B00AE50F8B6EBA1BA89 /* FastImageCache.xcconfig */,
-				F705F480702B683054867D4703FBA523 /* FastImageCache-Private.xcconfig */,
-				D6486FB98FADE45A4CCE31B70792DDF2 /* FastImageCache-dummy.m */,
-				EAE3956381D87BD3C16D4994B67D8772 /* FastImageCache-prefix.pch */,
-				C1EBCF7DB4E593DE06820187533FBF2B /* FastImageCache-umbrella.h */,
-				0767A4682444DAB2423E75D068E08E32 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/FastImageCache";
-			sourceTree = "<group>";
-		};
-		2F63BD8CC8BB8CC45D9BF88C15617CEC /* Alamofire */ = {
-			isa = PBXGroup;
-			children = (
-				26E6573DC7107D65782479EA37526F59 /* Alamofire.swift */,
-				116D281E6B5573CE126B978046AA0D4A /* Download.swift */,
-				5BDA36267FF06AB12305F3571207F2DD /* Manager.swift */,
-				01434BEA0618D03B15332F1C8D19AAA8 /* MultipartFormData.swift */,
-				06731842810211E34A1F672480A201C0 /* ParameterEncoding.swift */,
-				DA7DFF41F79B416123B74418358D0885 /* Request.swift */,
-				FAF99D0CA83F0A0A6D6766E432537F10 /* ResponseSerialization.swift */,
-				B8234B3567BB67DB3C31D92CFEDEEE7B /* ServerTrustPolicy.swift */,
-				BA2032CF939E07035DA379FE321F8B9E /* Upload.swift */,
-				77383248CA739CAA4598579D3E299C15 /* Validation.swift */,
-				2F75D6A8A29DB53FCA1A9F36A5C498E1 /* Support Files */,
-			);
-			path = Alamofire;
-			sourceTree = "<group>";
-		};
-		2F75D6A8A29DB53FCA1A9F36A5C498E1 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				77B78AA0EA0ED94925A7BD355E813B3D /* Alamofire.modulemap */,
-				FD91863E89058E0A9C5A854208717FE9 /* Alamofire.xcconfig */,
-				7E46C00D85B06AE17271E20B50F99FCF /* Alamofire-Private.xcconfig */,
-				6C41662386A3901B6F14EBDE3072E668 /* Alamofire-dummy.m */,
-				18FC333113080F368173B534C8A53794 /* Alamofire-prefix.pch */,
-				E713BFBCB6635BA0E3DDCE07D473AD92 /* Alamofire-umbrella.h */,
-				B865AE83E7AAAC3FEF104DAECDBA78F0 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Alamofire";
-			sourceTree = "<group>";
-		};
-		452585D1AD36F16C56119B13A3C49D71 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				8748C0C5752B2054346CA90895A70233 /* Cartography.modulemap */,
-				6E45D81F52964FD0FD26B097E0FA4B14 /* Cartography.xcconfig */,
-				B309AB9B3730A51F6CED64BC49613278 /* Cartography-Private.xcconfig */,
-				4DC6E1E09E9CBDDAB16124155B61FB4F /* Cartography-dummy.m */,
-				3F619E0D78A46CE94DD6DDC6D74D5C5C /* Cartography-prefix.pch */,
-				A4D621E3A230357FC7127ABD847A1E41 /* Cartography-umbrella.h */,
-				9A2CBA35B3B5EAD84757AF4EBE1E1EE1 /* Info.plist */,
+				2868C818DF9A25BB4DD1CEC381AC13E9 /* Cartography.modulemap */,
+				4E782F16E339F3DCCD0818DF6C2A20BE /* Cartography.xcconfig */,
+				958764A1B8C4090AEE497800F3E3EE87 /* Cartography-Private.xcconfig */,
+				4F901AD5B6AAF332BE01E00B8B41703C /* Cartography-dummy.m */,
+				E170A108D51C96CEB64023FC811CCD8D /* Cartography-prefix.pch */,
+				4E5FE6583AC1CCD70865DFBE2F0E8143 /* Cartography-umbrella.h */,
+				781B97C2D85672B397BC42AA070A6456 /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Cartography";
 			sourceTree = "<group>";
 		};
-		53F661C0CA7190D2CF05023FB33D61E4 /* iOS */ = {
+		0F815B49A9622A9198350FC5B7CCF4E8 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A9AF16E538E4298183905317E9722882 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		6003CFCDF47729B87AFD4D4F99BD7608 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				B3FD3A83BC15183317CCFE3DF5263B59 /* HanekeSwift.modulemap */,
-				50665E8ACB75627F30B1DD6C4841E0A5 /* HanekeSwift.xcconfig */,
-				1C0D51E0067C744F2AFCF229EC003F3A /* HanekeSwift-Private.xcconfig */,
-				7596CB6F6548A3BE476881FB886CA62E /* HanekeSwift-dummy.m */,
-				2F89A30D175207228C12702844B71522 /* HanekeSwift-prefix.pch */,
-				DFF6B4EE382AF85FC10230F9A9228BA0 /* HanekeSwift-umbrella.h */,
-				A5A65D72A2E1839C98577E77DB6874E4 /* Info.plist */,
+				FF8A5B226CEFBE1A78467D11D39662FD /* HanekeSwift.modulemap */,
+				19C82961CA0A260E1073821FEF6466C5 /* HanekeSwift.xcconfig */,
+				E2AB2D16B9E1CD731DBF4994F568FE0C /* HanekeSwift-Private.xcconfig */,
+				A77B9EFDE22DB5C9F5D837DB7E744E3F /* HanekeSwift-dummy.m */,
+				36C43C3BE6FCFBD43FA2A7818D7AC9A4 /* HanekeSwift-prefix.pch */,
+				E4DF575D30AB0C64FA28FE6911CCD70C /* HanekeSwift-umbrella.h */,
+				838C4E685D8B467C2CF7C92103E18CCC /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/HanekeSwift";
 			sourceTree = "<group>";
 		};
-		71F0592808E33797F05F9D8BBD9BA71C /* HanekeSwift */ = {
+		4DFF155A3D8D99FDE698449AECCFC781 /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
-				F111CA0EBC43844AEFBE7CE0B51C5C90 /* CGSize+Swift.swift */,
-				818ED9E9946E10904A718ACE88709F0D /* Cache.swift */,
-				5F798D911F12D3FB5C0CDC09046BBABC /* CryptoSwiftMD5.swift */,
-				911246AC9D0C11B5F8D8E35988535905 /* Data.swift */,
-				FAC8E8963E9DF76911CB46E8AD13416A /* DiskCache.swift */,
-				EA5F11682F9DFD37A816747E5608BE5C /* DiskFetcher.swift */,
-				3052269E5344208F2BA67B4A4699B04B /* Fetch.swift */,
-				8C318DA499D4D81F0893938815AF2561 /* Fetcher.swift */,
-				DDDB0505ACC3C5EE22B17333551D9240 /* Format.swift */,
-				EB4CAC25473BDDBFF76003477B18E07F /* Haneke.swift */,
-				D6A5C0BE9557AEF6287F035781B02292 /* Log.swift */,
-				220F21031EDF55ED85BEFF99F099EAFC /* NSFileManager+Haneke.swift */,
-				589831B7585BC0AA61A1C2F5EAA5F142 /* NSHTTPURLResponse+Haneke.swift */,
-				96F3DB64E221C6F34BF704223454ED06 /* NetworkFetcher.swift */,
-				F3A8C315A5E6AAA08A2ABC18608ED7DB /* String+Haneke.swift */,
-				35F4C8EDADB83B1C88D3A718A760D611 /* UIButton+Haneke.swift */,
-				822C5DB977F68090C72F4BDF17B6B494 /* UIImage+Haneke.swift */,
-				B19CA4D3C5582B616E76BDBE4265CEEE /* UIImageView+Haneke.swift */,
-				48D8054AC8140777BBF76D731E64FFD7 /* UIView+Haneke.swift */,
-				6003CFCDF47729B87AFD4D4F99BD7608 /* Support Files */,
+				93962138524A1CFBE1BB4CF4621FE336 /* Alamofire.swift */,
+				27CCBC2579A16DA66B439E8002E5B489 /* Download.swift */,
+				8E91FF53AD737625308F32F2C0C5B7AE /* Error.swift */,
+				133F33D43E1957F2457AA0CAFF6D9ED8 /* Manager.swift */,
+				605024CB0E5DA80C328157857865CB46 /* MultipartFormData.swift */,
+				D05EAD93C7A341BCE19B66C4AF0EC04F /* ParameterEncoding.swift */,
+				25C5DA8175C45B58F5933F657641C0F3 /* Request.swift */,
+				060659BFADCDAE3A711059CB37BD3BA2 /* ResponseSerialization.swift */,
+				EEB3B0595148BB034E49449AC9B6C968 /* Result.swift */,
+				919E73DFEFF88B1138651612296B51DC /* ServerTrustPolicy.swift */,
+				3D280BD6AC3ACAE6C65A390482C91055 /* Stream.swift */,
+				08AA66E527137EEFE18F2B75F00C3F12 /* Upload.swift */,
+				E1128BA47485B9A22448930CDD72F52B /* Validation.swift */,
+				89AC0FC9C464644C37CC73A2B4A43F9C /* Support Files */,
 			);
-			path = HanekeSwift;
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		53F661C0CA7190D2CF05023FB33D61E4 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				57579CD8EB4C3798DD36A6F2554E41C9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		592B8604238C9D87A567C4E470A773E2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4DFF155A3D8D99FDE698449AECCFC781 /* Alamofire */,
+				C3135C379DF2CD1C7AD89AF35CEFA9E9 /* Cartography */,
+				A702E2DD0C687AAAA8D0B0232CC17E9D /* FastImageCache */,
+				F505AC04953CEDC73AF9D12C06182DDE /* HanekeSwift */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		75D98FF52E597A11900E131B6C4E1ADA /* Pods */ = {
@@ -411,61 +374,63 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				D6D3E3FD4B4E89CA6D203E3C0FF17811 /* Pods */,
+				592B8604238C9D87A567C4E470A773E2 /* Pods */,
 				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
 				B7B80995527643776607AFFA75B91E24 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8C9FA38184D17D56C2A93A48261BD1B8 /* FastImageCache */ = {
+		89AC0FC9C464644C37CC73A2B4A43F9C /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				4CE65CDBA5D82E679AA3747A30E9D3B4 /* FICEntity.h */,
-				48138D15B7A5A7F84D9636EE71DE6E3D /* FICImageCache.h */,
-				DF594A6B272BE50E14611E2394B37FCE /* FICImageCache.m */,
-				5642AA97862DC5001C7C656F83D552C6 /* FICImageCache+FICErrorLogging.h */,
-				82C38850B1549234889740D4ED42479F /* FICImageFormat.h */,
-				38EE4D7DDC1724E57AC8C29C3B2ADAD1 /* FICImageFormat.m */,
-				1924749B26CCFBF9B421D85382730EB8 /* FICImageTable.h */,
-				55B3403348AD15554F5B7D48BE04BCC5 /* FICImageTable.m */,
-				EEDA94DAD78134C9B34DED2A02D4DDD7 /* FICImageTableChunk.h */,
-				B116E81AF3761B1263AE06D60578D5E9 /* FICImageTableChunk.m */,
-				09D972CAFEA3D40ADE70AF7CD611B211 /* FICImageTableEntry.h */,
-				C0D7C562F3E4C2EB63DCF05C368ED87D /* FICImageTableEntry.m */,
-				C0EAD93AC14A0D6D67A689E1F8C836B6 /* FICImports.h */,
-				23306E1C3C586434FC5706035527CCCD /* FICUtilities.h */,
-				BE16F9C04BFC70B371805D1F4218577D /* FICUtilities.m */,
-				0686548B28FE8109BD33D514D16EB344 /* Support Files */,
+				E0FAE9F8ED558F02FE5686CBAF077582 /* Alamofire.modulemap */,
+				D0DF8809926F0F044630E194D145EA17 /* Alamofire.xcconfig */,
+				74342425B9069896CE6E2F89370F50D5 /* Alamofire-Private.xcconfig */,
+				48140E02BBF69E5E4BC5044E707D036F /* Alamofire-dummy.m */,
+				2E03055795AB614553AFFD99C1FF61F4 /* Alamofire-prefix.pch */,
+				00A8A506AE67F0A42D19C17528544E94 /* Alamofire-umbrella.h */,
+				C8F659B37C1B00D74B786CE757813219 /* Info.plist */,
 			);
-			path = FastImageCache;
+			name = "Support Files";
+			path = "../Target Support Files/Alamofire";
 			sourceTree = "<group>";
 		};
-		9124F976980EC94856A3106E8C10301C /* Cartography */ = {
+		984F091285F756DDBCCB9F7F3A798665 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				BD6F1BD834EB7285A7753961EDFD15F0 /* Align.swift */,
-				5C93AD0BD6040B1F04945281D5CFCAF9 /* Coefficients.swift */,
-				FFAFCEA6A62D747BFC6C5FDA203C6A0C /* Compound.swift */,
-				CD4C98182DF62A74B1EA91C604491BE7 /* Constraint.swift */,
-				E1C040F0B8FECA45BCF03F8E6BC71663 /* ConstraintGroup.swift */,
-				17DC56CF1688D6B9B642772FA249356B /* Context.swift */,
-				E49598DC40B86DB62B66CFC279CD26B5 /* Dimension.swift */,
-				E2F9C1989120498C2BD24DBFF70DB22D /* Distribute.swift */,
-				DFAA9AEDE2718348FC55BA7C4E92BF34 /* Edge.swift */,
-				985752849DA2E077CCEA21EAC2EA2FB1 /* Edges.swift */,
-				D673E9868DA121C1A81D49C3F143D9BD /* Expression.swift */,
-				52B80799861E36955D7C7B9DAAA4961A /* Extensions.swift */,
-				D35408EAC0C896FB6AE1A8CB6225F9C8 /* Layout.swift */,
-				34FD1C216DA0BD76C72F700E376AD7C9 /* LayoutProxy.swift */,
-				D5F3056C97E2291FDDB8589869E6479F /* Point.swift */,
-				0651002A492CEFD3F537980BD7CC0255 /* Priority.swift */,
-				C3A8AC626474F6C9894BB25650A8E40E /* Property.swift */,
-				765AE7C707BB9141FBB6E05D57103012 /* Size.swift */,
-				C73B820EDB044737D8E01FC3579B60B4 /* View.swift */,
-				F6D12F6BE446744A14B0C4AB0744A20F /* ViewUtils.swift */,
-				452585D1AD36F16C56119B13A3C49D71 /* Support Files */,
+				4397E963CEE33FBBE321989E208DD3E3 /* FastImageCache.modulemap */,
+				B752FE79D6A11045FBE42B1A95FC94DE /* FastImageCache.xcconfig */,
+				D6BD50AF5E49085094C1E389130AAC58 /* FastImageCache-Private.xcconfig */,
+				80CDFE8A7B41E91C16ED1D5CF41ACCCA /* FastImageCache-dummy.m */,
+				D77F88D7049B84B1D20C2FFD2FB2FD9D /* FastImageCache-prefix.pch */,
+				95F296D9BA13731D2F79E1193E04E96E /* FastImageCache-umbrella.h */,
+				76AD1DD8D80245F88813707962B9D805 /* Info.plist */,
 			);
-			path = Cartography;
+			name = "Support Files";
+			path = "../Target Support Files/FastImageCache";
+			sourceTree = "<group>";
+		};
+		A702E2DD0C687AAAA8D0B0232CC17E9D /* FastImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				932E726BBD9EBBC9A5D3542E7ADBDC11 /* FICEntity.h */,
+				039FE12F6DC17168ECD42E8CDEF70396 /* FICImageCache.h */,
+				4C3CFF987D9A9D2A5F31385C3270D5E5 /* FICImageCache.m */,
+				C43E4B4789F6C4ADF0A92300976E572C /* FICImageCache+FICErrorLogging.h */,
+				399F7CB2F6F7378ADA57582E700A1380 /* FICImageFormat.h */,
+				0CEBFD2F9FD214636C99F48A562664FF /* FICImageFormat.m */,
+				21A5AABA154E9C28A3AAFB0AFADABF5B /* FICImageTable.h */,
+				2C8B9C3D2F6FF570FB12D21D2DA6B0F2 /* FICImageTable.m */,
+				1F576B6D6BE35605E191477E24B58899 /* FICImageTableChunk.h */,
+				E6A8C8241D6FFD39ACBDAA3AD5760C49 /* FICImageTableChunk.m */,
+				0A8965AEB290C0B8E964CF0A8D57BC08 /* FICImageTableEntry.h */,
+				E53978A50BB5F1114CFBD3CB02B0EC03 /* FICImageTableEntry.m */,
+				84AEDC630C51C111478300496276C890 /* FICImports.h */,
+				C0C363DA3D24F7D0A3149F88E89D8450 /* FICUtilities.h */,
+				C9A03CF28678481F8628CD7377DC59D2 /* FICUtilities.m */,
+				984F091285F756DDBCCB9F7F3A798665 /* Support Files */,
+			);
+			path = FastImageCache;
 			sourceTree = "<group>";
 		};
 		B7B80995527643776607AFFA75B91E24 /* Targets Support Files */ = {
@@ -484,62 +449,89 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C3135C379DF2CD1C7AD89AF35CEFA9E9 /* Cartography */ = {
+			isa = PBXGroup;
+			children = (
+				FE9BD7F9017AEAE77F7B1A1202AA8872 /* Align.swift */,
+				D87E9CE3B907071112E9817A626BCA47 /* Coefficients.swift */,
+				6A91ACBC3DF827C9EC4E0A1CD0871D84 /* Compound.swift */,
+				AB581B6C99A71BB0AC0C540477A220F1 /* Constrain.swift */,
+				923A29DB99A8C957D80C0840126B288E /* Constraint.swift */,
+				D107AC4C16B828D9D7723BF499346C04 /* ConstraintGroup.swift */,
+				FE3332B088AEA00F4B25501DF1F6817A /* Context.swift */,
+				EFE006F55215ED8CC6C1F35CC73B129F /* Dimension.swift */,
+				920ACBF49EC9C63E9CE265C8E01251D7 /* Distribute.swift */,
+				527E5E37487CF14ACED9B2C91020ED89 /* Edge.swift */,
+				3584B926EE4A759E1690B51BAB6179CC /* Edges.swift */,
+				04E4AA846ADD1F2F72BB4E7260451281 /* Expression.swift */,
+				6526D5D0A56CD171363357BB1D510381 /* Extensions.swift */,
+				D9A7B3EBECD074C0267AD09D59098CE5 /* LayoutProxy.swift */,
+				2A61D0039FCDCFFCE894F782B36AB422 /* Point.swift */,
+				C3DEC2600883907FDDFF27AB4F661560 /* Priority.swift */,
+				CACE7A9907E6DF050470253D104B4DEC /* Property.swift */,
+				546A2F4F40E2B313FDD076D9D0D8A76E /* Size.swift */,
+				3CF7DD6E4EBE102C5314401125B9D92C /* View.swift */,
+				D20CD6EE3B049462A4E654B9EBC60A4E /* ViewUtils.swift */,
+				0AF3C7604C9F9C37AE38926F86644A97 /* Support Files */,
+			);
+			path = Cartography;
+			sourceTree = "<group>";
+		};
 		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9C1842ADC83965FD545C4255D1377766 /* Alamofire.framework */,
-				A8871BC2E28C9E9D0F56557E5A1A9A9C /* Cartography.framework */,
-				7A698C14F0597FE25950A7C5C4DC4C16 /* FastImageCache.framework */,
-				5E1B5111F041C16D07DF3C8FACEE7B63 /* Haneke.framework */,
+				4F155308BA3E1AA828D16D4280008F43 /* Alamofire.framework */,
+				1D1352CFE742F27E9709EA249C0F039F /* Cartography.framework */,
+				82E5E385B8587AA5A42AC4B75A227B35 /* FastImageCache.framework */,
+				091AAB6C2EA4573F20CA5726AE5B2AD8 /* Haneke.framework */,
 				E3FC836FCEB97638CDA41B0489790041 /* Pods.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D6D3E3FD4B4E89CA6D203E3C0FF17811 /* Pods */ = {
+		F505AC04953CEDC73AF9D12C06182DDE /* HanekeSwift */ = {
 			isa = PBXGroup;
 			children = (
-				2F63BD8CC8BB8CC45D9BF88C15617CEC /* Alamofire */,
-				9124F976980EC94856A3106E8C10301C /* Cartography */,
-				8C9FA38184D17D56C2A93A48261BD1B8 /* FastImageCache */,
-				71F0592808E33797F05F9D8BBD9BA71C /* HanekeSwift */,
+				D3BAC478BBF4D7C0B95520C17EA8F584 /* CGSize+Swift.swift */,
+				A51CD045072A689348D3036DA6AFFF80 /* Cache.swift */,
+				5470BDFE54DCBDF503AA99A90A692304 /* CryptoSwiftMD5.swift */,
+				A9C8E890B8EB3ABBBA9C3F67BD9E279F /* Data.swift */,
+				E2B86E9533650C11C82AF6E590126342 /* DiskCache.swift */,
+				4A779624FD79FBCDC867A7EC02616C5F /* DiskFetcher.swift */,
+				283636156A510F4C19AF2EC016DD56CC /* Fetch.swift */,
+				97AE0B4278AC6A83CEFE9DA673E0F279 /* Fetcher.swift */,
+				4DE0F894A9FE69E04360FE637E650354 /* Format.swift */,
+				FD3DD87D369A29C8A1C14A945ADD6943 /* Haneke.swift */,
+				B143098B12C1A8BC95C1E2DB2864E734 /* Log.swift */,
+				C832E8D05030821AE551A6EA44FCEB0D /* NSFileManager+Haneke.swift */,
+				405029D98DB9FAAD9474DE7A510A6272 /* NSHTTPURLResponse+Haneke.swift */,
+				9308B7BEB84DF082AB7EC0C5D5F0E17C /* NetworkFetcher.swift */,
+				583DFE8FD71D6D9F7A4210DE82CD8AC3 /* String+Haneke.swift */,
+				AC3DC4206CEC7E7E3D6FC31897006903 /* UIButton+Haneke.swift */,
+				27C8316A7652EE239CC112FDBA0B2008 /* UIImage+Haneke.swift */,
+				C3317312D1A7B621E876C2EFF1C5E4AD /* UIImageView+Haneke.swift */,
+				C62EB6534BBC3E3093E0833A22025108 /* UIView+Haneke.swift */,
+				0F815B49A9622A9198350FC5B7CCF4E8 /* Support Files */,
 			);
-			name = Pods;
+			path = HanekeSwift;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		03B80C09275D1F27C2E2A7CEE2F75697 /* Headers */ = {
+		39CEFFAB7A7D188E6CBD33A5A02C463C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				746838DABEBC1BD6E39497DBC8E907AB /* Alamofire-umbrella.h in Headers */,
+				A25356E70AE02042842EF843E0A7D596 /* HanekeSwift-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2702D933283B71A58EFD6D2B07118258 /* Headers */ = {
+		7DEA8ECB65126DDC2F601595CCE25C62 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				649F2AAC3DB5886E1DC15B1FC3722576 /* Cartography-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		44B4DFF219669EB3F14E79B0CF3055DB /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C6243140C3F13AF84327A2F13BCF736D /* FICEntity.h in Headers */,
-				85DEBFCBF5E93A3250BF908823AD9E38 /* FICImageCache+FICErrorLogging.h in Headers */,
-				29AED8711922EE48962B9FA7EA28B20C /* FICImageCache.h in Headers */,
-				F2F2FC52D698F140EF680E28C1DEEFA9 /* FICImageFormat.h in Headers */,
-				37CA5FAAEE69C29C6AB383A36C1C1B85 /* FICImageTable.h in Headers */,
-				3BACD7FB832C692279C92E007F17295F /* FICImageTableChunk.h in Headers */,
-				5A44ECC3002935FA80439BBD42857790 /* FICImageTableEntry.h in Headers */,
-				2D429BDAC493208A916F727EC42694F7 /* FICImports.h in Headers */,
-				17F998B99F6FA7264D3FE9C128BFDFB9 /* FICUtilities.h in Headers */,
-				EC5B60ED3A17FC73E5EF37C7A7EDB8B1 /* FastImageCache-umbrella.h in Headers */,
+				4C0C24B3F154FAE2D017E06B54006377 /* Alamofire-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,11 +543,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A49E6E18BDEFFE7A42FD89CFD08B5C7D /* Headers */ = {
+		AA2AAB33D834EBEB34893F667E1A2490 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9ABD69E18E1971C786800BC4DB72F844 /* HanekeSwift-umbrella.h in Headers */,
+				E0ECD23A6D7E33FB2865E670DDB21B5D /* FICEntity.h in Headers */,
+				E440FCFC8EDB1AFE0E1581501B6440FF /* FICImageCache+FICErrorLogging.h in Headers */,
+				80122AC8DC31281C661B83AB8A07512E /* FICImageCache.h in Headers */,
+				46BB310248315836813E25848B947876 /* FICImageFormat.h in Headers */,
+				54BE850B64ACF03C9E34EE1B287242C6 /* FICImageTable.h in Headers */,
+				4241EBC4886A189EA96630620BE0177E /* FICImageTableChunk.h in Headers */,
+				9B08A7FACB9818C705D8F6AED9E45334 /* FICImageTableEntry.h in Headers */,
+				F7D10CC77EE6E9FE23F0C670C1155DD2 /* FICImports.h in Headers */,
+				89FC18266CC0C054C9DA030151522366 /* FICUtilities.h in Headers */,
+				12691623C277D2FE670518EB620D0EB1 /* FastImageCache-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0C9DAD25CB7CC0E903D3FDFEF28B9DE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5DA5E65F8450C5DEDCA5B81EEB66973 /* Cartography-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,40 +582,23 @@
 			buildRules = (
 			);
 			dependencies = (
-				BA5BE7200294411C826DDCC544EACE86 /* PBXTargetDependency */,
-				14D75D7B673E13C952100C3FACD65D0C /* PBXTargetDependency */,
-				CCFC2E8F486FB9C8306838EB462152D2 /* PBXTargetDependency */,
-				BD10546BB4253C8A87548DD27B4C998E /* PBXTargetDependency */,
+				9C1534F760EDBC28A015AE4A644B228C /* PBXTargetDependency */,
+				567091C172D8639F2B7C1548DC076399 /* PBXTargetDependency */,
+				0B84272AEA2C28674CBA4CA42FEC7AD1 /* PBXTargetDependency */,
+				FE23D61D1F09547A15D8F8790E8CB6E1 /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
 			productReference = E3FC836FCEB97638CDA41B0489790041 /* Pods.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		936D1C655BE850D32A9B5DD157E24235 /* FastImageCache */ = {
+		3E16DD50343DE184157795B9B7A2C7C5 /* Alamofire */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8ABF2B98EFA4E02E5F54AED94E249DD8 /* Build configuration list for PBXNativeTarget "FastImageCache" */;
+			buildConfigurationList = 0FE51A26683D4B33FF30736F861E983B /* Build configuration list for PBXNativeTarget "Alamofire" */;
 			buildPhases = (
-				D6B82EA69B9A21E87F197A9DE5F46B7E /* Sources */,
-				F870627AB2A08302B52ACA589248CEBE /* Frameworks */,
-				44B4DFF219669EB3F14E79B0CF3055DB /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = FastImageCache;
-			productName = FastImageCache;
-			productReference = 7A698C14F0597FE25950A7C5C4DC4C16 /* FastImageCache.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		AFA56FAC8F5C8E3565A0656958C1618A /* Alamofire */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F13032BC4189586E1C6DA21FA861AB44 /* Build configuration list for PBXNativeTarget "Alamofire" */;
-			buildPhases = (
-				33448ACFA0E382037486153D19EBF38F /* Sources */,
-				ACD21208A192530651B2603C903D9F53 /* Frameworks */,
-				03B80C09275D1F27C2E2A7CEE2F75697 /* Headers */,
+				118C303F8511256D00C7921CC4FCD186 /* Sources */,
+				66FB1E884A91372AF2A7872E3A96E3B4 /* Frameworks */,
+				7DEA8ECB65126DDC2F601595CCE25C62 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -614,33 +606,16 @@
 			);
 			name = Alamofire;
 			productName = Alamofire;
-			productReference = 9C1842ADC83965FD545C4255D1377766 /* Alamofire.framework */;
+			productReference = 4F155308BA3E1AA828D16D4280008F43 /* Alamofire.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B27381F8EF033444960536F4D6D1C102 /* HanekeSwift */ = {
+		530050EC0EE0E9891DD5A25EC66DAF43 /* Cartography */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A111713FEAC30D4854A16AB4AFA899FA /* Build configuration list for PBXNativeTarget "HanekeSwift" */;
+			buildConfigurationList = F3F3FB15A9C78A5630C337482F16167E /* Build configuration list for PBXNativeTarget "Cartography" */;
 			buildPhases = (
-				AC1402D1D7348F13AF660AD182BA0151 /* Sources */,
-				EDD5AABF1266CC0C5445E94F5B5258D1 /* Frameworks */,
-				A49E6E18BDEFFE7A42FD89CFD08B5C7D /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = HanekeSwift;
-			productName = HanekeSwift;
-			productReference = 5E1B5111F041C16D07DF3C8FACEE7B63 /* Haneke.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		E493D064C971B20CC0542CBE318CCB81 /* Cartography */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7F6A692414516985B1730E65520A3DC5 /* Build configuration list for PBXNativeTarget "Cartography" */;
-			buildPhases = (
-				37C930B820B96D91E4627962267DA301 /* Sources */,
-				01D960BED5BA3DDFEBE551D744CFF229 /* Frameworks */,
-				2702D933283B71A58EFD6D2B07118258 /* Headers */,
+				7F852F137346B167980DF3556F42CE3B /* Sources */,
+				103C3DBDB11F0ABA41F5BD94FC4CE88B /* Frameworks */,
+				F0C9DAD25CB7CC0E903D3FDFEF28B9DE /* Headers */,
 			);
 			buildRules = (
 			);
@@ -648,7 +623,41 @@
 			);
 			name = Cartography;
 			productName = Cartography;
-			productReference = A8871BC2E28C9E9D0F56557E5A1A9A9C /* Cartography.framework */;
+			productReference = 1D1352CFE742F27E9709EA249C0F039F /* Cartography.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8797ED247E366F6D9F24FAE9CDD33A38 /* HanekeSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0283D3218601867AB830519DFFDE1950 /* Build configuration list for PBXNativeTarget "HanekeSwift" */;
+			buildPhases = (
+				91A4E66A51471C5D427FCC95A1323B74 /* Sources */,
+				78AE9137D933BA7A6BB822FE7AEC6F90 /* Frameworks */,
+				39CEFFAB7A7D188E6CBD33A5A02C463C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HanekeSwift;
+			productName = HanekeSwift;
+			productReference = 091AAB6C2EA4573F20CA5726AE5B2AD8 /* Haneke.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AA6773D48630C8C094C901AD5CA53FEF /* FastImageCache */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A451720CD884F9BD51F53D91765F384 /* Build configuration list for PBXNativeTarget "FastImageCache" */;
+			buildPhases = (
+				9AD2FDB15A0D1DBF5F70DC9D4A11332C /* Sources */,
+				D25E069A1BA2C3813AC6D162635B8219 /* Frameworks */,
+				AA2AAB33D834EBEB34893F667E1A2490 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FastImageCache;
+			productName = FastImageCache;
+			productReference = 82E5E385B8587AA5A42AC4B75A227B35 /* FastImageCache.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -672,59 +681,89 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AFA56FAC8F5C8E3565A0656958C1618A /* Alamofire */,
-				E493D064C971B20CC0542CBE318CCB81 /* Cartography */,
-				936D1C655BE850D32A9B5DD157E24235 /* FastImageCache */,
-				B27381F8EF033444960536F4D6D1C102 /* HanekeSwift */,
+				3E16DD50343DE184157795B9B7A2C7C5 /* Alamofire */,
+				530050EC0EE0E9891DD5A25EC66DAF43 /* Cartography */,
+				AA6773D48630C8C094C901AD5CA53FEF /* FastImageCache */,
+				8797ED247E366F6D9F24FAE9CDD33A38 /* HanekeSwift */,
 				141573C69566227E7DDD6D87B946036D /* Pods */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		33448ACFA0E382037486153D19EBF38F /* Sources */ = {
+		118C303F8511256D00C7921CC4FCD186 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				579DB392184B23AC4FF0988D4B999039 /* Alamofire-dummy.m in Sources */,
-				3CCBE7211E85F8FA0F8198385E0F5A69 /* Alamofire.swift in Sources */,
-				8152065E550919ABE9B8A49A03B8E02F /* Download.swift in Sources */,
-				C377C8DA29CB2C44E9B0FA0809EDDFA1 /* Manager.swift in Sources */,
-				CC0DF497534219A477FA1301B476D4C5 /* MultipartFormData.swift in Sources */,
-				3A2AC3AD9338B1A7094212EB0CCEB23D /* ParameterEncoding.swift in Sources */,
-				1B60CFEBAD0EFA175810C0EF23240D97 /* Request.swift in Sources */,
-				B249B69F1BD8C6262AB0645AED6A4E0B /* ResponseSerialization.swift in Sources */,
-				2B0C9CBF78BFB15718B1A5DF2A66C345 /* ServerTrustPolicy.swift in Sources */,
-				45A85079D312F3F0320533E6A357219A /* Upload.swift in Sources */,
-				CC854F73F09E94C4DCEACB318AC37C1D /* Validation.swift in Sources */,
+				1F0CF04D83DC21CBEF915EB6AA81F954 /* Alamofire-dummy.m in Sources */,
+				C286AA8B5495F0889D0D1010C65F31E5 /* Alamofire.swift in Sources */,
+				D5C2C5B8830EF5767BE0919E722B28D4 /* Download.swift in Sources */,
+				32A94F36E34BA78DFCFEE325ABEE6681 /* Error.swift in Sources */,
+				48DBFB3AFCC94140C58F59381062C5E8 /* Manager.swift in Sources */,
+				19995A03A262BA329CEA75883E10EB28 /* MultipartFormData.swift in Sources */,
+				62FA049E75277D80C9BDE8E70EEBF963 /* ParameterEncoding.swift in Sources */,
+				4592437882A3CA655D2833A950341412 /* Request.swift in Sources */,
+				FF2FC6F801305892EDCB9D9361CEEA72 /* ResponseSerialization.swift in Sources */,
+				160E5EEE4D4044F4D01A0B000D828912 /* Result.swift in Sources */,
+				C7FE6F73472B80914D7E521AA0BA1146 /* ServerTrustPolicy.swift in Sources */,
+				8CB61472291B709BBDEEFAF8661256C5 /* Stream.swift in Sources */,
+				89D3E59CDAC13BD59A53674912A5FFE4 /* Upload.swift in Sources */,
+				69191778B8AA77F55CAB3AD5AE495F1E /* Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		37C930B820B96D91E4627962267DA301 /* Sources */ = {
+		7F852F137346B167980DF3556F42CE3B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C7892BEC27A946FE532229654D67D59 /* Align.swift in Sources */,
-				09CF59C00387567AF34FA85C25C11793 /* Cartography-dummy.m in Sources */,
-				3D376FBC154D6227FE16C57DF8EBD6C3 /* Coefficients.swift in Sources */,
-				4EC56B1C75919E7F94AB40A52AA78F05 /* Compound.swift in Sources */,
-				4A2D0B02E203EC888E4E0D946D3BB123 /* Constraint.swift in Sources */,
-				30A204E044478A520134D09CAFDD3782 /* ConstraintGroup.swift in Sources */,
-				E19903E54B1B478C1CCD18E151629BDE /* Context.swift in Sources */,
-				AB766DBDAB5B925DFAC762B6DF17C414 /* Dimension.swift in Sources */,
-				EECE4D482177835C267CF543E62077A1 /* Distribute.swift in Sources */,
-				D66D499E98B1E92901B25EA9B6511F94 /* Edge.swift in Sources */,
-				9E9FDDAFA2929278460C41B813BEE778 /* Edges.swift in Sources */,
-				E75F5EC5D058EA1CC5831FEA47136484 /* Expression.swift in Sources */,
-				D1F72BA90789E416693DEB69B8856317 /* Extensions.swift in Sources */,
-				DAA6208FD78F8F20D82930CB597FE131 /* Layout.swift in Sources */,
-				4AA25911EF62F2A738F40AEC7093022E /* LayoutProxy.swift in Sources */,
-				75C9F0037566499CD85B522C80E7B22D /* Point.swift in Sources */,
-				F32229FB40339ED7782700B4F959DFF5 /* Priority.swift in Sources */,
-				DCF1F84D5DD1C5966EA9F2159B4C5F59 /* Property.swift in Sources */,
-				D817498BA96F048B6DF0053F98176845 /* Size.swift in Sources */,
-				070901522DC3A4E37C593BA45E36BB85 /* View.swift in Sources */,
-				EF3CC62A599AB6C57E22F781FA80248C /* ViewUtils.swift in Sources */,
+				4C3836D24FC1BB3D5F68FF1BBE443205 /* Align.swift in Sources */,
+				28DB7BCECC6797F78E9E63FC96B95605 /* Cartography-dummy.m in Sources */,
+				ECB2FD9BC9A446DBBD5822945A2A54C9 /* Coefficients.swift in Sources */,
+				CD7083EB9950B827963174932597996B /* Compound.swift in Sources */,
+				EA4B4AEA23752A628D7719F766C4EC85 /* Constrain.swift in Sources */,
+				7566421583FAD6296B84296CEB1D6DB9 /* Constraint.swift in Sources */,
+				C58D206926EDC3769696505F7D14E25C /* ConstraintGroup.swift in Sources */,
+				8A68D67843B6072D310C04D660174BA8 /* Context.swift in Sources */,
+				957D5D2934E0664A4C82F3F36E4D9B19 /* Dimension.swift in Sources */,
+				487F14E5346E82E7627D5A02367DC2FF /* Distribute.swift in Sources */,
+				256B227F656BE142D3DC55C8E75F8979 /* Edge.swift in Sources */,
+				D6E84D8C9DBDFAFFCA68F2AAA3E7979D /* Edges.swift in Sources */,
+				18334AB2178762DE1BC8C308C53A80BC /* Expression.swift in Sources */,
+				3AD14A706B31DA837BCD7AEADE1E8074 /* Extensions.swift in Sources */,
+				922ABA51FDAB069FCC21A74A38E717D6 /* LayoutProxy.swift in Sources */,
+				31FEEB709ABFDDEC2C725A9687BEA556 /* Point.swift in Sources */,
+				0477002B387B0FC6425FA6107976A1D6 /* Priority.swift in Sources */,
+				CEB9DA43C1C63C71D2AA63F660579E57 /* Property.swift in Sources */,
+				AAFD3308355E8D051D75BB2EDAA2BACA /* Size.swift in Sources */,
+				09BE1A480A9368BE8871C220A17FBAC7 /* View.swift in Sources */,
+				88B8B90308AE0D0C634C0D2EC47F6A71 /* ViewUtils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91A4E66A51471C5D427FCC95A1323B74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7948ED2389A35CB8FE0595464B2642C /* CGSize+Swift.swift in Sources */,
+				275665325202FAEBB59890EC7FCF16A8 /* Cache.swift in Sources */,
+				CD121409266AB95E524222E930CA8328 /* CryptoSwiftMD5.swift in Sources */,
+				D60AE084AF5E7EF09ADF0664EF69A394 /* Data.swift in Sources */,
+				644E734A0420F6A82D97A9087A645C71 /* DiskCache.swift in Sources */,
+				7896BCFA3347571BC05DED0F566D0379 /* DiskFetcher.swift in Sources */,
+				B6661231CDA134D47505384B53A7522E /* Fetch.swift in Sources */,
+				1E12ABAB080B6CCEA583D954876601FD /* Fetcher.swift in Sources */,
+				5F0B38FFF784F45D9D587C09DC197C85 /* Format.swift in Sources */,
+				EB98D380AD161B6D7AD518C1B84AD0D2 /* Haneke.swift in Sources */,
+				EF1A7633C4DA296447364C2C012602C0 /* HanekeSwift-dummy.m in Sources */,
+				CE739F05A86CD7FA2E93BEA9B0BD7472 /* Log.swift in Sources */,
+				56D4779BCF88F93F89282D51A15A828D /* NSFileManager+Haneke.swift in Sources */,
+				D16EBC7A430719D8C0774640049C06C6 /* NSHTTPURLResponse+Haneke.swift in Sources */,
+				047D78025FC7D468BDD295BDDEF7420A /* NetworkFetcher.swift in Sources */,
+				12D7AEB7C09276F6E416982DE6CE06B8 /* String+Haneke.swift in Sources */,
+				61EF9C75D4E57D2B1673E3F62F0996A0 /* UIButton+Haneke.swift in Sources */,
+				059F4A0BCA131694BA10E32B6BBE93E4 /* UIImage+Haneke.swift in Sources */,
+				55C97371FF93AA63BE2F05A03841E61A /* UIImageView+Haneke.swift in Sources */,
+				35D9675A728E4922FEEC73EC55826525 /* UIView+Haneke.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,85 +775,113 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AC1402D1D7348F13AF660AD182BA0151 /* Sources */ = {
+		9AD2FDB15A0D1DBF5F70DC9D4A11332C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41306ADE8BDEBB820D8FB2AA61945873 /* CGSize+Swift.swift in Sources */,
-				B8932A098C47D955B69B1EAC736DDEFE /* Cache.swift in Sources */,
-				49E9666F36D9C235360AD6C084DB7E61 /* CryptoSwiftMD5.swift in Sources */,
-				26237FED5AB1C5E94C368DB4D272DEBE /* Data.swift in Sources */,
-				9D075F1A6B370372A2A3FAE7C43C27B3 /* DiskCache.swift in Sources */,
-				A44E0C39C6466AA8A0DE8389D2DD40AB /* DiskFetcher.swift in Sources */,
-				783B42513AF007D8DCFA5735189F720B /* Fetch.swift in Sources */,
-				AC285485B8A6AE36ECC2F88D8182EB64 /* Fetcher.swift in Sources */,
-				262E0B57A33D06A182CC53A9DF58EF72 /* Format.swift in Sources */,
-				E9020616330BA56E738D58FE873C220C /* Haneke.swift in Sources */,
-				D01DF3B8E6179BFEBDEB6697FAC0CC99 /* HanekeSwift-dummy.m in Sources */,
-				C39C693279EECB3CB3A3D633F05E0D19 /* Log.swift in Sources */,
-				19536B3F72BA489F3B21D428C5EB5E38 /* NSFileManager+Haneke.swift in Sources */,
-				10F337DCDE8F51C4526EBC0C0ACFA67B /* NSHTTPURLResponse+Haneke.swift in Sources */,
-				34D30F84F51947617C8832AA616A9DFC /* NetworkFetcher.swift in Sources */,
-				DE4FFE1AB8E1BEB5CE491B151D44F5EB /* String+Haneke.swift in Sources */,
-				B47756F9F8F9C74C9D358DB5496C3F5B /* UIButton+Haneke.swift in Sources */,
-				E8D77A1BDC609E24972385229201763D /* UIImage+Haneke.swift in Sources */,
-				41399A80CC9646D8ADA177A8A9FD713E /* UIImageView+Haneke.swift in Sources */,
-				01A3462D5463ECA0D0FEBB26659E5FC2 /* UIView+Haneke.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D6B82EA69B9A21E87F197A9DE5F46B7E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2EA42D81D453505EB2F3FF3EA66F939D /* FICImageCache.m in Sources */,
-				B83137591E4FC0E6BC84EFCCA48AA118 /* FICImageFormat.m in Sources */,
-				932D470B653C2372866AE8C65BC0D56E /* FICImageTable.m in Sources */,
-				13F4B19ACB9D90E9E4A616AC0C60E3D1 /* FICImageTableChunk.m in Sources */,
-				2FAE5125FD1D26D20F7FE68F3D95A119 /* FICImageTableEntry.m in Sources */,
-				08F9C798465BBA3F03C635FD5BDEAD26 /* FICUtilities.m in Sources */,
-				E377961F194C32214DCDF1BDB27FE7EE /* FastImageCache-dummy.m in Sources */,
+				6146CA7B45F5A8076771075A4C530EA7 /* FICImageCache.m in Sources */,
+				BDBC174A75E590F8B650780A9505368A /* FICImageFormat.m in Sources */,
+				6301435E6D512F1B9F7922A3FC929344 /* FICImageTable.m in Sources */,
+				DC57A7191D441754420BD4DC619810EB /* FICImageTableChunk.m in Sources */,
+				758A945E9D92FEF8E7ADEE9136A003F3 /* FICImageTableEntry.m in Sources */,
+				3DA62145F85DB145821FE45471C7B4C1 /* FICUtilities.m in Sources */,
+				3EEE9C34482B4BE1EF479CF7A61B5794 /* FastImageCache-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		14D75D7B673E13C952100C3FACD65D0C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Cartography;
-			target = E493D064C971B20CC0542CBE318CCB81 /* Cartography */;
-			targetProxy = 81AE03ABC1E0EBE3E2CC1621DA937839 /* PBXContainerItemProxy */;
-		};
-		BA5BE7200294411C826DDCC544EACE86 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			target = AFA56FAC8F5C8E3565A0656958C1618A /* Alamofire */;
-			targetProxy = A63CEF5A31D13DC419031FE9C6CDF2E4 /* PBXContainerItemProxy */;
-		};
-		BD10546BB4253C8A87548DD27B4C998E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = HanekeSwift;
-			target = B27381F8EF033444960536F4D6D1C102 /* HanekeSwift */;
-			targetProxy = AA18E82F9EB1CF1F03E078D76985DB89 /* PBXContainerItemProxy */;
-		};
-		CCFC2E8F486FB9C8306838EB462152D2 /* PBXTargetDependency */ = {
+		0B84272AEA2C28674CBA4CA42FEC7AD1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FastImageCache;
-			target = 936D1C655BE850D32A9B5DD157E24235 /* FastImageCache */;
-			targetProxy = A1811D2758C93E7217E52FFB0DA85154 /* PBXContainerItemProxy */;
+			target = AA6773D48630C8C094C901AD5CA53FEF /* FastImageCache */;
+			targetProxy = B2140E851C573A6A2F5661E5D9B05CDE /* PBXContainerItemProxy */;
+		};
+		567091C172D8639F2B7C1548DC076399 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Cartography;
+			target = 530050EC0EE0E9891DD5A25EC66DAF43 /* Cartography */;
+			targetProxy = 949ED4A73AC645A0E698396EC188B32D /* PBXContainerItemProxy */;
+		};
+		9C1534F760EDBC28A015AE4A644B228C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			target = 3E16DD50343DE184157795B9B7A2C7C5 /* Alamofire */;
+			targetProxy = 2FD64F00FEAA26AAA85077325F6AAC13 /* PBXContainerItemProxy */;
+		};
+		FE23D61D1F09547A15D8F8790E8CB6E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HanekeSwift;
+			target = 8797ED247E366F6D9F24FAE9CDD33A38 /* HanekeSwift */;
+			targetProxy = 3F4207D0F414BB1DA4DCBB6E0BD44185 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		29B35385D8257A2B0C49323EC537CD69 /* Release */ = {
+		31FD049336ABA3144FCBE280B2B8EEE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C0D51E0067C744F2AFCF229EC003F3A /* HanekeSwift-Private.xcconfig */;
+			baseConfigurationReference = 958764A1B8C4090AEE497800F3E3EE87 /* Cartography-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.9.1;
+				CURRENT_PROJECT_VERSION = 0.6.0;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.9.1;
+				DYLIB_COMPATIBILITY_VERSION = 0.6.0;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Cartography/Cartography-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Cartography/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Cartography/Cartography.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Cartography;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4BC12A34232431D8B86A43F5F32FB5E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 958764A1B8C4090AEE497800F3E3EE87 /* Cartography-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 0.6.0;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0.6.0;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Cartography/Cartography-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Cartography/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Cartography/Cartography.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Cartography;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5F076D9D4FF16AB3A8FE875104DC0410 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2AB2D16B9E1CD731DBF4994F568FE0C /* HanekeSwift-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 0.10.0;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0.10.0;
 				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -863,28 +930,27 @@
 			};
 			name = Release;
 		};
-		6847EEFFFC9EC560F85C984E810A473F /* Debug */ = {
+		69E55536F73D1A37075DA0D7E85E0348 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B309AB9B3730A51F6CED64BC49613278 /* Cartography-Private.xcconfig */;
+			baseConfigurationReference = D6BD50AF5E49085094C1E389130AAC58 /* FastImageCache-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.5.0;
+				CURRENT_PROJECT_VERSION = 1.3.0;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.5.0;
+				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Cartography/Cartography-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Cartography/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/FastImageCache/FastImageCache-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FastImageCache/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Cartography/Cartography.modulemap";
+				MODULEMAP_FILE = "Target Support Files/FastImageCache/FastImageCache.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Cartography;
+				PRODUCT_NAME = FastImageCache;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -920,33 +986,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		844D75E9491EBA4D7B4DBA6B22486045 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B309AB9B3730A51F6CED64BC49613278 /* Cartography-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.5.0;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.5.0;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Cartography/Cartography-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Cartography/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Cartography/Cartography.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Cartography;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -987,25 +1026,25 @@
 			};
 			name = Debug;
 		};
-		B0D41DBCA006C972FD5435D0F1EF577A /* Release */ = {
+		B0CC6336BF6D99A29D58FB0582A7DE37 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F705F480702B683054867D4703FBA523 /* FastImageCache-Private.xcconfig */;
+			baseConfigurationReference = 74342425B9069896CE6E2F89370F50D5 /* Alamofire-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1.3.0;
+				CURRENT_PROJECT_VERSION = 2.0.2;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 2;
 				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FastImageCache/FastImageCache-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FastImageCache/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FastImageCache/FastImageCache.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = FastImageCache;
+				PRODUCT_NAME = Alamofire;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1014,14 +1053,42 @@
 			};
 			name = Release;
 		};
-		E36CBC5B4916C27F135F163BDBE7D059 /* Debug */ = {
+		E021EAC2BE29D50F7386EBBBFF350823 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C0D51E0067C744F2AFCF229EC003F3A /* HanekeSwift-Private.xcconfig */;
+			baseConfigurationReference = 74342425B9069896CE6E2F89370F50D5 /* Alamofire-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.9.1;
+				CURRENT_PROJECT_VERSION = 2.0.2;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.9.1;
+				DYLIB_COMPATIBILITY_VERSION = 2;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Alamofire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E7C46DF39C3202906CF52359FF6AA7C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2AB2D16B9E1CD731DBF4994F568FE0C /* HanekeSwift-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 0.10.0;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0.10.0;
 				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1042,36 +1109,9 @@
 			};
 			name = Debug;
 		};
-		F0045AC200F278EF4D438ED71580F63D /* Release */ = {
+		F84B87B2A2D082B76F4E890847DD362D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E46C00D85B06AE17271E20B50F99FCF /* Alamofire-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1.3.1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Alamofire;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		F0192F73F75AD8B866189BFB216416EB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F705F480702B683054867D4703FBA523 /* FastImageCache-Private.xcconfig */;
+			baseConfigurationReference = D6BD50AF5E49085094C1E389130AAC58 /* FastImageCache-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1.3.0;
@@ -1086,7 +1126,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FastImageCache/FastImageCache.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = FastImageCache;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1094,35 +1134,7 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
-		};
-		F8ECC01A3DC7D3E7346D55AB04255129 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E46C00D85B06AE17271E20B50F99FCF /* Alamofire-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1.3.1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Alamofire;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
+			name = Release;
 		};
 		FB45FFD90572718D82AB9092B750F0CA /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1161,6 +1173,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0283D3218601867AB830519DFFDE1950 /* Build configuration list for PBXNativeTarget "HanekeSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7C46DF39C3202906CF52359FF6AA7C5 /* Debug */,
+				5F076D9D4FF16AB3A8FE875104DC0410 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FE51A26683D4B33FF30736F861E983B /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E021EAC2BE29D50F7386EBBBFF350823 /* Debug */,
+				B0CC6336BF6D99A29D58FB0582A7DE37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1179,38 +1209,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7F6A692414516985B1730E65520A3DC5 /* Build configuration list for PBXNativeTarget "Cartography" */ = {
+		6A451720CD884F9BD51F53D91765F384 /* Build configuration list for PBXNativeTarget "FastImageCache" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6847EEFFFC9EC560F85C984E810A473F /* Debug */,
-				844D75E9491EBA4D7B4DBA6B22486045 /* Release */,
+				69E55536F73D1A37075DA0D7E85E0348 /* Debug */,
+				F84B87B2A2D082B76F4E890847DD362D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8ABF2B98EFA4E02E5F54AED94E249DD8 /* Build configuration list for PBXNativeTarget "FastImageCache" */ = {
+		F3F3FB15A9C78A5630C337482F16167E /* Build configuration list for PBXNativeTarget "Cartography" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F0192F73F75AD8B866189BFB216416EB /* Debug */,
-				B0D41DBCA006C972FD5435D0F1EF577A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A111713FEAC30D4854A16AB4AFA899FA /* Build configuration list for PBXNativeTarget "HanekeSwift" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E36CBC5B4916C27F135F163BDBE7D059 /* Debug */,
-				29B35385D8257A2B0C49323EC537CD69 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F13032BC4189586E1C6DA21FA861AB44 /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F8ECC01A3DC7D3E7346D55AB04255129 /* Debug */,
-				F0045AC200F278EF4D438ED71580F63D /* Release */,
+				31FD049336ABA3144FCBE280B2B8EEE9 /* Debug */,
+				4BC12A34232431D8B86A43F5F32FB5E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

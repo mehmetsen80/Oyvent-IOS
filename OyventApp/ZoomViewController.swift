@@ -18,10 +18,10 @@ class ZoomViewController: UIViewController , UIScrollViewDelegate  {
 
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let photo:Photo = appDelegate.zoomedPhoto!
-        var imgURL: NSURL! = NSURL(string: photo.largeImageURL)
+        let imgURL: NSURL! = NSURL(string: photo.largeImageURL)
         // Download an NSData representation of the image at the URL
         let request: NSURLRequest = NSURLRequest(URL: imgURL)
-        let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
+        //let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?,error: NSError?) -> Void in
             if let noerror = data {
@@ -39,7 +39,7 @@ class ZoomViewController: UIViewController , UIScrollViewDelegate  {
                     self.mScrollView.contentSize = largeImage.size
                     
                     // 3
-                    var doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
+                    let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
                     doubleTapRecognizer.numberOfTapsRequired = 2
                     doubleTapRecognizer.numberOfTouchesRequired = 1
                     self.mScrollView.addGestureRecognizer(doubleTapRecognizer)
@@ -61,7 +61,7 @@ class ZoomViewController: UIViewController , UIScrollViewDelegate  {
                 }
             }
             else {
-                println("Error: \(error!.localizedDescription)")
+                print("Error: \(error!.localizedDescription)", terminator: "")
             }
         })
 
@@ -137,7 +137,7 @@ class ZoomViewController: UIViewController , UIScrollViewDelegate  {
         
         
         // Insert your save data statements in this function
-        println("Insert your save data statements in this function")
+        print("Insert your save data statements in this function", terminator: "")
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.zoomedPhoto = nil

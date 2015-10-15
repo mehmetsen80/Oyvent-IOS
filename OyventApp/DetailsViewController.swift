@@ -61,21 +61,21 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         
         
         /********************************** Big Poster *********************************/
-        var blankimage = UIImage(named:"blank")
+        let blankimage = UIImage(named:"blank")
         self.btnBigPoster?.setBackgroundImage(blankimage, forState: UIControlState.Normal)
         let urlString: String = photo.mediumImageURL//get the image
-        var imgURL: NSURL! = NSURL(string: urlString)
+        let imgURL: NSURL! = NSURL(string: urlString)
         let request: NSURLRequest = NSURLRequest(URL: imgURL)// Download an NSData representation of the image at the URL
-        let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
+        //let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?,error: NSError?) -> Void in
             if let noerror = data {
                 dispatch_async(dispatch_get_main_queue()) {
-                    var image = UIImage(data: noerror)
+                    let image = UIImage(data: noerror)
                     self.btnBigPoster?.setBackgroundImage(image, forState: UIControlState.Normal)
                 }
             }
             else {
-                println("Error: \(error!.localizedDescription)")
+                print("Error: \(error!.localizedDescription)", terminator: "")
             }
         })
         /********************************** End of Big Poster ***************************/
@@ -84,8 +84,8 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
        
         /************************ album Name should less than 37 chars ***********************/
         let albumName = self.photo.albumName
-        if(count(albumName)>37){
-            self.btnGeoAlbum?.setTitle(albumName.substringToIndex(advance(albumName.startIndex, 37))+"..." , forState: UIControlState.Normal)
+        if(albumName.characters.count>37){
+            self.btnGeoAlbum?.setTitle(albumName.substringToIndex(albumName.startIndex.advancedBy(37))+"..." , forState: UIControlState.Normal)
         }else{
             self.btnGeoAlbum?.setTitle(albumName, forState: UIControlState.Normal)
         }
@@ -159,7 +159,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
     func setupLocationManager(){
         
         //display alert message with warning
-        var myAlert = UIAlertController(title: "Warning", message: "Location services are not enabled", preferredStyle: UIAlertControllerStyle.Alert)
+        let myAlert = UIAlertController(title: "Warning", message: "Location services are not enabled", preferredStyle: UIAlertControllerStyle.Alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
         myAlert.addAction(okAction)
         
@@ -204,20 +204,20 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
     
     
     /******************************** if location manager fails to load *************************/
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("error to get location : \(error)")
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("error to get location : \(error)", terminator: "")
         
         if let clErr = CLError(rawValue: error.code) {
             switch clErr {
             case .LocationUnknown:
-                println("location unknown")
+                print("location unknown", terminator: "")
             case .Denied:
-                println("denied")
+                print("denied", terminator: "")
             default:
-                println("unknown Core Location error")
+                print("unknown Core Location error", terminator: "")
             }
         } else {
-            println("other error")
+            print("other error", terminator: "")
         }
         
     }
@@ -226,7 +226,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
     
     
     /**** update current location coords and lookup location periodically until city name caught ****/
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         
         currentLocation = newLocation
         self.latitude = currentLocation.coordinate.latitude
@@ -238,41 +238,18 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: {
             placemarks, error in
             
-            if error == nil && placemarks.count > 0 {
-                let placeArray = placemarks as! [CLPlacemark]
-                
+            if error == nil && placemarks!.count > 0 {
+                let placeArray = placemarks as [CLPlacemark]?
                 // Place details
-                var placeMark: CLPlacemark!
-                placeMark = placeArray[0]
-                
-                // Address dictionary
-                //println(placeMark.addressDictionary)
-                
-                // Location name
-                if let locationName = placeMark.addressDictionary["Name"] as? NSString {
-                    //println(locationName)
-                }
-                
-                // Street address
-                if let street = placeMark.addressDictionary["Thoroughfare"] as? NSString {
-                    //println(street)
-                }
+                let placeMark: CLPlacemark! = placeArray?[0]
+
                 
                 // City
-                if let city = placeMark.addressDictionary["City"] as? NSString {
-                    //println(city)
+                if let city = placeMark.addressDictionary?["City"] as? NSString {
+                    print(city)
                     self.locationManager.stopUpdatingLocation()
                 }
-                
-                // Zip code
-                if let zip = placeMark.addressDictionary["ZIP"] as? NSString {
-                    //println(zip)
-                }
-                
-                // Country
-                if let country = placeMark.addressDictionary["Country"] as? NSString {
-                    //println(country)
-                }
+             
                 
             }
         })
@@ -307,22 +284,22 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
             data, response, error  in
             
             if(error != nil){
-                println("error=\(error)")
+                print("error=\(error)", terminator: "")
                 return
             }
             
-            var err: NSError?
-            var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
+            do{
+            let parseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers  ) as? NSDictionary
             
-            if let parseJSON = json {
-                let resultValue:Bool = parseJSON["success"] as! Bool!
-                let message:String? = parseJSON	["message"] as! String?
-                let already:Bool = parseJSON["already"] as! Bool!
+            
+                let resultValue:Bool = parseJSON?["success"] as! Bool!
+                let message:String? = parseJSON?["message"] as! String?
+                let already:Bool = parseJSON?["already"] as! Bool!
                 
                  dispatch_async(dispatch_get_main_queue(),{
                     if(!resultValue){
                         //display alert message with error
-                        var myAlert = UIAlertController(title: "Warning", message: message, preferredStyle:UIAlertControllerStyle.Alert)
+                        let myAlert = UIAlertController(title: "Warning", message: message, preferredStyle:UIAlertControllerStyle.Alert)
                         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                         myAlert.addAction(okAction)
                         self.presentViewController(myAlert, animated: true, completion: nil)
@@ -335,7 +312,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                         }
                     }
                 })
-            }
+                } catch{}
             
         }
         
@@ -359,12 +336,12 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
     /********************* get a transparent background image *******************/
     func onePixelImageWithColor(color : UIColor) -> UIImage {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
-        var context = CGBitmapContextCreate(nil, 1, 1, 8, 0, colorSpace, bitmapInfo)
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue)
+        let context = CGBitmapContextCreate(nil, 1, 1, 8, 0, colorSpace, bitmapInfo.rawValue)
         CGContextSetFillColorWithColor(context, color.CGColor)
         CGContextFillRect(context, CGRectMake(0, 0, 1, 1))
-        let image = UIImage(CGImage: CGBitmapContextCreateImage(context))
-        return image!
+        let image = UIImage(CGImage: CGBitmapContextCreateImage(context)!)
+        return image
     }/***************** end of get a transparent background image ***************/
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -401,20 +378,20 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         let url = NSURL(string:"http://oyvent.com/ajax/Feeds.php")
         let request = NSMutableURLRequest(URL: url!)
         let postString = "processType=DELETEPOST&pkPhotoID=\(photo.pkPhotoID)"
-        println("postString: \(postString)")
+        print("postString: \(postString)", terminator: "")
         request.HTTPMethod = "POST"
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         
         
-        var deleteAlert = UIAlertController(title: "Delete this Post", message: "Do you want to delete this post?", preferredStyle: UIAlertControllerStyle.Alert)
+        let deleteAlert = UIAlertController(title: "Delete this Post", message: "Do you want to delete this post?", preferredStyle: UIAlertControllerStyle.Alert)
         
         //delete refused, don't delete this post
-        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction) in
             //don't do anything here, the dialog simply closes itself
         }))
         
         //delete this post now
-        deleteAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) in
+        deleteAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction) in
             
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request){
@@ -424,25 +401,25 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                     return
                 }
                 
-                var err: NSError?
-                var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
+                do{
+                let parseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers  ) as? NSDictionary
                 
-                if let parseJSON = json {
-                    let resultValue:Bool = parseJSON["success"] as! Bool!
-                    let message:String? = parseJSON	["error"] as! String?
+                
+                    let resultValue:Bool = parseJSON?["success"] as! Bool!
+                    let message:String? = parseJSON?["error"] as! String?
                     
                     dispatch_async(dispatch_get_main_queue(),{
                         
                         if(!resultValue){
                             //display alert message with confirmation
-                            var myAlert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                            let myAlert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
                             let okAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil)
                             myAlert.addAction(okAction)
                             self.presentViewController(myAlert, animated: true, completion: nil)
                         }else{
                             //display alert message with confirmation
-                            var myAlert = UIAlertController(title: "Confirmation", message: "Post deleted successfully!", preferredStyle: UIAlertControllerStyle.Alert)
-                            myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                            let myAlert = UIAlertController(title: "Confirmation", message: "Post deleted successfully!", preferredStyle: UIAlertControllerStyle.Alert)
+                            myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
 //                                let nvg : MyNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("myGeoNav") as MyNavigationController;
 //                                var geoController:GeoViewController =  nvg.topViewController as GeoViewController
 //                                geoController.hasCustomNavigation = true
@@ -459,8 +436,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                             self.presentViewController(myAlert, animated: true, completion: nil)
                         }
                     })//dispatch
-                }//parse json
-                
+                } catch{}
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             }//task
             
@@ -486,20 +462,20 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         let url = NSURL(string:"http://oyvent.com/ajax/Feeds.php")
         let request = NSMutableURLRequest(URL: url!)
         let postString = "processType=DELETECOMMENT&pkCommentID=\(comment.pkCommentID!)"
-        println("postString: \(postString)")
+        print("postString: \(postString)", terminator: "")
         request.HTTPMethod = "POST"
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         
-        var deleteAlert = UIAlertController(title: "Delete Comment", message: "Do you want to delete this comment?", preferredStyle: UIAlertControllerStyle.Alert)
+        let deleteAlert = UIAlertController(title: "Delete Comment", message: "Do you want to delete this comment?", preferredStyle: UIAlertControllerStyle.Alert)
         
         
         //delete refused, don't delete this comment
-        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction) in
             //don't do anything here, the dialog simply closes itself
         }))
         
         //delete the comment now
-        deleteAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) in
+        deleteAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction) in
         
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request){
@@ -509,32 +485,32 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                     return
                 }
             
-                var err: NSError?
-                var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
+                do{
+                let parseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers  ) as? NSDictionary
                 
-                if let parseJSON = json {
-                    let resultValue:Bool = parseJSON["success"] as! Bool!
-                    let message:String? = parseJSON	["error"] as! String?
+                
+                    let resultValue:Bool = parseJSON?["success"] as! Bool!
+                    let message:String? = parseJSON?["error"] as! String?
                     
                     dispatch_async(dispatch_get_main_queue(),{
                         
                         if(!resultValue){
                             //display alert message with confirmation
-                            var myAlert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                            let myAlert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
                             let okAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil)
                             myAlert.addAction(okAction)
                             self.presentViewController(myAlert, animated: true, completion: nil)
                         }else{
                             
                             //display alert message with confirmation
-                            var myAlert = UIAlertController(title: "Confirmation", message: "Comment deleted successfully!", preferredStyle: UIAlertControllerStyle.Alert)
+                            let myAlert = UIAlertController(title: "Confirmation", message: "Comment deleted successfully!", preferredStyle: UIAlertControllerStyle.Alert)
                             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                             myAlert.addAction(okAction)
                             self.presentViewController(myAlert, animated: true, completion: nil)
                             self.api?.searchComments(self.photo.pkPhotoID)//reload comment
                         }
                     })//dispatch
-                }//parse json
+                }catch{}
             
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             }//task
@@ -549,7 +525,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
     
     /*********************************** scroll to top of comment tableview ***********************/
     func scrollToTop() {
-        var top = NSIndexPath(forRow: Foundation.NSNotFound, inSection: 0);
+        let top = NSIndexPath(forRow: Foundation.NSNotFound, inSection: 0);
         if(self.mTableView != nil){
             self.mTableView.scrollToRowAtIndexPath(top, atScrollPosition: UITableViewScrollPosition.Top, animated: true);
             self.mTableView!.reloadData()
@@ -586,14 +562,14 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
         UIView.commitAnimations()
     }/******* end of animate add comment textbox either up or down *****/
     //when the user touches out of textbox view, end the viewing, move back down
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true);
     }
     
     /*********************************** add comment for this photo *********************************/
     @IBAction func doAddComment(sender: RoundButton) {
         
-        var userID: Double = NSUserDefaults.standardUserDefaults().doubleForKey("userID")
+        let userID: Double = NSUserDefaults.standardUserDefaults().doubleForKey("userID")
         let url = NSURL(string:"http://oyvent.com/ajax/Feeds.php")
         let request = NSMutableURLRequest(URL: url!)
         let comment = self.txtMessage.text
@@ -612,22 +588,22 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
             data, response, error  in
             
             if(error != nil){
-                println("error=\(error)")
+                print("error=\(error)", terminator: "")
                 return
             }
             
-            var err: NSError?
-            var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
+            do{
+                let parseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers  ) as? NSDictionary
             
-            if let parseJSON = json {
-                var resultValue:Bool = parseJSON["success"] as! Bool!
-                var error:String? = parseJSON	["error"] as! String?
+           
+                let resultValue:Bool = parseJSON?["success"] as! Bool!
+                let error:String? = parseJSON?["error"] as! String?
                 
                 dispatch_async(dispatch_get_main_queue(),{
                     
                     if(!resultValue){
                         //display alert message with confirmation
-                        var myAlert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                        let myAlert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
                         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                         myAlert.addAction(okAction)
                         self.presentViewController(myAlert, animated: true, completion: nil)
@@ -639,7 +615,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                         self.scrollToTop()
                     }
                 })
-            }
+            } catch{}
         }
         
         task.resume()
@@ -697,7 +673,7 @@ class DetailsViewController: UIViewController, CommentAPIControllerProtocol, UIT
                         self.lblComments.text = "Comments (0)" //size is zero if no comments
                 }else if(resultsArr.count > 0 && self.comments.count == 1 && (self.photo.fkFacebookID != "" || self.photo.fkTwitterID != "" || self.photo.fkInstagramID != "")){
                     self.comments[0].fullName = self.photo.ownedBy
-                    println("comment owned by: \(self.photo.ownedBy)")
+                    print("comment owned by: \(self.photo.ownedBy)", terminator: "")
                 }
                 
                 self.mTableView!.reloadData()

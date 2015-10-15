@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //let geoController:GeoViewController =  nvg.topViewController as GeoViewController
             //let homeController:HomeViewController = mainStoryboard.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
             let mainTabBar : UITabBarController = mainStoryboard.instantiateViewControllerWithIdentifier("mainTabBar") as! UITabBarController
-            
+            mainTabBar.selectedIndex = 0
             window!.rootViewController = mainTabBar
             window!.makeKeyAndVisible()
 

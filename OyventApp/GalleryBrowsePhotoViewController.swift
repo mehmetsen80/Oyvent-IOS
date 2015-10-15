@@ -61,13 +61,15 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
+
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,12 +118,13 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
         view.addSubview(scrollView)
         //add pageControl to the view
         view.addSubview(pageControl)
-        layout(scrollView) { v in
-            v.left == v.superview!.left
-            v.right == v.superview!.right
-            v.top == v.superview!.top
-            v.bottom == v.superview!.bottom
-        }
+        
+//        layout(scrollView) { v in
+//            v.left == v.superview!.left
+//            v.right == v.superview!.right
+//            v.top == v.superview!.top
+//            v.bottom == v.superview!.bottom
+//        }
         
     }
     
@@ -150,10 +153,10 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
                 imageEntity.loadSourceImageWithCompletion({ (error) -> Void in
                     if let pageView = self.pageViews[imageEntity.page!] {
                         if error == nil {
-                            println("complete loading \(page)")
+                            print("complete loading \(page)", terminator: "")
                             pageView.image = imageEntity.sourceImage
                         } else {
-                            println("failed loading \(page), error \(error)")
+                            print("failed loading \(page), error \(error)", terminator: "")
                         }
                     }
                 })

@@ -8,11 +8,11 @@
 
 import UIKit
 
-class HomeCollectionViewCell: UICollectionViewCell {
+class GroupsCollectionViewCell: UICollectionViewCell {
     
     let colors = Colors()
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
       super.init(coder: aDecoder)
     }
     
@@ -47,6 +47,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         
         
     }
+
 //    override func layoutSubviews() {
 //        super.layoutSubviews()
 //        //gradientLayer.frame = bounds

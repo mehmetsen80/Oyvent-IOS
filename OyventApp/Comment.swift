@@ -72,7 +72,7 @@ class Comment{
                 let postDate:String? = result["POSTDATE"] as? String ?? ""
                 let email:String? = result["EMAIL"] as? String ?? ""
               
-                var comment = Comment(pkCommentID: pkCommentID!, fkPhotoID: fkPhotoID!, fkUserID: fkUserID!, fullName: fullName!, message: message!, latitude: latitude!, longitude: longitude!, postDate: postDate!, email: email!)
+                let comment = Comment(pkCommentID: pkCommentID!, fkPhotoID: fkPhotoID!, fkUserID: fkUserID!, fullName: fullName!, message: message!, latitude: latitude!, longitude: longitude!, postDate: postDate!, email: email!)
                 comments.append(comment)
             }
         }

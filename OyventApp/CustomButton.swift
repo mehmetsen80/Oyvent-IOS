@@ -11,11 +11,13 @@ import UIKit
 
 class CustomButton : UIButton {
     
-    required init(coder decoder: NSCoder) {
+    required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
         
         // backgroundColor = UIColor.whiteColor()
-        backgroundColor = UIColor(red: 0x04/255, green: 0x7f/255, blue: 0xb7/255, alpha: 1.0)
+        //backgroundColor = UIColor(red: 0x04/255, green: 0x7f/255, blue: 0xb7/255, alpha: 1.0)
+        backgroundColor = UIColor(red: 0xf2/255, green: 0x85/255, blue: 0x72/255, alpha: 1.0)
+       
         //or = [UIColor greenColor].CGColor; //=UIColor(red: 0x04/255, green: 0x7f/255, blue: 0xb7/255, alpha: 1.0).CGColor
         
     }

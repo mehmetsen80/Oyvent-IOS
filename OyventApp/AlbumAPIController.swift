@@ -31,14 +31,13 @@ class AlbumAPIController{
     func postAll(currentPage: Int, latitude: String, longitude: String, pkAlbumID: Double) {
         
         let url = NSURL(string:"http://oyvent.com/ajax/Feeds.php")
-        var request = NSMutableURLRequest(URL: url!)
-        var session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url!)
+        //var session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST";
-        var userID:String = NSUserDefaults.standardUserDefaults().stringForKey("userID")! //userID is not being used right now for album class, keep this for future reference
+        let userID:String = NSUserDefaults.standardUserDefaults().stringForKey("userID")! //userID is not being used right now for album class, keep this for future reference
         //println("userID:\(userID)")
         let postString = "processType=GETALLALBUMLISTNEARBY&userID=\(userID)&currentPage=\(currentPage)&lat=\(latitude)&lng=\(longitude)&pkAlbumID=\(pkAlbumID)"
-        println("post All albums postString: \(postString)")
-        var err: NSError?
+        print("post All albums postString: \(postString)", terminator: "")
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         
         
@@ -47,19 +46,21 @@ class AlbumAPIController{
             
             if(error != nil) {
                 // If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                print(error!.localizedDescription, terminator: "")
             }
             
-            
-            var err: NSError?
-            if let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as? NSDictionary {
+            do{
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                 //println("Dictionary: \(json)")
                 self.delegate.didReceiveAlbumAPIResults(json)
                 
-            } else {
+            } catch  {
                 //if nil
-                let resultString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                //let resultString: NSString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
+                //print(resultString, terminator: "")
+                print("Fetch failed: \((error as NSError).localizedDescription)")
             }
+            
         }
         
         task.resume()
@@ -69,14 +70,13 @@ class AlbumAPIController{
     func postParent(currentPage: Int, latitude: String, longitude: String) {
         
         let url = NSURL(string:"http://oyvent.com/ajax/Feeds.php")
-        var request = NSMutableURLRequest(URL: url!)
-        var session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url!)
+        //var session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST";
-        var userID:String = NSUserDefaults.standardUserDefaults().stringForKey("userID")! //userID is not being used right now for album class, keep this for future reference
+        let userID:String = NSUserDefaults.standardUserDefaults().stringForKey("userID")! //userID is not being used right now for album class, keep this for future reference
         //println("userID:\(userID)")
         let postString = "processType=GETPARENTALBUMLISTNEARBY&userID=\(userID)&currentPage=\(currentPage)&lat=\(latitude)&lng=\(longitude)"
-        println("photos Parent Albums postString: \(postString)")
-        var err: NSError?
+        print("photos Parent Albums postString: \(postString)", terminator: "")
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         
         
@@ -85,18 +85,19 @@ class AlbumAPIController{
             
             if(error != nil) {
                 // If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                print(error!.localizedDescription, terminator: "")
             }
             
             
-            var err: NSError?
-            if let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as? NSDictionary {
+            do{
+             let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                 //println("Dictionary: \(json)")
                 self.delegate.didReceiveAlbumAPIResults(json)
                 
-            } else {
+            } catch {
                 //if nil
-                let resultString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                //let resultString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                print("Fetch failed: \((error as NSError).localizedDescription)")
             }
         }
         

@@ -12,7 +12,7 @@ import QuartzCore
 import CoreLocation
 import Haneke
 
-class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate,PhotoAPIControllerProtocol, GeoTableHeaderViewCellDelegate,  UIPopoverPresentationControllerDelegate, CLLocationManagerDelegate{
+class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate,PhotoAPIControllerProtocol, GeoTableHeaderViewCellDelegate,  UIPopoverPresentationControllerDelegate, CLLocationManagerDelegate, UITabBarDelegate{
 
     var api:PhotoAPIController?
     var photos:[Photo] = [Photo]()
@@ -44,11 +44,16 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     
     
     func scrollToTop() {
-        var top = NSIndexPath(forRow: Foundation.NSNotFound, inSection: 0);
+       
+        let top = NSIndexPath(forRow: Foundation.NSNotFound, inSection: 0);
+        print("scrollToTop() \(top)", terminator: "")
         if(self.mTableView != nil){
+            print("scrollToTop() \(UIApplication.sharedApplication().statusBarFrame.height)", terminator: "")
             self.mTableView.scrollToRowAtIndexPath(top, atScrollPosition: UITableViewScrollPosition.Top, animated: true);
             self.mTableView!.reloadData()
             self.mTableView.setContentOffset(CGPointMake(0,  UIApplication.sharedApplication().statusBarFrame.height ), animated: true)
+        }else{
+            print("self.mTableView is nil", terminator: "")
         }
         //println("photos size:  \(photos.count)  pageNo: \(pageNo)")
     }
@@ -80,10 +85,36 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
                     longitude = "0"
                 }
                 
+                print("latitude: \(latitude)  longitude: \(longitude)")
+                
         }else {
-            println("Location services are not enabled");
+            print("Location services are not enabled", terminator: "");
         }
     }
+    
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+        print("didSelectItem", terminator: "")
+        
+        switch item.tag {
+        
+        case 0:
+            print("hey", terminator: "")
+            scrollToTop()
+            break
+        case 1:
+                print("item.tag: \(item.tag)", terminator: "")
+            break
+        case 2:
+                print("item.tag: \(item.tag)", terminator: "")
+            break
+            
+        default:
+            break;
+        }
+    }
+    
+    
+        
     
     func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         let size = image.size
@@ -128,7 +159,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         var menuImage:UIImage = UIImage(named: "oyvent-icon-72")!
         menuImage = resizeImage(menuImage,targetSize: CGSize(width: 30, height: 30))
         menuImage = menuImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        var leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "sideMenuClicked")
+        let leftButton = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "sideMenuClicked")
         self.navigationItem.leftBarButtonItem = leftButton
         /***************** end of navigation left button -> menu image********************/
         
@@ -142,7 +173,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         var locationImage:UIImage = UIImage(named: "location-icon-grey")!
         locationImage = resizeImage(locationImage, targetSize: CGSize(width:30, height:30))
         locationImage = locationImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        var rightButton = UIBarButtonItem(image: locationImage, style: UIBarButtonItemStyle.Plain, target: self, action: "locationClicked")
+        let rightButton = UIBarButtonItem(image: locationImage, style: UIBarButtonItemStyle.Plain, target: self, action: "locationClicked")
         self.navigationItem.rightBarButtonItem = rightButton
         /************** end of navigation right button -> location image ********************/
         
@@ -162,8 +193,8 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
         let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNavGeo") as! MyNavigationController
-        var geoViewController:GeoViewController =  nvg.topViewController as! GeoViewController
-        geoViewController.hasCustomNavigation = true
+        //let geoViewController:GeoViewController =  nvg.topViewController as! GeoViewController
+        //geoViewController.hasCustomNavigation = true
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = nvg
         appDelegate.window?.makeKeyAndVisible()
@@ -189,7 +220,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
 //    }
     
     override func viewDidAppear(animated: Bool) {
-        println("viewDidAppear()  pageNo: \(pageNo)")
+        print("viewDidAppear()  pageNo: \(pageNo)", terminator: "")
         
         setupLocationManager();
         
@@ -228,7 +259,9 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         self.navigationController!.navigationBar.hidden = false
     }
     
-    required init(coder aDecoder: NSCoder)
+    
+
+    required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
        
@@ -245,26 +278,26 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         api!.searchPhotos(pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID,fkParentID: self.fkParentID)
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("error to get location : \(error)")
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("error to get location : \(error)", terminator: "")
         
         if let clErr = CLError(rawValue: error.code) {
             switch clErr {
             case .LocationUnknown:
-                println("location unknown")
+                print("location unknown", terminator: "")
             case .Denied:
-                println("denied")
+                print("denied", terminator: "")
             default:
-                println("unknown Core Location error")
+                print("unknown Core Location error", terminator: "")
             }
         } else {
-            println("other error")
+            print("other error", terminator: "")
         }
         
     }
     
     
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         
         currentLocation = newLocation
         self.latitude = "\(currentLocation.coordinate.latitude)"
@@ -273,31 +306,16 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         //println("didUpdateToLocation longitude \(self.latitude)")
         //println("didUpdateToLocation latitude \(self.longitude)")
         
-        geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: {
-            placemarks, error in
+        
+        geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: { (placemarks, error) -> Void  in
             
-            if error == nil && placemarks.count > 0 {
-                let placeArray = placemarks as! [CLPlacemark]
-                
+            if error == nil && placemarks!.count > 0 {
+                let placeArray = placemarks as [CLPlacemark]?
                 // Place details
-                var placeMark: CLPlacemark!
-                placeMark = placeArray[0]
-                
-                // Address dictionary
-                //println(placeMark.addressDictionary)
-                
-                // Location name
-                if let locationName = placeMark.addressDictionary["Name"] as? NSString {
-                    //println(locationName)
-                }
-                
-                // Street address
-                if let street = placeMark.addressDictionary["Thoroughfare"] as? NSString {
-                    //println(street)
-                }
+                let placeMark: CLPlacemark! = placeArray?[0]
                 
                 // City
-                if let city = placeMark.addressDictionary["City"] as? NSString {
+                if let city = placeMark.addressDictionary?["City"] as? NSString {
                     //println(city)
                     
                     self.city = city as String
@@ -308,15 +326,6 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
                     self.locationManager.stopUpdatingLocation()
                 }
                 
-                // Zip code
-                if let zip = placeMark.addressDictionary["ZIP"] as? NSString {
-                    //println(zip)
-                }
-                
-                // Country
-                if let country = placeMark.addressDictionary["Country"] as? NSString {
-                    //println(country)
-                }
                 
                 
                 
@@ -338,12 +347,12 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     /********************* get a transparent background image *******************/
     func onePixelImageWithColor(color : UIColor) -> UIImage {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
-        var context = CGBitmapContextCreate(nil, 1, 1, 8, 0, colorSpace, bitmapInfo)
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue)
+        let context = CGBitmapContextCreate(nil, 1, 1, 8, 0, colorSpace, bitmapInfo.rawValue)
         CGContextSetFillColorWithColor(context, color.CGColor)
         CGContextFillRect(context, CGRectMake(0, 0, 1, 1))
-        let image = UIImage(CGImage: CGBitmapContextCreateImage(context))
-        return image!
+        let image = UIImage(CGImage: CGBitmapContextCreateImage(context)!)
+        return image
     }/***************** end of get a transparent background image ***************/
     
     
@@ -361,12 +370,12 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         
         //get the image
         let urlString = photo.mediumImageURL
-        var image = self.imageCache[urlString]
+        let image = self.imageCache[urlString]
         if(image == nil) {
             
             
             // If the image does not exist, we need to download it
-            var imgURL: NSURL! = NSURL(string: urlString)
+            let imgURL: NSURL! = NSURL(string: urlString)
             
             //haneke
             cell.imgPoster?.hnk_setImageFromURL(imgURL)
@@ -399,8 +408,8 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         
         /************************ album Name should less than 37 chars ***********************/
         let albumName = photo.albumName
-        if(count(albumName)>37){
-            cell.btnGeoAlbum?.setTitle(albumName.substringToIndex(advance(albumName.startIndex, 37))+"..." , forState: UIControlState.Normal)
+        if(albumName.characters.count>37){
+            cell.btnGeoAlbum?.setTitle(albumName.substringToIndex(albumName.startIndex.advancedBy(37))+"..." , forState: UIControlState.Normal)
         }else{
             cell.btnGeoAlbum?.setTitle(albumName, forState: UIControlState.Normal)
         }
@@ -513,7 +522,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
         
-        var header = tableView.dequeueReusableCellWithIdentifier("GeoHeader") as! GeoTableHeaderCell
+        let header = tableView.dequeueReusableCellWithIdentifier("GeoHeader") as! GeoTableHeaderCell
         header.delegate = self
         
         header.btnGeoAlbum.setTitle(self.albumName, forState: UIControlState.Normal)
@@ -523,23 +532,23 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
        let urlString = "https://s3-oy-vent-images-14.s3.amazonaws.com/58/04674bd29a28422c-medium.jpg"
 
         // If the image does not exist, we need to download it
-        var imgURL: NSURL! = NSURL(string: urlString)
+        let imgURL: NSURL! = NSURL(string: urlString)
 
         // Download an NSData representation of the image at the URL
         let request: NSURLRequest = NSURLRequest(URL: imgURL)
-        let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
+        //let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?,error: NSError?) -> Void in
-                if let noerror = data {
+            
                     dispatch_async(dispatch_get_main_queue()) {
-                        let image = UIImage(data: noerror)
+                        //let image = UIImage(data: noerror)
+                        //let image = UIImage(named: "bgred")
                         //header.btnGeoAlbum?.setBackgroundImage(image, forState: UIControlState.Normal)
+                        
+                        //enable this background if needed
                         header.btnGeoAlbum?.setBackgroundImage(self.onePixelImageWithColor(self.bgImageColor), forState: UIControlState.Normal)
                             header.lblParentName.text = self.parentName
                     }
-                }
-                else {
-                    println("Error: \(error!.localizedDescription)")
-                }
+                
         })
         
         /***************************** End of Main Album Button ***************************/
@@ -555,8 +564,8 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func visitDetailsView(sender: UIButton) {
-        var buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mTableView)
-        var indexPath: NSIndexPath = self.mTableView.indexPathForRowAtPoint(buttonPosition)!
+        let buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mTableView)
+        let indexPath: NSIndexPath = self.mTableView.indexPathForRowAtPoint(buttonPosition)!
         self.performSegueWithIdentifier("detailsView", sender: indexPath)
     }
     
@@ -566,7 +575,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         
         //println("currentOffset: \(currentOffset)  maximumOffset: \(maximumOffset)")
         if(currentOffset <  -100) {
-            println("currentOffset>maximumOffset ->  currentOffset: \(currentOffset)  maximumOffset: \(maximumOffset)")
+            print("currentOffset>maximumOffset ->  currentOffset: \(currentOffset)  maximumOffset: \(maximumOffset)", terminator: "")
             self.loadSpinner.startAnimating()
             pageNo=0
             api!.searchPhotos(pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID, fkParentID: self.fkParentID)
@@ -576,9 +585,9 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-        println("maximumOffset \(maximumOffset)  currentOffset: \(currentOffset)")
+        print("maximumOffset \(maximumOffset)  currentOffset: \(currentOffset)", terminator: "")
         if (maximumOffset - currentOffset) <= 144  &&  maximumOffset > 0{
-            println("let's search: maximumOffset - currentOffset:\(maximumOffset - currentOffset)")
+            print("let's search: maximumOffset - currentOffset:\(maximumOffset - currentOffset)", terminator: "")
             api!.searchPhotos(++pageNo, latitude: self.latitude, longitude: self.longitude, albumID: self.albumID,fkParentID: self.fkParentID)
         }
         
@@ -645,22 +654,23 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
             data, response, error  in
             
             if(error != nil){
-                println("error=\(error)")
+                print("error=\(error)", terminator: "")
                 return
             }
             
-            var err: NSError?
-            var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers  , error: &err) as? NSDictionary
+            //var err: NSError?
+            do{
+            let parseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers  ) as? NSDictionary
             
-            if let parseJSON = json {
-                let resultValue:Bool = parseJSON["success"] as! Bool!
-                let message:String? = parseJSON	["message"] as! String?
-                let already:Bool = parseJSON["already"] as! Bool!
+            
+                let resultValue:Bool = parseJSON?["success"] as! Bool!
+                let message:String? = parseJSON?["message"] as! String?
+                let already:Bool = parseJSON?["already"] as! Bool!
             
                 dispatch_async(dispatch_get_main_queue(),{
                     if(!resultValue){
                         //display alert message with error
-                        var myAlert = UIAlertController(title: "Warning", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                        let myAlert = UIAlertController(title: "Warning", message: message, preferredStyle: UIAlertControllerStyle.Alert)
                         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                         myAlert.addAction(okAction)
                         self.presentViewController(myAlert, animated: true, completion: nil)
@@ -673,6 +683,8 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
                         }
                     }
                 })
+            } catch{
+                
             }
             
             
@@ -684,8 +696,8 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     
     
     @IBAction func doVisitSocial(sender: AnyObject) {
-        var buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mTableView)
-        var indexPath: NSIndexPath = self.mTableView.indexPathForRowAtPoint(buttonPosition)!
+        let buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.mTableView)
+        let indexPath: NSIndexPath = self.mTableView.indexPathForRowAtPoint(buttonPosition)!
         let photo:Photo = self.photos[indexPath.row]
         self.openUrl(photo.contentLink)
     }
@@ -718,12 +730,12 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
     }
 
     @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
-        println("welcome back to GeoViewController!")
+        print("welcome back to GeoViewController!", terminator: "")
         
     }
     
     @IBAction func unwindToThisViewController2(segue: UIStoryboardSegue) {
-        println("welcome back to GeoViewController unwind2!")
+        print("welcome back to GeoViewController unwind2!", terminator: "")
         
         pageNo=0
         self.photos = []
@@ -761,8 +773,8 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
         
         
         if segue.identifier == "detailsView" {
-            var detailsViewController: DetailsViewController = segue.destinationViewController as! DetailsViewController
-            let photoIndex = self.mTableView!.indexPathForSelectedRow()!.row
+            let detailsViewController: DetailsViewController = segue.destinationViewController as! DetailsViewController
+            let photoIndex = self.mTableView!.indexPathForSelectedRow!.row
             let selectedPhoto = self.photos[photoIndex]
             detailsViewController.photo = selectedPhoto
         }
@@ -772,7 +784,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
 //            captureViewController.albumName = self.albumName
 //        }
             else if segue.identifier == "selectCategory" {
-            var categoryViewController: CategoryViewController = segue.destinationViewController as! CategoryViewController
+            let categoryViewController: CategoryViewController = segue.destinationViewController as! CategoryViewController
             //categoryViewController.preferredContentSize = CGSizeMake(500,600)
             categoryViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
             categoryViewController.popoverPresentationController!.delegate = self

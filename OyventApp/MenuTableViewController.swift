@@ -107,7 +107,8 @@ class MenuTableViewController: UITableViewController {
         
         // Preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
-        tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedMenuItem, inSection: 0), animated: false, scrollPosition: .Middle)
+        
+        //tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedMenuItem, inSection: 0), animated: false, scrollPosition: .Middle)
 
     }
 
@@ -126,8 +127,8 @@ class MenuTableViewController: UITableViewController {
 
         // Text Color/Font
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel.textColor = UIColor.whiteColor()
-        header.textLabel.font = UIFont(name: "HelveticaNeue", size: CGFloat(20))
+        header.textLabel!.textColor = UIColor.whiteColor()
+        header.textLabel!.font = UIFont(name: "HelveticaNeue", size: CGFloat(20))
     }
     
    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -144,14 +145,14 @@ class MenuTableViewController: UITableViewController {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         //if not logged in
-        var isUserLoggedIn:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
+        let isUserLoggedIn:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
         if(!isUserLoggedIn){
-            var loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("loginView")as! LoginViewController
+            let loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("loginView")as! LoginViewController
             appDelegate.window?.rootViewController = loginViewController
             appDelegate.window?.makeKeyAndVisible()
         }else{
         
-        println("index path: \(indexPath.row)")
+        print("index path: \(indexPath.row)", terminator: "")
             
             if(indexPath.section == 0){
                 
@@ -167,7 +168,7 @@ class MenuTableViewController: UITableViewController {
                 case 1:
                     //tabBarController.selectedIndex = 1
                     let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myNavGeo") as! MyNavigationController
-                    var geoViewController:GeoViewController =  nvg.topViewController as! GeoViewController
+                    let geoViewController:GeoViewController =  nvg.topViewController as! GeoViewController
                     geoViewController.hasCustomNavigation = true
                     appDelegate.window?.rootViewController = nvg
                     appDelegate.window?.makeKeyAndVisible()
@@ -188,7 +189,7 @@ class MenuTableViewController: UITableViewController {
                     break
                 case 1:
                     //logout
-                    var logoutView: LogoutViewController = mainStoryboard.instantiateViewControllerWithIdentifier("logoutView") as! LogoutViewController
+                    let logoutView: LogoutViewController = mainStoryboard.instantiateViewControllerWithIdentifier("logoutView") as! LogoutViewController
                     sideMenuController()?.setContentViewController(logoutView)
                     break
                     
