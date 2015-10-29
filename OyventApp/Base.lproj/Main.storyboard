@@ -191,13 +191,10 @@
                 <tabBarController storyboardIdentifier="mainTabBar" extendedLayoutIncludesOpaqueBars="YES" id="O1U-N6-fRd" customClass="CustomTabBarController" customModule="OyventApp" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <tabBar key="tabBar" opaque="NO" contentMode="scaleAspectFit" semanticContentAttribute="forceLeftToRight" itemPositioning="fill" id="7Li-9y-RIW">
+                    <tabBar key="tabBar" opaque="NO" contentMode="scaleAspectFit" semanticContentAttribute="forceLeftToRight" id="7Li-9y-RIW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="selectedImageTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="YFF-VD-97V" kind="relationship" relationship="viewControllers" id="i0h-oV-e9w"/>
@@ -531,9 +528,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GxS-qq-2Z1">
-                                <rect key="frame" x="214" y="68" width="48" height="21"/>
+                                <rect key="frame" x="213" y="68" width="50" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="dCN-cI-Jzg"/>
+                                    <constraint firstAttribute="width" constant="50" id="dCN-cI-Jzg"/>
                                     <constraint firstAttribute="height" constant="21" id="ezE-I4-6eo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -2099,7 +2096,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yl-9K-huC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4151" y="1423"/>
+            <point key="canvasLocation" x="4151" y="1437"/>
         </scene>
         <!--Me-->
         <scene sceneID="Lwe-gB-x51">
@@ -2217,7 +2214,7 @@
         <scene sceneID="jrR-gT-0qs">
             <objects>
                 <navigationController storyboardIdentifier="navProfile" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="aYj-lE-waL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="Gk7-oq-Ace"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile-icon-black-small" id="Gk7-oq-Ace"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="f5c-n6-uDn">
@@ -2233,11 +2230,11 @@
             </objects>
             <point key="canvasLocation" x="2526" y="1990"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Home-->
         <scene sceneID="1Fj-ov-ASS">
             <objects>
                 <navigationController storyboardIdentifier="navNearMe" automaticallyAdjustsScrollViewInsets="NO" id="YFF-VD-97V" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="history" id="bcC-yc-Pbd"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home-icon-black-small" id="bcC-yc-Pbd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gmh-PF-UIp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2275,11 +2272,11 @@
             </objects>
             <point key="canvasLocation" x="3619" y="1437"/>
         </scene>
-        <!--Categories-->
+        <!--Places-->
         <scene sceneID="daL-6C-wmh">
             <objects>
                 <navigationController storyboardIdentifier="navCategories" automaticallyAdjustsScrollViewInsets="NO" id="qhK-6Z-LXo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Categories" id="Jci-IX-vcO"/>
+                    <tabBarItem key="tabBarItem" title="Places" image="location-icon-black-small" id="Jci-IX-vcO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sqy-sq-BUk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2294,11 +2291,11 @@
             </objects>
             <point key="canvasLocation" x="3619" y="756"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Peers-->
         <scene sceneID="qB3-Ud-b9r">
             <objects>
                 <navigationController storyboardIdentifier="navPeople" automaticallyAdjustsScrollViewInsets="NO" id="iEb-cG-ETy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="C3s-66-xf6"/>
+                    <tabBarItem key="tabBarItem" title="Peers" image="peers-icon-black-small" id="C3s-66-xf6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BWv-Oz-4UJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2340,7 +2337,11 @@
         <image name="capture" width="48" height="48"/>
         <image name="galery" width="48" height="48"/>
         <image name="galery-icon" width="48" height="48"/>
+        <image name="home-icon-black-small" width="24" height="24"/>
+        <image name="location-icon-black-small" width="24" height="24"/>
         <image name="message" width="48" height="48"/>
+        <image name="peers-icon-black-small" width="24" height="24"/>
+        <image name="profile-icon-black-small" width="24" height="24"/>
         <image name="rotate-camara" width="48" height="49"/>
         <image name="text" width="48" height="48"/>
         <image name="votedown" width="16" height="16"/>
