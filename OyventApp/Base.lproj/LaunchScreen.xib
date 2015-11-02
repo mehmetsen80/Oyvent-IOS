@@ -29,40 +29,45 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgred" translatesAutoresizingMaskIntoConstraints="NO" id="W2q-Vk-H74">
                     <rect key="frame" x="0.0" y="0.0" width="454" height="564"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oyvent" translatesAutoresizingMaskIntoConstraints="NO" id="GQO-rP-hDx">
-                    <rect key="frame" x="92" y="235" width="270" height="94"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oyvent" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="32" translatesAutoresizingMaskIntoConstraints="NO" id="wJ0-od-Y1s">
+                    <rect key="frame" x="103" y="124" width="248" height="72"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="270" id="8O1-Bz-ODT"/>
-                        <constraint firstAttribute="height" constant="94" id="SZT-y0-msl"/>
+                        <constraint firstAttribute="width" constant="248" id="5UN-Zp-HUt"/>
+                        <constraint firstAttribute="height" constant="72" id="bq7-fi-AAQ"/>
                     </constraints>
-                </imageView>
+                    <fontDescription key="fontDescription" type="system" pointSize="56"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="talk insanely local" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="32" translatesAutoresizingMaskIntoConstraints="NO" id="Wxc-cy-YqS">
-                    <rect key="frame" x="103" y="397" width="248" height="59"/>
+                    <rect key="frame" x="103" y="236" width="248" height="59"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="59" id="EpQ-VM-NIr"/>
-                        <constraint firstAttribute="width" constant="248" id="UoG-wH-NgI"/>
+                        <constraint firstAttribute="width" constant="248" id="AGx-PJ-Ddb"/>
+                        <constraint firstAttribute="height" constant="59" id="oFl-W7-tR2"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <fontDescription key="fontDescription" type="italicSystem" pointSize="26"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <constraints>
-                <constraint firstItem="GQO-rP-hDx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Bdw-U7-sOd"/>
+                <constraint firstItem="Wxc-cy-YqS" firstAttribute="top" secondItem="wJ0-od-Y1s" secondAttribute="bottom" constant="40" id="21v-pn-QVo"/>
+                <constraint firstItem="Wxc-cy-YqS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="6mG-dq-VQh"/>
                 <constraint firstItem="W2q-Vk-H74" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="DED-Dh-Sqa"/>
-                <constraint firstItem="GQO-rP-hDx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ds7-dp-wgw"/>
                 <constraint firstAttribute="bottom" secondItem="W2q-Vk-H74" secondAttribute="bottom" id="IRu-qr-PUV"/>
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
+                <constraint firstItem="wJ0-od-Y1s" firstAttribute="leading" secondItem="W2q-Vk-H74" secondAttribute="trailing" constant="-351" id="Mpc-Og-hej"/>
+                <constraint firstItem="W2q-Vk-H74" firstAttribute="top" secondItem="wJ0-od-Y1s" secondAttribute="bottom" constant="-196" id="ReP-Ul-2v0"/>
                 <constraint firstItem="W2q-Vk-H74" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Se6-JJ-o3S"/>
-                <constraint firstItem="Wxc-cy-YqS" firstAttribute="centerX" secondItem="GQO-rP-hDx" secondAttribute="centerX" id="Yqs-2K-hJJ"/>
-                <constraint firstAttribute="bottom" secondItem="Wxc-cy-YqS" secondAttribute="bottom" constant="108" id="ZB2-xc-c1k"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="8ie-xW-0ye" secondAttribute="leading" id="bqu-or-gdQ"/>
                 <constraint firstItem="W2q-Vk-H74" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fij-Hs-FcQ"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="169" id="gdT-1N-rSb"/>
                 <constraint firstAttribute="trailing" secondItem="W2q-Vk-H74" secondAttribute="trailing" id="qw3-wE-91W"/>
                 <constraint firstItem="W2q-Vk-H74" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="uib-C6-KJt"/>
+                <constraint firstItem="Wxc-cy-YqS" firstAttribute="leading" secondItem="W2q-Vk-H74" secondAttribute="trailing" constant="-351" id="xAg-a5-Ifo"/>
+                <constraint firstItem="wJ0-od-Y1s" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yCh-Kc-TX8"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -71,6 +76,5 @@
     </objects>
     <resources>
         <image name="bgred" width="150" height="267"/>
-        <image name="oyvent" width="2469" height="816"/>
     </resources>
 </document>
