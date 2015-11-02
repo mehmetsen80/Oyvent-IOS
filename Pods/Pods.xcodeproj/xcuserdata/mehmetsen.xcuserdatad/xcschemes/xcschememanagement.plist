@@ -4,21 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Alamofire.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Cartography.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FastImageCache.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>HanekeSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,27 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>141573C69566227E7DDD6D87B946036D</key>
+		<key>05986FD901F37FE6E1A100EEBD4BD241</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3E16DD50343DE184157795B9B7A2C7C5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>530050EC0EE0E9891DD5A25EC66DAF43</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8797ED247E366F6D9F24FAE9CDD33A38</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AA6773D48630C8C094C901AD5CA53FEF</key>
+		<key>5EDDE9E2D495A92B609EDA8F535BBAA7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -36,10 +36,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //let nvg: MyNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("myMainNav") as! MyNavigationController
             //let geoController:GeoViewController =  nvg.topViewController as GeoViewController
             //let homeController:HomeViewController = mainStoryboard.instantiateViewControllerWithIdentifier("homeView") as HomeViewController
-            let mainTabBar : UITabBarController = mainStoryboard.instantiateViewControllerWithIdentifier("mainTabBar") as! UITabBarController
+            
+            
+            
+            //this works
+            /*let mainTabBar : UITabBarController = mainStoryboard.instantiateViewControllerWithIdentifier("mainTabBar") as! UITabBarController
             mainTabBar.selectedIndex = 0
             window!.rootViewController = mainTabBar
+            window!.makeKeyAndVisible()*/
+            
+            
+            //let's jump to the profile photo first, if no navigation
+            let addProfilePhoto : AddProfilePhotoViewController = mainStoryboard.instantiateViewControllerWithIdentifier("addProfilePhotoView") as! AddProfilePhotoViewController
+            window!.rootViewController = addProfilePhoto
             window!.makeKeyAndVisible()
+            
+            /*let navProfilePhoto : UINavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("navProfilePhoto") as! UINavigationController
+            window!.rootViewController = navProfilePhoto
+            window!.makeKeyAndVisible()*/
 
         }
 

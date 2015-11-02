@@ -535,8 +535,9 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
         imagePicker.sourceType = .PhotoLibrary
         imagePicker.modalPresentationStyle = .Popover
         presentViewController(imagePicker, animated: true, completion: nil)//4
-        //imagePicker.popoverPresentationController?.barButtonItem = sender
     }
+    
+   
     
     func fixOrientation(img:UIImage) -> UIImage {
         
@@ -713,9 +714,3 @@ class CaptureViewController: UIViewController, UINavigationControllerDelegate, U
 }
 
 
-extension NSMutableData {
-    func appendString(string: String) {
-        let data = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        appendData(data!)
-    }
-}

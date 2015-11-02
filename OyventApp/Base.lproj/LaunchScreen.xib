@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view alpha="0.90000000000000002" contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="454" height="564"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2015 Oyvent. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
-                    <rect key="frame" x="20" y="527" width="281" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="  Copyright (c) 2015 Oyvent. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
+                    <rect key="frame" x="20" y="523" width="281" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="20" y="169" width="281" height="43"/>
+                    <rect key="frame" x="20" y="165" width="281" height="43"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="ut2-bL-ZKf"/>
                     </constraints>
@@ -25,40 +26,51 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oyvent" translatesAutoresizingMaskIntoConstraints="NO" id="VgZ-r7-frI">
-                    <rect key="frame" x="40" y="-135" width="240" height="816"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgred" translatesAutoresizingMaskIntoConstraints="NO" id="W2q-Vk-H74">
+                    <rect key="frame" x="0.0" y="0.0" width="454" height="564"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="connect insanely local" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="32" translatesAutoresizingMaskIntoConstraints="NO" id="Z0k-t6-ZHB">
-                    <rect key="frame" x="14" y="92" width="292" height="100"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oyvent" translatesAutoresizingMaskIntoConstraints="NO" id="GQO-rP-hDx">
+                    <rect key="frame" x="92" y="235" width="270" height="94"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="pVs-4d-bKn"/>
+                        <constraint firstAttribute="width" constant="270" id="8O1-Bz-ODT"/>
+                        <constraint firstAttribute="height" constant="94" id="SZT-y0-msl"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="talk insanely local" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="32" translatesAutoresizingMaskIntoConstraints="NO" id="Wxc-cy-YqS">
+                    <rect key="frame" x="103" y="397" width="248" height="59"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="59" id="EpQ-VM-NIr"/>
+                        <constraint firstAttribute="width" constant="248" id="UoG-wH-NgI"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.084777385079488052" green="0.3154799748675739" blue="0.50355113636363635" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="Z0k-t6-ZHB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="92" id="IZO-u7-nsR"/>
+                <constraint firstItem="GQO-rP-hDx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Bdw-U7-sOd"/>
+                <constraint firstItem="W2q-Vk-H74" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="DED-Dh-Sqa"/>
+                <constraint firstItem="GQO-rP-hDx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ds7-dp-wgw"/>
+                <constraint firstAttribute="bottom" secondItem="W2q-Vk-H74" secondAttribute="bottom" id="IRu-qr-PUV"/>
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
-                <constraint firstAttribute="centerY" secondItem="VgZ-r7-frI" secondAttribute="centerY" constant="11" id="OTF-PF-Y7C"/>
+                <constraint firstItem="W2q-Vk-H74" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Se6-JJ-o3S"/>
+                <constraint firstItem="Wxc-cy-YqS" firstAttribute="centerX" secondItem="GQO-rP-hDx" secondAttribute="centerX" id="Yqs-2K-hJJ"/>
+                <constraint firstAttribute="bottom" secondItem="Wxc-cy-YqS" secondAttribute="bottom" constant="108" id="ZB2-xc-c1k"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="8ie-xW-0ye" secondAttribute="leading" id="bqu-or-gdQ"/>
-                <constraint firstAttribute="centerX" secondItem="VgZ-r7-frI" secondAttribute="centerX" id="eYJ-EU-Z0m"/>
+                <constraint firstItem="W2q-Vk-H74" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fij-Hs-FcQ"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="169" id="gdT-1N-rSb"/>
-                <constraint firstAttribute="trailing" secondItem="Z0k-t6-ZHB" secondAttribute="trailing" constant="14" id="leG-XG-beH"/>
-                <constraint firstItem="Z0k-t6-ZHB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="mXT-3k-cL3"/>
-                <constraint firstItem="VgZ-r7-frI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="ttZ-QW-Cqz"/>
-                <constraint firstAttribute="trailing" secondItem="VgZ-r7-frI" secondAttribute="trailing" constant="40" id="x6A-sL-hwm"/>
+                <constraint firstAttribute="trailing" secondItem="W2q-Vk-H74" secondAttribute="trailing" id="qw3-wE-91W"/>
+                <constraint firstItem="W2q-Vk-H74" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="uib-C6-KJt"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="362" y="457"/>
+            <point key="canvasLocation" x="447" y="533"/>
         </view>
     </objects>
     <resources>
+        <image name="bgred" width="150" height="267"/>
         <image name="oyvent" width="2469" height="816"/>
     </resources>
 </document>

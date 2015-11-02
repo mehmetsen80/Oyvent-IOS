@@ -105,6 +105,8 @@ class LoginViewController: UIViewController {
                         appDelegate.window?.rootViewController = nvg
                         appDelegate.window?.makeKeyAndVisible()
                         
+                        
+                        
                     }
                 })
                 

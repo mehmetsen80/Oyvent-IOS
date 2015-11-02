@@ -21,15 +21,19 @@ class ProfileAPIController{
     }
     
     func searchProfile(pkUserID: Double) {
-        post(pkUserID)
+        //to do: search profile details
     }
     
-    func post(pkUserID: Double){
+    func searchPhoto(pkUserID: Double){
+        postProfilePhoto(pkUserID)
+    }
+    
+    func postProfilePhoto(pkUserID: Double){
         let url = NSURL(string:"http://oyvent.com/ajax/Feeds.php")
         let request = NSMutableURLRequest(URL: url!)
         //var session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST";
-        let postString = "processType=GETPROFILE&userID=\(pkUserID)"
+        let postString = "processType=GETPROFILEPHOTO&userID=\(pkUserID)"
         print("post profile postString: \(postString)", terminator: "")
         //var err: NSError?
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)

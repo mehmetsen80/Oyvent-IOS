@@ -922,7 +922,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/ProfileAPIController.swift"
-            timestampString = "460693935.651323"
+            timestampString = "468016221.660327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
@@ -954,12 +954,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/ProfileAPIController.swift"
-            timestampString = "460693999.19105"
+            timestampString = "468016438.16617"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "post(_:)"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "postProfilePhoto(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -970,12 +970,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/ProfileAPIController.swift"
-            timestampString = "466573884.369704"
+            timestampString = "468016438.16617"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "post(_:)"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "postProfilePhoto(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
