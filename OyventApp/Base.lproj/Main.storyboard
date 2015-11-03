@@ -1561,8 +1561,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-image" translatesAutoresizingMaskIntoConstraints="NO" id="ApY-9a-dIq">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="568"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="355" sectionHeaderHeight="8" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rYy-0B-gus">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="Oj0-S4-kVf"/>
@@ -1572,7 +1575,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="GeoHeader" rowHeight="120" id="fIJ-11-wR7" customClass="GeoTableHeaderCell" customModule="OyventApp">
-                                        <rect key="frame" x="0.0" y="72" width="320" height="120"/>
+                                        <rect key="frame" x="0.0" y="8" width="320" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fIJ-11-wR7" id="goF-fJ-Jr5">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
@@ -1623,7 +1626,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="GeoCell" rowHeight="355" id="8Oh-fT-t7a" customClass="GeoTableViewCell" customModule="OyventApp">
-                                        <rect key="frame" x="0.0" y="192" width="320" height="355"/>
+                                        <rect key="frame" x="0.0" y="128" width="320" height="355"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Oh-fT-t7a" id="Lhc-YY-s6v">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="354"/>
@@ -1843,14 +1846,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rYy-0B-gus" firstAttribute="bottom" secondItem="Rvz-75-5pz" secondAttribute="top" constant="49" id="8ac-ab-VGt"/>
+                            <constraint firstItem="rYy-0B-gus" firstAttribute="bottom" secondItem="Rvz-75-5pz" secondAttribute="top" id="8ac-ab-VGt"/>
                             <constraint firstItem="iqp-cS-EfQ" firstAttribute="top" secondItem="rYy-0B-gus" secondAttribute="bottom" constant="-100" id="Ayo-cY-UrH"/>
                             <constraint firstItem="rYy-0B-gus" firstAttribute="centerX" secondItem="iqp-cS-EfQ" secondAttribute="centerX" id="KI1-pt-6n0"/>
                             <constraint firstItem="rYy-0B-gus" firstAttribute="leading" secondItem="L2b-14-2HE" secondAttribute="leadingMargin" constant="-16" id="LR5-aq-I8G"/>
                             <constraint firstAttribute="centerX" secondItem="iqp-cS-EfQ" secondAttribute="centerX" id="P6O-4o-kvQ"/>
+                            <constraint firstItem="ApY-9a-dIq" firstAttribute="bottom" secondItem="L2b-14-2HE" secondAttribute="bottomMargin" id="Ulu-td-gGQ"/>
                             <constraint firstItem="rYy-0B-gus" firstAttribute="top" secondItem="L2b-14-2HE" secondAttribute="topMargin" id="WI5-1r-lMv"/>
-                            <constraint firstItem="iqp-cS-EfQ" firstAttribute="top" secondItem="rYy-0B-gus" secondAttribute="bottom" constant="-130" id="efc-Qf-Wt8"/>
+                            <constraint firstItem="ApY-9a-dIq" firstAttribute="top" secondItem="L2b-14-2HE" secondAttribute="topMargin" id="YTC-Nb-kc5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ApY-9a-dIq" secondAttribute="trailing" constant="-20" id="Z3E-c6-FMj"/>
+                            <constraint firstItem="ApY-9a-dIq" firstAttribute="centerY" secondItem="L2b-14-2HE" secondAttribute="centerY" id="aeh-O4-Z1k"/>
+                            <constraint firstItem="iqp-cS-EfQ" firstAttribute="top" secondItem="rYy-0B-gus" secondAttribute="bottom" constant="-81" id="efc-Qf-Wt8"/>
+                            <constraint firstItem="ApY-9a-dIq" firstAttribute="centerX" secondItem="L2b-14-2HE" secondAttribute="centerX" id="kcQ-6I-dvp"/>
                             <constraint firstItem="rYy-0B-gus" firstAttribute="leading" secondItem="L2b-14-2HE" secondAttribute="leading" id="l4S-Ws-sE6"/>
+                            <constraint firstItem="ApY-9a-dIq" firstAttribute="leading" secondItem="L2b-14-2HE" secondAttribute="leadingMargin" constant="-20" id="qoX-Ix-3eS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rYy-0B-gus" secondAttribute="trailing" id="y3m-ib-nCe"/>
                         </constraints>
                         <variation key="default">

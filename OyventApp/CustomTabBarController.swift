@@ -14,7 +14,8 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         self.delegate = self
         
-      
+        UITabBar.appearance().backgroundImage = UIImage() // clears the tabbar background image
+        UITabBar.appearance().shadowImage = UIImage() // cears the tabbar shadow image
     }
 
     override func didReceiveMemoryWarning() {

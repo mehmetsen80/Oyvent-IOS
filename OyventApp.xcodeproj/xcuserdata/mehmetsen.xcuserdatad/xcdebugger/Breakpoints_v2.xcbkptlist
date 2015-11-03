@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/CustomTabBarController.swift"
-            timestampString = "466574613.502184"
+            timestampString = "468216430.674105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "CustomTabBarController"
             landmarkType = "3">
          </BreakpointContent>
