@@ -12,7 +12,7 @@ import QuartzCore
 import CoreLocation
 
 
-class ProfileViewController: UIViewController, ProfileAPIControllerProtocol, CLLocationManagerDelegate{
+class ProfileViewController: UIViewController, ProfileAPIControllerProtocol, UIPopoverPresentationControllerDelegate, CLLocationManagerDelegate{
 
     var userApi:ProfileAPIController?
     private let concurrentProfileQueue = dispatch_queue_create(
@@ -28,14 +28,21 @@ class ProfileViewController: UIViewController, ProfileAPIControllerProtocol, CLL
     @IBOutlet weak var lblFullName: UILabel!
     @IBOutlet weak var btnPhoto: UIButton!
     var pkUserID : Double!
+    var fullname : String!
  
     @IBOutlet weak var mImageView: UILabel!
+    var url : String!
     
     override func viewDidAppear(animated: Bool) {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
         pkUserID =  NSNumberFormatter().numberFromString(NSUserDefaults.standardUserDefaults().stringForKey("userID")!)?.doubleValue
+        fullname = NSUserDefaults.standardUserDefaults().stringForKey("fullname")!
+        
+        //just for test, to do: remove this later
+        pkUserID = 11111
+        
         userApi = ProfileAPIController(delegate: self)
         setupLocationManager()
         //setupNavigationBar()
@@ -140,7 +147,7 @@ class ProfileViewController: UIViewController, ProfileAPIControllerProtocol, CLL
                     self.city = city as String
                     self.btnCity.setTitle(city as String, forState: UIControlState.Normal)
                     //to do: initiate the profile info
-                    self.userApi?.searchProfile(self.pkUserID)
+                    self.userApi?.searchPhoto(self.pkUserID)
                     self.locationManager.stopUpdatingLocation()
                 }
                 
@@ -179,6 +186,11 @@ class ProfileViewController: UIViewController, ProfileAPIControllerProtocol, CLL
         
         return newImage
     }
+    
+    
+    //returned from the zoom screen, empty for now, use it for future
+    @IBAction func unwindFromSelectPhotoToThisViewController(segue: UIStoryboardSegue) {}
+    
     
     func displayProfileInfo(){
         
@@ -237,39 +249,82 @@ class ProfileViewController: UIViewController, ProfileAPIControllerProtocol, CLL
         return image
     }/***************** end of get a transparent background image ***************/
     
+    //returned from the profile update photo screen
+    @IBAction func unwindFromProfilePhotoUpdateToThisViewController(segue: UIStoryboardSegue) {}
+    
+    //returned from the zoom screen, empty for now, use it for future
+    @IBAction func unwindFromZoomScreenToThisViewController(segue: UIStoryboardSegue) {}
+     /*********************** go to the zoom photo screen *************************/
+    @IBAction func selectProfilePhoto(sender: CircleButton) {
+        
+        //zoom photo
+        if self.url != ""{
+            let photoZoomView: ZoomPhotoViewController = self.storyboard!.instantiateViewControllerWithIdentifier("photoZoomView") as! ZoomPhotoViewController
+            photoZoomView.url = self.url
+           self.presentViewController(photoZoomView, animated:true, completion:nil)
+            
+        }else{//select photo type
+            let selectPhotoType: SelectPhotoViewController = self.storyboard!.instantiateViewControllerWithIdentifier("selectPhotoTypeView") as! SelectPhotoViewController
+            selectPhotoType.modalPresentationStyle = .Popover
+            selectPhotoType.preferredContentSize = CGSizeMake(180.0, 90.0)
+            selectPhotoType.popoverPresentationController!.delegate = self
+            selectPhotoType.popoverPresentationController!.permittedArrowDirections = UIPopoverArrowDirection.Any
+            selectPhotoType.popoverPresentationController!.sourceView = sender
+            selectPhotoType.popoverPresentationController!.sourceRect = sender.bounds
+            self.presentViewController(selectPhotoType, animated:true, completion:nil)
+        }
+    }
+    /*********************** end of go to the zoom photo screen *******************/
     
     //
     func didReceiveProfileAPIResults(results:NSDictionary){
+       
+       
         
        dispatch_barrier_async(concurrentProfileQueue) {
         let profile: Profile = Profile.profileWithJSON(results);
             dispatch_async(dispatch_get_main_queue(), {
                 //full name
-                self.lblFullName.text = profile.fullName
+                //self.lblFullName.text = profile.fullName
+                self.lblFullName.text = self.fullname
+                
                 
                 /***************** get main profile photo  **************/
-                //set default as no picture
-                self.btnPhoto?.setBackgroundImage(UIImage(named:"nopic"), forState: UIControlState.Normal)
-                
                 //if we have thumb profile picture
-                if(profile.urlThumb != ""){
+                if(profile.urlMedium != "" || profile.urlMedium != nil){
                     // let's download it
-                    let imgURL: NSURL! = NSURL(string: profile.urlThumb!)
+                    let imgURL: NSURL! = NSURL(string: profile.urlMedium!)
+                    self.url = profile.urlLarge!
+                    //let's use haneke 3rd party lib we downloaed
+                    self.btnPhoto?.hnk_setBackgroundImageFromURL(imgURL)
+                    
+                    
                     // Download an NSData representation of the image at the URL
+                    /*
                     let request: NSURLRequest = NSURLRequest(URL: imgURL)
-                   // let urlConnection: NSURLConnection! = NSURLConnection(request: request, delegate: self)
                     NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse?,data: NSData?,error: NSError?) -> Void in
                         if let noerror = data {
                             dispatch_async(dispatch_get_main_queue()) {
                                 let image = UIImage(data: noerror)
                                 self.btnPhoto?.setBackgroundImage(image, forState: UIControlState.Normal)
+                                self.url = profile.urlLarge!
                             }
                         }
                         else {
                             print("Error: \(error!.localizedDescription)", terminator: "")
                         }
                     })
-                } /****************** get main profile photo  ****************/
+                    */
+                    
+                   
+                    
+                }
+                else{
+                    //set no photo if there is no profile photo found
+                    self.btnPhoto?.setBackgroundImage(UIImage(named:"no-profile-photo"), forState: UIControlState.Normal)
+                   
+                }
+                 /****************** get main profile photo  ****************/
                 
                 
                  UIApplication.sharedApplication().networkActivityIndicatorVisible = false
@@ -279,14 +334,39 @@ class ProfileViewController: UIViewController, ProfileAPIControllerProtocol, CLL
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "zoomProfilePhoto" {
+            let zoomPhotoViewController: ZoomPhotoViewController = segue.destinationViewController as! ZoomPhotoViewController
+            zoomPhotoViewController.url = self.url
+        }else if segue.identifier == "showFromCamera"{
+            let captureProfilePhoto: CaptureProfilePhotoViewController = segue.destinationViewController as! CaptureProfilePhotoViewController
+            captureProfilePhoto.launchType = PhotoSource.Camera.description
+            
+        }else if segue.identifier == "showFromGallery"{
+            let captureProfilePhoto: CaptureProfilePhotoViewController = segue.destinationViewController as! CaptureProfilePhotoViewController
+            captureProfilePhoto.launchType = PhotoSource.Gallery.description
+            
+        }else if(segue.identifier == "selectPhotoType"){
+            let selectPhotoType: SelectPhotoViewController = self.storyboard!.instantiateViewControllerWithIdentifier("selectPhotoTypeView") as! SelectPhotoViewController
+            selectPhotoType.modalPresentationStyle = .Popover
+            //selectPhotoType.preferredContentSize = CGSizeMake(180.0, 90.0)
+            selectPhotoType.popoverPresentationController!.delegate = self
+            selectPhotoType.popoverPresentationController!.permittedArrowDirections = UIPopoverArrowDirection.Any
+          //  selectPhotoType.popoverPresentationController!.sourceView = sender
+            //selectPhotoType.popoverPresentationController!.sourceRect = sender.frame
+        }
     }
-    */
+    
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+    
 
 }

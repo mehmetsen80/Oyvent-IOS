@@ -53,7 +53,7 @@ class AddProfilePhotoViewController: UIViewController, ProfileAPIControllerProto
                 /***************** get main profile photo  **************/
                 
                 //if we have thumb profile picture
-                if(profile.urlLarge != ""){
+                if(profile.urlMedium != ""){
                     // let's download it
                     let imgURL: NSURL! = NSURL(string: profile.urlMedium!)
                     self.url = profile.urlLarge!

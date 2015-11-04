@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00B1A371260032CCFDC065E5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FBA68F10259091DD5DC279 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		00B1A371260032CCFDC065E5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FBA68F10259091DD5DC279 /* Pods.framework */; };
 		5901439F1B0E74C3001C05AE /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5901439E1B0E74C3001C05AE /* CaptureViewController.swift */; };
 		590EBBCD1AE494B500420384 /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBCC1AE494B500420384 /* MyMenuTableViewController.swift */; };
 		590EBBCF1AE497E400420384 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBCE1AE497E400420384 /* MyNavigationController.swift */; };
@@ -76,6 +76,7 @@
 		59EFD6A61B2506A7000DD915 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFD6A51B2506A7000DD915 /* MainViewController.swift */; };
 		59EFD6A81B2506EC000DD915 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFD6A71B2506EC000DD915 /* MainCollectionViewCell.swift */; };
 		59F175DF1AF87D0F005E7950 /* gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 59F175DE1AF87D0F005E7950 /* gitignore */; };
+		D86BE9841BE95BC400EBB50B /* SelectPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86BE9831BE95BC400EBB50B /* SelectPhotoViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +168,7 @@
 		59EFD6A71B2506EC000DD915 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		59F175DE1AF87D0F005E7950 /* gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gitignore; sourceTree = "<group>"; };
 		948138A0515A74FE29A222F0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D86BE9831BE95BC400EBB50B /* SelectPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPhotoViewController.swift; sourceTree = "<group>"; };
 		E9456E280F988D8C7EA4D30E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,6 +270,7 @@
 				59EFA7F01AD4F89200CA3C84 /* GeoViewController.swift */,
 				59EFA7F21AD61F1A00CA3C84 /* DetailsViewController.swift */,
 				591D4DB71BB2468A00D95EC2 /* PeopleViewController.swift */,
+				D86BE9831BE95BC400EBB50B /* SelectPhotoViewController.swift */,
 				59EE80A01B649E0B001DCF46 /* ProfileViewController.swift */,
 				59384A351B8609E7001B9B8E /* ProfilePhotosViewController.swift */,
 				59EFD6A51B2506A7000DD915 /* MainViewController.swift */,
@@ -571,6 +574,7 @@
 				591D4DB81BB2468A00D95EC2 /* PeopleViewController.swift in Sources */,
 				591180B31B85987E005D597F /* GalleryViewController.swift in Sources */,
 				59EFA7E71AC8FE5A00CA3C84 /* UIVerticalAlignLabel.swift in Sources */,
+				D86BE9841BE95BC400EBB50B /* SelectPhotoViewController.swift in Sources */,
 				59EFA7FB1AE491CE00CA3C84 /* ESideMenuNavigationController.swift in Sources */,
 				591180B41B85987E005D597F /* GalleryViewControllerTransitioning.swift in Sources */,
 				591180B21B85987E005D597F /* GalleryImageCell.swift in Sources */,
