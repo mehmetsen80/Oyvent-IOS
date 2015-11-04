@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5AC0E9D372658B894E9E6CDF"
+               BlueprintIdentifier = "8D62B2D31D33118A536BCA3D"
                BuildableName = "Cartography.framework"
                BlueprintName = "Cartography"
                ReferencedContainer = "container:Pods.xcodeproj">

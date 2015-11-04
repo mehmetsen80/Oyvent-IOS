@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00B1A371260032CCFDC065E5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FBA68F10259091DD5DC279 /* Pods.framework */; };
+		00B1A371260032CCFDC065E5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FBA68F10259091DD5DC279 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5901439F1B0E74C3001C05AE /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5901439E1B0E74C3001C05AE /* CaptureViewController.swift */; };
 		590EBBCD1AE494B500420384 /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBCC1AE494B500420384 /* MyMenuTableViewController.swift */; };
 		590EBBCF1AE497E400420384 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBCE1AE497E400420384 /* MyNavigationController.swift */; };
@@ -28,7 +28,7 @@
 		591D4DB81BB2468A00D95EC2 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D4DB71BB2468A00D95EC2 /* PeopleViewController.swift */; };
 		5926084E1B7669C600F93F36 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926084D1B7669C600F93F36 /* CircleButton.swift */; };
 		592608501B79B34A00F93F36 /* PagedScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926084F1B79B34A00F93F36 /* PagedScrollViewController.swift */; };
-		59296F3A1BC225D9006824C6 /* whatever.c in Sources */ = {isa = PBXBuildFile; fileRef = 59296F381BC225D9006824C6 /* whatever.c */; settings = {ASSET_TAGS = (); }; };
+		59296F3A1BC225D9006824C6 /* whatever.c in Sources */ = {isa = PBXBuildFile; fileRef = 59296F381BC225D9006824C6 /* whatever.c */; };
 		5936D6E11B141A5A00A02642 /* OnlyTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5936D6E01B141A5900A02642 /* OnlyTextViewController.swift */; };
 		59384A361B8609E7001B9B8E /* ProfilePhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59384A351B8609E7001B9B8E /* ProfilePhotosViewController.swift */; };
 		594B28911B2E5BEE001D5503 /* MainCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B28901B2E5BEE001D5503 /* MainCollectionReusableView.swift */; };
@@ -42,7 +42,7 @@
 		5976B8F91B03CC8B00D8D2F4 /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F81B03CC8B00D8D2F4 /* DefaultButton.swift */; };
 		5996119C1B45791B006777E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5996119A1B45791B006777E8 /* Main.storyboard */; };
 		599611A01B46B12F006777E8 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5996119F1B46B12F006777E8 /* LogoutViewController.swift */; };
-		59A2ECC21BCF5583006C476A /* AddProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A2ECC11BCF5581006C476A /* AddProfilePhotoViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		59A2ECC21BCF5583006C476A /* AddProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A2ECC11BCF5581006C476A /* AddProfilePhotoViewController.swift */; };
 		59BC7A121B118179000BD75E /* GeoTableHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC7A111B118179000BD75E /* GeoTableHeaderCell.swift */; };
 		59BC7A141B124906000BD75E /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC7A131B124906000BD75E /* CategoryViewController.swift */; };
 		59D15F5E1B74582500CCA50F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D15F5D1B74582500CCA50F /* Profile.swift */; };
@@ -60,9 +60,9 @@
 		59DFCF171ABBE995009DE7AF /* PhotoAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCF161ABBE995009DE7AF /* PhotoAPIController.swift */; };
 		59E39B141B31337A003200D2 /* GroupsFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E39B131B31337A003200D2 /* GroupsFooterCollectionReusableView.swift */; };
 		59E39B161B3D1B6C003200D2 /* SolidButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E39B151B3D1B6C003200D2 /* SolidButton.swift */; };
-		59EE40DD1BE573D200F77C82 /* ZoomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE40DC1BE573D200F77C82 /* ZoomPhotoViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		59EE40DF1BE688C600F77C82 /* CaptureProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE40DE1BE688C600F77C82 /* CaptureProfilePhotoViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		59EE40E11BE6F88300F77C82 /* MutableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE40E01BE6F88300F77C82 /* MutableExtension.swift */; settings = {ASSET_TAGS = (); }; };
+		59EE40DD1BE573D200F77C82 /* ZoomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE40DC1BE573D200F77C82 /* ZoomPhotoViewController.swift */; };
+		59EE40DF1BE688C600F77C82 /* CaptureProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE40DE1BE688C600F77C82 /* CaptureProfilePhotoViewController.swift */; };
+		59EE40E11BE6F88300F77C82 /* MutableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE40E01BE6F88300F77C82 /* MutableExtension.swift */; };
 		59EE80A11B649E0B001DCF46 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE80A01B649E0B001DCF46 /* ProfileViewController.swift */; };
 		59EE80A51B64A86B001DCF46 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE80A41B64A86B001DCF46 /* MenuTableViewController.swift */; };
 		59EFA7E71AC8FE5A00CA3C84 /* UIVerticalAlignLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFA7E61AC8FE5A00CA3C84 /* UIVerticalAlignLabel.swift */; };
@@ -76,7 +76,7 @@
 		59EFD6A61B2506A7000DD915 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFD6A51B2506A7000DD915 /* MainViewController.swift */; };
 		59EFD6A81B2506EC000DD915 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFD6A71B2506EC000DD915 /* MainCollectionViewCell.swift */; };
 		59F175DF1AF87D0F005E7950 /* gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 59F175DE1AF87D0F005E7950 /* gitignore */; };
-		D86BE9841BE95BC400EBB50B /* SelectPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86BE9831BE95BC400EBB50B /* SelectPhotoViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D86BE9841BE95BC400EBB50B /* SelectPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86BE9831BE95BC400EBB50B /* SelectPhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -761,7 +761,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = OyventApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Oyvent.Oyvent;
 				PRODUCT_NAME = OyventApp;
@@ -785,7 +785,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = OyventApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Oyvent.Oyvent;
 				PRODUCT_NAME = OyventApp;
