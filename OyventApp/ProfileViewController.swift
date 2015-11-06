@@ -295,7 +295,7 @@ class ProfileViewController: UIViewController, ProfileAPIControllerProtocol, UIP
                     // let's download it
                     let imgURL: NSURL! = NSURL(string: profile.urlMedium!)
                     self.url = profile.urlLarge!
-                    //let's use haneke 3rd party lib we downloaed
+                    //let's use haneke 3rd party lib we download
                     self.btnPhoto?.hnk_setBackgroundImageFromURL(imgURL)
                     
                     
@@ -344,14 +344,6 @@ class ProfileViewController: UIViewController, ProfileAPIControllerProtocol, UIP
         if segue.identifier == "zoomProfilePhoto" {
             let zoomPhotoViewController: ZoomPhotoViewController = segue.destinationViewController as! ZoomPhotoViewController
             zoomPhotoViewController.url = self.url
-        }else if segue.identifier == "showFromCamera"{
-            let captureProfilePhoto: CaptureProfilePhotoViewController = segue.destinationViewController as! CaptureProfilePhotoViewController
-            captureProfilePhoto.launchType = PhotoSource.Camera.description
-            
-        }else if segue.identifier == "showFromGallery"{
-            let captureProfilePhoto: CaptureProfilePhotoViewController = segue.destinationViewController as! CaptureProfilePhotoViewController
-            captureProfilePhoto.launchType = PhotoSource.Gallery.description
-            
         }else if(segue.identifier == "selectPhotoType"){
             let selectPhotoType: SelectPhotoViewController = self.storyboard!.instantiateViewControllerWithIdentifier("selectPhotoTypeView") as! SelectPhotoViewController
             selectPhotoType.modalPresentationStyle = .Popover

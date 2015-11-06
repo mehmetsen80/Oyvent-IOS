@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00B1A371260032CCFDC065E5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FBA68F10259091DD5DC279 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		00B1A371260032CCFDC065E5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FBA68F10259091DD5DC279 /* Pods.framework */; };
 		5901439F1B0E74C3001C05AE /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5901439E1B0E74C3001C05AE /* CaptureViewController.swift */; };
 		590EBBCD1AE494B500420384 /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBCC1AE494B500420384 /* MyMenuTableViewController.swift */; };
 		590EBBCF1AE497E400420384 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBCE1AE497E400420384 /* MyNavigationController.swift */; };
@@ -42,7 +42,6 @@
 		5976B8F91B03CC8B00D8D2F4 /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5976B8F81B03CC8B00D8D2F4 /* DefaultButton.swift */; };
 		5996119C1B45791B006777E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5996119A1B45791B006777E8 /* Main.storyboard */; };
 		599611A01B46B12F006777E8 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5996119F1B46B12F006777E8 /* LogoutViewController.swift */; };
-		59A2ECC21BCF5583006C476A /* AddProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A2ECC11BCF5581006C476A /* AddProfilePhotoViewController.swift */; };
 		59BC7A121B118179000BD75E /* GeoTableHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC7A111B118179000BD75E /* GeoTableHeaderCell.swift */; };
 		59BC7A141B124906000BD75E /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC7A131B124906000BD75E /* CategoryViewController.swift */; };
 		59D15F5E1B74582500CCA50F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D15F5D1B74582500CCA50F /* Profile.swift */; };
@@ -129,7 +128,6 @@
 		599611971B4578E2006777E8 /* OyventApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = OyventApp.xcodeproj; sourceTree = SOURCE_ROOT; };
 		5996119B1B45791B006777E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5996119F1B46B12F006777E8 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
-		59A2ECC11BCF5581006C476A /* AddProfilePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProfilePhotoViewController.swift; sourceTree = "<group>"; };
 		59BC7A111B118179000BD75E /* GeoTableHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTableHeaderCell.swift; sourceTree = "<group>"; };
 		59BC7A131B124906000BD75E /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		59D15F5D1B74582500CCA50F /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -260,7 +258,6 @@
 				59DFCEE41AB2A41C009DE7AF /* LoginViewController.swift */,
 				59DFCF0A1AB64326009DE7AF /* RegisterViewController.swift */,
 				59DFCF081AB64303009DE7AF /* GroupsViewController.swift */,
-				59A2ECC11BCF5581006C476A /* AddProfilePhotoViewController.swift */,
 				59EE40DE1BE688C600F77C82 /* CaptureProfilePhotoViewController.swift */,
 				5901439E1B0E74C3001C05AE /* CaptureViewController.swift */,
 				5996119F1B46B12F006777E8 /* LogoutViewController.swift */,
@@ -610,7 +607,6 @@
 				591180B11B85987E005D597F /* GalleryBrowserPageView.swift in Sources */,
 				59D15F621B75A9CF00CCA50F /* UserAPIController.swift in Sources */,
 				591180B51B85987E005D597F /* ImageCacheManager.swift in Sources */,
-				59A2ECC21BCF5583006C476A /* AddProfilePhotoViewController.swift in Sources */,
 				59D15F5E1B74582500CCA50F /* Profile.swift in Sources */,
 				59EFA7EF1AD4F7B500CA3C84 /* GeoTableViewCell.swift in Sources */,
 				59DFCF091AB64303009DE7AF /* GroupsViewController.swift in Sources */,

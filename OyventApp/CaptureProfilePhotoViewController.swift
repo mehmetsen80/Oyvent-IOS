@@ -49,7 +49,7 @@ class CaptureProfilePhotoViewController: UIViewController, UINavigationControlle
             launched = true
             print("Gallery selected")
             //from library
-            selectFromGallery()
+            //selectFromGallery() //to do: uncomment if tested with phone
         }
     }
     

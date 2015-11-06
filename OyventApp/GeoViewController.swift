@@ -788,6 +788,7 @@ class GeoViewController: UIViewController,  UITableViewDataSource, UITableViewDe
             //categoryViewController.preferredContentSize = CGSizeMake(500,600)
             categoryViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
             categoryViewController.popoverPresentationController!.delegate = self
+            categoryViewController.popoverPresentationController!.sourceRect = sender!.bounds
             categoryViewController.albumID = self.albumID
             categoryViewController.albumName = self.albumName
         }
