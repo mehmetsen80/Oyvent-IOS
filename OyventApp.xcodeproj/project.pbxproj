@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00B1A371260032CCFDC065E5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FBA68F10259091DD5DC279 /* Pods.framework */; };
+		00B1A371260032CCFDC065E5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FBA68F10259091DD5DC279 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5901439F1B0E74C3001C05AE /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5901439E1B0E74C3001C05AE /* CaptureViewController.swift */; };
 		590EBBCD1AE494B500420384 /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBCC1AE494B500420384 /* MyMenuTableViewController.swift */; };
 		590EBBCF1AE497E400420384 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590EBBCE1AE497E400420384 /* MyNavigationController.swift */; };
@@ -47,6 +47,7 @@
 		59D15F5E1B74582500CCA50F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D15F5D1B74582500CCA50F /* Profile.swift */; };
 		59D15F601B745C1000CCA50F /* ProfileAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D15F5F1B745C1000CCA50F /* ProfileAPIController.swift */; };
 		59D15F621B75A9CF00CCA50F /* UserAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D15F611B75A9CF00CCA50F /* UserAPIController.swift */; };
+		59DD60051BF056DE004F9B30 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DD60041BF056DE004F9B30 /* DoubleExtension.swift */; };
 		59DFCEE31AB2A41C009DE7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */; };
 		59DFCEE51AB2A41C009DE7AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCEE41AB2A41C009DE7AF /* LoginViewController.swift */; };
 		59DFCEED1AB2A41D009DE7AF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59DFCEEB1AB2A41D009DE7AF /* LaunchScreen.xib */; };
@@ -133,6 +134,7 @@
 		59D15F5D1B74582500CCA50F /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		59D15F5F1B745C1000CCA50F /* ProfileAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAPIController.swift; sourceTree = "<group>"; };
 		59D15F611B75A9CF00CCA50F /* UserAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIController.swift; sourceTree = "<group>"; };
+		59DD60041BF056DE004F9B30 /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		59DFCEDD1AB2A41C009DE7AF /* OyventApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OyventApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59DFCEE11AB2A41C009DE7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59DFCEE21AB2A41C009DE7AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				59EFA7EA1AD2231F00CA3C84 /* DateExtension.swift */,
 				5976B8EE1AF90A3F00D8D2F4 /* CustomView.swift */,
 				59EE40E01BE6F88300F77C82 /* MutableExtension.swift */,
+				59DD60041BF056DE004F9B30 /* DoubleExtension.swift */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				59EFA7FB1AE491CE00CA3C84 /* ESideMenuNavigationController.swift in Sources */,
 				591180B41B85987E005D597F /* GalleryViewControllerTransitioning.swift in Sources */,
 				591180B21B85987E005D597F /* GalleryImageCell.swift in Sources */,
+				59DD60051BF056DE004F9B30 /* DoubleExtension.swift in Sources */,
 				59EE80A51B64A86B001DCF46 /* MenuTableViewController.swift in Sources */,
 				59EFA7EB1AD2231F00CA3C84 /* DateExtension.swift in Sources */,
 				590EBBD31AF5852C00420384 /* DetailsTableViewCell.swift in Sources */,

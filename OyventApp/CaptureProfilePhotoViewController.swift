@@ -259,7 +259,7 @@ class CaptureProfilePhotoViewController: UIViewController, UINavigationControlle
             }
         }
         
-        let filename = "oyvent-photo.jpg"
+        let filename = "oyvent-profile-photo.jpg"
         
         let mimetype = "image/jpg"
         
@@ -471,14 +471,16 @@ class CaptureProfilePhotoViewController: UIViewController, UINavigationControlle
     
     @IBAction func uploadPhoto(sender: AnyObject) {
         
-        let userID: Double = NSUserDefaults.standardUserDefaults().doubleForKey("userID")
-        let url = NSURL(string:"http://oyvent.com/ajax/PhotoHandlerWeb.php")
+        var userID_Double: Double = NSUserDefaults.standardUserDefaults().doubleForKey("userID")
+        userID_Double = Double(userID_Double).roundToPlaces(0)
+        let userID: Int = Int(userID_Double)
+        let url = NSURL(string:"http://oyvent.com/ajax/PhotoHandlerMobile.php")
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
        
         
         let param = [
-            "processType" : "UPLOADIOSPHOTO",
+            "processType" : "UPLOADPROFILEPHOTO",
             "userID" : "\(userID)"
         ]
         

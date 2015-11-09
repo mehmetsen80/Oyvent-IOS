@@ -147,7 +147,7 @@ class ProfileViewController: UIViewController, ProfileAPIControllerProtocol, UIP
                     self.city = city as String
                     self.btnCity.setTitle(city as String, forState: UIControlState.Normal)
                     //to do: initiate the profile info
-                    self.userApi?.searchPhoto(self.pkUserID)
+                    self.userApi?.getProfilePhoto(self.pkUserID)
                     self.locationManager.stopUpdatingLocation()
                 }
                 

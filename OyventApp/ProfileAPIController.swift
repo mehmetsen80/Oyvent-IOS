@@ -23,12 +23,9 @@ class ProfileAPIController{
     func searchProfile(pkUserID: Double) {
         //to do: search profile details
     }
+  
     
-    func searchPhoto(pkUserID: Double){
-        postProfilePhoto(pkUserID)
-    }
-    
-    func postProfilePhoto(pkUserID: Double){
+    func getProfilePhoto(pkUserID: Double){
         let url = NSURL(string:"http://oyvent.com/ajax/Feeds.php")
         let request = NSMutableURLRequest(URL: url!)
         //var session = NSURLSession.sharedSession()

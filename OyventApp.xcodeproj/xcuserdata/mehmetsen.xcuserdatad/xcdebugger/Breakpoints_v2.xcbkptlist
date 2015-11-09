@@ -895,7 +895,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "245"
             endingLineNumber = "245"
-            landmarkName = "didReceiveProfileAPIResults(_:)"
+            landmarkName = "onePixelImageWithColor(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -954,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/ProfileAPIController.swift"
-            timestampString = "468016438.16617"
+            timestampString = "468735888.539936"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "postProfilePhoto(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -970,11 +970,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OyventApp/ProfileAPIController.swift"
-            timestampString = "468016438.16617"
+            timestampString = "468735888.539936"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "postProfilePhoto(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1023,7 +1023,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "248"
             endingLineNumber = "248"
-            landmarkName = "didReceiveProfileAPIResults(_:)"
+            landmarkName = "onePixelImageWithColor(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
