@@ -189,7 +189,13 @@ class ProfileViewController: UIViewController, ProfileAPIControllerProtocol, UIP
     
     
     //returned from the zoom screen, empty for now, use it for future
-    @IBAction func unwindFromSelectPhotoToThisViewController(segue: UIStoryboardSegue) {}
+    @IBAction func unwindFromSelectPhotoToThisViewController(segue: UIStoryboardSegue) {
+        print("returned from select photo screen")
+        //to do: remove this later
+        pkUserID =  NSNumberFormatter().numberFromString(NSUserDefaults.standardUserDefaults().stringForKey("userID")!)?.doubleValue
+        //keep only this
+        self.userApi?.getProfilePhoto(self.pkUserID)
+    }
     
     
     func displayProfileInfo(){
@@ -248,9 +254,7 @@ class ProfileViewController: UIViewController, ProfileAPIControllerProtocol, UIP
         let image = UIImage(CGImage: CGBitmapContextCreateImage(context)!)
         return image
     }/***************** end of get a transparent background image ***************/
-    
-    //returned from the profile update photo screen
-    @IBAction func unwindFromProfilePhotoUpdateToThisViewController(segue: UIStoryboardSegue) {}
+ 
     
     //returned from the zoom screen, empty for now, use it for future
     @IBAction func unwindFromZoomScreenToThisViewController(segue: UIStoryboardSegue) {}
