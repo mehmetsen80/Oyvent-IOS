@@ -250,6 +250,7 @@ class MeViewController: UIViewController, ProfileAPIControllerProtocol, CLLocati
     func didReceiveProfileAPIResults(results:NSDictionary){
         
         dispatch_barrier_async(concurrentProfileQueue) {
+            //let resultsArr: [Profile] = results["results"] as! [Profile]
             let profile: Profile = Profile.profileWithJSON(results);
             dispatch_async(dispatch_get_main_queue(), {
                 //full name
